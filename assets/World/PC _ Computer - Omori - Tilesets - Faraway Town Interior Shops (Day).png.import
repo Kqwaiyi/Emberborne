@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://comuxi1rs18ev"
-path="res://.godot/imported/test_asset.svg-619ee2b40e6f549db5e3bff441b3fbdf.ctex"
+uid="uid://dxypweg2wkrbl"
+path="res://.godot/imported/PC _ Computer - Omori - Tilesets - Faraway Town Interior Shops (Day).png-1a748ce8d7e446d1fb73ee91b32c4819.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/test_asset.svg"
-dest_files=["res://.godot/imported/test_asset.svg-619ee2b40e6f549db5e3bff441b3fbdf.ctex"]
+source_file="res://assets/World/PC _ Computer - Omori - Tilesets - Faraway Town Interior Shops (Day).png"
+dest_files=["res://.godot/imported/PC _ Computer - Omori - Tilesets - Faraway Town Interior Shops (Day).png-1a748ce8d7e446d1fb73ee91b32c4819.ctex"]
 
 [params]
 
@@ -38,6 +38,3 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
-svg/scale=1.0
-editor/scale_with_editor_scale=false
-editor/convert_colors_with_editor_theme=false
