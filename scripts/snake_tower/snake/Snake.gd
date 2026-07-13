@@ -107,10 +107,7 @@ func try_move(dir: Vector2i):
 		LevelManager.trigger_win()
 		return
 	elif cell == LevelManager.CellType.SNAKE_BODY or cell == LevelManager.CellType.SNAKE_HEAD:
-		if target == segments[segments.size() - 1]:
-			move_segments(target, false)
-		else:
-			return
+		return
 	else:
 		move_segments(target, false)
 	

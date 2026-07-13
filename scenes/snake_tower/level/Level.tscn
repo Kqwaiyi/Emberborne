@@ -4,30 +4,82 @@
 [ext_resource type="PackedScene" path="res://scenes/snake_tower/level/TerrainBlock.tscn" id="2_l1x8v"]
 [ext_resource type="PackedScene" path="res://scenes/snake_tower/snake/Snake.tscn" id="3_5l2jw"]
 [ext_resource type="PackedScene" path="res://scenes/snake_tower/apple/Apple.tscn" id="4_5l2jw"]
+[ext_resource type="PackedScene" path="res://scenes/snake_tower/goal/GoalFlag.tscn" id="5_8tq2i"]
 
 [node name="Level" type="Node2D" unique_id=954905236]
 script = ExtResource("1")
 
-[node name="TerrainBlock" parent="." unique_id=1373355191 instance=ExtResource("2_l1x8v")]
-position = Vector2(16, 32)
+[node name="Snake" parent="." unique_id=334291700 instance=ExtResource("3_5l2jw")]
+position = Vector2(32, 0)
 
-[node name="TerrainBlock2" parent="." unique_id=1309698189 instance=ExtResource("2_l1x8v")]
-position = Vector2(32, 32)
+[node name="Apple2" parent="." unique_id=686715915 instance=ExtResource("4_5l2jw")]
+position = Vector2(48, 0)
 
-[node name="TerrainBlock3" parent="." unique_id=1995844937 instance=ExtResource("2_l1x8v")]
-position = Vector2(48, 32)
+[node name="Apple3" parent="." unique_id=1643638496 instance=ExtResource("4_5l2jw")]
+position = Vector2(64, 0)
 
-[node name="TerrainBlock4" parent="." unique_id=361670233 instance=ExtResource("2_l1x8v")]
-position = Vector2(96, 32)
+[node name="TerrainBlock" parent="." unique_id=1066062292 instance=ExtResource("2_l1x8v")]
+position = Vector2(32, 16)
 
-[node name="Apple" parent="." unique_id=1331315747 instance=ExtResource("4_5l2jw")]
-position = Vector2(64, 16)
-
-[node name="Apple3" parent="." unique_id=1158565321 instance=ExtResource("4_5l2jw")]
-position = Vector2(48, 16)
-
-[node name="Apple2" parent="." unique_id=125388390 instance=ExtResource("4_5l2jw")]
+[node name="TerrainBlock2" parent="." unique_id=213048210 instance=ExtResource("2_l1x8v")]
 position = Vector2(80, 16)
 
-[node name="Snake" parent="." unique_id=334291700 instance=ExtResource("3_5l2jw")]
-position = Vector2(16, 0)
+[node name="TerrainBlock3" parent="." unique_id=1938415428 instance=ExtResource("2_l1x8v")]
+position = Vector2(96, 16)
+
+[node name="TerrainBlock4" parent="." unique_id=574684576 instance=ExtResource("2_l1x8v")]
+position = Vector2(80, 32)
+
+[node name="TerrainBlock5" parent="." unique_id=1078967273 instance=ExtResource("2_l1x8v")]
+position = Vector2(112, 16)
+
+[node name="TerrainBlock6" parent="." unique_id=365433281 instance=ExtResource("2_l1x8v")]
+position = Vector2(128, 16)
+
+[node name="TerrainBlock7" parent="." unique_id=1657681093 instance=ExtResource("2_l1x8v")]
+position = Vector2(128, 32)
+
+[node name="TerrainBlock8" parent="." unique_id=277924868 instance=ExtResource("2_l1x8v")]
+position = Vector2(80, 48)
+
+[node name="TerrainBlock9" parent="." unique_id=752982731 instance=ExtResource("2_l1x8v")]
+position = Vector2(80, 64)
+
+[node name="TerrainBlock10" parent="." unique_id=1760161786 instance=ExtResource("2_l1x8v")]
+position = Vector2(96, 64)
+
+[node name="TerrainBlock11" parent="." unique_id=667918684 instance=ExtResource("2_l1x8v")]
+position = Vector2(112, 64)
+
+[node name="TerrainBlock12" parent="." unique_id=1374381655 instance=ExtResource("2_l1x8v")]
+position = Vector2(128, 64)
+
+[node name="Apple4" parent="." unique_id=749314779 instance=ExtResource("4_5l2jw")]
+position = Vector2(160, 48)
+
+[node name="TerrainBlock13" parent="." unique_id=1798511637 instance=ExtResource("2_l1x8v")]
+position = Vector2(192, 64)
+
+[node name="TerrainBlock14" parent="." unique_id=161949465 instance=ExtResource("2_l1x8v")]
+position = Vector2(208, 64)
+
+[node name="TerrainBlock15" parent="." unique_id=168865837 instance=ExtResource("2_l1x8v")]
+position = Vector2(224, 64)
+
+[node name="TerrainBlock16" parent="." unique_id=574392118 instance=ExtResource("2_l1x8v")]
+position = Vector2(224, 48)
+
+[node name="TerrainBlock17" parent="." unique_id=982996927 instance=ExtResource("2_l1x8v")]
+position = Vector2(224, 32)
+
+[node name="TerrainBlock18" parent="." unique_id=1172239709 instance=ExtResource("2_l1x8v")]
+position = Vector2(224, 16)
+
+[node name="TerrainBlock19" parent="." unique_id=182167743 instance=ExtResource("2_l1x8v")]
+position = Vector2(288, 16)
+
+[node name="TerrainBlock20" parent="." unique_id=1531130978 instance=ExtResource("2_l1x8v")]
+position = Vector2(304, 16)
+
+[node name="GoalFlag" parent="." unique_id=188017437 instance=ExtResource("5_8tq2i")]
+position = Vector2(352, 0)
