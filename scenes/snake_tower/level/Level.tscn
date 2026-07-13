@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://dt8f43rfdpjx8"]
+
+[ext_resource type="Script" uid="uid://dk1kmbo7tngwt" path="res://scripts/snake_tower/level/Level.gd" id="1"]
+[ext_resource type="PackedScene" path="res://scenes/snake_tower/level/TerrainBlock.tscn" id="2_l1x8v"]
+[ext_resource type="PackedScene" path="res://scenes/snake_tower/snake/Snake.tscn" id="3_5l2jw"]
+[ext_resource type="PackedScene" path="res://scenes/snake_tower/apple/Apple.tscn" id="4_5l2jw"]
+
+[node name="Level" type="Node2D" unique_id=954905236]
+script = ExtResource("1")
+
+[node name="TerrainBlock" parent="." unique_id=1373355191 instance=ExtResource("2_l1x8v")]
+position = Vector2(16, 32)
+
+[node name="TerrainBlock2" parent="." unique_id=1309698189 instance=ExtResource("2_l1x8v")]
+position = Vector2(32, 32)
+
+[node name="TerrainBlock3" parent="." unique_id=1995844937 instance=ExtResource("2_l1x8v")]
+position = Vector2(48, 32)
+
+[node name="TerrainBlock4" parent="." unique_id=361670233 instance=ExtResource("2_l1x8v")]
+position = Vector2(96, 32)
+
+[node name="Apple" parent="." unique_id=1331315747 instance=ExtResource("4_5l2jw")]
+position = Vector2(64, 16)
+
+[node name="Apple3" parent="." unique_id=1158565321 instance=ExtResource("4_5l2jw")]
+position = Vector2(48, 16)
+
+[node name="Apple2" parent="." unique_id=125388390 instance=ExtResource("4_5l2jw")]
+position = Vector2(80, 16)
+
+[node name="Snake" parent="." unique_id=334291700 instance=ExtResource("3_5l2jw")]
+position = Vector2(16, 0)
