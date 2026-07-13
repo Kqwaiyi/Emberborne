@@ -29,6 +29,8 @@ func init_snake(start_positions: Array[Vector2i]):
 		add_segment(pos)
 	update_grid_registration()
 	check_gravity()
+	if has_node("Camera2D"):
+		$Camera2D.reset_smoothing()
 
 func add_segment(pos: Vector2i):
 	segments.append(pos)
@@ -47,6 +49,8 @@ func add_segment(pos: Vector2i):
 func update_visuals():
 	for i in range(segments.size()):
 		visual_nodes[i].position = Vector2(segments[i]) * Globals.TILE_SIZE
+	if has_node("Camera2D") and not segments.is_empty():
+		$Camera2D.position = Vector2(segments[0]) * Globals.TILE_SIZE + Vector2(Globals.TILE_SIZE / 2.0, Globals.TILE_SIZE / 2.0)
 
 func update_grid_registration():
 	# Only unregister cells that are currently registered to THIS snake

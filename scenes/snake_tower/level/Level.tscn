@@ -82,4 +82,4 @@ position = Vector2(288, 16)
 position = Vector2(304, 16)
 
 [node name="GoalFlag" parent="." unique_id=188017437 instance=ExtResource("5_8tq2i")]
-position = Vector2(352, 0)
+position = Vector2(304, 0)

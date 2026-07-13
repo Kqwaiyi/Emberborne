@@ -81,10 +81,10 @@ func consume_apple(pos: Vector2i):
 		var apple = apple_nodes[pos]
 		apple.eat()
 		unregister_cell(pos)
-		emit_signal("apple_eaten", pos)
+		apple_eaten.emit()
 
 func trigger_win():
-	emit_signal("level_won")
+	level_won.emit()
 
 func trigger_loss():
-	emit_signal("level_lost")
+	level_lost.emit()
