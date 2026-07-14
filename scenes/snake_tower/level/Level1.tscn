@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://bv703dobust4x" path="res://assets/World/Glacial-mountains-parallax-background_vnitti/Layers/sky_lightened.png" id="11_sky"]
 [ext_resource type="Texture2D" uid="uid://bam8wac66me0q" path="res://assets/World/Glacial-mountains-parallax-background_vnitti/Layers/clouds_bg.png" id="12_cbg"]
 [ext_resource type="PackedScene" uid="uid://bl26wsuj527bu" path="res://scenes/snake_tower/box/Box.tscn" id="12_lhlay"]
+[ext_resource type="PackedScene" uid="uid://dqr4xl3bn9v1w" path="res://scenes/snake_tower/level/DeathFloor.tscn" id="14_df"]
 [ext_resource type="Texture2D" uid="uid://d2gtqpeak4kyb" path="res://assets/World/Glacial-mountains-parallax-background_vnitti/Layers/clouds_mg_2.png" id="15_cmg2"]
 
 [node name="Level" type="Node2D" unique_id=954905236]
@@ -157,6 +158,9 @@ horizontal_alignment = 1
 
 [node name="Box" parent="." unique_id=1829565510 instance=ExtResource("12_lhlay")]
 position = Vector2(512, -80)
+
+[node name="DeathFloor" parent="." unique_id=2081512412 instance=ExtResource("14_df")]
+position = Vector2(0, 160)
 
 [node name="UILayer" type="CanvasLayer" parent="."]
 

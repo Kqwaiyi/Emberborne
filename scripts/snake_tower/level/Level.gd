@@ -9,15 +9,22 @@ func _ready():
 
 func _on_level_won():
 	print("Level Won!")
-	get_tree().reload_current_scene()
+	_reload_level()
 
 func _on_level_lost():
 	print("Level Lost! Restarting...")
-	get_tree().reload_current_scene()
+	_reload_level()
 
 func reset_level():
 	print("Manual Reset!")
-	get_tree().reload_current_scene()
+	_reload_level()
+
+func _reload_level():
+	var vp = get_viewport()
+	if vp is SubViewport:
+		SceneManager.change_scene_in_viewport(scene_file_path, vp, 0.5)
+	else:
+		get_tree().reload_current_scene()
 
 func _input(event):
 	if event is InputEventKey and event.pressed and not event.echo:

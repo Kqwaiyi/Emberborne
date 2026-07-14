@@ -29,9 +29,9 @@ enum CellType {
 *   **Data Structures:** Uses Dictionaries (`grid`, `apple_nodes`, `spike_nodes`, `box_nodes`) mapping `Vector2i` positions to `CellType` enum values and their respective Node references.
 *   **Registration (`register_cell` / `unregister_cell`):** Used by entities to claim or release grid coordinates.
 *   **Spatial Queries:** 
-	*   `get_cell(pos)`: Returns what entity type occupies the given coordinate.
-	*   `is_solid(pos)`: Determines if a coordinate blocks movement.
-	*   `check_support(segments)`: Determines if gravity should apply. A snake or box is "supported" if *any* of its segments rests on a harmless solid block (Terrain, Apple, or Box). Spikes do not provide support.
+    *   `get_cell(pos)`: Returns what entity type occupies the given coordinate.
+    *   `is_solid(pos)`: Determines if a coordinate blocks movement.
+    *   `check_support(segments)`: Determines if gravity should apply. A snake or box is "supported" if *any* of its segments rests on a harmless solid block (Terrain, Apple, or Box). Spikes do not provide support.
 *   **Event Signals:** Emits high-level game state signals: `level_won`, `level_lost`, `apple_eaten`.
 
 ---
@@ -48,6 +48,7 @@ Entities are the building blocks of the Snake Tower levels. They generally follo
 | **Goal** | `GoalFlag.gd` | Win condition. Triggers `level_won` upon intersection. |
 | **SnakeTail** | `SnakeTail.gd` | Pre-placed snake body segments. They register as `SNAKE_BODY`. When the main `Snake.gd` initializes, it absorbs these nodes, destroys them, and takes over their grid positions. |
 | **Box** | `Box.gd` | Pushable dynamic entity. Has its own gravity processing. Can be pushed horizontally if the target adjacent cell is `EMPTY`. Falls if the cell immediately below is `EMPTY`. |
+| **DeathFloor** | `DeathFloor.gd` | An invisible out-of-bounds trigger. In `_ready()`, registers its Y coordinate to `LevelManager.death_y`. If any snake segment falls to or below this line, it triggers `level_lost`. It provides a grid-native way to implement falling off the map without relying on Godot physics or `WorldBoundaryShape2D`. |
 
 ---
 
@@ -68,7 +69,7 @@ The `Snake.gd` is the most complex entity, handling input, multi-segment movemen
 ### Gravity Logic
 *   **Check Phase:** Calls `LevelManager.check_support(segments)`. If unsupported, `is_falling = true`.
 *   **Fall Phase:** Every `fall_interval` (0.07s), the entire snake shifts down by `Vector2i(0, 1)`.
-*   **Lethality:** During a fall step, it explicitly checks `check_gravity_death` and `check_gravity_win` to resolve landing on spikes or the goal.
+*   **Lethality:** During a fall step, it explicitly checks `check_gravity_death` and `check_gravity_win` to resolve landing on spikes or the goal. It also checks if any segment's Y coordinate exceeds `LevelManager.death_y` (configured by a `DeathFloor` node) to trigger a reset if the snake falls off the map.
 
 ---
 
@@ -101,30 +102,30 @@ A `CanvasLayer` representing the diegetic computer interface.
 
 ```mermaid
 sequenceDiagram
-	participant Player
-	participant LaptopUI
-	participant SceneManager
-	participant SubViewport
-	participant Globals
-	
-	Player->>LaptopUI: open_laptop("Level1.tscn")
-	LaptopUI->>SceneTree: pause main game
-	LaptopUI->>SceneManager: change_scene_in_viewport()
-	SceneManager->>SubViewport: load and instantiate Level1
-	SceneManager-->>Globals: emit scene_loaded
-	Globals->>Globals: check path -> starts timer
-	
-	loop Minigame Active
-		Player->>Snake: input
-		Snake->>LevelManager: process grid logic
-		Globals->>Globals: accumulate time
-	end
-	
-	Player->>LaptopUI: close_laptop()
-	LaptopUI->>SceneTree: unpause main game
-	LaptopUI->>SubViewport: clear_minigame()
-	LaptopUI->>Globals: call_group("minigame_time_trackers", "pause_time")
-	Globals->>Globals: timer stops
+    participant Player
+    participant LaptopUI
+    participant SceneManager
+    participant SubViewport
+    participant Globals
+    
+    Player->>LaptopUI: open_laptop("Level1.tscn")
+    LaptopUI->>SceneTree: pause main game
+    LaptopUI->>SceneManager: change_scene_in_viewport()
+    SceneManager->>SubViewport: load and instantiate Level1
+    SceneManager-->>Globals: emit scene_loaded
+    Globals->>Globals: check path -> starts timer
+    
+    loop Minigame Active
+        Player->>Snake: input
+        Snake->>LevelManager: process grid logic
+        Globals->>Globals: accumulate time
+    end
+    
+    Player->>LaptopUI: close_laptop()
+    LaptopUI->>SceneTree: unpause main game
+    LaptopUI->>SubViewport: clear_minigame()
+    LaptopUI->>Globals: call_group("minigame_time_trackers", "pause_time")
+    Globals->>Globals: timer stops
 ```
 
 ## 7. Future Minigame Considerations

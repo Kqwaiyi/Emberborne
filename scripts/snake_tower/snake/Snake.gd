@@ -218,6 +218,11 @@ func do_fall_step():
 	update_grid_registration()
 	update_visuals()
 	
+	for seg in segments:
+		if seg.y >= LevelManager.death_y:
+			LevelManager.trigger_loss()
+			return
+	
 	if landing_on_spike:
 		LevelManager.trigger_loss()
 		return
