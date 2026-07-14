@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://3rk01bkykhsb"
-path="res://.godot/imported/roguelikeSheet_transparent.png-baba13c89abfdb1d1eaaeb134b92eb3a.ctex"
+uid="uid://ccjadmrq66wnt"
+path="res://.godot/imported/rat2.png-d6dcffcf23e6ad5deef613bfb414b38b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/World/roguelikeSheet_transparent.png"
-dest_files=["res://.godot/imported/roguelikeSheet_transparent.png-baba13c89abfdb1d1eaaeb134b92eb3a.ctex"]
+source_file="res://assets/sprites/rat/rat2.png"
+dest_files=["res://.godot/imported/rat2.png-d6dcffcf23e6ad5deef613bfb414b38b.ctex"]
 
 [params]
 

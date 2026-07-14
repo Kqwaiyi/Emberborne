@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dxypweg2wkrbl"
-path="res://.godot/imported/PC _ Computer - Omori - Tilesets - Faraway Town Interior Shops (Day).png-1a748ce8d7e446d1fb73ee91b32c4819.ctex"
+uid="uid://caayhkn6qfwn3"
+path="res://.godot/imported/Enviroment Tile sheet.png-8e66ee4fce384f75c52667ebc7bc9929.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/World/PC _ Computer - Omori - Tilesets - Faraway Town Interior Shops (Day).png"
-dest_files=["res://.godot/imported/PC _ Computer - Omori - Tilesets - Faraway Town Interior Shops (Day).png-1a748ce8d7e446d1fb73ee91b32c4819.ctex"]
+source_file="res://assets/sprites/environment/Enviroment Tile sheet.png"
+dest_files=["res://.godot/imported/Enviroment Tile sheet.png-8e66ee4fce384f75c52667ebc7bc9929.ctex"]
 
 [params]
 

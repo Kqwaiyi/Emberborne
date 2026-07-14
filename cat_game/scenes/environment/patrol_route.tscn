@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://patrol_route"]
+
+[node name="PatrolRoute" type="Node2D"]
+visible = false
+
+[node name="Point01" type="Marker2D" parent="."]
+position = Vector2(-80, 0)
+
+[node name="Point02" type="Marker2D" parent="."]
+position = Vector2(80, 0)

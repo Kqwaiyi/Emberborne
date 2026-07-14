@@ -1,0 +1,32 @@
+[gd_scene load_steps=3 format=3 uid="uid://enemy_base"]
+
+[ext_resource type="Script" path="res://cat_game/scripts/characters/enemy_base.gd" id="1_base"]
+[ext_resource type="Script" path="res://cat_game/scripts/environment/vision_cone.gd" id="2_cone"]
+
+[sub_resource type="CircleShape2D" id="1_body"]
+radius = 14.0
+
+[sub_resource type="CircleShape2D" id="2_catch"]
+radius = 18.0
+
+[node name="EnemyBase" type="CharacterBody2D"]
+script = ExtResource("1_base")
+collision_layer = 4
+collision_mask = 1
+
+[node name="Visual" type="Node2D" parent="."]
+
+[node name="BodyCollision" type="CollisionShape2D" parent="."]
+shape = SubResource("1_body")
+
+[node name="VisionCone" type="Node2D" parent="."]
+script = ExtResource("2_cone")
+
+[node name="CatchArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CatchCollision" type="CollisionShape2D" parent="CatchArea"]
+shape = SubResource("2_catch")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]

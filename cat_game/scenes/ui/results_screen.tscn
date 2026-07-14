@@ -1,0 +1,59 @@
+[gd_scene load_steps=2 format=3 uid="uid://results_scene"]
+
+[ext_resource type="Script" path="res://cat_game/scripts/ui/results_screen.gd" id="1_results"]
+
+[node name="ResultsScreen" type="CanvasLayer"]
+script = ExtResource("1_results")
+visible = false
+process_mode = 3
+
+[node name="Panel" type="Panel" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -220.0
+offset_top = -220.0
+offset_right = 220.0
+offset_bottom = 220.0
+
+[node name="VBox" type="VBoxContainer" parent="Panel"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = 20.0
+offset_right = -20.0
+offset_bottom = -20.0
+
+[node name="TitleLabel" type="Label" parent="Panel/VBox"]
+text = "Level Complete"
+horizontal_alignment = 1
+
+[node name="Spacer" type="Control" parent="Panel/VBox"]
+custom_minimum_size = Vector2(0, 16)
+
+[node name="TimeLabel" type="Label" parent="Panel/VBox"]
+text = "Time: --"
+
+[node name="MiceLabel" type="Label" parent="Panel/VBox"]
+text = "Mice Caught: --"
+
+[node name="RequiredLabel" type="Label" parent="Panel/VBox"]
+text = "Required Mice: 3"
+
+[node name="CaughtLabel" type="Label" parent="Panel/VBox"]
+text = "Times Caught: --"
+
+[node name="BonusLabel" type="Label" parent="Panel/VBox"]
+text = "Time Bonus: --"
+
+[node name="ScoreLabel" type="Label" parent="Panel/VBox"]
+text = "Final Score: --"
+
+[node name="Spacer2" type="Control" parent="Panel/VBox"]
+custom_minimum_size = Vector2(0, 16)
+
+[node name="RestartButton" type="Button" parent="Panel/VBox"]
+text = "Restart (R)"

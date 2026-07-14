@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dk5435xj02ce8"
-path="res://.godot/imported/generic items.png-d364dd1f4232caa0c12d6e1550a8bd4c.ctex"
+uid="uid://54aktg173qrh"
+path="res://.godot/imported/dog2.png-875218571e48ade233c3bd00695b0884.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/World/generic items.png"
-dest_files=["res://.godot/imported/generic items.png-d364dd1f4232caa0c12d6e1550a8bd4c.ctex"]
+source_file="res://assets/sprites/dogs/dog2.png"
+dest_files=["res://.godot/imported/dog2.png-875218571e48ade233c3bd00695b0884.ctex"]
 
 [params]
 

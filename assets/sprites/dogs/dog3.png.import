@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bou8k03k4flnr"
-path="res://.godot/imported/PC _ Computer - Omori - Tilesets - Faraway Town Interior Homes (Day).png-f331fbef83d9d4a5100e3cac03677910.ctex"
+uid="uid://laogwv3g6lth"
+path="res://.godot/imported/dog3.png-b7c26a462c10f526937d57dc4839979c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/World/PC _ Computer - Omori - Tilesets - Faraway Town Interior Homes (Day).png"
-dest_files=["res://.godot/imported/PC _ Computer - Omori - Tilesets - Faraway Town Interior Homes (Day).png-f331fbef83d9d4a5100e3cac03677910.ctex"]
+source_file="res://assets/sprites/dogs/dog3.png"
+dest_files=["res://.godot/imported/dog3.png-b7c26a462c10f526937d57dc4839979c.ctex"]
 
 [params]
 
