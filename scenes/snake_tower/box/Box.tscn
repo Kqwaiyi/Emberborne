@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://bl26wsuj527bu"]
+
+[ext_resource type="Script" uid="uid://cd6718yp2nt5y" path="res://scripts/snake_tower/box/Box.gd" id="1_b"]
+[ext_resource type="Texture2D" uid="uid://c41gpbo555sn4" path="res://assets/snake_tower/snaketower_tileset.png" id="2_a0cxw"]
+
+[node name="Box" type="Node2D" unique_id=909326930]
+script = ExtResource("1_b")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1519164797]
+modulate = Color(0.8, 0.5, 0.2, 1)
+scale = Vector2(0.99605423, 0.99605423)
+texture = ExtResource("2_a0cxw")
+centered = false
+region_enabled = true
+region_rect = Rect2(15.9920225, 96.012215, 16.00978, 15.959778)

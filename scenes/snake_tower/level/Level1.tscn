@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://c2vd7fqy1cblk" path="res://scripts/snake_tower/level/TerrainTileMap.gd" id="10_script"]
 [ext_resource type="Texture2D" uid="uid://bv703dobust4x" path="res://assets/World/Glacial-mountains-parallax-background_vnitti/Layers/sky_lightened.png" id="11_sky"]
 [ext_resource type="Texture2D" uid="uid://bam8wac66me0q" path="res://assets/World/Glacial-mountains-parallax-background_vnitti/Layers/clouds_bg.png" id="12_cbg"]
+[ext_resource type="PackedScene" uid="uid://bl26wsuj527bu" path="res://scenes/snake_tower/box/Box.tscn" id="12_lhlay"]
 [ext_resource type="Texture2D" uid="uid://d2gtqpeak4kyb" path="res://assets/World/Glacial-mountains-parallax-background_vnitti/Layers/clouds_mg_2.png" id="15_cmg2"]
 
 [node name="Level" type="Node2D" unique_id=954905236]
@@ -58,20 +59,20 @@ centered = false
 
 [node name="Layer0" type="TileMapLayer" parent="Map" unique_id=1167331158]
 use_parent_material = true
-tile_map_data = PackedByteArray("AAAAAAEAAAABAAQAAAABAAEAAAACAAQAAAACAAEAAAACAAQAAAADAAEAAAACAAQAAAAEAAEAAAADAAQAAAAEAAAAAAABAAQAAAAFAAAAAAADAAQAAAAFAP//AAABAAQAAAAGAP//AAACAAQAAAAHAP//AAACAAQAAAAIAP//AAADAAQAAAALAP//AAABAAQAAAAMAP//AAACAAQAAAANAP//AAACAAQAAAAOAP//AAADAAQAAAAPAPz/AAAEAAEAAAAPAP3/AAAEAAIAAAAPAP//AAAEAAMAAAAPAP7/AAAEAAIAAAAVAPz/AAABAAQAAAAWAPz/AAACAAQAAAAXAPz/AAADAAQAAAA=")
+tile_map_data = PackedByteArray("AAAAAAEAAAABAAQAAAABAAEAAAACAAQAAAACAAEAAAACAAQAAAADAAEAAAACAAQAAAAEAAAAAAABAAQAAAAEAAEAAAADAAQAAAAFAP//AAABAAQAAAAFAAAAAAADAAQAAAAGAP//AAACAAQAAAAHAP//AAACAAQAAAAIAP//AAADAAQAAAAPAP//AAABAAQAAAAQAP//AAACAAQAAAARAP//AAACAAQAAAASAP//AAADAAQAAAATAPz/AAAEAAEAAAATAP3/AAAEAAIAAAATAP7/AAAEAAIAAAATAP//AAAEAAMAAAALAP//AAABAAQAAAAMAP//AAADAAQAAAAUAPz/AAABAAQAAAAVAPz/AAACAAQAAAAWAPz/AAADAAQAAAAeAPz/AAABAAQAAAAgAAEAAAABAAQAAAAhAAEAAAACAAQAAAAiAAEAAAACAAQAAAAjAAEAAAACAAQAAAAkAAEAAAACAAQAAAAlAAEAAAACAAQAAAAmAAEAAAADAAQAAAAnAP3/AAABAAEAAAAnAP7/AAABAAIAAAAnAP//AAABAAIAAAAnAAAAAAABAAIAAAAnAAEAAAABAAMAAAAfAPz/AAACAAQAAAAgAPz/AAADAAQAAAAoAP3/AAACAAEAAAAoAP7/AAACAAIAAAAoAP//AAACAAIAAAAoAAAAAAACAAIAAAAoAAEAAAACAAMAAAApAP3/AAADAAEAAAApAP7/AAADAAIAAAApAP//AAADAAIAAAApAAAAAAADAAIAAAApAAEAAAADAAMAAAA=")
 tile_set = ExtResource("3_fhlu2")
 script = ExtResource("10_script")
 
 [node name="GoalFlag" parent="Map" unique_id=866667800 instance=ExtResource("5_8tq2i")]
-position = Vector2(432, 32)
+position = Vector2(656, -64)
 
 [node name="Apples" type="Node2D" parent="." unique_id=165248747]
 
 [node name="Apple2" parent="Apples" unique_id=242907857 instance=ExtResource("7_wagk8")]
-position = Vector2(192, -32)
+position = Vector2(256, -32)
 
 [node name="Apple3" parent="Apples" unique_id=718229589 instance=ExtResource("7_wagk8")]
-position = Vector2(288, -64)
+position = Vector2(416, -64)
 
 [node name="Char" type="Node2D" parent="." unique_id=226739130]
 
@@ -85,7 +86,7 @@ position = Vector2(16, 0)
 
 [node name="Labels" type="Node2D" parent="." unique_id=1688921380]
 
-[node name="Label" type="Label" parent="." unique_id=591008937]
+[node name="Label" type="Label" parent="Labels" unique_id=591008937]
 z_index = -100
 offset_left = -22.0
 offset_top = -36.0
@@ -97,37 +98,62 @@ text = "Press WASD
 To Move"
 horizontal_alignment = 1
 
-[node name="Label2" type="Label" parent="." unique_id=1278879977]
+[node name="Label2" type="Label" parent="Labels" unique_id=1278879977]
 z_index = -100
-offset_left = 115.0
-offset_top = 19.0
-offset_right = 207.0
-offset_bottom = 68.0
+offset_left = 146.0
+offset_top = 16.0
+offset_right = 238.0
+offset_bottom = 65.0
 theme_override_constants/line_spacing = -2
 theme_override_font_sizes/font_size = 8
 text = "Don't Fall"
 horizontal_alignment = 1
 
-[node name="Label3" type="Label" parent="." unique_id=1718437424]
+[node name="Label3" type="Label" parent="Labels" unique_id=1718437424]
 z_index = -100
-offset_left = 155.0
-offset_top = -64.0
-offset_right = 247.0
-offset_bottom = -15.0
+offset_left = 222.0
+offset_top = -74.0
+offset_right = 314.0
+offset_bottom = -25.0
 theme_override_constants/line_spacing = -2
 theme_override_font_sizes/font_size = 8
 text = "Apples Make
 You Grow Longer"
 horizontal_alignment = 1
 
-[node name="Label4" type="Label" parent="." unique_id=2015012031]
+[node name="Label4" type="Label" parent="Labels" unique_id=2015012031]
 z_index = -100
-offset_left = 268.0
-offset_top = -33.0
-offset_right = 360.0
-offset_bottom = 16.0
+offset_left = 381.0
+offset_top = -36.0
+offset_right = 473.0
+offset_bottom = 13.0
 theme_override_constants/line_spacing = -2
 theme_override_font_sizes/font_size = 8
 text = "Hint: Eating Apples
 are Optional"
 horizontal_alignment = 1
+
+[node name="Label5" type="Label" parent="Labels" unique_id=2189777]
+z_index = -100
+offset_left = 512.0
+offset_top = -48.0
+offset_right = 604.0
+offset_bottom = 1.0
+theme_override_constants/line_spacing = -2
+theme_override_font_sizes/font_size = 8
+text = "???"
+horizontal_alignment = 1
+
+[node name="Label6" type="Label" parent="Labels" unique_id=591087629]
+z_index = -100
+offset_left = 525.0
+offset_top = 60.0
+offset_right = 617.0
+offset_bottom = 109.0
+theme_override_constants/line_spacing = -2
+theme_override_font_sizes/font_size = 8
+text = "Fall to Reset"
+horizontal_alignment = 1
+
+[node name="Box" parent="." unique_id=1829565510 instance=ExtResource("12_lhlay")]
+position = Vector2(512, -80)

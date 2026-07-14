@@ -152,6 +152,12 @@ func try_move(dir: Vector2i):
 		move_segments(target, false)
 		LevelManager.trigger_win()
 		return
+	elif cell == LevelManager.CellType.BOX:
+		var box = LevelManager.get_box(target)
+		if box and box.try_push(dir):
+			move_segments(target, false)
+		else:
+			return
 	elif cell == LevelManager.CellType.SNAKE_BODY or cell == LevelManager.CellType.SNAKE_HEAD:
 		return
 	else:
