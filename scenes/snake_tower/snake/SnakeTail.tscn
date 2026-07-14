@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cb5k72y6k5n3q"]
 
-[ext_resource type="Script" uid="uid://d2k1m1y6k5n3q" path="res://scripts/snake_tower/snake/SnakeTail.gd" id="1_tail"]
+[ext_resource type="Script" uid="uid://75jkrg7otmm7" path="res://scripts/snake_tower/snake/SnakeTail.gd" id="1_tail"]
 [ext_resource type="Texture2D" uid="uid://cyuob1afxadjh" path="res://icon.svg" id="2_sn"]
 
 [node name="SnakeTail" type="Node2D"]
