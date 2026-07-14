@@ -9,12 +9,12 @@ func _input(event):
 	if event is InputEventKey and event.pressed:
 		if event.keycode == KEY_1:
 			print("Testing Global SceneManager...")
-			SceneManager.change_scene_to_file("res://scenes/snake_tower/level/Level.tscn")
+			SceneManager.change_scene_to_file("res://scenes/snake_tower/level/Level1.tscn")
 		elif event.keycode == KEY_2:
 			print("Testing LaptopUI...")
 			# Since LaptopUI is not an autoload, we instantiate it here for testing if it's not in the tree
 			var laptop_node = get_node_or_null("LaptopUI")
 			if laptop_node:
-				laptop_node.open_laptop("res://scenes/snake_tower/level/Level.tscn")
+				laptop_node.open_laptop("res://scenes/snake_tower/level/Level1.tscn")
 			else:
 				print("LaptopUI node not found in TestScene!")

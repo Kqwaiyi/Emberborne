@@ -1,0 +1,133 @@
+[gd_scene format=4 uid="uid://duohb37ksgf44"]
+
+[ext_resource type="Script" uid="uid://dk1kmbo7tngwt" path="res://scripts/snake_tower/level/Level.gd" id="1"]
+[ext_resource type="PackedScene" uid="uid://lqa036u53u25" path="res://scenes/snake_tower/snake/Snake.tscn" id="3_5l2jw"]
+[ext_resource type="Texture2D" uid="uid://cns61sjy4v710" path="res://assets/World/Glacial-mountains-parallax-background_vnitti/Layers/clouds_mg_1.png" id="3_6sexo"]
+[ext_resource type="TileSet" uid="uid://df72k07a11uqp" path="res://scenes/snake_tower/terrain/snaketower_tileset.tres" id="3_fhlu2"]
+[ext_resource type="PackedScene" path="res://scenes/snake_tower/goal/GoalFlag.tscn" id="5_8tq2i"]
+[ext_resource type="PackedScene" uid="uid://cb5k72y6k5n3q" path="res://scenes/snake_tower/snake/SnakeTail.tscn" id="6_wagk8"]
+[ext_resource type="PackedScene" uid="uid://c03dy1hc7ccnh" path="res://scenes/snake_tower/apple/Apple.tscn" id="7_wagk8"]
+[ext_resource type="Script" uid="uid://c2vd7fqy1cblk" path="res://scripts/snake_tower/level/TerrainTileMap.gd" id="10_script"]
+[ext_resource type="Texture2D" uid="uid://bv703dobust4x" path="res://assets/World/Glacial-mountains-parallax-background_vnitti/Layers/sky_lightened.png" id="11_sky"]
+[ext_resource type="Texture2D" uid="uid://bam8wac66me0q" path="res://assets/World/Glacial-mountains-parallax-background_vnitti/Layers/clouds_bg.png" id="12_cbg"]
+[ext_resource type="Texture2D" uid="uid://d2gtqpeak4kyb" path="res://assets/World/Glacial-mountains-parallax-background_vnitti/Layers/clouds_mg_2.png" id="15_cmg2"]
+
+[node name="Level" type="Node2D" unique_id=954905236]
+script = ExtResource("1")
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="." unique_id=1017362265]
+scroll_base_offset = Vector2(-192, -108)
+
+[node name="Sky" type="ParallaxLayer" parent="ParallaxBackground" unique_id=315872996]
+position = Vector2(0, -64)
+motion_scale = Vector2(0.1, 0.1)
+motion_mirroring = Vector2(384, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Sky" unique_id=1942411705]
+texture = ExtResource("11_sky")
+centered = false
+
+[node name="Sky2" type="ParallaxLayer" parent="ParallaxBackground" unique_id=578137997]
+position = Vector2(0, -64)
+motion_scale = Vector2(0.1, 0.1)
+motion_mirroring = Vector2(384, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Sky2" unique_id=1688504560]
+texture = ExtResource("3_6sexo")
+centered = false
+
+[node name="CloudsBg" type="ParallaxLayer" parent="ParallaxBackground" unique_id=1683100475]
+position = Vector2(0, 32)
+motion_scale = Vector2(0.2, 0.2)
+motion_mirroring = Vector2(384, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/CloudsBg" unique_id=1702002273]
+texture = ExtResource("12_cbg")
+centered = false
+
+[node name="CloudsMg2" type="ParallaxLayer" parent="ParallaxBackground" unique_id=1775783373]
+position = Vector2(0, 16)
+motion_scale = Vector2(0.7, 0.7)
+motion_mirroring = Vector2(384, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/CloudsMg2" unique_id=1391859253]
+texture = ExtResource("15_cmg2")
+centered = false
+
+[node name="Map" type="Node2D" parent="." unique_id=1126994033]
+
+[node name="Layer0" type="TileMapLayer" parent="Map" unique_id=1167331158]
+use_parent_material = true
+tile_map_data = PackedByteArray("AAAAAAEAAAABAAQAAAABAAEAAAACAAQAAAACAAEAAAACAAQAAAADAAEAAAACAAQAAAAEAAEAAAADAAQAAAAEAAAAAAABAAQAAAAFAAAAAAADAAQAAAAFAP//AAABAAQAAAAGAP//AAACAAQAAAAHAP//AAACAAQAAAAIAP//AAADAAQAAAALAP//AAABAAQAAAAMAP//AAACAAQAAAANAP//AAACAAQAAAAOAP//AAADAAQAAAAPAPz/AAAEAAEAAAAPAP3/AAAEAAIAAAAPAP//AAAEAAMAAAAPAP7/AAAEAAIAAAAVAPz/AAABAAQAAAAWAPz/AAACAAQAAAAXAPz/AAADAAQAAAA=")
+tile_set = ExtResource("3_fhlu2")
+script = ExtResource("10_script")
+
+[node name="GoalFlag" parent="Map" unique_id=866667800 instance=ExtResource("5_8tq2i")]
+position = Vector2(432, 32)
+
+[node name="Apples" type="Node2D" parent="." unique_id=165248747]
+
+[node name="Apple2" parent="Apples" unique_id=242907857 instance=ExtResource("7_wagk8")]
+position = Vector2(192, -32)
+
+[node name="Apple3" parent="Apples" unique_id=718229589 instance=ExtResource("7_wagk8")]
+position = Vector2(288, -64)
+
+[node name="Char" type="Node2D" parent="." unique_id=226739130]
+
+[node name="Snake" parent="Char" unique_id=1937127888 instance=ExtResource("3_5l2jw")]
+position = Vector2(32, 0)
+
+[node name="SnakeTail2" parent="Char" unique_id=1886820664 instance=ExtResource("6_wagk8")]
+
+[node name="SnakeTail" parent="Char" unique_id=144577389 instance=ExtResource("6_wagk8")]
+position = Vector2(16, 0)
+
+[node name="Labels" type="Node2D" parent="." unique_id=1688921380]
+
+[node name="Label" type="Label" parent="." unique_id=591008937]
+z_index = -100
+offset_left = -22.0
+offset_top = -36.0
+offset_right = 70.0
+offset_bottom = 13.0
+theme_override_constants/line_spacing = -2
+theme_override_font_sizes/font_size = 8
+text = "Press WASD
+To Move"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="." unique_id=1278879977]
+z_index = -100
+offset_left = 115.0
+offset_top = 19.0
+offset_right = 207.0
+offset_bottom = 68.0
+theme_override_constants/line_spacing = -2
+theme_override_font_sizes/font_size = 8
+text = "Don't Fall"
+horizontal_alignment = 1
+
+[node name="Label3" type="Label" parent="." unique_id=1718437424]
+z_index = -100
+offset_left = 155.0
+offset_top = -64.0
+offset_right = 247.0
+offset_bottom = -15.0
+theme_override_constants/line_spacing = -2
+theme_override_font_sizes/font_size = 8
+text = "Apples Make
+You Grow Longer"
+horizontal_alignment = 1
+
+[node name="Label4" type="Label" parent="." unique_id=2015012031]
+z_index = -100
+offset_left = 268.0
+offset_top = -33.0
+offset_right = 360.0
+offset_bottom = 16.0
+theme_override_constants/line_spacing = -2
+theme_override_font_sizes/font_size = 8
+text = "Hint: Eating Apples
+are Optional"
+horizontal_alignment = 1

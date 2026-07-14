@@ -69,6 +69,15 @@ func check_gravity_death(segments: Array[Vector2i]) -> bool:
 			return true
 	return false
 
+# Check if snake will win due to gravity landing
+func check_gravity_win(segments: Array[Vector2i]) -> bool:
+	for segment in segments:
+		var below = segment + Vector2i(0, 1)
+		var cell = get_cell(below)
+		if cell == CellType.GOAL:
+			return true
+	return false
+
 # Is a specific position a spike? (Used for head collision)
 func is_spike(pos: Vector2i) -> bool:
 	return get_cell(pos) == CellType.SPIKE

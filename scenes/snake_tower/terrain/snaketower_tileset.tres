@@ -1,9 +1,9 @@
 [gd_resource type="TileSet" format=3 uid="uid://df72k07a11uqp"]
 
-[ext_resource type="Texture2D" uid="uid://c41gpbo555sn4" path="res://assets/snake_tower/snaketower_tileset.png" id="1_tex"]
+[ext_resource type="Texture2D" uid="uid://c41gpbo555sn4" path="res://assets/snake_tower/snaketower_tileset.png" id="1_5kh22"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1"]
-texture = ExtResource("1_tex")
+texture = ExtResource("1_5kh22")
 1:1/0 = 0
 2:1/0 = 0
 3:1/0 = 0

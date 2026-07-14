@@ -11,9 +11,6 @@ var fall_timer: float = 0.0
 var fall_interval: float = 0.15
 
 func _ready():
-	if has_node("Sprite2D"):
-		$Sprite2D.queue_free()
-		
 	# If placed manually in editor, initialize at current grid position
 	if segments.is_empty():
 		var grid_pos = Vector2i((position / float(Globals.TILE_SIZE)).round())
@@ -63,13 +60,18 @@ func init_snake(start_positions: Array[Vector2i]):
 func add_segment(pos: Vector2i):
 	segments.append(pos)
 	var node: Node2D
+	var needs_add_child = true
 	if segments.size() == 1:
-		var sprite = Sprite2D.new()
-		sprite.texture = preload("res://icon.svg")
-		sprite.centered = false
-		sprite.scale = Vector2(Globals.TILE_SIZE / 128.0, Globals.TILE_SIZE / 128.0)
-		sprite.modulate = Color(0.1, 0.4, 0.8) # Head
-		node = sprite
+		if has_node("Sprite2D"):
+			node = $Sprite2D
+			needs_add_child = false
+		else:
+			var sprite = Sprite2D.new()
+			sprite.texture = preload("res://icon.svg")
+			sprite.centered = false
+			sprite.scale = Vector2(Globals.TILE_SIZE / 128.0, Globals.TILE_SIZE / 128.0)
+			sprite.modulate = Color(0.1, 0.4, 0.8) # Head
+			node = sprite
 	else:
 		if tail_scene:
 			node = tail_scene.instantiate()
@@ -80,7 +82,9 @@ func add_segment(pos: Vector2i):
 			sprite.scale = Vector2(Globals.TILE_SIZE / 128.0, Globals.TILE_SIZE / 128.0)
 			sprite.modulate = Color(0.2, 0.6, 1.0) # Body fallback
 			node = sprite
-	add_child(node)
+			
+	if needs_add_child:
+		add_child(node)
 	visual_nodes.append(node)
 	update_visuals()
 
@@ -195,6 +199,7 @@ func check_gravity():
 
 func do_fall_step():
 	var landing_on_spike = LevelManager.check_gravity_death(segments)
+	var landing_on_goal = LevelManager.check_gravity_win(segments)
 	
 	for i in range(segments.size()):
 		var cell = LevelManager.get_cell(segments[i])
@@ -209,6 +214,10 @@ func do_fall_step():
 	
 	if landing_on_spike:
 		LevelManager.trigger_loss()
+		return
+		
+	if landing_on_goal:
+		LevelManager.trigger_win()
 		return
 		
 	check_gravity()
