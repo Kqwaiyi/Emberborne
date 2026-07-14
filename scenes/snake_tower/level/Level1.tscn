@@ -11,7 +11,8 @@
 [ext_resource type="Texture2D" uid="uid://bv703dobust4x" path="res://assets/World/Glacial-mountains-parallax-background_vnitti/Layers/sky_lightened.png" id="11_sky"]
 [ext_resource type="Texture2D" uid="uid://bam8wac66me0q" path="res://assets/World/Glacial-mountains-parallax-background_vnitti/Layers/clouds_bg.png" id="12_cbg"]
 [ext_resource type="PackedScene" uid="uid://bl26wsuj527bu" path="res://scenes/snake_tower/box/Box.tscn" id="12_lhlay"]
-[ext_resource type="PackedScene" uid="uid://dqr4xl3bn9v1w" path="res://scenes/snake_tower/level/DeathFloor.tscn" id="14_df"]
+[ext_resource type="PackedScene" uid="uid://dqr4xl3boav1w" path="res://scenes/snake_tower/level/DeathFloor.tscn" id="14_df"]
+[ext_resource type="PackedScene" uid="uid://bl1jkw030abc" path="res://scenes/snake_tower/level/CameraLimit.tscn" id="14_r41v2"]
 [ext_resource type="Texture2D" uid="uid://d2gtqpeak4kyb" path="res://assets/World/Glacial-mountains-parallax-background_vnitti/Layers/clouds_mg_2.png" id="15_cmg2"]
 
 [node name="Level" type="Node2D" unique_id=954905236]
@@ -58,6 +59,9 @@ centered = false
 
 [node name="Map" type="Node2D" parent="." unique_id=1126994033]
 
+[node name="Box" parent="Map" unique_id=1829565510 instance=ExtResource("12_lhlay")]
+position = Vector2(512, -80)
+
 [node name="Layer0" type="TileMapLayer" parent="Map" unique_id=1167331158]
 use_parent_material = true
 tile_map_data = PackedByteArray("AAAAAAEAAAABAAQAAAABAAEAAAACAAQAAAACAAEAAAACAAQAAAADAAEAAAACAAQAAAAEAAAAAAABAAQAAAAEAAEAAAADAAQAAAAFAP//AAABAAQAAAAFAAAAAAADAAQAAAAGAP//AAACAAQAAAAHAP//AAACAAQAAAAIAP//AAADAAQAAAAPAP//AAABAAQAAAAQAP//AAACAAQAAAARAP//AAACAAQAAAASAP//AAADAAQAAAATAPz/AAAEAAEAAAATAP3/AAAEAAIAAAATAP7/AAAEAAIAAAATAP//AAAEAAMAAAALAP//AAABAAQAAAAMAP//AAADAAQAAAAUAPz/AAABAAQAAAAVAPz/AAACAAQAAAAWAPz/AAADAAQAAAAeAPz/AAABAAQAAAAgAAEAAAABAAQAAAAhAAEAAAACAAQAAAAiAAEAAAACAAQAAAAjAAEAAAACAAQAAAAkAAEAAAACAAQAAAAlAAEAAAACAAQAAAAmAAEAAAADAAQAAAAnAP3/AAABAAEAAAAnAP7/AAABAAIAAAAnAP//AAABAAIAAAAnAAAAAAABAAIAAAAnAAEAAAABAAMAAAAfAPz/AAACAAQAAAAgAPz/AAADAAQAAAAoAP3/AAACAAEAAAAoAP7/AAACAAIAAAAoAP//AAACAAIAAAAoAAAAAAACAAIAAAAoAAEAAAACAAMAAAApAP3/AAADAAEAAAApAP7/AAADAAIAAAApAP//AAADAAIAAAApAAAAAAADAAIAAAApAAEAAAADAAMAAAA=")
@@ -72,7 +76,7 @@ position = Vector2(656, -64)
 [node name="Apple2" parent="Apples" unique_id=242907857 instance=ExtResource("7_wagk8")]
 position = Vector2(256, -32)
 
-[node name="Apple3" parent="Apples" unique_id=718229589 instance=ExtResource("7_wagk8")]
+[node name="Apple3" parent="Apples" unique_id=791692423 instance=ExtResource("7_wagk8")]
 position = Vector2(416, -64)
 
 [node name="Char" type="Node2D" parent="." unique_id=226739130]
@@ -153,22 +157,25 @@ offset_right = 617.0
 offset_bottom = 109.0
 theme_override_constants/line_spacing = -2
 theme_override_font_sizes/font_size = 8
-text = "Fall to Reset"
+text = "Fall or Press R
+to Reset Level"
 horizontal_alignment = 1
-
-[node name="Box" parent="." unique_id=1829565510 instance=ExtResource("12_lhlay")]
-position = Vector2(512, -80)
 
 [node name="DeathFloor" parent="." unique_id=2081512412 instance=ExtResource("14_df")]
 position = Vector2(0, 160)
 
-[node name="UILayer" type="CanvasLayer" parent="."]
+[node name="UILayer" type="CanvasLayer" parent="." unique_id=365527455]
+scale = Vector2(1.3, 1.3)
+transform = Transform2D(1.3, 0, 0, 1.3, 0, 0)
 
-[node name="ResetButton" type="Button" parent="UILayer"]
-offset_left = 10.0
-offset_top = 10.0
-offset_right = 85.0
-offset_bottom = 41.0
+[node name="ResetButton" type="Button" parent="UILayer" unique_id=915977610]
+offset_left = 12.3076935
+offset_top = 12.3076935
+offset_right = 88.30769
+offset_bottom = 43.307693
 text = "Reset (R)"
+
+[node name="CameraLimit" parent="." unique_id=3601522 instance=ExtResource("14_r41v2")]
+position = Vector2(0, 64)
 
 [connection signal="pressed" from="UILayer/ResetButton" to="." method="reset_level"]

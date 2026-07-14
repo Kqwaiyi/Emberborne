@@ -56,6 +56,10 @@ func init_snake(start_positions: Array[Vector2i]):
 	check_gravity()
 	if has_node("Camera2D"):
 		$Camera2D.reset_smoothing()
+		var target_y = LevelManager.death_y
+		if LevelManager.camera_limit_y != -1:
+			target_y = LevelManager.camera_limit_y
+		$Camera2D.limit_bottom = (target_y * Globals.TILE_SIZE) + (Globals.TILE_SIZE * 2)
 
 func add_segment(pos: Vector2i):
 	segments.append(pos)

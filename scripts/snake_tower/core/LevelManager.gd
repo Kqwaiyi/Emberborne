@@ -17,6 +17,7 @@ var spike_nodes: Dictionary = {}
 var box_nodes: Dictionary = {}
 var goal_node: Node = null
 var death_y: int = 100
+var camera_limit_y: int = -1
 signal level_won
 signal level_lost
 signal apple_eaten(pos)
@@ -31,6 +32,7 @@ func reset():
 	box_nodes.clear()
 	goal_node = null
 	death_y = 100
+	camera_limit_y = -1
 
 func register_cell(pos: Vector2i, type: int, node: Node = null):
 	grid[pos] = type

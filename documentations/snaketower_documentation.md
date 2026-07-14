@@ -29,9 +29,9 @@ enum CellType {
 *   **Data Structures:** Uses Dictionaries (`grid`, `apple_nodes`, `spike_nodes`, `box_nodes`) mapping `Vector2i` positions to `CellType` enum values and their respective Node references.
 *   **Registration (`register_cell` / `unregister_cell`):** Used by entities to claim or release grid coordinates.
 *   **Spatial Queries:** 
-    *   `get_cell(pos)`: Returns what entity type occupies the given coordinate.
-    *   `is_solid(pos)`: Determines if a coordinate blocks movement.
-    *   `check_support(segments)`: Determines if gravity should apply. A snake or box is "supported" if *any* of its segments rests on a harmless solid block (Terrain, Apple, or Box). Spikes do not provide support.
+	*   `get_cell(pos)`: Returns what entity type occupies the given coordinate.
+	*   `is_solid(pos)`: Determines if a coordinate blocks movement.
+	*   `check_support(segments)`: Determines if gravity should apply. A snake or box is "supported" if *any* of its segments rests on a harmless solid block (Terrain, Apple, or Box). Spikes do not provide support.
 *   **Event Signals:** Emits high-level game state signals: `level_won`, `level_lost`, `apple_eaten`.
 
 ---
@@ -49,6 +49,7 @@ Entities are the building blocks of the Snake Tower levels. They generally follo
 | **SnakeTail** | `SnakeTail.gd` | Pre-placed snake body segments. They register as `SNAKE_BODY`. When the main `Snake.gd` initializes, it absorbs these nodes, destroys them, and takes over their grid positions. |
 | **Box** | `Box.gd` | Pushable dynamic entity. Has its own gravity processing. Can be pushed horizontally if the target adjacent cell is `EMPTY`. Falls if the cell immediately below is `EMPTY`. |
 | **DeathFloor** | `DeathFloor.gd` | An invisible out-of-bounds trigger. In `_ready()`, registers its Y coordinate to `LevelManager.death_y`. If any snake segment falls to or below this line, it triggers `level_lost`. It provides a grid-native way to implement falling off the map without relying on Godot physics or `WorldBoundaryShape2D`. |
+| **CameraLimit** | `CameraLimit.gd` | A utility entity to set a hard bottom limit for the game camera. In `_ready()`, registers its Y coordinate to `LevelManager.camera_limit_y`. If present, the camera stops following the player down at this line, decoupling the visual viewport edge from the lethal `DeathFloor` boundary. |
 
 ---
 
