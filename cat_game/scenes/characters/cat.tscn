@@ -1,7 +1,8 @@
-[gd_scene format=3 uid="uid://b2qxfiflox5xx"]
+[gd_scene load_steps=43 format=3 uid="uid://b2qxfiflox5xx"]
 
 [ext_resource type="Script" uid="uid://c5kcqc1ewjkpc" path="res://cat_game/scripts/characters/cat.gd" id="1_catscript"]
 [ext_resource type="Texture2D" uid="uid://3c11ac21823c" path="res://assets/sprites/cat/Cat.png" id="2_tmpp7"]
+[ext_resource type="Script" uid="uid://dh2avewhkna3e" path="res://cat_game/scripts/characters/cat_animator.gd" id="3_catanim"]
 
 [sub_resource type="CircleShape2D" id="1_body_shape"]
 radius = 12.0
@@ -174,7 +175,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_qnwkp")
 }],
-"loop": 1,
+"loop": true,
 "name": &"idle1",
 "speed": 10.0
 }, {
@@ -203,9 +204,9 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_7aeon")
 }],
-"loop": 1,
+"loop": true,
 "name": &"idle2",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -223,7 +224,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_fe2bj")
 }],
-"loop": 1,
+"loop": true,
 "name": &"run_left",
 "speed": 12.0
 }, {
@@ -243,7 +244,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_fcqsa")
 }],
-"loop": 1,
+"loop": true,
 "name": &"run_right",
 "speed": 12.0
 }, {
@@ -266,7 +267,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_kresq")
 }],
-"loop": 1,
+"loop": true,
 "name": &"walk_left",
 "speed": 8.0
 }, {
@@ -289,30 +290,31 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_4pq18")
 }],
-"loop": 1,
+"loop": true,
 "name": &"walk_right",
 "speed": 8.0
 }]
 
-[node name="Cat" type="CharacterBody2D" unique_id=831501872]
+[node name="Cat" type="CharacterBody2D"]
 collision_layer = 2
 script = ExtResource("1_catscript")
 
-[node name="BodyCollision" type="CollisionShape2D" parent="." unique_id=1672916441]
+[node name="BodyCollision" type="CollisionShape2D" parent="."]
 shape = SubResource("1_body_shape")
 
-[node name="MouseCatchArea" type="Area2D" parent="." unique_id=505855783]
+[node name="MouseCatchArea" type="Area2D" parent="."]
 collision_layer = 0
 collision_mask = 8
 
-[node name="CatchCollision" type="CollisionShape2D" parent="MouseCatchArea" unique_id=1911225795]
+[node name="CatchCollision" type="CollisionShape2D" parent="MouseCatchArea"]
 shape = SubResource("2_catch_shape")
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=1650995080]
+[node name="Camera2D" type="Camera2D" parent="."]
 
-[node name="CaughtSound" type="AudioStreamPlayer2D" parent="." unique_id=1935401306]
+[node name="CaughtSound" type="AudioStreamPlayer2D" parent="."]
 
-[node name="Visual" type="AnimatedSprite2D" parent="." unique_id=347858897]
-position = Vector2(-6, -13)
+[node name="Visual" type="AnimatedSprite2D" parent="."]
+position = Vector2(-7, -10)
 sprite_frames = SubResource("SpriteFrames_fm8fw")
-animation = &"run_right"
+animation = &"idle2"
+script = ExtResource("3_catanim")

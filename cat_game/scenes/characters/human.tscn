@@ -16,7 +16,7 @@
 radius = 14.0
 
 [sub_resource type="CircleShape2D" id="2_catch"]
-radius = 18.0
+radius = 8.0
 
 [node name="Human" type="CharacterBody2D"]
 collision_layer = 4
@@ -36,6 +36,7 @@ collision_mask = 2
 shape = SubResource("2_catch")
 
 [node name="Visual" type="Node2D" parent="."]
+scale = Vector2(1.5, 1.5)
 script = ExtResource("3_pkgn7")
 outfit_variants = Array[SpriteFrames]([ExtResource("4_4c5et"), ExtResource("5_xwqc4"), ExtResource("5_bexoq")])
 hair_variants = Array[SpriteFrames]([ExtResource("7_kkin8"), ExtResource("6_0yd8l")])

@@ -83,6 +83,7 @@ func _physics_process(delta: float) -> void:
 		State.CHASE:  _tick_chase(delta)
 		State.RETURN: _tick_return(delta)
 	move_and_slide()
+	_sync_run_animation()
 
 # ── Anger helpers ─────────────────────────────────────────────────────────────
 
@@ -186,12 +187,14 @@ func _enter_chase() -> void:
 		_state      = State.CHASE
 		_lost_timer = 0.0
 		detection_started.emit()
+		_set_visual_chasing(true)
 
 func _enter_return() -> void:
 	_state         = State.RETURN
 	_lost_timer    = 0.0
 	_return_target = _patrol_points[_nearest_patrol_index()] \
 		if not _patrol_points.is_empty() else global_position
+	_set_visual_chasing(false)
 
 # ── Vision detection ──────────────────────────────────────────────────────────
 
@@ -229,6 +232,16 @@ func _update_facing(vel: Vector2) -> void:
 		var vis := get_node_or_null("Visual")
 		if vis != null and vis.has_method("update_direction"):
 			vis.call("update_direction", vel)
+
+func _sync_run_animation() -> void:
+	var vis := get_node_or_null("Visual")
+	if vis != null and vis.has_method("set_force_run"):
+		vis.call("set_force_run", _anger_norm() >= 0.6)
+
+func _set_visual_chasing(chasing: bool) -> void:
+	var vis := get_node_or_null("Visual")
+	if vis != null and vis.has_method("set_chasing"):
+		vis.call("set_chasing", chasing)
 
 func _nearest_patrol_index() -> int:
 	var best_idx: int    = 0

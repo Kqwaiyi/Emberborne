@@ -1,34 +1,38 @@
-[gd_scene format=3 uid="uid://p2tgovs3wppl"]
+[gd_scene load_steps=7 format=3 uid="uid://p2tgovs3wppl"]
 
 [ext_resource type="Script" uid="uid://b40vdvjlmot7" path="res://cat_game/scripts/characters/dog.gd" id="1_dog"]
 [ext_resource type="Script" uid="uid://dc83e8ygmgd17" path="res://cat_game/scripts/environment/vision_cone.gd" id="2_cone"]
 [ext_resource type="SpriteFrames" uid="uid://bfmuwocr81ve7" path="res://cat_game/scenes/characters/dog_variants/dog5.tres" id="3_f0e8s"]
+[ext_resource type="Script" uid="uid://dskuwaluiv83h" path="res://cat_game/scripts/characters/dog_animator.gd" id="4_doganim"]
 
 [sub_resource type="CircleShape2D" id="1_body"]
 radius = 16.0
 
-[sub_resource type="CircleShape2D" id="2_catch"]
-radius = 20.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0rwps"]
+size = Vector2(26, 9)
 
-[node name="Dog" type="CharacterBody2D" unique_id=352282334]
+[node name="Dog" type="CharacterBody2D"]
 collision_layer = 4
 script = ExtResource("1_dog")
 
-[node name="BodyCollision" type="CollisionShape2D" parent="." unique_id=1067120198]
+[node name="BodyCollision" type="CollisionShape2D" parent="."]
 shape = SubResource("1_body")
 
-[node name="VisionCone" type="Node2D" parent="." unique_id=1952079421]
+[node name="VisionCone" type="Node2D" parent="."]
 script = ExtResource("2_cone")
 
-[node name="CatchArea" type="Area2D" parent="." unique_id=1164497404]
+[node name="CatchArea" type="Area2D" parent="."]
 collision_layer = 0
 collision_mask = 2
 
-[node name="CatchCollision" type="CollisionShape2D" parent="CatchArea" unique_id=567388185]
-shape = SubResource("2_catch")
+[node name="CatchCollision" type="CollisionShape2D" parent="CatchArea"]
+position = Vector2(2, 1.5)
+shape = SubResource("RectangleShape2D_0rwps")
 
-[node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=109570855]
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=189963210]
+[node name="Visual" type="AnimatedSprite2D" parent="."]
+position = Vector2(1, -8)
 sprite_frames = ExtResource("3_f0e8s")
 animation = &"Walk"
+script = ExtResource("4_doganim")

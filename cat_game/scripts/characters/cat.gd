@@ -86,6 +86,8 @@ func _tick_timers(delta: float) -> void:
 		if _boost_timer <= 0.0:
 			is_boosted = false
 			_update_outline(false)
+			if _visual.has_method("set_force_run"):
+				_visual.call("set_force_run", false)
 
 	if _invuln_timer > 0.0:
 		_invuln_timer -= delta
@@ -117,6 +119,8 @@ func trigger_caught() -> void:
 	_invuln_timer = caught_invulnerability_duration
 	_boost_timer = caught_speed_duration
 	_update_outline(true)
+	if _visual.has_method("set_force_run"):
+		_visual.call("set_force_run", true)
 	if _caught_sound.stream != null:
 		_caught_sound.play()
 	player_caught.emit()

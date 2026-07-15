@@ -11,7 +11,7 @@
 ##
 ## All SpriteFrames resources used here MUST share these animation names:
 ##   walk_left  walk_right  run_left  run_right
-## Same frame count + FPS per animation across all layers so they stay in sync.
+## Cat layers also need: idle_1  idle_2  (enemies can omit these)
 class_name LayeredCharacter
 extends Node2D
 
@@ -26,9 +26,13 @@ extends Node2D
 @export var starting_hair:   int = 0
 @export var starting_hat:    int = -1
 
-## Speed at or above this value switches from walk to run animations.
-## Tune this to match your cat's normal vs boosted speed.
+## Speed at or above this switches walk → run (only applies when set_force_run
+## has NOT been called with true — force_run overrides this threshold).
 @export var run_threshold: float = 160.0
+
+## Seconds of stillness before a random idle animation plays.
+## Set to 0 to disable idle entirely (useful for enemies).
+@export var idle_delay: float = 1.0
 
 # ── Layer node references ──────────────────────────────────────────────────────
 @onready var _base:   AnimatedSprite2D = $LayerBase
@@ -36,34 +40,45 @@ extends Node2D
 @onready var _hair:   AnimatedSprite2D = $LayerHair
 @onready var _hat:    AnimatedSprite2D = $LayerHat
 
-var _current_anim: String = ""
-var _last_h_dir: String = "right"   # last known horizontal direction
+var _current_anim: String  = ""
+var _last_h_dir: String    = "right"
+var _force_run: bool       = false
+var _stopped_time: float   = 0.0
 
 func _ready() -> void:
 	set_outfit(starting_outfit)
 	set_hair(starting_hair)
 	set_hat(starting_hat)
-	_stop_all()   # hold first frame; no idle animation exists
+	_stop_all()
+
+func _process(delta: float) -> void:
+	# Idle timer — only counts while the character is standing still.
+	if idle_delay > 0.0 and (_current_anim == "" or _current_anim.begins_with("idle_")):
+		_stopped_time += delta
+		if _stopped_time >= idle_delay and _current_anim == "":
+			_pick_random_idle()
 
 # ── Public interface ───────────────────────────────────────────────────────────
 
 ## Called every physics frame by cat.gd / enemy_base.gd.
 func update_direction(vel: Vector2) -> void:
 	if vel.length_squared() < 100.0:
-		# Standing still — freeze on last frame, don't loop.
-		if _current_anim != "":
+		# Stopped — freeze on last frame and let the idle timer count up.
+		if not (_current_anim == "" or _current_anim.begins_with("idle_")):
 			_current_anim = ""
 			_stop_all()
 		return
 
-	# Determine left/right.
-	# When moving mostly vertically keep the last known horizontal direction
-	# so the character doesn't snap to a default.
+	# Moving — reset idle timer.
+	_stopped_time = 0.0
+
+	# Track horizontal direction; fall back to last known when moving vertically.
 	if abs(vel.x) > 10.0:
 		_last_h_dir = "right" if vel.x > 0.0 else "left"
 
-	var prefix: String = "run_" if vel.length() >= run_threshold else "walk_"
-	var anim: String   = prefix + _last_h_dir
+	var is_running: bool  = _force_run or vel.length() >= run_threshold
+	var prefix: String    = "run_" if is_running else "walk_"
+	var anim: String      = prefix + _last_h_dir
 
 	if anim != _current_anim:
 		_current_anim = anim
@@ -76,6 +91,21 @@ func set_outline(is_active: bool) -> void:
 	_outfit.modulate = c
 	_hair.modulate   = c
 	_hat.modulate    = c
+
+## Force run animations on (true) or off (false) regardless of velocity.
+## cat.gd calls this during the speed-boost window after being tagged.
+## enemy_base.gd calls this when anger reaches 60 %.
+func set_force_run(enabled: bool) -> void:
+	if _force_run == enabled:
+		return
+	_force_run = enabled
+	# Re-evaluate the current animation immediately so the switch is instant.
+	if _current_anim != "" and not _current_anim.begins_with("idle_"):
+		var prefix: String = "run_" if _force_run else "walk_"
+		var anim: String   = prefix + _last_h_dir
+		if anim != _current_anim:
+			_current_anim = anim
+			_play_all(anim)
 
 # ── Variant setters ────────────────────────────────────────────────────────────
 
@@ -109,7 +139,17 @@ func apply_appearance(appearance: CharacterAppearance) -> void:
 	set_hair(appearance.hair_index)
 	set_hat(appearance.hat_index)
 
-# ── Helpers ────────────────────────────────────────────────────────────────────
+# ── Internals ──────────────────────────────────────────────────────────────────
+
+func _pick_random_idle() -> void:
+	if _base.sprite_frames == null:
+		return
+	var n: int    = randi_range(1, 2)
+	var anim: String = "idle_" + str(n)
+	if not _base.sprite_frames.has_animation(anim):
+		return
+	_current_anim = anim
+	_play_all(anim)
 
 func _play_all(anim: String) -> void:
 	_play_layer(_base,   anim)
@@ -131,7 +171,6 @@ func _play_layer(layer: AnimatedSprite2D, anim: String) -> void:
 		return
 	layer.play(anim)
 
-## Snap a newly-swapped layer to the base layer's current frame immediately.
 func _sync_layer_to_base(layer: AnimatedSprite2D) -> void:
 	if layer.sprite_frames == null or _current_anim == "":
 		return
