@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://lqa036u53u25" path="res://scenes/snake_tower/snake/Snake.tscn" id="3_5l2jw"]
 [ext_resource type="Texture2D" uid="uid://cns61sjy4v710" path="res://assets/World/Glacial-mountains-parallax-background_vnitti/Layers/clouds_mg_1.png" id="3_6sexo"]
 [ext_resource type="TileSet" uid="uid://df72k07a11uqp" path="res://scenes/snake_tower/terrain/snaketower_tileset.tres" id="3_fhlu2"]
-[ext_resource type="PackedScene" path="res://scenes/snake_tower/spike/Spike.tscn" id="3_lhlay"]
+[ext_resource type="PackedScene" uid="uid://dck2uwpncbrwr" path="res://scenes/snake_tower/spike/Spike.tscn" id="3_lhlay"]
 [ext_resource type="PackedScene" path="res://scenes/snake_tower/goal/GoalFlag.tscn" id="5_8tq2i"]
 [ext_resource type="PackedScene" uid="uid://cb5k72y6k5n3q" path="res://scenes/snake_tower/snake/SnakeTail.tscn" id="6_wagk8"]
 [ext_resource type="PackedScene" uid="uid://c03dy1hc7ccnh" path="res://scenes/snake_tower/apple/Apple.tscn" id="7_wagk8"]

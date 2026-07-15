@@ -13,6 +13,8 @@
 [ext_resource type="PackedScene" uid="uid://bl26wsuj527bu" path="res://scenes/snake_tower/box/Box.tscn" id="9_roujb"]
 [ext_resource type="PackedScene" uid="uid://dqr4xl3boav1w" path="res://scenes/snake_tower/level/DeathFloor.tscn" id="10_0k0ro"]
 [ext_resource type="PackedScene" uid="uid://bl1jkw030abc" path="res://scenes/snake_tower/level/CameraLimit.tscn" id="11_c7qjo"]
+[ext_resource type="PackedScene" path="res://scenes/snake_tower/goal/GoalFlag.tscn" id="14_roujb"]
+[ext_resource type="PackedScene" uid="uid://dck2uwpncbrwr" path="res://scenes/snake_tower/spike/Spike.tscn" id="15_vxusi"]
 
 [node name="Level" type="Node2D" unique_id=954905236]
 script = ExtResource("1_1judo")
@@ -58,9 +60,15 @@ centered = false
 
 [node name="Map" type="Node2D" parent="." unique_id=1126994033]
 
+[node name="GoalFlag" parent="Map" unique_id=686918676 instance=ExtResource("14_roujb")]
+position = Vector2(176, 0)
+
+[node name="Spike" parent="Map" unique_id=1761156367 instance=ExtResource("15_vxusi")]
+position = Vector2(96, 32)
+
 [node name="Layer0" type="TileMapLayer" parent="Map" unique_id=1167331158]
 use_parent_material = true
-tile_map_data = PackedByteArray("AAAAAAEAAAABAAQAAAABAAEAAAACAAQAAAACAAEAAAACAAQAAAADAAEAAAACAAQAAAAEAAEAAAACAAQAAAAFAAEAAAADAAQAAAAFAAIAAAABAAQAAAAGAAIAAAADAAQAAAABAP//AAAEAAQAAAADAP//AAAEAAQAAAACAP3/AAAEAAQAAAA=")
+tile_map_data = PackedByteArray("AAAAAAEAAAABAAQAAAABAAEAAAACAAQAAAACAAEAAAACAAQAAAADAAEAAAACAAQAAAAEAAEAAAACAAQAAAABAP//AAAEAAQAAAADAP//AAAEAAQAAAACAP3/AAAEAAQAAAAKAAEAAAABAAQAAAALAAEAAAADAAQAAAAFAAEAAAADAAEAAAAFAAIAAAAEAAIAAAAFAAMAAAABAAMAAAAGAAMAAAADAAQAAAA=")
 tile_set = ExtResource("6_p3l6j")
 script = ExtResource("7_lwwlj")
 
@@ -81,7 +89,7 @@ position = Vector2(32, 0)
 position = Vector2(16, 0)
 
 [node name="DeathFloor" parent="." unique_id=2081512412 instance=ExtResource("10_0k0ro")]
-position = Vector2(16, 112)
+position = Vector2(0, 160)
 
 [node name="UILayer" type="CanvasLayer" parent="." unique_id=365527455]
 scale = Vector2(1.3, 1.3)
@@ -98,6 +106,6 @@ text = "Reset (R)"
 metadata/_edit_use_anchors_ = true
 
 [node name="CameraLimit" parent="." unique_id=3601522 instance=ExtResource("11_c7qjo")]
-position = Vector2(0, 64)
+position = Vector2(0, 80)
 
 [connection signal="pressed" from="UILayer/ResetButton" to="." method="reset_level"]

@@ -4,6 +4,9 @@ func _enter_tree():
 	LevelManager.reset()
 
 func _ready():
+	# Start the timer whenever a level is loaded (handles direct editor runs)
+	get_tree().call_group("minigame_time_trackers", "start_time")
+	
 	LevelManager.level_won.connect(_on_level_won)
 	LevelManager.level_lost.connect(_on_level_lost)
 

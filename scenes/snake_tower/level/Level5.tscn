@@ -1,0 +1,103 @@
+[gd_scene format=4 uid="uid://ccutjx858cwuo"]
+
+[ext_resource type="Script" uid="uid://dk1kmbo7tngwt" path="res://scripts/snake_tower/level/Level.gd" id="1_nxjry"]
+[ext_resource type="Texture2D" uid="uid://bv703dobust4x" path="res://assets/World/Glacial-mountains-parallax-background_vnitti/Layers/sky_lightened.png" id="2_h7ysb"]
+[ext_resource type="Texture2D" uid="uid://cns61sjy4v710" path="res://assets/World/Glacial-mountains-parallax-background_vnitti/Layers/clouds_mg_1.png" id="3_r8dg7"]
+[ext_resource type="Texture2D" uid="uid://bam8wac66me0q" path="res://assets/World/Glacial-mountains-parallax-background_vnitti/Layers/clouds_bg.png" id="4_f0dfw"]
+[ext_resource type="Texture2D" uid="uid://d2gtqpeak4kyb" path="res://assets/World/Glacial-mountains-parallax-background_vnitti/Layers/clouds_mg_2.png" id="5_lqnch"]
+[ext_resource type="TileSet" uid="uid://df72k07a11uqp" path="res://scenes/snake_tower/terrain/snaketower_tileset.tres" id="6_srog4"]
+[ext_resource type="Script" uid="uid://c2vd7fqy1cblk" path="res://scripts/snake_tower/level/TerrainTileMap.gd" id="7_d24mf"]
+[ext_resource type="PackedScene" uid="uid://lqa036u53u25" path="res://scenes/snake_tower/snake/Snake.tscn" id="8_moj2r"]
+[ext_resource type="PackedScene" uid="uid://cb5k72y6k5n3q" path="res://scenes/snake_tower/snake/SnakeTail.tscn" id="9_vtyjv"]
+[ext_resource type="PackedScene" uid="uid://dqr4xl3boav1w" path="res://scenes/snake_tower/level/DeathFloor.tscn" id="10_85xo8"]
+[ext_resource type="PackedScene" uid="uid://bl1jkw030abc" path="res://scenes/snake_tower/level/CameraLimit.tscn" id="11_lorik"]
+[ext_resource type="PackedScene" uid="uid://c03dy1hc7ccnh" path="res://scenes/snake_tower/apple/Apple.tscn" id="12_r8dg7"]
+[ext_resource type="PackedScene" path="res://scenes/snake_tower/goal/GoalFlag.tscn" id="13_f0dfw"]
+
+[node name="Level" type="Node2D" unique_id=954905236]
+script = ExtResource("1_nxjry")
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="." unique_id=1017362265]
+scroll_base_offset = Vector2(-192, -108)
+
+[node name="Sky" type="ParallaxLayer" parent="ParallaxBackground" unique_id=315872996]
+position = Vector2(0, -64)
+motion_scale = Vector2(0.1, 0.1)
+motion_mirroring = Vector2(384, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Sky" unique_id=1942411705]
+texture = ExtResource("2_h7ysb")
+centered = false
+
+[node name="Sky2" type="ParallaxLayer" parent="ParallaxBackground" unique_id=578137997]
+position = Vector2(0, -64)
+motion_scale = Vector2(0.1, 0.1)
+motion_mirroring = Vector2(384, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Sky2" unique_id=1688504560]
+texture = ExtResource("3_r8dg7")
+centered = false
+
+[node name="CloudsBg" type="ParallaxLayer" parent="ParallaxBackground" unique_id=1683100475]
+position = Vector2(0, 32)
+motion_scale = Vector2(0.2, 0.2)
+motion_mirroring = Vector2(384, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/CloudsBg" unique_id=1702002273]
+texture = ExtResource("4_f0dfw")
+centered = false
+
+[node name="CloudsMg2" type="ParallaxLayer" parent="ParallaxBackground" unique_id=1775783373]
+position = Vector2(0, 16)
+motion_scale = Vector2(0.7, 0.7)
+motion_mirroring = Vector2(384, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/CloudsMg2" unique_id=1391859253]
+texture = ExtResource("5_lqnch")
+centered = false
+
+[node name="Map" type="Node2D" parent="." unique_id=1126994033]
+
+[node name="Apple" parent="Map" unique_id=718229589 instance=ExtResource("12_r8dg7")]
+position = Vector2(80, 48)
+
+[node name="GoalFlag" parent="Map" unique_id=588409018 instance=ExtResource("13_f0dfw")]
+position = Vector2(224, 0)
+
+[node name="Layer0" type="TileMapLayer" parent="Map" unique_id=1167331158]
+use_parent_material = true
+tile_map_data = PackedByteArray("AAAAAAIAAAAEAAIAAAAAAAMAAAAEAAIAAAACAAQAAAACAAQAAAADAAQAAAADAAQAAAABAAEAAAABAAQAAAACAAEAAAACAAQAAAADAAEAAAADAAEAAAADAAIAAAAEAAMAAAABAAQAAAABAAQAAAAAAAQAAAAEAAMAAAAAAAEAAAAEAAEAAAAJAAIAAAAEAAIAAAAJAAEAAAAEAAEAAAAJAAMAAAAEAAIAAAAJAAQAAAAEAAMAAAAIAAQAAAADAAQAAAAHAAQAAAABAAQAAAANAAEAAAABAAQAAAAOAAEAAAADAAQAAAA=")
+tile_set = ExtResource("6_srog4")
+script = ExtResource("7_d24mf")
+
+[node name="Char" type="Node2D" parent="." unique_id=226739130]
+
+[node name="Snake" parent="Char" unique_id=1937127888 instance=ExtResource("8_moj2r")]
+position = Vector2(32, 0)
+
+[node name="SnakeTail2" parent="Char" unique_id=1886820664 instance=ExtResource("9_vtyjv")]
+
+[node name="SnakeTail" parent="Char" unique_id=144577389 instance=ExtResource("9_vtyjv")]
+position = Vector2(16, 0)
+
+[node name="DeathFloor" parent="." unique_id=2081512412 instance=ExtResource("10_85xo8")]
+position = Vector2(0, 192)
+
+[node name="UILayer" type="CanvasLayer" parent="." unique_id=365527455]
+scale = Vector2(1.3, 1.3)
+transform = Transform2D(1.3, 0, 0, 1.3, 0, 0)
+
+[node name="ResetButton" type="Button" parent="UILayer" unique_id=915977610]
+offset_left = 12.3076935
+offset_top = 12.3076935
+offset_right = 316.3077
+offset_bottom = 136.3077
+scale = Vector2(0.25, 0.25)
+theme_override_font_sizes/font_size = 64
+text = "Reset (R)"
+metadata/_edit_use_anchors_ = true
+
+[node name="CameraLimit" parent="." unique_id=3601522 instance=ExtResource("11_lorik")]
+position = Vector2(0, 112)
+
+[connection signal="pressed" from="UILayer/ResetButton" to="." method="reset_level"]

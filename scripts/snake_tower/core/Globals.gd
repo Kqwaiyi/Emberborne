@@ -8,6 +8,15 @@ var _is_time_running: bool = false
 # Dictionary of scenes where time should be tracked
 var tracked_scenes: Dictionary = {
 	"res://scenes/snake_tower/level/Level1.tscn": true,
+	"res://scenes/snake_tower/level/Level2.tscn": true,
+	"res://scenes/snake_tower/level/Level3.tscn": true,
+	"res://scenes/snake_tower/level/Level4.tscn": true,
+	"res://scenes/snake_tower/level/Level5.tscn": true,
+	"res://scenes/snake_tower/level/Level6.tscn": true,
+	"res://scenes/snake_tower/level/Level7.tscn": true,
+	"res://scenes/snake_tower/level/Level8.tscn": true,
+	"res://scenes/snake_tower/level/Level9.tscn": true,
+	"res://scenes/snake_tower/level/Level10.tscn": true,
 }
 
 func _ready() -> void:
@@ -34,3 +43,6 @@ func _on_scene_loaded() -> void:
 
 func pause_time() -> void:
 	_is_time_running = false
+
+func start_time() -> void:
+	_is_time_running = true
