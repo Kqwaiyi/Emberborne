@@ -1,20 +1,21 @@
-[gd_scene format=3 uid="uid://fb2upb5dyg5b"]
+[gd_scene load_steps=5 format=3 uid="uid://fb2upb5dyg5b"]
 
 [ext_resource type="Script" uid="uid://c5t8415pt7tg1" path="res://cat_game/scripts/characters/mouse.gd" id="1_mousescript"]
 [ext_resource type="SpriteFrames" uid="uid://fjhoyeba7cni" path="res://cat_game/scenes/characters/mouse_variants/mouse3.tres" id="2_btiu4"]
-[ext_resource type="Script" path="res://cat_game/scripts/characters/mouse_animator.gd" id="3_mouseanim"]
+[ext_resource type="Script" uid="uid://b8y3pt2smfn85" path="res://cat_game/scripts/characters/mouse_animator.gd" id="3_mouseanim"]
 
 [sub_resource type="CircleShape2D" id="1_shape"]
-radius = 8.0
+radius = 6.0
 
-[node name="Mouse" type="CharacterBody2D" unique_id=1215268830]
+[node name="Mouse" type="CharacterBody2D"]
 collision_layer = 8
 script = ExtResource("1_mousescript")
 
-[node name="BodyCollision" type="CollisionShape2D" parent="." unique_id=317933087]
+[node name="BodyCollision" type="CollisionShape2D" parent="."]
 shape = SubResource("1_shape")
 
-[node name="Visual" type="AnimatedSprite2D" parent="." unique_id=442027205]
-script = ExtResource("3_mouseanim")
+[node name="Visual" type="AnimatedSprite2D" parent="."]
+position = Vector2(-3, 0)
 sprite_frames = ExtResource("2_btiu4")
 animation = &"walk"
+script = ExtResource("3_mouseanim")

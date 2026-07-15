@@ -78,7 +78,7 @@ func update_direction(vel: Vector2) -> void:
 
 	var is_running: bool  = _force_run or vel.length() >= run_threshold
 	var prefix: String    = "run_" if is_running else "walk_"
-	var anim: String      = prefix + _last_h_dir
+	var anim: String      = _resolve_anim(prefix + _last_h_dir)
 
 	if anim != _current_anim:
 		_current_anim = anim
@@ -100,9 +100,9 @@ func set_force_run(enabled: bool) -> void:
 		return
 	_force_run = enabled
 	# Re-evaluate the current animation immediately so the switch is instant.
-	if _current_anim != "" and not _current_anim.begins_with("idle_"):
+	if _current_anim != "" and not _current_anim.begins_with("idle"):
 		var prefix: String = "run_" if _force_run else "walk_"
-		var anim: String   = prefix + _last_h_dir
+		var anim: String   = _resolve_anim(prefix + _last_h_dir)
 		if anim != _current_anim:
 			_current_anim = anim
 			_play_all(anim)
@@ -150,6 +150,20 @@ func _pick_random_idle() -> void:
 		return
 	_current_anim = anim
 	_play_all(anim)
+
+## If the requested animation doesn't exist on the base layer, fall back to
+## the walk equivalent. This lets characters without run frames (e.g. human)
+## simply omit them from their SpriteFrames — walk plays automatically.
+func _resolve_anim(anim: String) -> String:
+	if _base.sprite_frames == null:
+		return anim
+	if _base.sprite_frames.has_animation(anim):
+		return anim
+	if anim.begins_with("run_"):
+		var fallback: String = "walk_" + anim.substr(4)
+		if _base.sprite_frames.has_animation(fallback):
+			return fallback
+	return anim
 
 func _play_all(anim: String) -> void:
 	_play_layer(_base,   anim)
