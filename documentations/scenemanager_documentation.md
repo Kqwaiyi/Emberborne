@@ -16,8 +16,8 @@ This is achieved via the **`SceneManager`**: A global Autoload (Singleton) respo
 *   **Script Location**: `res://scripts/core/SceneManager.gd`
 *   **Scene Location**: `res://scenes/core/SceneManager.tscn`
 *   **Node Tree**:
-    *   `CanvasLayer` (Layer 100 - Always on top)
-        *   `ColorRect` (Anchored to screen, handles the fade interpolation)
+	*   `CanvasLayer` (Layer 100 - Always on top)
+		*   `ColorRect` (Anchored to screen, handles the fade interpolation)
 
 ---
 
@@ -53,14 +53,14 @@ To connect a local UI wrapper (like `LaptopUI`) to the `SceneManager` so that mi
         SceneManager.change_scene_in_viewport(path, viewport, transition_rect, fade_duration)
     ```
 3.  **Internal Minigame Delegation**: When a minigame running *inside* the viewport needs to advance to the next level, it must dynamically locate the host's `TransitionRect` by walking up the scene tree, then delegate to `SceneManager`.
-    ```gdscript
-    var vp = get_viewport()
-    if vp is SubViewport:
-        var custom_rect: ColorRect = null
-        if vp.get_parent() and vp.get_parent().get_parent():
-            custom_rect = vp.get_parent().get_parent().get_node_or_null("TransitionRect")
-        SceneManager.change_scene_in_viewport(target_scene, vp, custom_rect, 0.5)
-    ```
+	```gdscript
+	var vp = get_viewport()
+	if vp is SubViewport:
+		var custom_rect: ColorRect = null
+		if vp.get_parent() and vp.get_parent().get_parent():
+			custom_rect = vp.get_parent().get_parent().get_node_or_null("TransitionRect")
+		SceneManager.change_scene_in_viewport(target_scene, vp, custom_rect, 0.5)
+	```
 
 ---
 
