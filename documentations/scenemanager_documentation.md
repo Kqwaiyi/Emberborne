@@ -73,7 +73,7 @@ To maintain a crisp, pixel-art aesthetic inside the minigame, the `LaptopUI` ove
 *   The `SubViewport` enforces `canvas_item_default_texture_filter = 1` so that internal 2D nodes draw with Nearest Neighbor filtering. This isolates the minigame's aesthetic from any global project settings that might interfere.
 
 #### Integration with SceneManager
-Instead of manually instantiating packed scenes, `LaptopUI.gd` delegates its loading to `SceneManager.change_scene_in_viewport(path, viewport, 0.5)`. This ensures that advancing levels inside the minigame (via `load_next_level()`) triggers the same global fade-to-black visual polish as the main game.
+Instead of manually instantiating packed scenes, `LaptopUI.gd` delegates its loading to `SceneManager.change_scene_in_viewport(path, viewport, 0.5)`. This ensures that advancing levels inside a minigame triggers the same global fade-to-black visual polish as the main game.
 
 #### Lifecycle Cleanup & Group Notifications
 When `close_laptop()` is triggered (via the X button):
@@ -87,6 +87,7 @@ When `close_laptop()` is triggered (via the X button):
 
 When extending this system, adhere to the following rules:
 
-1.  **Do not use `change_scene_to_file()` inside minigames**: A minigame script should never attempt to change the global scene tree. It must always call `load_next_level()` on the `LaptopUI` instance to replace its own node within the `SubViewport`.
-2.  **Respect the Pause State**: If adding new global UI overlays, ensure you evaluate whether their `process_mode` needs to be `ALWAYS` or `INHERIT`. If a UI needs to animate while the game is paused, it must be `ALWAYS`.
-3.  **Mouse Filter Management**: The `SceneManager` uses `Control.MOUSE_FILTER_STOP` during transitions to block double-clicks or unwanted inputs. Ensure no newly added UI elements inadvertently steal focus with a higher Z-index during a fade.
+1.  **Do not blindly use `change_scene_to_file()` inside minigames**: A minigame script should dynamically check its host environment. By checking if `get_viewport() is SubViewport`, the minigame can delegate to `SceneManager.change_scene_in_viewport()` when running inside the laptop, or fallback to `SceneManager.change_scene_to_file()` when running as a standalone test scene.
+2.  **Keep LaptopUI Modular**: `LaptopUI` is designed to be a "dumb" container. It does not track player progress or minigame state. If a minigame needs to remember the player's last level, the caller (e.g., an interactable node) must query the minigame's specific state manager before calling `LaptopUI.open_laptop(path)`.
+3.  **Respect the Pause State**: If adding new global UI overlays, ensure you evaluate whether their `process_mode` needs to be `ALWAYS` or `INHERIT`. If a UI needs to animate while the game is paused, it must be `ALWAYS`.
+4.  **Mouse Filter Management**: The `SceneManager` uses `Control.MOUSE_FILTER_STOP` during transitions to block double-clicks or unwanted inputs. Ensure no newly added UI elements inadvertently steal focus with a higher Z-index during a fade.

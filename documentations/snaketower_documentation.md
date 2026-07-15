@@ -76,10 +76,12 @@ The `Snake.gd` is the most complex entity, handling input, multi-segment movemen
 
 ## 5. Global State & Timers (`Globals.gd`)
 
-`Globals.gd` is an Autoload singleton dedicated to tracking persistence across level changes, primarily handling the **Total Time Elapsed**.
+`Globals.gd` is an Autoload singleton dedicated to tracking persistence across level changes. It handles the **Total Time Elapsed**, tracks the **Furthest Unlocked Level**, and prevents level regression.
 
 *   **Process Mode:** Set to `Node.PROCESS_MODE_ALWAYS` so it continues to calculate delta time even when the main game tree is paused.
-*   **Scene Hook:** Connects to `SceneManager.scene_loaded`. When a scene finishes loading, it checks if the scene path is within a valid minigame directory (`res://scenes/snake_tower/level/`) or explicitly listed in a dictionary. If valid, the timer runs; if not, it pauses.
+*   **Scene Hook:** Connects to `SceneManager.scene_loaded`. When a scene finishes loading, it checks if the scene path is within a valid minigame directory (`res://scenes/snake_tower/level/`) or explicitly listed in a dictionary. If valid, the timer runs; if it is the final end screen (`LevelLast.tscn`) or invalid, it pauses.
+*   **Level Tracking (`current_minigame_level`):** Maintains the path to the highest level the player has reached. Upon winning a level, it calculates the next level and updates this variable.
+*   **Anti-Regression (`get_resume_level(path)`):** A helper function exposed to callers who want to launch the minigame. It intercepts requests for early levels and forcefully returns the furthest unlocked level instead, allowing players to safely "resume" their progress after closing the laptop.
 *   **Group Listener:** It is part of the `"minigame_time_trackers"` group. It implements a `pause_time()` function to allow external modules to blindly pause it without hardcoded references.
 
 ---
@@ -97,6 +99,7 @@ An Autoload responsible for seamless fade transitions and asynchronous loading.
 ### `LaptopUI.gd`
 A `CanvasLayer` representing the diegetic computer interface.
 *   **Opening:** Pauses the main game (`get_tree().paused = true`), makes itself visible, and requests the `SceneManager` to load the target minigame scene into its internal `SubViewport`. Since `LaptopUI` has `PROCESS_MODE_ALWAYS`, it functions normally while the background world freezes.
+*   *Note on Modularity:* `LaptopUI` does not track snake tower logic. Callers should wrap their requested paths with `Globals.get_resume_level(path)` before calling `open_laptop()` to ensure proper progression logic is respected.
 *   **Closing:** Hides the UI, unpauses the main game, clears the `SubViewport` contents to free memory, and broadcasts a `"pause_time"` method call to the `"minigame_time_trackers"` group. This ensures `Globals.gd` stops counting time when the player minimizes the game.
 
 ### Integration Flow Diagram
@@ -104,15 +107,19 @@ A `CanvasLayer` representing the diegetic computer interface.
 ```mermaid
 sequenceDiagram
     participant Player
+    participant MainGameInteractable
+    participant Globals
     participant LaptopUI
     participant SceneManager
     participant SubViewport
-    participant Globals
     
-    Player->>LaptopUI: open_laptop("Level1.tscn")
+    Player->>MainGameInteractable: Interact
+    MainGameInteractable->>Globals: get_resume_level("Level1.tscn")
+    Globals-->>MainGameInteractable: returns "Level3.tscn" (furthest)
+    MainGameInteractable->>LaptopUI: open_laptop("Level3.tscn")
     LaptopUI->>SceneTree: pause main game
     LaptopUI->>SceneManager: change_scene_in_viewport()
-    SceneManager->>SubViewport: load and instantiate Level1
+    SceneManager->>SubViewport: load and instantiate Level3
     SceneManager-->>Globals: emit scene_loaded
     Globals->>Globals: check path -> starts timer
     
@@ -131,10 +138,11 @@ sequenceDiagram
 
 ## 7. Future Minigame Considerations
 
-Because `LaptopUI` utilizes Godot's Group system, adding a completely separate minigame inside the laptop interface requires minimal coupling:
-1.  Create the new minigame scenes and global managers.
+Because `LaptopUI` is fully decoupled and utilizes Godot's Group system, adding a completely separate minigame inside the laptop interface requires minimal coupling:
+1.  Create the new minigame scenes and its own global manager.
 2.  Have the new manager `add_to_group("minigame_time_trackers")`.
 3.  Implement a `pause_time()` function inside the new manager.
-4.  Load it into the laptop using `LaptopUI.open_laptop("res://path/to/new_minigame.tscn")`.
+4.  Implement any "resuming" or "anti-regression" rules directly in that new manager.
+5.  Load it into the laptop by querying the new manager for the correct path and passing it to `LaptopUI.open_laptop(path)`.
 
 The `SceneManager` will handle the rendering, and `LaptopUI` will ensure the time tracking is perfectly synchronized with the open/close states of the laptop lid.

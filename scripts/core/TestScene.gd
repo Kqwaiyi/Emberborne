@@ -15,6 +15,6 @@ func _input(event):
 			# Since LaptopUI is not an autoload, we instantiate it here for testing if it's not in the tree
 			var laptop_node = get_node_or_null("LaptopUI")
 			if laptop_node:
-				laptop_node.open_laptop("res://scenes/snake_tower/level/Level1.tscn")
+				laptop_node.open_laptop(Globals.get_resume_level("res://scenes/snake_tower/level/Level1.tscn"))
 			else:
 				print("LaptopUI node not found in TestScene!")
