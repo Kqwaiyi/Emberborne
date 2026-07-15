@@ -121,25 +121,3 @@ func trigger_win():
 
 func trigger_loss():
 	level_lost.emit()
-
-# --- DEBUG: Show Total Time ---
-# TODO: Delete this block when debugging is finished
-var debug_label: Label
-
-func _ready():
-	process_mode = Node.PROCESS_MODE_ALWAYS # Ensure debug UI updates when main tree is paused
-	
-	var canvas = CanvasLayer.new()
-	canvas.layer = 100 # Ensure it draws on top of everything
-	debug_label = Label.new()
-	debug_label.position = Vector2(10, 200)
-	debug_label.add_theme_color_override("font_color", Color(1, 1, 0)) # Yellow text for visibility
-	canvas.add_child(debug_label)
-	add_child(canvas)
-
-func _process(_delta):
-	if debug_label and has_node("/root/Globals"):
-		var globals = get_node("/root/Globals")
-		if "total_time_elapsed" in globals:
-			debug_label.text = "Debug Time: %.2f" % globals.total_time_elapsed
-# --- END DEBUG BLOCK ---
