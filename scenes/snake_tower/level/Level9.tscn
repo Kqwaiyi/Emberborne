@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://dck2uwpncbrwr" path="res://scenes/snake_tower/spike/Spike.tscn" id="12_k37ja"]
 [ext_resource type="PackedScene" uid="uid://c03dy1hc7ccnh" path="res://scenes/snake_tower/apple/Apple.tscn" id="13_bwtuo"]
 [ext_resource type="PackedScene" path="res://scenes/snake_tower/goal/GoalFlag.tscn" id="14_bwtuo"]
+[ext_resource type="Texture2D" uid="uid://cyuob1afxadjh" path="res://icon.svg" id="99_home_icon"]
 
 [node name="Level" type="Node2D" unique_id=954905236]
 script = ExtResource("1_3sv6m")
@@ -128,4 +129,15 @@ theme_override_font_sizes/font_size = 64
 text = "Reset (R)"
 metadata/_edit_use_anchors_ = true
 
+[node name="HomeButton" type="Button" parent="UILayer"]
+offset_left = 98.46154
+offset_top = 12.307693
+offset_right = 222.46155
+offset_bottom = 136.30768
+scale = Vector2(0.25, 0.25)
+icon = ExtResource("99_home_icon")
+expand_icon = true
+
 [connection signal="pressed" from="UILayer/ResetButton" to="." method="reset_level"]
+
+[connection signal="pressed" from="UILayer/HomeButton" to="." method="return_to_home"]

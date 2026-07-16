@@ -43,7 +43,6 @@ func commit_time() -> void:
 
 func _on_scene_loaded() -> void:
 	var loaded_scene: String = SceneManager._next_scene_path
-	current_level_time = 0.0 # reset attempt timer whenever scene reloads/switches
 	# Use dictionary matching or prefix matching for valid minigame scenes
 	if tracked_scenes.has(loaded_scene) or loaded_scene.begins_with("res://scenes/snake_tower/level/"):
 		if loaded_scene == "res://scenes/snake_tower/level/Level1.tscn":
@@ -59,7 +58,6 @@ func _on_scene_loaded() -> void:
 
 func _on_laptop_scene_loaded(loaded_scene: String) -> void:
 	_current_laptop_scene = loaded_scene
-	current_level_time = 0.0
 	if tracked_scenes.has(loaded_scene) or loaded_scene.begins_with("res://scenes/snake_tower/level/"):
 		if loaded_scene == "res://scenes/snake_tower/level/Level1.tscn":
 			_is_time_running = false
@@ -72,8 +70,12 @@ func _on_laptop_scene_loaded(loaded_scene: String) -> void:
 	else:
 		_is_time_running = false
 
+func reset_attempt_timer() -> void:
+	current_level_time = 0.0
+
 func pause_time() -> void:
 	_is_time_running = false
+	reset_attempt_timer()
 
 func start_time() -> void:
 	# If we somehow start time explicitly but we are on LevelLast or Level1, don't start

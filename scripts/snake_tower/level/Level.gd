@@ -2,6 +2,7 @@ extends Node2D
 
 var _is_transitioning: bool = false
 var time_label: Label = null
+@export var home_scene_path: String = "res://scenes/snake_tower/level/Level1.tscn"
 
 func _enter_tree():
 	LevelManager.reset()
@@ -13,9 +14,9 @@ func _ready():
 	LevelManager.level_won.connect(_on_level_won)
 	LevelManager.level_lost.connect(_on_level_lost)
 	
-	if scene_file_path != "res://scenes/snake_tower/level/Level1.tscn" and scene_file_path != "res://scenes/snake_tower/level/LevelLast.tscn":
-		var ui_layer = get_node_or_null("UILayer")
-		if ui_layer:
+	var ui_layer = get_node_or_null("UILayer")
+	if ui_layer:
+		if scene_file_path != "res://scenes/snake_tower/level/Level1.tscn" and scene_file_path != "res://scenes/snake_tower/level/LevelLast.tscn":
 			time_label = Label.new()
 			ui_layer.add_child(time_label)
 			time_label.position = Vector2(12.3076935, 50.0)
@@ -77,3 +78,9 @@ func _input(event):
 	if event is InputEventKey and event.pressed and not event.echo:
 		if event.keycode == KEY_R:
 			reset_level()
+
+func return_to_home():
+	if _is_transitioning: return
+	_is_transitioning = true
+	Globals.reset_attempt_timer()
+	_switch_level(home_scene_path)

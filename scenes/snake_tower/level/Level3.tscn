@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://cb5k72y6k5n3q" path="res://scenes/snake_tower/snake/SnakeTail.tscn" id="12_xya6k"]
 [ext_resource type="PackedScene" uid="uid://dqr4xl3boav1w" path="res://scenes/snake_tower/level/DeathFloor.tscn" id="13_kwqe6"]
 [ext_resource type="PackedScene" uid="uid://bl1jkw030abc" path="res://scenes/snake_tower/level/CameraLimit.tscn" id="14_v58yh"]
+[ext_resource type="Texture2D" uid="uid://cyuob1afxadjh" path="res://icon.svg" id="99_home_icon"]
 
 [node name="Level" type="Node2D" unique_id=954905236]
 script = ExtResource("1_lcshh")
@@ -97,7 +98,18 @@ theme_override_font_sizes/font_size = 64
 text = "Reset (R)"
 metadata/_edit_use_anchors_ = true
 
+[node name="HomeButton" type="Button" parent="UILayer"]
+offset_left = 98.46154
+offset_top = 12.307693
+offset_right = 222.46155
+offset_bottom = 136.30768
+scale = Vector2(0.25, 0.25)
+icon = ExtResource("99_home_icon")
+expand_icon = true
+
 [node name="CameraLimit" parent="." unique_id=3601522 instance=ExtResource("14_v58yh")]
 position = Vector2(0, 64)
 
 [connection signal="pressed" from="UILayer/ResetButton" to="." method="reset_level"]
+
+[connection signal="pressed" from="UILayer/HomeButton" to="." method="return_to_home"]
