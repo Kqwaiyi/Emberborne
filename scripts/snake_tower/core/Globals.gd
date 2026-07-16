@@ -6,6 +6,7 @@ var total_time_elapsed: float = 0.0
 var current_level_time: float = 0.0
 var _is_time_running: bool = false
 var current_minigame_level: String = "res://scenes/snake_tower/level/Level1.tscn"
+var _current_laptop_scene: String = ""
 
 # Dictionary of scenes where time should be tracked
 var tracked_scenes: Dictionary = {
@@ -23,7 +24,7 @@ var tracked_scenes: Dictionary = {
 }
 
 func _ready() -> void:
-	# Add to group so LaptopUI can notify all minigames generically
+	# Add to group so Levels can notify all minigames generically
 	add_to_group("minigame_time_trackers")
 	
 	# Ensure the timer can process even when the main game is paused (e.g. by LaptopUI)
@@ -56,12 +57,33 @@ func _on_scene_loaded() -> void:
 	else:
 		_is_time_running = false
 
+func _on_laptop_scene_loaded(loaded_scene: String) -> void:
+	_current_laptop_scene = loaded_scene
+	current_level_time = 0.0
+	if tracked_scenes.has(loaded_scene) or loaded_scene.begins_with("res://scenes/snake_tower/level/"):
+		if loaded_scene == "res://scenes/snake_tower/level/Level1.tscn":
+			_is_time_running = false
+			total_time_elapsed = 0.0
+			current_level_time = 0.0
+		elif loaded_scene == "res://scenes/snake_tower/level/LevelLast.tscn":
+			_is_time_running = false
+		else:
+			_is_time_running = true
+	else:
+		_is_time_running = false
+
 func pause_time() -> void:
 	_is_time_running = false
 
 func start_time() -> void:
 	# If we somehow start time explicitly but we are on LevelLast or Level1, don't start
-	if SceneManager and (SceneManager._next_scene_path == "res://scenes/snake_tower/level/LevelLast.tscn" or SceneManager._next_scene_path == "res://scenes/snake_tower/level/Level1.tscn"):
+	var scene_to_check: String = ""
+	if SceneManager and SceneManager._next_scene_path != "":
+		scene_to_check = SceneManager._next_scene_path
+	elif _current_laptop_scene != "":
+		scene_to_check = _current_laptop_scene
+	
+	if scene_to_check == "res://scenes/snake_tower/level/LevelLast.tscn" or scene_to_check == "res://scenes/snake_tower/level/Level1.tscn":
 		_is_time_running = false
 	else:
 		_is_time_running = true

@@ -43,13 +43,16 @@ func _on_level_won():
 		print("You beat the game!")
 		_reload_level()
 
+func _get_laptop_ui() -> Node:
+	var laptops = get_tree().get_nodes_in_group("laptop_ui")
+	if laptops.size() > 0:
+		return laptops[0]
+	return null
+
 func _switch_level(target_scene: String):
-	var vp = get_viewport()
-	if vp is SubViewport:
-		var custom_rect: ColorRect = null
-		if vp.get_parent() and vp.get_parent().get_parent():
-			custom_rect = vp.get_parent().get_parent().get_node_or_null("TransitionRect")
-		SceneManager.change_scene_in_viewport(target_scene, vp, custom_rect, 0.5)
+	var laptop = _get_laptop_ui()
+	if laptop:
+		laptop.change_scene(target_scene, 0.5)
 	else:
 		SceneManager.change_scene_to_file(target_scene)
 
@@ -64,12 +67,9 @@ func reset_level():
 	_reload_level()
 
 func _reload_level():
-	var vp = get_viewport()
-	if vp is SubViewport:
-		var custom_rect: ColorRect = null
-		if vp.get_parent() and vp.get_parent().get_parent():
-			custom_rect = vp.get_parent().get_parent().get_node_or_null("TransitionRect")
-		SceneManager.change_scene_in_viewport(scene_file_path, vp, custom_rect, 0.5)
+	var laptop = _get_laptop_ui()
+	if laptop:
+		laptop.change_scene(scene_file_path, 0.5)
 	else:
 		get_tree().reload_current_scene()
 

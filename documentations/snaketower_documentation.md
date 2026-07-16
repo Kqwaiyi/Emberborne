@@ -92,63 +92,65 @@ The `Snake.gd` is the most complex entity, handling input, multi-segment movemen
 
 ---
 
-## 6. Integration: SceneManager & LaptopUI
+## 6. Integration: LaptopUI
 
-The minigame does not run directly in the main world space; it is a nested simulation within an in-game laptop screen.
-
-### `SceneManager.gd`
-An Autoload responsible for seamless fade transitions and asynchronous loading.
-*   It exposes `change_scene_in_viewport(path, viewport)`.
-*   Instead of replacing the main `SceneTree`, it clears a specific target `SubViewport` and instantiates the new packed scene into it.
-*   Emits `scene_loaded`, allowing systems like `Globals.gd` to react to new environments.
+The minigame does not run directly in the main world space; it is a nested simulation within an in-game holographic laptop screen.
 
 ### `LaptopUI.gd`
-A `CanvasLayer` representing the diegetic computer interface.
-*   **Opening:** Pauses the main game (`get_tree().paused = true`), makes itself visible, and requests the `SceneManager` to load the target minigame scene into its internal `SubViewport`. Since `LaptopUI` has `PROCESS_MODE_ALWAYS`, it functions normally while the background world freezes.
+A self-contained `CanvasLayer` representing the diegetic holographic interface. It owns its own asynchronous scene loading and fade transition system — it does **not** delegate to `SceneManager`.
+*   **Opening:** Plays a holographic boot animation, pauses the main game (`get_tree().paused = true`), and loads the target minigame scene into its internal `SubViewport` via `LaptopUI.change_scene()`. Since `LaptopUI` has `PROCESS_MODE_ALWAYS`, it functions normally while the background world freezes.
+*   **Level Transitions:** When a minigame needs to advance levels, `Level.gd` discovers the host laptop via `get_tree().get_nodes_in_group("laptop_ui")` and calls `laptop.change_scene(target_scene, 0.5)`. This triggers a localized fade-to-black within the laptop screen without affecting the main game view.
+*   **Timer Synchronization:** Before instantiating a new scene, `LaptopUI` calls `get_tree().call_group("minigame_time_trackers", "_on_laptop_scene_loaded", path)` so that `Globals.gd` can update its timer state before the new level's `_ready()` fires.
 *   *Note on Modularity:* `LaptopUI` does not track snake tower logic. Callers should wrap their requested paths with `Globals.get_resume_level(path)` before calling `open_laptop()` to ensure proper progression logic is respected.
-*   **Closing:** Hides the UI, unpauses the main game, clears the `SubViewport` contents to free memory, and broadcasts a `"pause_time"` method call to the `"minigame_time_trackers"` group. This ensures `Globals.gd` stops counting time when the player minimizes the game.
+*   **Closing:** Plays a holographic shutdown animation, hides the UI, unpauses the main game, clears the `SubViewport` contents to free memory, and broadcasts a `"pause_time"` method call to the `"minigame_time_trackers"` group. This ensures `Globals.gd` stops counting time when the player closes the laptop.
 
 ### Integration Flow Diagram
 
 ```mermaid
 sequenceDiagram
-    participant Player
-    participant MainGameInteractable
-    participant Globals
-    participant LaptopUI
-    participant SceneManager
-    participant SubViewport
-    
-    Player->>MainGameInteractable: Interact
-    MainGameInteractable->>Globals: get_resume_level("Level1.tscn")
-    Globals-->>MainGameInteractable: returns "Level3.tscn" (furthest)
-    MainGameInteractable->>LaptopUI: open_laptop("Level3.tscn")
-    LaptopUI->>SceneTree: pause main game
-    LaptopUI->>SceneManager: change_scene_in_viewport()
-    SceneManager->>SubViewport: load and instantiate Level3
-    SceneManager-->>Globals: emit scene_loaded
-    Globals->>Globals: check path -> starts timer
-    
-    loop Minigame Active
-        Player->>Snake: input
-        Snake->>LevelManager: process grid logic
-        Globals->>Globals: accumulate time
-    end
-    
-    Player->>LaptopUI: close_laptop()
-    LaptopUI->>SceneTree: unpause main game
-    LaptopUI->>SubViewport: clear_minigame()
-    LaptopUI->>Globals: call_group("minigame_time_trackers", "pause_time")
-    Globals->>Globals: timer stops
+	participant Player
+	participant MainGameInteractable
+	participant Globals
+	participant LaptopUI
+	participant SubViewport
+	
+	Player->>MainGameInteractable: Interact
+	MainGameInteractable->>Globals: get_resume_level("Level1.tscn")
+	Globals-->>MainGameInteractable: returns "Level3.tscn" (furthest)
+	MainGameInteractable->>LaptopUI: open_laptop("Level3.tscn")
+	LaptopUI->>LaptopUI: play boot animation
+	LaptopUI->>SceneTree: pause main game
+	LaptopUI->>LaptopUI: change_scene() — async load + fade
+	LaptopUI->>Globals: call_group("_on_laptop_scene_loaded", path)
+	Globals->>Globals: check path -> update timer
+	LaptopUI->>SubViewport: instantiate Level3
+	
+	loop Minigame Active
+		Player->>Snake: input
+		Snake->>LevelManager: process grid logic
+		Globals->>Globals: accumulate time
+	end
+	
+	Note over Player,LaptopUI: Level Won
+	LaptopUI->>Globals: call_group("_on_laptop_scene_loaded", next_path)
+	LaptopUI->>SubViewport: instantiate next level (via change_scene)
+	
+	Note over Player,LaptopUI: Player closes laptop
+	Player->>LaptopUI: close_laptop()
+	LaptopUI->>LaptopUI: play shutdown animation
+	LaptopUI->>SceneTree: unpause main game
+	LaptopUI->>SubViewport: clear_minigame()
+	LaptopUI->>Globals: call_group("pause_time")
+	Globals->>Globals: timer stops
 ```
 
 ## 7. Future Minigame Considerations
 
-Because `LaptopUI` is fully decoupled and utilizes Godot's Group system, adding a completely separate minigame inside the laptop interface requires minimal coupling:
+Because `LaptopUI` is fully self-contained and utilizes Godot's Group system, adding a completely separate minigame inside the laptop interface requires minimal coupling:
 1.  Create the new minigame scenes and its own global manager.
 2.  Have the new manager `add_to_group("minigame_time_trackers")`.
-3.  Implement a `pause_time()` function inside the new manager.
+3.  Implement a `pause_time()` and `_on_laptop_scene_loaded(path)` function inside the new manager.
 4.  Implement any "resuming" or "anti-regression" rules directly in that new manager.
 5.  Load it into the laptop by querying the new manager for the correct path and passing it to `LaptopUI.open_laptop(path)`.
 
-The `SceneManager` will handle the rendering, and `LaptopUI` will ensure the time tracking is perfectly synchronized with the open/close states of the laptop lid.
+`LaptopUI` will handle the rendering, transitions, and ensure the time tracking is perfectly synchronized with the open/close states of the holographic display.

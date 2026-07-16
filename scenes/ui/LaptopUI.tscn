@@ -1,73 +1,179 @@
-[gd_scene format=3 uid="uid://cxab321y70xra"]
+[gd_scene load_steps=11 format=3 uid="uid://cxab321y70xra"]
 
 [ext_resource type="Script" uid="uid://2nsxw3i5jl14" path="res://scripts/ui/LaptopUI.gd" id="1_laptop"]
+[ext_resource type="Shader" path="res://assets/shaders/hologram_scanlines.gdshader" id="2_scanlines"]
+[ext_resource type="Shader" path="res://assets/shaders/hologram_glitch.gdshader" id="3_glitch"]
 
-[node name="LaptopUI" type="CanvasLayer" unique_id=450819383]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_panel"]
+bg_color = Color(0.02, 0.05, 0.08, 0.85)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0.9, 1, 0.4)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+shadow_color = Color(0, 0.9, 1, 0.15)
+shadow_size = 15
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_scanlines"]
+shader = ExtResource("2_scanlines")
+shader_parameter/line_spacing = 3.0
+shader_parameter/line_alpha = 0.06
+shader_parameter/scroll_speed = 15.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_glitch"]
+shader = ExtResource("3_glitch")
+shader_parameter/intensity = 0.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_btn_normal"]
+bg_color = Color(0.01, 0.03, 0.06, 0.9)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0.9, 1, 0.3)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_btn_hover"]
+bg_color = Color(0, 0.15, 0.2, 0.95)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0.9, 1, 0.7)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_btn_pressed"]
+bg_color = Color(0, 0.25, 0.35, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 1, 1, 0.9)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_focus"]
+
+[node name="LaptopUI" type="CanvasLayer"]
 layer = 90
 script = ExtResource("1_laptop")
 
-[node name="BackgroundTint" type="ColorRect" parent="." unique_id=1776936497]
+[node name="BackgroundTint" type="ColorRect" parent="."]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 0.25490198)
+color = Color(0, 0.02, 0.05, 0.7)
 
-[node name="CenterContainer" type="CenterContainer" parent="." unique_id=344186582]
+[node name="CenterContainer" type="CenterContainer" parent="."]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Panel" type="Panel" parent="CenterContainer" unique_id=777034364]
-custom_minimum_size = Vector2(1000, 600)
+[node name="DisplayPanel" type="Panel" parent="CenterContainer"]
+custom_minimum_size = Vector2(1000, 632)
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_panel")
 
-[node name="SubViewportContainer" type="SubViewportContainer" parent="CenterContainer/Panel" unique_id=2016133423]
+[node name="SubViewportContainer" type="SubViewportContainer" parent="CenterContainer/DisplayPanel"]
 texture_filter = 1
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 4.0
-offset_top = 8.0
-offset_right = 4.0
-offset_bottom = 8.0
+offset_top = 32.0
 grow_horizontal = 2
 grow_vertical = 2
 stretch = true
 
-[node name="SubViewport" type="SubViewport" parent="CenterContainer/Panel/SubViewportContainer" unique_id=468416810]
+[node name="SubViewport" type="SubViewport" parent="CenterContainer/DisplayPanel/SubViewportContainer"]
 handle_input_locally = false
 canvas_item_default_texture_filter = 0
 size = Vector2i(1000, 600)
 render_target_update_mode = 4
 
-[node name="TransitionRect" type="ColorRect" parent="CenterContainer/Panel" unique_id=987654321]
+[node name="TransitionRect" type="ColorRect" parent="CenterContainer/DisplayPanel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 4.0
-offset_top = 8.0
-offset_right = 4.0
-offset_bottom = 8.0
+offset_top = 32.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 color = Color(0, 0, 0, 1)
 modulate = Color(1, 1, 1, 0)
 
-[node name="CloseButton" type="Button" parent="CenterContainer/Panel" unique_id=722675414]
+[node name="ScanLines" type="ColorRect" parent="CenterContainer/DisplayPanel"]
 layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
+anchors_preset = 15
 anchor_right = 1.0
-offset_left = -40.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
-grow_horizontal = 0
-text = "X"
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+material = SubResource("ShaderMaterial_scanlines")
+color = Color(0, 0, 0, 0)
+
+[node name="GlitchOverlay" type="ColorRect" parent="CenterContainer/DisplayPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+material = SubResource("ShaderMaterial_glitch")
+color = Color(0, 0, 0, 0)
+
+[node name="HeaderBar" type="HBoxContainer" parent="CenterContainer/DisplayPanel"]
+layout_mode = 1
+anchor_right = 1.0
+offset_left = 10.0
+offset_right = -4.0
+offset_bottom = 30.0
+grow_horizontal = 2
+
+[node name="StatusLabel" type="Label" parent="CenterContainer/DisplayPanel/HeaderBar"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0, 0.9, 1, 0.9)
+theme_override_font_sizes/font_size = 13
+text = ""
+
+[node name="CloseButton" type="Button" parent="CenterContainer/DisplayPanel/HeaderBar"]
+custom_minimum_size = Vector2(32, 28)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0.9, 1, 0.8)
+theme_override_colors/font_hover_color = Color(1, 0.2, 0.3, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxFlat_btn_normal")
+theme_override_styles/hover = SubResource("StyleBoxFlat_btn_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_btn_pressed")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_focus")
+text = "✕"
+
+[node name="CornerDecorations" type="Control" parent="CenterContainer/DisplayPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2

@@ -15,3 +15,4 @@ text = "Press 1 to test SceneManager transition
 Press 2 to test LaptopUI Minigame"
 
 [node name="LaptopUI" parent="." unique_id=789261299 instance=ExtResource("2_laptop")]
+visible = false

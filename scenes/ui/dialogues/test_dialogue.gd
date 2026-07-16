@@ -7,8 +7,8 @@ extends RefCounted
 static func get_lines() -> Array:
 	return [
 		{
-			"speaker": "Elder",
-			"text": "Welcome, brave adventurer, to the land of Emberborne.",
+			"speaker": "Billilini",
+			"text": "uwu i like valorant",
 			"portrait": "res://assets/sprites/portraits/portrait_template.png"
 		},
 		{
