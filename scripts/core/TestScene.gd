@@ -12,6 +12,7 @@ func _input(event):
 		if event.keycode == KEY_1:
 			print("Testing Global SceneManager (0.5s fade)...")
 			SceneManager.change_scene_to_file("res://scenes/snake_tower/level/Level1.tscn", 0.5)
+			DialogueManager.start_dialogue("res://scenes/ui/dialogues/test_dialogue.gd")
 		elif event.keycode == KEY_2:
 			print("Testing Global SceneManager (0.0s fade)...")
 			SceneManager.change_scene_to_file("res://scenes/snake_tower/level/Level1.tscn", 0.0)
@@ -30,3 +31,4 @@ func _input(event):
 				laptop_node.open_laptop(Globals.get_resume_level("res://scenes/snake_tower/level/Level1.tscn"), 0.0)
 			else:
 				print("LaptopUI node not found in TestScene!")
+			DialogueManager.start_dialogue("res://scenes/ui/dialogues/test_dialogue.gd")
