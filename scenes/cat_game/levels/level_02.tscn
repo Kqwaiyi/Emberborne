@@ -1,4 +1,4 @@
-[gd_scene load_steps=178 format=3 uid="uid://ckem05uh45a4"]
+[gd_scene load_steps=163 format=3 uid="uid://ckem05uh45a4"]
 
 [ext_resource type="Texture2D" uid="uid://chvlnk4siv40s" path="res://assets/sprites/environment/Sample.png" id="1_fa1h0"]
 [ext_resource type="Texture2D" uid="uid://c8qnum6m38yjg" path="res://assets/sprites/environment/output/tile_0_0.png" id="3_yy7jo"]
@@ -77,34 +77,19 @@
 [ext_resource type="Texture2D" uid="uid://d3asbeq7knvod" path="res://assets/sprites/environment/wall and floor tiles/tile_12_13.png" id="76_8qdfo"]
 [ext_resource type="Texture2D" uid="uid://dqmp1qq20m8sr" path="res://assets/sprites/environment/wall and floor tiles/tile_12_14.png" id="77_0kosv"]
 [ext_resource type="Texture2D" uid="uid://1hny8kxxqevd" path="res://assets/sprites/environment/wall and floor tiles/tile_12_15.png" id="78_27xqr"]
-[ext_resource type="Texture2D" uid="uid://drejebybfmvc3" path="res://assets/sprites/environment/wall and floor tiles/tile_13_13.png" id="79_jkm8p"]
-[ext_resource type="Texture2D" uid="uid://r0ufbjhrd2o2" path="res://assets/sprites/environment/wall and floor tiles/tile_13_14.png" id="80_ngoas"]
 [ext_resource type="Texture2D" uid="uid://cf4oxleqavlyd" path="res://assets/sprites/environment/wall and floor tiles/tile_13_15.png" id="81_udbal"]
-[ext_resource type="Texture2D" uid="uid://dynnlgrw00ufa" path="res://assets/sprites/environment/wall and floor tiles/tile_14_13.png" id="82_v7v3g"]
 [ext_resource type="Texture2D" uid="uid://j7obfcg32cv3" path="res://assets/sprites/environment/wall and floor tiles/tile_12_16.png" id="83_mltvg"]
 [ext_resource type="Texture2D" uid="uid://cihkjb1lj7jmv" path="res://assets/sprites/environment/wall and floor tiles/tile_12_17.png" id="84_kdqji"]
 [ext_resource type="Texture2D" uid="uid://cnsigmcs3ov60" path="res://assets/sprites/environment/wall and floor tiles/tile_13_16.png" id="85_livok"]
 [ext_resource type="Texture2D" uid="uid://bffvnwcmsohsl" path="res://assets/sprites/environment/wall and floor tiles/tile_13_17.png" id="86_bum8x"]
-[ext_resource type="Texture2D" uid="uid://ddfl77o7ieea3" path="res://assets/sprites/environment/wall and floor tiles/tile_15_15.png" id="87_vr38v"]
-[ext_resource type="Texture2D" uid="uid://8ftqw8js0suf" path="res://assets/sprites/environment/wall and floor tiles/tile_16_17.png" id="88_xfyan"]
-[ext_resource type="Texture2D" uid="uid://bv8o8uods5kx5" path="res://assets/sprites/environment/wall and floor tiles/tile_16_18.png" id="89_xq6e7"]
-[ext_resource type="Texture2D" uid="uid://bbo4ewu3atg6q" path="res://assets/sprites/environment/wall and floor tiles/tile_16_19.png" id="90_1bwbh"]
 [ext_resource type="Texture2D" uid="uid://budygsw83hv5g" path="res://assets/sprites/environment/wall and floor tiles/tile_15_13.png" id="91_68qd6"]
 [ext_resource type="Texture2D" uid="uid://cnc6uo661euw5" path="res://assets/sprites/environment/wall and floor tiles/tile_15_14.png" id="92_l1b3u"]
 [ext_resource type="Texture2D" uid="uid://ba2156x383hte" path="res://assets/sprites/environment/wall and floor tiles/tile_15_16.png" id="93_5nwic"]
 [ext_resource type="Texture2D" uid="uid://cagrx1l2askke" path="res://assets/sprites/environment/wall and floor tiles/tile_15_17.png" id="94_rjs0v"]
 [ext_resource type="Texture2D" uid="uid://bg4ewgt1ax3ec" path="res://assets/sprites/environment/wall and floor tiles/tile_15_18.png" id="95_a7hqc"]
 [ext_resource type="Texture2D" uid="uid://cuc6bnl4tfabj" path="res://assets/sprites/environment/wall and floor tiles/tile_15_19.png" id="96_cmn22"]
-[ext_resource type="Texture2D" uid="uid://oiwv8wddfl4e" path="res://assets/sprites/environment/wall and floor tiles/tile_25_6.png" id="96_kdqji"]
-[ext_resource type="Texture2D" uid="uid://nfh85kjbf2nv" path="res://assets/sprites/environment/wall and floor tiles/tile_25_7.png" id="97_livok"]
 [ext_resource type="Texture2D" uid="uid://c6hf42lml3pkx" path="res://assets/sprites/environment/wall and floor tiles/tile_2_8.png" id="97_rqu2v"]
-[ext_resource type="Texture2D" uid="uid://dtdl8fyy7afib" path="res://assets/sprites/environment/wall and floor tiles/tile_25_8.png" id="98_bum8x"]
-[ext_resource type="Texture2D" uid="uid://cp20h2cx6x6y8" path="res://assets/sprites/environment/wall and floor tiles/tile_26_6.png" id="99_vr38v"]
 [ext_resource type="Texture2D" uid="uid://bwrukkk1h4do2" path="res://assets/sprites/environment/wall and floor tiles/tile_26_7.png" id="100_xfyan"]
-[ext_resource type="Texture2D" uid="uid://cr82ushwodrbr" path="res://assets/sprites/environment/wall and floor tiles/tile_26_8.png" id="101_xq6e7"]
-[ext_resource type="Texture2D" uid="uid://bpo62lgv6k4r3" path="res://assets/sprites/environment/wall and floor tiles/tile_27_6.png" id="102_1bwbh"]
-[ext_resource type="Texture2D" uid="uid://bm18tjsao0w7v" path="res://assets/sprites/environment/wall and floor tiles/tile_27_7.png" id="103_68qd6"]
-[ext_resource type="Texture2D" uid="uid://syyimpxavv8b" path="res://assets/sprites/environment/wall and floor tiles/tile_27_8.png" id="104_l1b3u"]
 [ext_resource type="PackedScene" uid="uid://p2tgovs3wppl" path="res://scenes/cat_game/characters/dog.tscn" id="110_68qd6"]
 [ext_resource type="SpriteFrames" uid="uid://cmkvoaf2lslxi" path="res://scenes/cat_game/characters/dog_variants/dog4.tres" id="111_l1b3u"]
 [ext_resource type="SpriteFrames" uid="uid://bspk2plmij7hd" path="res://scenes/cat_game/characters/dog_variants/dog3.tres" id="112_5nwic"]
@@ -5084,941 +5069,773 @@ position = Vector2(-1.0000076, 2)
 scale = Vector2(2.031249, 1.7812493)
 texture = ExtResource("6_wuvb2")
 
-[node name="enviroment (for map making)" type="Node2D" parent="."]
-position = Vector2(1327, 1283)
-metadata/_edit_group_ = true
-
-[node name="Chairs" type="Node2D" parent="enviroment (for map making)"]
-position = Vector2(1399, -907)
+[node name="Chairs" type="Node2D" parent="map2"]
+position = Vector2(-82, -110)
 scale = Vector2(3, 3)
 
-[node name="Chair" type="Sprite2D" parent="enviroment (for map making)/Chairs"]
+[node name="Chair" type="Sprite2D" parent="map2/Chairs"]
 position = Vector2(-762, 439.33334)
 texture = ExtResource("9_ygwqm")
 
-[node name="Chair2" type="Sprite2D" parent="enviroment (for map making)/Chairs"]
+[node name="Chair2" type="Sprite2D" parent="map2/Chairs"]
 position = Vector2(-733.6667, 438.3333)
 texture = ExtResource("10_ajtna")
 
-[node name="chair3" type="Sprite2D" parent="enviroment (for map making)/Chairs"]
+[node name="chair3" type="Sprite2D" parent="map2/Chairs"]
 position = Vector2(-690.3333, 445)
 texture = ExtResource("11_olgad")
 
-[node name="ChairHide1" parent="enviroment (for map making)/Chairs" instance=ExtResource("200_hide")]
+[node name="ChairHide1" parent="map2/Chairs" instance=ExtResource("200_hide")]
 position = Vector2(-763.6667, 439.66666)
 scale = Vector2(0.33333, 0.33333)
 
-[node name="HideCollision" parent="enviroment (for map making)/Chairs/ChairHide1/HideArea" index="0"]
+[node name="HideCollision" parent="map2/Chairs/ChairHide1/HideArea" index="0"]
 position = Vector2(2.999878, 2.0000305)
 shape = SubResource("RectangleShape2D_cmn22")
 
-[node name="VisionCollision" parent="enviroment (for map making)/Chairs/ChairHide1/VisionBlocker" index="0"]
+[node name="VisionCollision" parent="map2/Chairs/ChairHide1/VisionBlocker" index="0"]
 position = Vector2(3, 2.000061)
 shape = SubResource("RectangleShape2D_rqu2v")
 
-[node name="ChairHide2" parent="enviroment (for map making)/Chairs" instance=ExtResource("200_hide")]
+[node name="ChairHide2" parent="map2/Chairs" instance=ExtResource("200_hide")]
 position = Vector2(-734.6667, 439.6667)
 scale = Vector2(0.33333, 0.33333)
 
-[node name="HideCollision" parent="enviroment (for map making)/Chairs/ChairHide2/HideArea" index="0"]
+[node name="HideCollision" parent="map2/Chairs/ChairHide2/HideArea" index="0"]
 position = Vector2(1.500061, -1.5)
 shape = SubResource("RectangleShape2D_jhq2p")
 
-[node name="VisionCollision" parent="enviroment (for map making)/Chairs/ChairHide2/VisionBlocker" index="0"]
+[node name="VisionCollision" parent="map2/Chairs/ChairHide2/VisionBlocker" index="0"]
 position = Vector2(1, -1.5)
 shape = SubResource("RectangleShape2D_ov8hs")
 
-[node name="ChairHide3" parent="enviroment (for map making)/Chairs" instance=ExtResource("200_hide")]
+[node name="ChairHide3" parent="map2/Chairs" instance=ExtResource("200_hide")]
 position = Vector2(-676.3333, 453)
 scale = Vector2(0.33333, 0.33333)
 
-[node name="HideCollision" parent="enviroment (for map making)/Chairs/ChairHide3/HideArea" index="0"]
+[node name="HideCollision" parent="map2/Chairs/ChairHide3/HideArea" index="0"]
 position = Vector2(-43.00043, -30.000301)
 shape = SubResource("RectangleShape2D_pd6ml")
 
-[node name="VisionCollision" parent="enviroment (for map making)/Chairs/ChairHide3/VisionBlocker" index="0"]
+[node name="VisionCollision" parent="map2/Chairs/ChairHide3/VisionBlocker" index="0"]
 position = Vector2(-43.000427, -30.000305)
 shape = SubResource("RectangleShape2D_fl277")
 
-[node name="beds" type="Node2D" parent="enviroment (for map making)"]
-position = Vector2(-757, 285)
+[node name="beds" type="Node2D" parent="map2"]
+position = Vector2(-2238, 1082)
 scale = Vector2(4, 4)
 
-[node name="Gbed1" type="Node2D" parent="enviroment (for map making)/beds"]
+[node name="Gbed1" type="Node2D" parent="map2/beds"]
 position = Vector2(6.25, 13)
 metadata/_edit_group_ = true
 
-[node name="Sprite2D2" type="Sprite2D" parent="enviroment (for map making)/beds/Gbed1"]
+[node name="Sprite2D2" type="Sprite2D" parent="map2/beds/Gbed1"]
 position = Vector2(-20.5, 1.5)
 texture = ExtResource("12_g7bok")
 
-[node name="Sprite2D3" type="Sprite2D" parent="enviroment (for map making)/beds/Gbed1"]
+[node name="Sprite2D3" type="Sprite2D" parent="map2/beds/Gbed1"]
 position = Vector2(-36.5, 1.5)
 texture = ExtResource("13_rx134")
 
-[node name="BedHide" parent="enviroment (for map making)/beds/Gbed1" instance=ExtResource("200_hide")]
+[node name="BedHide" parent="map2/beds/Gbed1" instance=ExtResource("200_hide")]
 position = Vector2(-32.25, 2.75)
 scale = Vector2(0.33333, 0.33333)
 metadata/_edit_group_ = true
 
-[node name="HideCollision" parent="enviroment (for map making)/beds/Gbed1/BedHide/HideArea" index="0"]
+[node name="HideCollision" parent="map2/beds/Gbed1/BedHide/HideArea" index="0"]
 position = Vector2(-9.000061, -3)
 shape = SubResource("RectangleShape2D_iis3f")
 
-[node name="VisionCollision" parent="enviroment (for map making)/beds/Gbed1/BedHide/VisionBlocker" index="0"]
+[node name="VisionCollision" parent="map2/beds/Gbed1/BedHide/VisionBlocker" index="0"]
 position = Vector2(-9.000061, -3)
 shape = SubResource("RectangleShape2D_1n376")
 
-[node name="Rbed1" type="Node2D" parent="enviroment (for map making)/beds"]
+[node name="Rbed1" type="Node2D" parent="map2/beds"]
 position = Vector2(8.75, 16.25)
 metadata/_edit_group_ = true
 
-[node name="Sprite2D4" type="Sprite2D" parent="enviroment (for map making)/beds/Rbed1"]
+[node name="Sprite2D4" type="Sprite2D" parent="map2/beds/Rbed1"]
 position = Vector2(-4, -1)
 texture = ExtResource("14_elyfg")
 
-[node name="Sprite2D5" type="Sprite2D" parent="enviroment (for map making)/beds/Rbed1"]
+[node name="Sprite2D5" type="Sprite2D" parent="map2/beds/Rbed1"]
 position = Vector2(12, -1)
 texture = ExtResource("12_g7bok")
 
-[node name="BedHide" parent="enviroment (for map making)/beds/Rbed1" instance=ExtResource("200_hide")]
+[node name="BedHide" parent="map2/beds/Rbed1" instance=ExtResource("200_hide")]
 scale = Vector2(0.33333, 0.33333)
 metadata/_edit_group_ = true
 
-[node name="HideCollision" parent="enviroment (for map making)/beds/Rbed1/BedHide/HideArea" index="0"]
+[node name="HideCollision" parent="map2/beds/Rbed1/BedHide/HideArea" index="0"]
 position = Vector2(-9.000061, -3)
 shape = SubResource("RectangleShape2D_iis3f")
 
-[node name="VisionCollision" parent="enviroment (for map making)/beds/Rbed1/BedHide/VisionBlocker" index="0"]
+[node name="VisionCollision" parent="map2/beds/Rbed1/BedHide/VisionBlocker" index="0"]
 position = Vector2(-9.000061, -3)
 shape = SubResource("RectangleShape2D_1n376")
 
-[node name="Gbed2" type="Node2D" parent="enviroment (for map making)/beds"]
+[node name="Gbed2" type="Node2D" parent="map2/beds"]
 position = Vector2(11.75, -6.5)
 metadata/_edit_group_ = true
 
-[node name="Sprite2D6" type="Sprite2D" parent="enviroment (for map making)/beds/Gbed2"]
+[node name="Sprite2D6" type="Sprite2D" parent="map2/beds/Gbed2"]
 position = Vector2(-29, -28)
 texture = ExtResource("15_qfm0e")
 
-[node name="Sprite2D7" type="Sprite2D" parent="enviroment (for map making)/beds/Gbed2"]
+[node name="Sprite2D7" type="Sprite2D" parent="map2/beds/Gbed2"]
 position = Vector2(-13, -28)
 texture = ExtResource("16_3t7cx")
 
-[node name="Sprite2D" type="Sprite2D" parent="enviroment (for map making)/beds/Gbed2"]
+[node name="Sprite2D" type="Sprite2D" parent="map2/beds/Gbed2"]
 position = Vector2(-14, -13)
 rotation = -3.1415925
 texture = ExtResource("17_wyuj7")
 
-[node name="Sprite2D8" type="Sprite2D" parent="enviroment (for map making)/beds/Gbed2"]
+[node name="Sprite2D8" type="Sprite2D" parent="map2/beds/Gbed2"]
 position = Vector2(-30, -13)
 rotation = -3.1415925
 texture = ExtResource("18_veuw3")
 
-[node name="BedHide" parent="enviroment (for map making)/beds/Gbed2" instance=ExtResource("200_hide")]
+[node name="BedHide" parent="map2/beds/Gbed2" instance=ExtResource("200_hide")]
 position = Vector2(-23.75, -26.5)
 scale = Vector2(0.33333, 0.33333)
 metadata/_edit_group_ = true
 
-[node name="HideCollision" parent="enviroment (for map making)/beds/Gbed2/BedHide/HideArea" index="0"]
+[node name="HideCollision" parent="map2/beds/Gbed2/BedHide/HideArea" index="0"]
 position = Vector2(7.125061, 19.125206)
 shape = SubResource("RectangleShape2D_xeobf")
 
-[node name="VisionCollision" parent="enviroment (for map making)/beds/Gbed2/BedHide/VisionBlocker" index="0"]
+[node name="VisionCollision" parent="map2/beds/Gbed2/BedHide/VisionBlocker" index="0"]
 position = Vector2(6.750122, 19.125206)
 shape = SubResource("RectangleShape2D_46467")
 
-[node name="Rbed2" type="Node2D" parent="enviroment (for map making)/beds"]
+[node name="Rbed2" type="Node2D" parent="map2/beds"]
 position = Vector2(-17.5, -8.25)
 metadata/_edit_group_ = true
 
-[node name="Sprite2D9" type="Sprite2D" parent="enviroment (for map making)/beds/Rbed2"]
+[node name="Sprite2D9" type="Sprite2D" parent="map2/beds/Rbed2"]
 position = Vector2(34.5, -26.5)
 texture = ExtResource("19_38y3h")
 
-[node name="Sprite2D10" type="Sprite2D" parent="enviroment (for map making)/beds/Rbed2"]
+[node name="Sprite2D10" type="Sprite2D" parent="map2/beds/Rbed2"]
 position = Vector2(50.5, -26.5)
 texture = ExtResource("20_2b84g")
 
-[node name="Sprite2D11" type="Sprite2D" parent="enviroment (for map making)/beds/Rbed2"]
+[node name="Sprite2D11" type="Sprite2D" parent="map2/beds/Rbed2"]
 position = Vector2(49.5, -11.5)
 rotation = -3.1415925
 texture = ExtResource("17_wyuj7")
 
-[node name="Sprite2D12" type="Sprite2D" parent="enviroment (for map making)/beds/Rbed2"]
+[node name="Sprite2D12" type="Sprite2D" parent="map2/beds/Rbed2"]
 position = Vector2(33.5, -11.5)
 rotation = -3.1415925
 texture = ExtResource("18_veuw3")
 
-[node name="BedHide" parent="enviroment (for map making)/beds/Rbed2" instance=ExtResource("200_hide")]
+[node name="BedHide" parent="map2/beds/Rbed2" instance=ExtResource("200_hide")]
 position = Vector2(39.5, -25.5)
 scale = Vector2(0.33333, 0.33333)
 metadata/_edit_group_ = true
 
-[node name="HideCollision" parent="enviroment (for map making)/beds/Rbed2/BedHide/HideArea" index="0"]
+[node name="HideCollision" parent="map2/beds/Rbed2/BedHide/HideArea" index="0"]
 position = Vector2(7.125061, 19.125206)
 shape = SubResource("RectangleShape2D_xeobf")
 
-[node name="VisionCollision" parent="enviroment (for map making)/beds/Rbed2/BedHide/VisionBlocker" index="0"]
+[node name="VisionCollision" parent="map2/beds/Rbed2/BedHide/VisionBlocker" index="0"]
 position = Vector2(6.750122, 19.125206)
 shape = SubResource("RectangleShape2D_46467")
 
-[node name="Gbed3" type="Node2D" parent="enviroment (for map making)/beds"]
+[node name="Gbed3" type="Node2D" parent="map2/beds"]
 position = Vector2(8.25, -9.5)
 metadata/_edit_group_ = true
 
-[node name="Sprite2D15" type="Sprite2D" parent="enviroment (for map making)/beds/Gbed3"]
+[node name="Sprite2D15" type="Sprite2D" parent="map2/beds/Gbed3"]
 position = Vector2(42, 9)
 texture = ExtResource("21_0800h")
 
-[node name="Sprite2D16" type="Sprite2D" parent="enviroment (for map making)/beds/Gbed3"]
+[node name="Sprite2D16" type="Sprite2D" parent="map2/beds/Gbed3"]
 position = Vector2(41, 24)
 rotation = -3.1415925
 texture = ExtResource("22_0aqr5")
 
-[node name="BedHide" parent="enviroment (for map making)/beds/Gbed3" instance=ExtResource("200_hide")]
+[node name="BedHide" parent="map2/beds/Gbed3" instance=ExtResource("200_hide")]
 scale = Vector2(0.33333, 0.33333)
 metadata/_edit_group_ = true
 
-[node name="HideArea" parent="enviroment (for map making)/beds/Gbed3/BedHide" index="0"]
+[node name="HideArea" parent="map2/beds/Gbed3/BedHide" index="0"]
 position = Vector2(140.2514, 29.250292)
 
-[node name="HideCollision" parent="enviroment (for map making)/beds/Gbed3/BedHide/HideArea" index="0"]
+[node name="HideCollision" parent="map2/beds/Gbed3/BedHide/HideArea" index="0"]
 position = Vector2(-15.750153, 19.125183)
 shape = SubResource("RectangleShape2D_1iddc")
 
-[node name="VisionBlocker" parent="enviroment (for map making)/beds/Gbed3/BedHide" index="1"]
+[node name="VisionBlocker" parent="map2/beds/Gbed3/BedHide" index="1"]
 position = Vector2(140.2514, 29.250292)
 
-[node name="VisionCollision" parent="enviroment (for map making)/beds/Gbed3/BedHide/VisionBlocker" index="0"]
+[node name="VisionCollision" parent="map2/beds/Gbed3/BedHide/VisionBlocker" index="0"]
 position = Vector2(-15.750153, 19.125183)
 shape = SubResource("RectangleShape2D_aua3o")
 
-[node name="Rbed3" type="Node2D" parent="enviroment (for map making)/beds"]
+[node name="Rbed3" type="Node2D" parent="map2/beds"]
 position = Vector2(33.5, -35)
 metadata/_edit_group_ = true
 
-[node name="Sprite2D13" type="Sprite2D" parent="enviroment (for map making)/beds/Rbed3"]
+[node name="Sprite2D13" type="Sprite2D" parent="map2/beds/Rbed3"]
 position = Vector2(18, 1)
 texture = ExtResource("23_4kvm2")
 
-[node name="Sprite2D14" type="Sprite2D" parent="enviroment (for map making)/beds/Rbed3"]
+[node name="Sprite2D14" type="Sprite2D" parent="map2/beds/Rbed3"]
 position = Vector2(17, 16)
 rotation = -3.1415925
 texture = ExtResource("24_sxhpv")
 
-[node name="BedHide" parent="enviroment (for map making)/beds/Rbed3" instance=ExtResource("200_hide")]
+[node name="BedHide" parent="map2/beds/Rbed3" instance=ExtResource("200_hide")]
 position = Vector2(-23.5, -7.5)
 scale = Vector2(0.33333, 0.33333)
 metadata/_edit_group_ = true
 
-[node name="HideArea" parent="enviroment (for map making)/beds/Rbed3/BedHide" index="0"]
+[node name="HideArea" parent="map2/beds/Rbed3/BedHide" index="0"]
 position = Vector2(140.2514, 29.250292)
 
-[node name="HideCollision" parent="enviroment (for map making)/beds/Rbed3/BedHide/HideArea" index="0"]
+[node name="HideCollision" parent="map2/beds/Rbed3/BedHide/HideArea" index="0"]
 position = Vector2(-15.750153, 19.125183)
 shape = SubResource("RectangleShape2D_1iddc")
 
-[node name="VisionBlocker" parent="enviroment (for map making)/beds/Rbed3/BedHide" index="1"]
+[node name="VisionBlocker" parent="map2/beds/Rbed3/BedHide" index="1"]
 position = Vector2(140.2514, 29.250292)
 
-[node name="VisionCollision" parent="enviroment (for map making)/beds/Rbed3/BedHide/VisionBlocker" index="0"]
+[node name="VisionCollision" parent="map2/beds/Rbed3/BedHide/VisionBlocker" index="0"]
 position = Vector2(-15.750153, 19.125183)
 shape = SubResource("RectangleShape2D_aua3o")
 
-[node name="Side Furtniture" type="Node2D" parent="enviroment (for map making)"]
-position = Vector2(-821, -123)
+[node name="Side Furtniture" type="Node2D" parent="map2"]
+position = Vector2(-2302, 674)
 scale = Vector2(3, 3)
 
-[node name="Sprite2D" type="Sprite2D" parent="enviroment (for map making)/Side Furtniture"]
+[node name="Sprite2D" type="Sprite2D" parent="map2/Side Furtniture"]
 position = Vector2(-2.6666667, -0.6666667)
 texture = ExtResource("25_40y1e")
 
-[node name="Sprite2D2" type="Sprite2D" parent="enviroment (for map making)/Side Furtniture"]
+[node name="Sprite2D2" type="Sprite2D" parent="map2/Side Furtniture"]
 position = Vector2(0.33333334, 57.333336)
 texture = ExtResource("26_53ly8")
 
-[node name="Sprite2D3" type="Sprite2D" parent="enviroment (for map making)/Side Furtniture"]
+[node name="Sprite2D3" type="Sprite2D" parent="map2/Side Furtniture"]
 position = Vector2(78, 37)
 texture = ExtResource("27_c25w2")
 
-[node name="Sprite2D4" type="Sprite2D" parent="enviroment (for map making)/Side Furtniture"]
+[node name="Sprite2D4" type="Sprite2D" parent="map2/Side Furtniture"]
 position = Vector2(59, 37.666668)
 texture = ExtResource("28_45731")
 
-[node name="Sprite2D5" type="Sprite2D" parent="enviroment (for map making)/Side Furtniture"]
+[node name="Sprite2D5" type="Sprite2D" parent="map2/Side Furtniture"]
 position = Vector2(39.333336, 37.333336)
 texture = ExtResource("29_cstak")
 
-[node name="Sprite2D6" type="Sprite2D" parent="enviroment (for map making)/Side Furtniture"]
+[node name="Sprite2D6" type="Sprite2D" parent="map2/Side Furtniture"]
 position = Vector2(20.333334, 37.666668)
 texture = ExtResource("30_tkl01")
 
-[node name="Sprite2D7" type="Sprite2D" parent="enviroment (for map making)/Side Furtniture"]
+[node name="Sprite2D7" type="Sprite2D" parent="map2/Side Furtniture"]
 position = Vector2(1, 37.666668)
 texture = ExtResource("31_55bvk")
 
-[node name="Sprite2D8" type="Sprite2D" parent="enviroment (for map making)/Side Furtniture"]
+[node name="Sprite2D8" type="Sprite2D" parent="map2/Side Furtniture"]
 position = Vector2(38.333336, 18.666668)
 texture = ExtResource("32_irowp")
 
-[node name="Sprite2D9" type="Sprite2D" parent="enviroment (for map making)/Side Furtniture"]
+[node name="Sprite2D9" type="Sprite2D" parent="map2/Side Furtniture"]
 position = Vector2(19, 18.333334)
 texture = ExtResource("33_bmypg")
 
-[node name="Sprite2D10" type="Sprite2D" parent="enviroment (for map making)/Side Furtniture"]
+[node name="Sprite2D10" type="Sprite2D" parent="map2/Side Furtniture"]
 position = Vector2(0.33333334, 19)
 texture = ExtResource("34_auxt5")
 
-[node name="side counter top" type="Node2D" parent="enviroment (for map making)/Side Furtniture"]
+[node name="side counter top" type="Node2D" parent="map2/Side Furtniture"]
 
-[node name="Sprite2D11" type="Sprite2D" parent="enviroment (for map making)/Side Furtniture/side counter top"]
+[node name="Sprite2D11" type="Sprite2D" parent="map2/Side Furtniture/side counter top"]
 position = Vector2(65.66669, -11.333336)
 texture = ExtResource("35_sa87b")
 
-[node name="Sprite2D13" type="Sprite2D" parent="enviroment (for map making)/Side Furtniture/side counter top"]
+[node name="Sprite2D13" type="Sprite2D" parent="map2/Side Furtniture/side counter top"]
 position = Vector2(65.66669, 4.666664)
 texture = ExtResource("37_16xm8")
 
-[node name="Sprite2D15" type="Sprite2D" parent="enviroment (for map making)/Side Furtniture/side counter top"]
+[node name="Sprite2D15" type="Sprite2D" parent="map2/Side Furtniture/side counter top"]
 position = Vector2(65.66669, 20.333332)
 texture = ExtResource("39_oyaq7")
 
-[node name="Collision" type="StaticBody2D" parent="enviroment (for map making)/Side Furtniture/side counter top"]
+[node name="Collision" type="StaticBody2D" parent="map2/Side Furtniture/side counter top"]
 position = Vector2(65.67, 4.5)
 collision_layer = 65
 collision_mask = 0
 
-[node name="Shape" type="CollisionShape2D" parent="enviroment (for map making)/Side Furtniture/side counter top/Collision"]
+[node name="Shape" type="CollisionShape2D" parent="map2/Side Furtniture/side counter top/Collision"]
 position = Vector2(-3.33667, -0.625)
 shape = SubResource("RectangleShape2D_ol38y")
 
-[node name="Collision2" type="StaticBody2D" parent="enviroment (for map making)/Side Furtniture/side counter top"]
+[node name="Collision2" type="StaticBody2D" parent="map2/Side Furtniture/side counter top"]
 position = Vector2(82, 4.33)
 collision_layer = 65
 collision_mask = 0
 
-[node name="Shape" type="CollisionShape2D" parent="enviroment (for map making)/Side Furtniture/side counter top/Collision2"]
+[node name="Shape" type="CollisionShape2D" parent="map2/Side Furtniture/side counter top/Collision2"]
 position = Vector2(-11.666672, -16.663332)
 shape = SubResource("RectangleShape2D_avepu")
 
-[node name="side counter top2" type="Node2D" parent="enviroment (for map making)/Side Furtniture"]
+[node name="side counter top2" type="Node2D" parent="map2/Side Furtniture"]
 position = Vector2(18, -1)
 
-[node name="Sprite2D12" type="Sprite2D" parent="enviroment (for map making)/Side Furtniture/side counter top2"]
+[node name="Sprite2D12" type="Sprite2D" parent="map2/Side Furtniture/side counter top2"]
 position = Vector2(82.000015, -11.333336)
 texture = ExtResource("36_jusep")
 
-[node name="Sprite2D14" type="Sprite2D" parent="enviroment (for map making)/Side Furtniture/side counter top2"]
+[node name="Sprite2D14" type="Sprite2D" parent="map2/Side Furtniture/side counter top2"]
 position = Vector2(82.000015, 4.333332)
 texture = ExtResource("38_pvtoa")
 
-[node name="Sprite2D16" type="Sprite2D" parent="enviroment (for map making)/Side Furtniture/side counter top2"]
+[node name="Sprite2D16" type="Sprite2D" parent="map2/Side Furtniture/side counter top2"]
 position = Vector2(82.000015, 20)
 texture = ExtResource("40_f75ti")
 
-[node name="Collision" type="StaticBody2D" parent="enviroment (for map making)/Side Furtniture/side counter top2"]
+[node name="Collision" type="StaticBody2D" parent="map2/Side Furtniture/side counter top2"]
 position = Vector2(82, 4.33)
 collision_layer = 65
 collision_mask = 0
 
-[node name="Shape" type="CollisionShape2D" parent="enviroment (for map making)/Side Furtniture/side counter top2/Collision"]
+[node name="Shape" type="CollisionShape2D" parent="map2/Side Furtniture/side counter top2/Collision"]
 position = Vector2(2.4166718, -0.24666595)
 shape = SubResource("RectangleShape2D_ol38y")
 
-[node name="Collision2" type="StaticBody2D" parent="enviroment (for map making)/Side Furtniture/side counter top2"]
+[node name="Collision2" type="StaticBody2D" parent="map2/Side Furtniture/side counter top2"]
 position = Vector2(82, 4.33)
 collision_layer = 65
 collision_mask = 0
 
-[node name="Shape" type="CollisionShape2D" parent="enviroment (for map making)/Side Furtniture/side counter top2/Collision2"]
+[node name="Shape" type="CollisionShape2D" parent="map2/Side Furtniture/side counter top2/Collision2"]
 position = Vector2(-5.4166718, -16.579998)
 shape = SubResource("RectangleShape2D_avepu")
 
-[node name="long_table" type="Node2D" parent="enviroment (for map making)/Side Furtniture"]
+[node name="long_table" type="Node2D" parent="map2/Side Furtniture"]
 
-[node name="Sprite2D17" type="Sprite2D" parent="enviroment (for map making)/Side Furtniture/long_table"]
+[node name="Sprite2D17" type="Sprite2D" parent="map2/Side Furtniture/long_table"]
 position = Vector2(34.000015, -17.333336)
 texture = ExtResource("41_vmfhe")
 
-[node name="Sprite2D18" type="Sprite2D" parent="enviroment (for map making)/Side Furtniture/long_table"]
+[node name="Sprite2D18" type="Sprite2D" parent="map2/Side Furtniture/long_table"]
 position = Vector2(50.000015, -17.333336)
 texture = ExtResource("42_c0kbr")
 
-[node name="Collision" type="StaticBody2D" parent="enviroment (for map making)/Side Furtniture/long_table"]
+[node name="Collision" type="StaticBody2D" parent="map2/Side Furtniture/long_table"]
 position = Vector2(42, -17.33)
 collision_layer = 65
 collision_mask = 0
 
-[node name="Shape" type="CollisionShape2D" parent="enviroment (for map making)/Side Furtniture/long_table/Collision"]
+[node name="Shape" type="CollisionShape2D" parent="map2/Side Furtniture/long_table/Collision"]
 position = Vector2(-0.83332825, -0.66833496)
 shape = SubResource("RectangleShape2D_t1odu")
 
-[node name="Sprite2D19" type="Sprite2D" parent="enviroment (for map making)/Side Furtniture"]
+[node name="Sprite2D19" type="Sprite2D" parent="map2/Side Furtniture"]
 position = Vector2(34.666668, 0.33333334)
 texture = ExtResource("38_3aba1")
 
-[node name="Sprite2D20" type="Sprite2D" parent="enviroment (for map making)/Side Furtniture"]
+[node name="Sprite2D20" type="Sprite2D" parent="map2/Side Furtniture"]
 position = Vector2(17.333334, 0.33333334)
 texture = ExtResource("39_wuvb2")
 
-[node name="Col_Sprite2D" type="StaticBody2D" parent="enviroment (for map making)/Side Furtniture"]
+[node name="Col_Sprite2D" type="StaticBody2D" parent="map2/Side Furtniture"]
 position = Vector2(-2.67, -0.67)
 collision_layer = 65
 collision_mask = 0
 
-[node name="Shape" type="CollisionShape2D" parent="enviroment (for map making)/Side Furtniture/Col_Sprite2D"]
+[node name="Shape" type="CollisionShape2D" parent="map2/Side Furtniture/Col_Sprite2D"]
 shape = SubResource("RectangleShape2D_elrfl")
 
-[node name="Col_Sprite2D2" type="StaticBody2D" parent="enviroment (for map making)/Side Furtniture"]
+[node name="Col_Sprite2D2" type="StaticBody2D" parent="map2/Side Furtniture"]
 position = Vector2(0.33, 57.33)
 collision_layer = 65
 collision_mask = 0
 
-[node name="Shape" type="CollisionShape2D" parent="enviroment (for map making)/Side Furtniture/Col_Sprite2D2"]
+[node name="Shape" type="CollisionShape2D" parent="map2/Side Furtniture/Col_Sprite2D2"]
 position = Vector2(-0.49667358, -0.49666786)
 shape = SubResource("RectangleShape2D_elrfl")
 
-[node name="Col_Sprite2D3" type="StaticBody2D" parent="enviroment (for map making)/Side Furtniture"]
+[node name="Col_Sprite2D3" type="StaticBody2D" parent="map2/Side Furtniture"]
 position = Vector2(78, 37)
 collision_layer = 65
 collision_mask = 0
 
-[node name="Shape" type="CollisionShape2D" parent="enviroment (for map making)/Side Furtniture/Col_Sprite2D3"]
+[node name="Shape" type="CollisionShape2D" parent="map2/Side Furtniture/Col_Sprite2D3"]
 shape = SubResource("RectangleShape2D_elrfl")
 
-[node name="Col_Sprite2D4" type="StaticBody2D" parent="enviroment (for map making)/Side Furtniture"]
+[node name="Col_Sprite2D4" type="StaticBody2D" parent="map2/Side Furtniture"]
 position = Vector2(59, 37.67)
 collision_layer = 65
 collision_mask = 0
 
-[node name="Shape" type="CollisionShape2D" parent="enviroment (for map making)/Side Furtniture/Col_Sprite2D4"]
+[node name="Shape" type="CollisionShape2D" parent="map2/Side Furtniture/Col_Sprite2D4"]
 shape = SubResource("RectangleShape2D_elrfl")
 
-[node name="Col_Sprite2D5" type="StaticBody2D" parent="enviroment (for map making)/Side Furtniture"]
+[node name="Col_Sprite2D5" type="StaticBody2D" parent="map2/Side Furtniture"]
 position = Vector2(39.33, 37.33)
 collision_layer = 65
 collision_mask = 0
 
-[node name="Shape" type="CollisionShape2D" parent="enviroment (for map making)/Side Furtniture/Col_Sprite2D5"]
+[node name="Shape" type="CollisionShape2D" parent="map2/Side Furtniture/Col_Sprite2D5"]
 shape = SubResource("RectangleShape2D_elrfl")
 
-[node name="Col_Sprite2D6" type="StaticBody2D" parent="enviroment (for map making)/Side Furtniture"]
+[node name="Col_Sprite2D6" type="StaticBody2D" parent="map2/Side Furtniture"]
 position = Vector2(20.33, 37.67)
 collision_layer = 65
 collision_mask = 0
 
-[node name="Shape" type="CollisionShape2D" parent="enviroment (for map making)/Side Furtniture/Col_Sprite2D6"]
+[node name="Shape" type="CollisionShape2D" parent="map2/Side Furtniture/Col_Sprite2D6"]
 shape = SubResource("RectangleShape2D_elrfl")
 
-[node name="Col_Sprite2D7" type="StaticBody2D" parent="enviroment (for map making)/Side Furtniture"]
+[node name="Col_Sprite2D7" type="StaticBody2D" parent="map2/Side Furtniture"]
 position = Vector2(1, 37.67)
 collision_layer = 65
 collision_mask = 0
 
-[node name="Shape" type="CollisionShape2D" parent="enviroment (for map making)/Side Furtniture/Col_Sprite2D7"]
+[node name="Shape" type="CollisionShape2D" parent="map2/Side Furtniture/Col_Sprite2D7"]
 shape = SubResource("RectangleShape2D_elrfl")
 
-[node name="Col_Sprite2D8" type="StaticBody2D" parent="enviroment (for map making)/Side Furtniture"]
+[node name="Col_Sprite2D8" type="StaticBody2D" parent="map2/Side Furtniture"]
 position = Vector2(38.33, 18.67)
 collision_layer = 65
 collision_mask = 0
 
-[node name="Shape" type="CollisionShape2D" parent="enviroment (for map making)/Side Furtniture/Col_Sprite2D8"]
+[node name="Shape" type="CollisionShape2D" parent="map2/Side Furtniture/Col_Sprite2D8"]
 shape = SubResource("RectangleShape2D_elrfl")
 
-[node name="Col_Sprite2D9" type="StaticBody2D" parent="enviroment (for map making)/Side Furtniture"]
+[node name="Col_Sprite2D9" type="StaticBody2D" parent="map2/Side Furtniture"]
 position = Vector2(19, 18.33)
 collision_layer = 65
 collision_mask = 0
 
-[node name="Shape" type="CollisionShape2D" parent="enviroment (for map making)/Side Furtniture/Col_Sprite2D9"]
+[node name="Shape" type="CollisionShape2D" parent="map2/Side Furtniture/Col_Sprite2D9"]
 shape = SubResource("RectangleShape2D_elrfl")
 
-[node name="Col_Sprite2D10" type="StaticBody2D" parent="enviroment (for map making)/Side Furtniture"]
+[node name="Col_Sprite2D10" type="StaticBody2D" parent="map2/Side Furtniture"]
 position = Vector2(0.33, 19)
 collision_layer = 65
 collision_mask = 0
 
-[node name="Shape" type="CollisionShape2D" parent="enviroment (for map making)/Side Furtniture/Col_Sprite2D10"]
+[node name="Shape" type="CollisionShape2D" parent="map2/Side Furtniture/Col_Sprite2D10"]
 shape = SubResource("RectangleShape2D_elrfl")
 
-[node name="Col_Sprite2D19" type="StaticBody2D" parent="enviroment (for map making)/Side Furtniture"]
+[node name="Col_Sprite2D19" type="StaticBody2D" parent="map2/Side Furtniture"]
 position = Vector2(34.67, 0.33)
 collision_layer = 65
 collision_mask = 0
 
-[node name="Shape" type="CollisionShape2D" parent="enviroment (for map making)/Side Furtniture/Col_Sprite2D19"]
+[node name="Shape" type="CollisionShape2D" parent="map2/Side Furtniture/Col_Sprite2D19"]
 shape = SubResource("RectangleShape2D_elrfl")
 
-[node name="Col_Sprite2D20" type="StaticBody2D" parent="enviroment (for map making)/Side Furtniture"]
+[node name="Col_Sprite2D20" type="StaticBody2D" parent="map2/Side Furtniture"]
 position = Vector2(17.33, 0.33)
 collision_layer = 65
 collision_mask = 0
 
-[node name="Shape" type="CollisionShape2D" parent="enviroment (for map making)/Side Furtniture/Col_Sprite2D20"]
+[node name="Shape" type="CollisionShape2D" parent="map2/Side Furtniture/Col_Sprite2D20"]
 shape = SubResource("RectangleShape2D_elrfl")
 
-[node name="Table" type="Node2D" parent="enviroment (for map making)"]
+[node name="Table" type="Node2D" parent="map2"]
+position = Vector2(-1481, 797)
 
-[node name="Long_table" type="Node2D" parent="enviroment (for map making)/Table"]
+[node name="Long_table" type="Node2D" parent="map2/Table"]
 position = Vector2(-32, -648)
 scale = Vector2(3, 3)
 
-[node name="table1" type="Sprite2D" parent="enviroment (for map making)/Table/Long_table"]
+[node name="table1" type="Sprite2D" parent="map2/Table/Long_table"]
 position = Vector2(-248.99997, 401)
 texture = ExtResource("3_yy7jo")
 
-[node name="table2" type="Sprite2D" parent="enviroment (for map making)/Table/Long_table"]
+[node name="table2" type="Sprite2D" parent="map2/Table/Long_table"]
 position = Vector2(-233, 401)
 texture = ExtResource("4_ekg0j")
 
-[node name="table3" type="Sprite2D" parent="enviroment (for map making)/Table/Long_table"]
+[node name="table3" type="Sprite2D" parent="map2/Table/Long_table"]
 position = Vector2(-217, 401)
 texture = ExtResource("5_3aba1")
 
-[node name="TableHide" parent="enviroment (for map making)/Table/Long_table" instance=ExtResource("200_hide")]
+[node name="TableHide" parent="map2/Table/Long_table" instance=ExtResource("200_hide")]
 position = Vector2(-233, 401)
 scale = Vector2(0.33333, 0.33333)
 
-[node name="HideCollision" parent="enviroment (for map making)/Table/Long_table/TableHide/HideArea" index="0"]
+[node name="HideCollision" parent="map2/Table/Long_table/TableHide/HideArea" index="0"]
 position = Vector2(-1.499939, -2.5)
 shape = SubResource("RectangleShape2D_82dxw")
 
-[node name="VisionCollision" parent="enviroment (for map making)/Table/Long_table/TableHide/VisionBlocker" index="0"]
+[node name="VisionCollision" parent="map2/Table/Long_table/TableHide/VisionBlocker" index="0"]
 position = Vector2(-1.5, -3)
 shape = SubResource("RectangleShape2D_835qt")
 
-[node name="Round_table" type="Node2D" parent="enviroment (for map making)/Table"]
+[node name="Round_table" type="Node2D" parent="map2/Table"]
 position = Vector2(-540, -293)
 scale = Vector2(3, 3)
 metadata/_edit_group_ = true
 
-[node name="Sprite2D" type="Sprite2D" parent="enviroment (for map making)/Table/Round_table"]
+[node name="Sprite2D" type="Sprite2D" parent="map2/Table/Round_table"]
 position = Vector2(-70, 261)
 texture = ExtResource("7_hb4vo")
 
-[node name="Sprite2D2" type="Sprite2D" parent="enviroment (for map making)/Table/Round_table"]
+[node name="Sprite2D2" type="Sprite2D" parent="map2/Table/Round_table"]
 position = Vector2(-54, 261)
 texture = ExtResource("8_kqxgq")
 
-[node name="TableHide" parent="enviroment (for map making)/Table/Round_table" instance=ExtResource("200_hide")]
+[node name="TableHide" parent="map2/Table/Round_table" instance=ExtResource("200_hide")]
 position = Vector2(-62, 261)
 scale = Vector2(0.33333, 0.33333)
 
-[node name="HideCollision" parent="enviroment (for map making)/Table/Round_table/TableHide/HideArea" index="0"]
+[node name="HideCollision" parent="map2/Table/Round_table/TableHide/HideArea" index="0"]
 position = Vector2(-1.5, -2.0000305)
 shape = SubResource("RectangleShape2D_o5hir")
 
-[node name="VisionCollision" parent="enviroment (for map making)/Table/Round_table/TableHide/VisionBlocker" index="0"]
+[node name="VisionCollision" parent="map2/Table/Round_table/TableHide/VisionBlocker" index="0"]
 position = Vector2(-1.5, -2.5000305)
 shape = SubResource("RectangleShape2D_5usd4")
 
-[node name="Coloured_Long_table" type="Node2D" parent="enviroment (for map making)/Table"]
+[node name="Coloured_Long_table" type="Node2D" parent="map2/Table"]
 position = Vector2(-758, 620)
 scale = Vector2(3, 3)
 metadata/_edit_group_ = true
 
-[node name="Sprite2D" type="Sprite2D" parent="enviroment (for map making)/Table/Coloured_Long_table"]
+[node name="Sprite2D" type="Sprite2D" parent="map2/Table/Coloured_Long_table"]
 position = Vector2(-7, 0)
 texture = ExtResource("45_olgad")
 
-[node name="Sprite2D2" type="Sprite2D" parent="enviroment (for map making)/Table/Coloured_Long_table"]
+[node name="Sprite2D2" type="Sprite2D" parent="map2/Table/Coloured_Long_table"]
 position = Vector2(9, 0)
 texture = ExtResource("46_g7bok")
 
-[node name="Sprite2D3" type="Sprite2D" parent="enviroment (for map making)/Table/Coloured_Long_table"]
+[node name="Sprite2D3" type="Sprite2D" parent="map2/Table/Coloured_Long_table"]
 position = Vector2(25, 0)
 texture = ExtResource("47_rx134")
 
-[node name="TableHide" parent="enviroment (for map making)/Table/Coloured_Long_table" instance=ExtResource("200_hide")]
+[node name="TableHide" parent="map2/Table/Coloured_Long_table" instance=ExtResource("200_hide")]
 position = Vector2(9, 0)
 scale = Vector2(0.33333, 0.33333)
 
-[node name="HideCollision" parent="enviroment (for map making)/Table/Coloured_Long_table/TableHide/HideArea" index="0"]
+[node name="HideCollision" parent="map2/Table/Coloured_Long_table/TableHide/HideArea" index="0"]
 position = Vector2(-1.5, -0.00012207031)
 shape = SubResource("RectangleShape2D_qamn1")
 
-[node name="VisionCollision" parent="enviroment (for map making)/Table/Coloured_Long_table/TableHide/VisionBlocker" index="0"]
+[node name="VisionCollision" parent="map2/Table/Coloured_Long_table/TableHide/VisionBlocker" index="0"]
 position = Vector2(-1.499939, 0)
 shape = SubResource("RectangleShape2D_a2mo1")
 
-[node name="Coloured_round_table" type="Node2D" parent="enviroment (for map making)/Table"]
+[node name="Coloured_round_table" type="Node2D" parent="map2/Table"]
 position = Vector2(-1053, 506.00003)
 scale = Vector2(3, 3)
 metadata/_edit_group_ = true
 
-[node name="Sprite2D" type="Sprite2D" parent="enviroment (for map making)/Table/Coloured_round_table"]
+[node name="Sprite2D" type="Sprite2D" parent="map2/Table/Coloured_round_table"]
 position = Vector2(59, -5)
 texture = ExtResource("48_elyfg")
 
-[node name="Sprite2D2" type="Sprite2D" parent="enviroment (for map making)/Table/Coloured_round_table"]
+[node name="Sprite2D2" type="Sprite2D" parent="map2/Table/Coloured_round_table"]
 position = Vector2(75, -5)
 texture = ExtResource("49_qfm0e")
 
-[node name="TableHide" parent="enviroment (for map making)/Table/Coloured_round_table" instance=ExtResource("200_hide")]
+[node name="TableHide" parent="map2/Table/Coloured_round_table" instance=ExtResource("200_hide")]
 position = Vector2(67, -5)
 scale = Vector2(0.33333, 0.33333)
 
-[node name="HideCollision" parent="enviroment (for map making)/Table/Coloured_round_table/TableHide/HideArea" index="0"]
+[node name="HideCollision" parent="map2/Table/Coloured_round_table/TableHide/HideArea" index="0"]
 position = Vector2(-1.5, -1.4999695)
 shape = SubResource("RectangleShape2D_c6ox5")
 
-[node name="VisionCollision" parent="enviroment (for map making)/Table/Coloured_round_table/TableHide/VisionBlocker" index="0"]
+[node name="VisionCollision" parent="map2/Table/Coloured_round_table/TableHide/VisionBlocker" index="0"]
 position = Vector2(-1.5, -1.5000305)
 shape = SubResource("RectangleShape2D_n0015")
 
-[node name="Wall decors" type="Node2D" parent="enviroment (for map making)"]
-position = Vector2(-1030, -114)
+[node name="Wall decors" type="Node2D" parent="map2"]
+position = Vector2(-2511, 683)
 scale = Vector2(2, 2)
 
-[node name="Sprite2D" type="Sprite2D" parent="enviroment (for map making)/Wall decors"]
+[node name="Sprite2D" type="Sprite2D" parent="map2/Wall decors"]
 position = Vector2(-4.5, 5)
 texture = ExtResource("50_55bvk")
 
-[node name="Sprite2D2" type="Sprite2D" parent="enviroment (for map making)/Wall decors"]
+[node name="Sprite2D2" type="Sprite2D" parent="map2/Wall decors"]
 position = Vector2(-19, 28)
 texture = ExtResource("51_irowp")
 
-[node name="Sprite2D3" type="Sprite2D" parent="enviroment (for map making)/Wall decors"]
+[node name="Sprite2D3" type="Sprite2D" parent="map2/Wall decors"]
 position = Vector2(65, 25.5)
 texture = ExtResource("52_bmypg")
 
-[node name="Sprite2D4" type="Sprite2D" parent="enviroment (for map making)/Wall decors"]
+[node name="Sprite2D4" type="Sprite2D" parent="map2/Wall decors"]
 position = Vector2(2.5, 42.5)
 texture = ExtResource("53_auxt5")
 
-[node name="Sprite2D5" type="Sprite2D" parent="enviroment (for map making)/Wall decors"]
+[node name="Sprite2D5" type="Sprite2D" parent="map2/Wall decors"]
 position = Vector2(-18, 8)
 texture = ExtResource("54_sa87b")
 
-[node name="Sprite2D6" type="Sprite2D" parent="enviroment (for map making)/Wall decors"]
+[node name="Sprite2D6" type="Sprite2D" parent="map2/Wall decors"]
 position = Vector2(68.5, 9.5)
 texture = ExtResource("55_jusep")
 
-[node name="Sprite2D7" type="Sprite2D" parent="enviroment (for map making)/Wall decors"]
+[node name="Sprite2D7" type="Sprite2D" parent="map2/Wall decors"]
 position = Vector2(67, 42.5)
 texture = ExtResource("56_16xm8")
 
-[node name="Sprite2D8" type="Sprite2D" parent="enviroment (for map making)/Wall decors"]
+[node name="Sprite2D8" type="Sprite2D" parent="map2/Wall decors"]
 position = Vector2(1, 24.5)
 texture = ExtResource("57_pvtoa")
 
-[node name="long_art_green" type="Node2D" parent="enviroment (for map making)/Wall decors"]
+[node name="long_art_green" type="Node2D" parent="map2/Wall decors"]
 
-[node name="Sprite2D15" type="Sprite2D" parent="enviroment (for map making)/Wall decors/long_art_green"]
+[node name="Sprite2D15" type="Sprite2D" parent="map2/Wall decors/long_art_green"]
 position = Vector2(17, 23.5)
 texture = ExtResource("64_vku68")
 
-[node name="Sprite2D16" type="Sprite2D" parent="enviroment (for map making)/Wall decors/long_art_green"]
+[node name="Sprite2D16" type="Sprite2D" parent="map2/Wall decors/long_art_green"]
 position = Vector2(33, 23.5)
 texture = ExtResource("65_08wg3")
 
-[node name="Sprite2D17" type="Sprite2D" parent="enviroment (for map making)/Wall decors/long_art_green"]
+[node name="Sprite2D17" type="Sprite2D" parent="map2/Wall decors/long_art_green"]
 position = Vector2(49, 23.5)
 texture = ExtResource("66_dpoww")
 
-[node name="potrait_orange" type="Node2D" parent="enviroment (for map making)/Wall decors"]
+[node name="potrait_orange" type="Node2D" parent="map2/Wall decors"]
 
-[node name="Sprite2D9" type="Sprite2D" parent="enviroment (for map making)/Wall decors/potrait_orange"]
+[node name="Sprite2D9" type="Sprite2D" parent="map2/Wall decors/potrait_orange"]
 position = Vector2(17.5, -6.5)
 texture = ExtResource("58_oyaq7")
 
-[node name="Sprite2D10" type="Sprite2D" parent="enviroment (for map making)/Wall decors/potrait_orange"]
+[node name="Sprite2D10" type="Sprite2D" parent="map2/Wall decors/potrait_orange"]
 position = Vector2(17.5, 9.5)
 texture = ExtResource("59_f75ti")
 
-[node name="potrait_green" type="Node2D" parent="enviroment (for map making)/Wall decors"]
+[node name="potrait_green" type="Node2D" parent="map2/Wall decors"]
 
-[node name="Sprite2D11" type="Sprite2D" parent="enviroment (for map making)/Wall decors/potrait_green"]
+[node name="Sprite2D11" type="Sprite2D" parent="map2/Wall decors/potrait_green"]
 position = Vector2(50, -7.5)
 texture = ExtResource("60_vmfhe")
 
-[node name="Sprite2D12" type="Sprite2D" parent="enviroment (for map making)/Wall decors/potrait_green"]
+[node name="Sprite2D12" type="Sprite2D" parent="map2/Wall decors/potrait_green"]
 position = Vector2(50, 8.5)
 texture = ExtResource("61_c0kbr")
 
-[node name="potrait_blue" type="Node2D" parent="enviroment (for map making)/Wall decors"]
+[node name="potrait_blue" type="Node2D" parent="map2/Wall decors"]
 
-[node name="Sprite2D13" type="Sprite2D" parent="enviroment (for map making)/Wall decors/potrait_blue"]
+[node name="Sprite2D13" type="Sprite2D" parent="map2/Wall decors/potrait_blue"]
 position = Vector2(33.5, -9)
 texture = ExtResource("62_0wu3f")
 
-[node name="Sprite2D14" type="Sprite2D" parent="enviroment (for map making)/Wall decors/potrait_blue"]
+[node name="Sprite2D14" type="Sprite2D" parent="map2/Wall decors/potrait_blue"]
 position = Vector2(33.5, 7)
 texture = ExtResource("63_mjpo7")
 
-[node name="long_art_blue" type="Node2D" parent="enviroment (for map making)/Wall decors"]
+[node name="long_art_blue" type="Node2D" parent="map2/Wall decors"]
 
-[node name="Sprite2D18" type="Sprite2D" parent="enviroment (for map making)/Wall decors/long_art_blue"]
+[node name="Sprite2D18" type="Sprite2D" parent="map2/Wall decors/long_art_blue"]
 position = Vector2(17, 38.5)
 texture = ExtResource("67_a54xn")
 
-[node name="Sprite2D19" type="Sprite2D" parent="enviroment (for map making)/Wall decors/long_art_blue"]
+[node name="Sprite2D19" type="Sprite2D" parent="map2/Wall decors/long_art_blue"]
 position = Vector2(33, 38.5)
 texture = ExtResource("68_ctc55")
 
-[node name="Sprite2D20" type="Sprite2D" parent="enviroment (for map making)/Wall decors/long_art_blue"]
+[node name="Sprite2D20" type="Sprite2D" parent="map2/Wall decors/long_art_blue"]
 position = Vector2(49, 38.5)
 texture = ExtResource("69_6lnja")
 
-[node name="Cactus" type="Node2D" parent="enviroment (for map making)"]
+[node name="Cactus" type="Node2D" parent="map2"]
+position = Vector2(-1481, 797)
 
-[node name="Sprite2D" type="Sprite2D" parent="enviroment (for map making)/Cactus"]
+[node name="Sprite2D" type="Sprite2D" parent="map2/Cactus"]
 position = Vector2(-759, 288)
 scale = Vector2(3, 3)
 texture = ExtResource("50_3t7cx")
 
-[node name="CactusHazard" type="Area2D" parent="enviroment (for map making)/Cactus"]
+[node name="CactusHazard" type="Area2D" parent="map2/Cactus"]
 position = Vector2(-759, 288)
 collision_layer = 128
 collision_mask = 2
 script = ExtResource("202_cactus")
 
-[node name="CactusCollision" type="CollisionShape2D" parent="enviroment (for map making)/Cactus/CactusHazard"]
+[node name="CactusCollision" type="CollisionShape2D" parent="map2/Cactus/CactusHazard"]
 position = Vector2(-2.5, -2.5)
 shape = SubResource("RectangleShape2D_ujt7l")
 
-[node name="Sofa" type="Node2D" parent="enviroment (for map making)"]
-position = Vector2(-727, 90)
+[node name="Sofa" type="Node2D" parent="map2"]
+position = Vector2(-2208, 887)
 scale = Vector2(3, 3)
 
-[node name="sofa1" type="Node2D" parent="enviroment (for map making)/Sofa"]
+[node name="sofa1" type="Node2D" parent="map2/Sofa"]
 
-[node name="Sprite2D" type="Sprite2D" parent="enviroment (for map making)/Sofa/sofa1"]
+[node name="Sprite2D" type="Sprite2D" parent="map2/Sofa/sofa1"]
 position = Vector2(-8.833334, -15.5)
 texture = ExtResource("71_jusep")
 
-[node name="Sprite2D3" type="Sprite2D" parent="enviroment (for map making)/Sofa/sofa1"]
+[node name="Sprite2D3" type="Sprite2D" parent="map2/Sofa/sofa1"]
 position = Vector2(-8.833334, 0.5)
 texture = ExtResource("72_16xm8")
 
-[node name="sofa2" type="Node2D" parent="enviroment (for map making)/Sofa"]
+[node name="sofa2" type="Node2D" parent="map2/Sofa"]
 position = Vector2(0.33333334, 5)
 metadata/_edit_group_ = true
 
-[node name="Sprite2D2" type="Sprite2D" parent="enviroment (for map making)/Sofa/sofa2"]
+[node name="Sprite2D2" type="Sprite2D" parent="map2/Sofa/sofa2"]
 position = Vector2(22.333344, 0.66666794)
 texture = ExtResource("73_pvtoa")
 
-[node name="Sprite2D" type="Sprite2D" parent="enviroment (for map making)/Sofa/sofa2"]
+[node name="Sprite2D" type="Sprite2D" parent="map2/Sofa/sofa2"]
 position = Vector2(22.333344, -15.333333)
 texture = ExtResource("71_jusep")
 metadata/_edit_group_ = true
 
-[node name="sofa3" type="Node2D" parent="enviroment (for map making)/Sofa"]
+[node name="sofa3" type="Node2D" parent="map2/Sofa"]
 position = Vector2(-14, 1.3333334)
 metadata/_edit_group_ = true
 
-[node name="Sprite2D4" type="Sprite2D" parent="enviroment (for map making)/Sofa/sofa3"]
+[node name="Sprite2D4" type="Sprite2D" parent="map2/Sofa/sofa3"]
 position = Vector2(21.5, -16.5)
 texture = ExtResource("74_oyaq7")
 
-[node name="Sprite2D6" type="Sprite2D" parent="enviroment (for map making)/Sofa/sofa3"]
+[node name="Sprite2D6" type="Sprite2D" parent="map2/Sofa/sofa3"]
 position = Vector2(21.5, -0.5)
 texture = ExtResource("75_f75ti")
 
-[node name="SofaHide" parent="enviroment (for map making)/Sofa" instance=ExtResource("200_hide")]
+[node name="SofaHide" parent="map2/Sofa" instance=ExtResource("200_hide")]
 position = Vector2(-11.666669, -16.666668)
 scale = Vector2(0.33333, 0.33333)
 
-[node name="HideCollision" parent="enviroment (for map making)/Sofa/SofaHide/HideArea" index="0"]
+[node name="HideCollision" parent="map2/Sofa/SofaHide/HideArea" index="0"]
 position = Vector2(1, 26.000267)
 shape = SubResource("RectangleShape2D_la4u7")
 
-[node name="VisionCollision" parent="enviroment (for map making)/Sofa/SofaHide/VisionBlocker" index="0"]
+[node name="VisionCollision" parent="map2/Sofa/SofaHide/VisionBlocker" index="0"]
 position = Vector2(1, 26.000267)
 shape = SubResource("RectangleShape2D_filme")
 
-[node name="SofaHide2" parent="enviroment (for map making)/Sofa" instance=ExtResource("200_hide")]
+[node name="SofaHide2" parent="map2/Sofa" instance=ExtResource("200_hide")]
 position = Vector2(4.666665, -16.333334)
 scale = Vector2(0.33333, 0.33333)
 
-[node name="HideCollision" parent="enviroment (for map making)/Sofa/SofaHide2/HideArea" index="0"]
+[node name="HideCollision" parent="map2/Sofa/SofaHide2/HideArea" index="0"]
 position = Vector2(1, 26.000267)
 shape = SubResource("RectangleShape2D_la4u7")
 
-[node name="VisionCollision" parent="enviroment (for map making)/Sofa/SofaHide2/VisionBlocker" index="0"]
+[node name="VisionCollision" parent="map2/Sofa/SofaHide2/VisionBlocker" index="0"]
 position = Vector2(1, 26.000267)
 shape = SubResource("RectangleShape2D_filme")
 
-[node name="SofaHide3" parent="enviroment (for map making)/Sofa" instance=ExtResource("200_hide")]
+[node name="SofaHide3" parent="map2/Sofa" instance=ExtResource("200_hide")]
 position = Vector2(19.666664, -16.666668)
 scale = Vector2(0.33333, 0.33333)
 
-[node name="HideCollision" parent="enviroment (for map making)/Sofa/SofaHide3/HideArea" index="0"]
+[node name="HideCollision" parent="map2/Sofa/SofaHide3/HideArea" index="0"]
 position = Vector2(1.0002441, 30.000305)
 shape = SubResource("RectangleShape2D_sfldq")
 
-[node name="VisionCollision" parent="enviroment (for map making)/Sofa/SofaHide3/VisionBlocker" index="0"]
+[node name="VisionCollision" parent="map2/Sofa/SofaHide3/VisionBlocker" index="0"]
 position = Vector2(1.0004272, 30.000305)
 shape = SubResource("RectangleShape2D_xqxgp")
-
-[node name="Wall" type="Node2D" parent="enviroment (for map making)"]
-position = Vector2(-1080, 114)
-scale = Vector2(2, 2)
-
-[node name="Sprite2D" type="Sprite2D" parent="enviroment (for map making)/Wall"]
-position = Vector2(-8.5, -57.5)
-texture = ExtResource("76_8qdfo")
-
-[node name="Sprite2D2" type="Sprite2D" parent="enviroment (for map making)/Wall"]
-position = Vector2(7.5, -57.5)
-texture = ExtResource("77_0kosv")
-
-[node name="Sprite2D3" type="Sprite2D" parent="enviroment (for map making)/Wall"]
-position = Vector2(23.5, -57.5)
-texture = ExtResource("78_27xqr")
-
-[node name="Sprite2D6" type="Sprite2D" parent="enviroment (for map making)/Wall"]
-position = Vector2(-13.5, -28.5)
-texture = ExtResource("79_jkm8p")
-
-[node name="Sprite2D7" type="Sprite2D" parent="enviroment (for map making)/Wall"]
-position = Vector2(-7.5, 8.5)
-texture = ExtResource("80_ngoas")
-
-[node name="Sprite2D8" type="Sprite2D" parent="enviroment (for map making)/Wall"]
-position = Vector2(-30, 7.5)
-texture = ExtResource("81_udbal")
-
-[node name="Sprite2D11" type="Sprite2D" parent="enviroment (for map making)/Wall"]
-position = Vector2(-13.5, -12.5)
-texture = ExtResource("82_v7v3g")
-
-[node name="Sprite2D14" type="Sprite2D" parent="enviroment (for map making)/Wall"]
-position = Vector2(-50, 8.5)
-texture = ExtResource("87_vr38v")
-
-[node name="Sprite2D19" type="Sprite2D" parent="enviroment (for map making)/Wall"]
-position = Vector2(31, -28.5)
-texture = ExtResource("88_xfyan")
-
-[node name="Sprite2D20" type="Sprite2D" parent="enviroment (for map making)/Wall"]
-position = Vector2(47, -28.5)
-texture = ExtResource("89_xq6e7")
-
-[node name="Sprite2D21" type="Sprite2D" parent="enviroment (for map making)/Wall"]
-position = Vector2(63, -28.5)
-texture = ExtResource("90_1bwbh")
-
-[node name="Sprite2D9" type="Sprite2D" parent="enviroment (for map making)/Wall"]
-position = Vector2(-74, -16.5)
-rotation = 1.5707964
-texture = ExtResource("81_udbal")
-
-[node name="Sprite2D10" type="Sprite2D" parent="enviroment (for map making)/Wall"]
-position = Vector2(-58, -16.5)
-rotation = 1.5707964
-texture = ExtResource("81_udbal")
-
-[node name="Sprite2D12" type="Sprite2D" parent="enviroment (for map making)/Wall"]
-position = Vector2(-42, -16.5)
-rotation = 1.5707964
-texture = ExtResource("81_udbal")
-
-[node name="Sprite2D4" type="Sprite2D" parent="enviroment (for map making)/Wall"]
-position = Vector2(-56.5, -55.5)
-texture = ExtResource("83_mltvg")
-
-[node name="Sprite2D5" type="Sprite2D" parent="enviroment (for map making)/Wall"]
-position = Vector2(-32.5, -55.5)
-texture = ExtResource("84_kdqji")
-
-[node name="Sprite2D13" type="Sprite2D" parent="enviroment (for map making)/Wall"]
-position = Vector2(-56.5, -35.5)
-texture = ExtResource("85_livok")
-
-[node name="Sprite2D15" type="Sprite2D" parent="enviroment (for map making)/Wall"]
-position = Vector2(-32.5, -35.5)
-texture = ExtResource("86_bum8x")
-
-[node name="Sprite2D16" type="Sprite2D" parent="enviroment (for map making)/Wall"]
-position = Vector2(47, 6)
-texture = ExtResource("91_68qd6")
-
-[node name="Sprite2D17" type="Sprite2D" parent="enviroment (for map making)/Wall"]
-position = Vector2(31, 6)
-texture = ExtResource("92_l1b3u")
-
-[node name="Sprite2D18" type="Sprite2D" parent="enviroment (for map making)/Wall"]
-position = Vector2(63, 6)
-texture = ExtResource("93_5nwic")
-
-[node name="Sprite2D22" type="Sprite2D" parent="enviroment (for map making)/Wall"]
-position = Vector2(31, -10)
-texture = ExtResource("94_rjs0v")
-
-[node name="Sprite2D23" type="Sprite2D" parent="enviroment (for map making)/Wall"]
-position = Vector2(47, -10)
-texture = ExtResource("95_a7hqc")
-
-[node name="Sprite2D24" type="Sprite2D" parent="enviroment (for map making)/Wall"]
-position = Vector2(63, -10)
-texture = ExtResource("96_cmn22")
-
-[node name="Sprite2D25" type="Sprite2D" parent="enviroment (for map making)/Wall"]
-position = Vector2(25, 24.5)
-texture = ExtResource("96_kdqji")
-
-[node name="Sprite2D26" type="Sprite2D" parent="enviroment (for map making)/Wall"]
-position = Vector2(41, 24.5)
-texture = ExtResource("97_livok")
-
-[node name="Sprite2D27" type="Sprite2D" parent="enviroment (for map making)/Wall"]
-position = Vector2(57, 24.5)
-texture = ExtResource("98_bum8x")
-
-[node name="Sprite2D28" type="Sprite2D" parent="enviroment (for map making)/Wall"]
-position = Vector2(25, 40)
-texture = ExtResource("99_vr38v")
-
-[node name="Sprite2D29" type="Sprite2D" parent="enviroment (for map making)/Wall"]
-position = Vector2(41, 40)
-texture = ExtResource("100_xfyan")
-
-[node name="Sprite2D30" type="Sprite2D" parent="enviroment (for map making)/Wall"]
-position = Vector2(57, 40)
-texture = ExtResource("101_xq6e7")
-
-[node name="Sprite2D31" type="Sprite2D" parent="enviroment (for map making)/Wall"]
-position = Vector2(25, 56)
-texture = ExtResource("102_1bwbh")
-
-[node name="Sprite2D32" type="Sprite2D" parent="enviroment (for map making)/Wall"]
-position = Vector2(41, 56)
-texture = ExtResource("103_68qd6")
-
-[node name="Sprite2D33" type="Sprite2D" parent="enviroment (for map making)/Wall"]
-position = Vector2(57, 56)
-texture = ExtResource("104_l1b3u")
-
-[node name="Floor2" type="Node2D" parent="enviroment (for map making)"]
-
-[node name="Sprite2D" type="Sprite2D" parent="enviroment (for map making)/Floor2"]
-position = Vector2(-476, 213)
-texture = ExtResource("97_rqu2v")
-
-[node name="Door" type="Node2D" parent="enviroment (for map making)"]
-position = Vector2(-484, -605)
-
-[node name="ExitDoor" parent="enviroment (for map making)/Door" instance=ExtResource("201_door")]
-position = Vector2(5, 870)
-scale = Vector2(0.99999994, 0.99999994)
-
-[node name="Visual" parent="enviroment (for map making)/Door/ExitDoor" index="0"]
-offset_left = -18.000002
-offset_top = -19.0
-offset_right = 15.999998
-
-[node name="DoorCollision" parent="enviroment (for map making)/Door/ExitDoor" index="1"]
-position = Vector2(-0.99999857, 6.5)
-scale = Vector2(0.9999998, 0.9999998)
-
-[node name="Door2" type="Sprite2D" parent="enviroment (for map making)/Door/ExitDoor"]
-position = Vector2(-1.0000076, 2)
-scale = Vector2(2.031249, 1.7812493)
-texture = ExtResource("6_wuvb2")
 
 [node name="Sprite2D2" type="Sprite2D" parent="."]
 position = Vector2(3247, 1147)
@@ -6040,20 +5857,19 @@ texture = ExtResource("115_rjs0v")
 [editable path="Characters/Dog01"]
 [editable path="Characters/Dog03"]
 [editable path="map2/Door/ExitDoor"]
-[editable path="enviroment (for map making)/Chairs/ChairHide1"]
-[editable path="enviroment (for map making)/Chairs/ChairHide2"]
-[editable path="enviroment (for map making)/Chairs/ChairHide3"]
-[editable path="enviroment (for map making)/beds/Gbed1/BedHide"]
-[editable path="enviroment (for map making)/beds/Rbed1/BedHide"]
-[editable path="enviroment (for map making)/beds/Gbed2/BedHide"]
-[editable path="enviroment (for map making)/beds/Rbed2/BedHide"]
-[editable path="enviroment (for map making)/beds/Gbed3/BedHide"]
-[editable path="enviroment (for map making)/beds/Rbed3/BedHide"]
-[editable path="enviroment (for map making)/Table/Long_table/TableHide"]
-[editable path="enviroment (for map making)/Table/Round_table/TableHide"]
-[editable path="enviroment (for map making)/Table/Coloured_Long_table/TableHide"]
-[editable path="enviroment (for map making)/Table/Coloured_round_table/TableHide"]
-[editable path="enviroment (for map making)/Sofa/SofaHide"]
-[editable path="enviroment (for map making)/Sofa/SofaHide2"]
-[editable path="enviroment (for map making)/Sofa/SofaHide3"]
-[editable path="enviroment (for map making)/Door/ExitDoor"]
+[editable path="map2/Chairs/ChairHide1"]
+[editable path="map2/Chairs/ChairHide2"]
+[editable path="map2/Chairs/ChairHide3"]
+[editable path="map2/beds/Gbed1/BedHide"]
+[editable path="map2/beds/Rbed1/BedHide"]
+[editable path="map2/beds/Gbed2/BedHide"]
+[editable path="map2/beds/Rbed2/BedHide"]
+[editable path="map2/beds/Gbed3/BedHide"]
+[editable path="map2/beds/Rbed3/BedHide"]
+[editable path="map2/Table/Long_table/TableHide"]
+[editable path="map2/Table/Round_table/TableHide"]
+[editable path="map2/Table/Coloured_Long_table/TableHide"]
+[editable path="map2/Table/Coloured_round_table/TableHide"]
+[editable path="map2/Sofa/SofaHide"]
+[editable path="map2/Sofa/SofaHide2"]
+[editable path="map2/Sofa/SofaHide3"]
