@@ -54,8 +54,10 @@ func update_direction(vel: Vector2) -> void:
 		_play(anim)
 
 ## Called by cat.gd — red tint during invulnerability, white after.
+## Preserves current alpha so hiding transparency is not overridden.
 func set_outline(is_active: bool) -> void:
-	modulate = Color(1.0, 0.3, 0.3) if is_active else Color.WHITE
+	var a: float = modulate.a
+	modulate = Color(1.0, 0.3, 0.3, a) if is_active else Color(1.0, 1.0, 1.0, a)
 
 ## Called by cat.gd on/off during the speed-boost window after being tagged.
 func set_force_run(enabled: bool) -> void:

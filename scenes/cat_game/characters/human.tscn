@@ -41,19 +41,24 @@ script = ExtResource("3_pkgn7")
 outfit_variants = Array[SpriteFrames]([ExtResource("4_4c5et"), ExtResource("5_xwqc4"), ExtResource("5_bexoq")])
 hair_variants = Array[SpriteFrames]([ExtResource("7_kkin8"), ExtResource("6_0yd8l")])
 hat_variants = Array[SpriteFrames]([ExtResource("9_x6irx"), ExtResource("7_bexoq")])
+starting_outfit = null
+starting_hair = null
+starting_hat = null
+run_threshold = null
+idle_delay = null
 
 [node name="LayerBase" type="AnimatedSprite2D" parent="Visual"]
 sprite_frames = ExtResource("4_jo5n7")
-animation = &"run_left"
+animation = &"walk_right"
 
 [node name="LayerOutfit" type="AnimatedSprite2D" parent="Visual"]
 sprite_frames = ExtResource("5_bexoq")
 animation = &"walk_right"
 
 [node name="LayerHair" type="AnimatedSprite2D" parent="Visual"]
-sprite_frames = ExtResource("6_0yd8l")
+sprite_frames = ExtResource("7_kkin8")
 animation = &"walk_right"
 
 [node name="LayerHat" type="AnimatedSprite2D" parent="Visual"]
-sprite_frames = ExtResource("7_bexoq")
+sprite_frames = ExtResource("9_x6irx")
 animation = &"walk_right"

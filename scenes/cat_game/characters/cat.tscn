@@ -310,6 +310,7 @@ collision_mask = 8
 shape = SubResource("2_catch_shape")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2, 2)
 
 [node name="CaughtSound" type="AudioStreamPlayer2D" parent="."]
 

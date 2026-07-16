@@ -18,6 +18,7 @@ const MESSAGE_COOLDOWN: float = 2.5
 @onready var _visual: ColorRect = $Visual
 
 func _ready() -> void:
+	add_to_group("exit_door")
 	body_entered.connect(_on_body_entered)
 	_refresh_visual()
 

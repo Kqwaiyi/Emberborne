@@ -56,8 +56,8 @@ func update_direction(vel: Vector2) -> void:
 func set_outline(visible_flag: bool) -> void:
 	_show_outline = visible_flag
 	if _sprite != null and not use_placeholder:
-		# Tint red while caught; restore white when invulnerability ends.
-		_sprite.modulate = Color(1.0, 0.3, 0.3) if visible_flag else Color.WHITE
+		var a: float = _sprite.modulate.a
+		_sprite.modulate = Color(1.0, 0.3, 0.3, a) if visible_flag else Color(1.0, 1.0, 1.0, a)
 	else:
 		queue_redraw()   # redraw the placeholder outline
 

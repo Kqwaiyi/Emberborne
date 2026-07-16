@@ -6,8 +6,5 @@ extends EnemyBase
 
 func _ready() -> void:
 	patrol_speed = 95.0
-	vision_range = 240.0
-	vision_angle = 90.0
-	# chase_speed uses the base class default (55).
-	# The dog feels faster because patrol_speed is higher and vision_angle is wider.
+	# vision_range and vision_angle use enemy_base.gd defaults (180 / 55)
 	super._ready()
