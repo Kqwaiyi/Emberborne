@@ -2379,14 +2379,14 @@ shape = SubResource("RectangleShape2D_wus6y")
 position = Vector2(220, 752)
 patrol_route = NodePath("../../Patrol Routes/Dog01Route")
 
-[node name="VisionCone" parent="Characters/Dog01" index="1"]
+[node name="VisionCone" parent="Characters/Dog01" index="2"]
 ray_count = 20
 
-[node name="Visual" parent="Characters/Dog01" index="4"]
+[node name="Visual" parent="Characters/Dog01" index="5"]
 sprite_frames = ExtResource("111_l1b3u")
 animation = &"Bark"
 
-[node name="AlertIcon" parent="Characters/Dog01" index="5"]
+[node name="AlertIcon" parent="Characters/Dog01" index="6"]
 offset_left = -6.0
 offset_top = -52.0
 offset_right = -6.0
@@ -2396,14 +2396,14 @@ offset_bottom = -52.0
 position = Vector2(-215, 606)
 patrol_route = NodePath("../../Patrol Routes/Dog03Route")
 
-[node name="VisionCone" parent="Characters/Dog03" index="1"]
+[node name="VisionCone" parent="Characters/Dog03" index="2"]
 ray_count = 20
 
-[node name="Visual" parent="Characters/Dog03" index="4"]
+[node name="Visual" parent="Characters/Dog03" index="5"]
 sprite_frames = ExtResource("112_5nwic")
 animation = &"Bark"
 
-[node name="AlertIcon" parent="Characters/Dog03" index="5"]
+[node name="AlertIcon" parent="Characters/Dog03" index="6"]
 offset_left = -6.0
 offset_top = -52.0
 offset_right = -6.0
