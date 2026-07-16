@@ -1,5 +1,6 @@
-[gd_scene load_steps=14 format=3 uid="uid://dvwclk57xvglw"]
+[gd_scene load_steps=15 format=3 uid="uid://dvwclk57xvglw"]
 
+[ext_resource type="Script" path="res://scripts/cat_game/characters/shadow.gd" id="99_shadow"]
 [ext_resource type="Script" uid="uid://djs3bfof0ptli" path="res://scripts/cat_game/characters/human.gd" id="1_human"]
 [ext_resource type="Script" uid="uid://dc83e8ygmgd17" path="res://scripts/cat_game/environment/vision_cone.gd" id="2_cone"]
 [ext_resource type="Script" uid="uid://oclwxt2xw2qs" path="res://scripts/cat_game/characters/layered_character.gd" id="3_pkgn7"]
@@ -21,6 +22,11 @@ radius = 8.0
 [node name="Human" type="CharacterBody2D"]
 collision_layer = 4
 script = ExtResource("1_human")
+
+[node name="Shadow" type="Node2D" parent="."]
+position = Vector2(0, 12)
+z_index = -1
+script = ExtResource("99_shadow")
 
 [node name="BodyCollision" type="CollisionShape2D" parent="."]
 shape = SubResource("1_body")

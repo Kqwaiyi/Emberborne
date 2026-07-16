@@ -1,5 +1,6 @@
-[gd_scene load_steps=43 format=3 uid="uid://b2qxfiflox5xx"]
+[gd_scene load_steps=44 format=3 uid="uid://b2qxfiflox5xx"]
 
+[ext_resource type="Script" path="res://scripts/cat_game/characters/shadow.gd" id="99_shadow"]
 [ext_resource type="Script" uid="uid://c5kcqc1ewjkpc" path="res://scripts/cat_game/characters/cat.gd" id="1_catscript"]
 [ext_resource type="Texture2D" uid="uid://3c11ac21823c" path="res://assets/sprites/cat/Cat.png" id="2_tmpp7"]
 [ext_resource type="Script" uid="uid://dh2avewhkna3e" path="res://scripts/cat_game/characters/cat_animator.gd" id="3_catanim"]
@@ -298,6 +299,11 @@ animations = [{
 [node name="Cat" type="CharacterBody2D"]
 collision_layer = 2
 script = ExtResource("1_catscript")
+
+[node name="Shadow" type="Node2D" parent="."]
+position = Vector2(0, 14)
+z_index = -1
+script = ExtResource("99_shadow")
 
 [node name="BodyCollision" type="CollisionShape2D" parent="."]
 shape = SubResource("1_body_shape")

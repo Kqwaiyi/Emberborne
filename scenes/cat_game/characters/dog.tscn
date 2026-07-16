@@ -1,5 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://p2tgovs3wppl"]
+[gd_scene load_steps=8 format=3 uid="uid://p2tgovs3wppl"]
 
+[ext_resource type="Script" path="res://scripts/cat_game/characters/shadow.gd" id="99_shadow"]
 [ext_resource type="Script" uid="uid://b40vdvjlmot7" path="res://scripts/cat_game/characters/dog.gd" id="1_dog"]
 [ext_resource type="Script" uid="uid://dc83e8ygmgd17" path="res://scripts/cat_game/environment/vision_cone.gd" id="2_cone"]
 [ext_resource type="SpriteFrames" uid="uid://bfmuwocr81ve7" path="res://scenes/cat_game/characters/dog_variants/dog5.tres" id="3_f0e8s"]
@@ -15,6 +16,13 @@ size = Vector2(26, 9)
 collision_layer = 4
 collision_mask = 1
 script = ExtResource("1_dog")
+
+[node name="Shadow" type="Node2D" parent="."]
+position = Vector2(0, 14)
+z_index = -1
+script = ExtResource("99_shadow")
+radius_x = 14.0
+radius_y = 6.0
 
 [node name="BodyCollision" type="CollisionShape2D" parent="."]
 shape = SubResource("1_body")

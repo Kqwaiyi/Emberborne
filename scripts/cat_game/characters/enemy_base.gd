@@ -16,7 +16,7 @@ extends CharacterBody2D
 @export var patrol_ping_pong: bool = true
 
 # ── Timing ────────────────────────────────────────────────────────────────────
-@export var lost_sight_delay: float  = 0
+@export var lost_sight_delay: float  = 2
 @export var alert_duration: float    = 0.3   # pause before chasing (smooth transition)
 @export var bark_duration: float     = 1.0   # stop + bark after tagging cat
 
@@ -40,6 +40,7 @@ var _lost_timer: float = 0.0
 var _return_target: Vector2
 var _alert_timer: float = 0.0
 var _bark_timer: float  = 0.0
+var _catch_area: Area2D = null
 
 func _ready() -> void:
 	add_to_group("enemy")
@@ -52,10 +53,9 @@ func _ready() -> void:
 	if _patrol_points.is_empty():
 		push_warning(name + ": no patrol points found — enemy will stand still.")
 
-	# Self-connect catch area so bark triggers without needing the level script
-	var catch_area := get_node_or_null("CatchArea")
-	if catch_area is Area2D:
-		catch_area.body_entered.connect(_on_self_catch_entered)
+	_catch_area = get_node_or_null("CatchArea") as Area2D
+	if _catch_area != null:
+		_catch_area.body_entered.connect(_on_self_catch_entered)
 
 func setup(player: Cat, anger_getter: Callable) -> void:
 	_player       = player
@@ -165,12 +165,32 @@ func _tick_chase(delta: float) -> void:
 		_enter_return()
 		return
 
+	# Poll catch area every frame — body_entered won't re-fire if cat never left
+	_poll_catch_area()
+
 	if not _can_see_player():
 		_lost_timer += delta
 		if _lost_timer >= lost_sight_delay:
 			_enter_return()
 	else:
 		_lost_timer = 0.0
+
+func _poll_catch_area() -> void:
+	if _catch_area == null or _player == null:
+		return
+	if _player.is_hidden or _player.is_invulnerable:
+		return
+	for body in _catch_area.get_overlapping_bodies():
+		if body == _player:
+			_player.trigger_caught()
+			_start_bark()
+			break
+
+func _start_bark() -> void:
+	_bark_timer = bark_duration
+	var vis := get_node_or_null("Visual")
+	if vis != null and vis.has_method("set_barking"):
+		vis.call("set_barking", true)
 
 # ── RETURN ────────────────────────────────────────────────────────────────────
 
@@ -215,10 +235,7 @@ func _enter_return() -> void:
 
 func _on_self_catch_entered(body: Node) -> void:
 	if body.is_in_group("player") and not _player.is_hidden:
-		_bark_timer = bark_duration
-		var vis := get_node_or_null("Visual")
-		if vis != null and vis.has_method("set_barking"):
-			vis.call("set_barking", true)
+		_start_bark()
 
 func _end_bark() -> void:
 	var vis := get_node_or_null("Visual")
