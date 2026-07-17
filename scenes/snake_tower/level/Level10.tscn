@@ -117,7 +117,7 @@ theme_override_font_sizes/font_size = 64
 text = "Reset (R)"
 metadata/_edit_use_anchors_ = true
 
-[node name="HomeButton" type="Button" parent="UILayer"]
+[node name="HomeButton" type="Button" parent="UILayer" unique_id=1867241141]
 offset_left = 98.46154
 offset_top = 12.307693
 offset_right = 222.46155
@@ -133,5 +133,4 @@ position = Vector2(0, 112)
 position = Vector2(-32, 32)
 
 [connection signal="pressed" from="UILayer/ResetButton" to="." method="reset_level"]
-
 [connection signal="pressed" from="UILayer/HomeButton" to="." method="return_to_home"]
