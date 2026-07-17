@@ -21,11 +21,12 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-Globals="*res://scripts/snake_tower/core/Globals.gd"
+GlobalSnaketower="*res://scripts/snake_tower/core/global_snaketower.gd"
 LevelManager="*res://scripts/snake_tower/core/LevelManager.gd"
 SceneManager="*res://scenes/core/SceneManager.tscn"
 DialogueManager="*res://scripts/core/DialogueManager.gd"
 MusicManager="*res://scripts/core/MusicManager.gd"
+GameGlobal="*res://scripts/core/game_global.gd"
 
 [display]
 

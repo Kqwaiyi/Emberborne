@@ -4,7 +4,7 @@ extends Node2D
 func _ready():
 	# Register the y-coordinate (in grid space) to LevelManager
 	if not Engine.is_editor_hint():
-		LevelManager.camera_limit_y = int((position.y / Globals.TILE_SIZE))
+		LevelManager.camera_limit_y = int((position.y / GlobalSnaketower.TILE_SIZE))
 
 func _draw():
 	if Engine.is_editor_hint():

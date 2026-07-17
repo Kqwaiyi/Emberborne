@@ -8,4 +8,4 @@ func _ready():
 		add_to_group("snake_tail")
 		
 	# Initial position to grid, read by Snake.gd for editor-placed tails
-	grid_position = Vector2i((global_position / float(Globals.TILE_SIZE)).round())
+	grid_position = Vector2i((global_position / float(GlobalSnaketower.TILE_SIZE)).round())

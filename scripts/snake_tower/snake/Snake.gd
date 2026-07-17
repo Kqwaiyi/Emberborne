@@ -20,7 +20,7 @@ var fall_interval: float = 0.07
 func _ready():
 	# If placed manually in editor, initialize at current grid position
 	if segments.is_empty():
-		var grid_pos = Vector2i((position / float(Globals.TILE_SIZE)).round())
+		var grid_pos = Vector2i((position / float(GlobalSnaketower.TILE_SIZE)).round())
 		# Reset our own position to 0,0 since we manually position our child segments
 		position = Vector2.ZERO 
 		# Wait until all other nodes (like terrain) have registered in the grid
@@ -66,7 +66,7 @@ func init_snake(start_positions: Array[Vector2i]):
 		var target_y = LevelManager.death_y
 		if LevelManager.camera_limit_y != -1:
 			target_y = LevelManager.camera_limit_y
-		$Camera2D.limit_bottom = (target_y * Globals.TILE_SIZE) + (Globals.TILE_SIZE * 2)
+		$Camera2D.limit_bottom = (target_y * GlobalSnaketower.TILE_SIZE) + (GlobalSnaketower.TILE_SIZE * 2)
 
 func add_segment(pos: Vector2i):
 	segments.append(pos)
@@ -80,7 +80,7 @@ func add_segment(pos: Vector2i):
 			var sprite = Sprite2D.new()
 			sprite.texture = preload("res://icon.svg")
 			sprite.centered = true
-			sprite.scale = Vector2(Globals.TILE_SIZE / 128.0, Globals.TILE_SIZE / 128.0)
+			sprite.scale = Vector2(GlobalSnaketower.TILE_SIZE / 128.0, GlobalSnaketower.TILE_SIZE / 128.0)
 			sprite.modulate = Color(0.1, 0.4, 0.8) # Head
 			node = sprite
 	else:
@@ -90,7 +90,7 @@ func add_segment(pos: Vector2i):
 			var sprite = Sprite2D.new()
 			sprite.texture = preload("res://icon.svg")
 			sprite.centered = true
-			sprite.scale = Vector2(Globals.TILE_SIZE / 128.0, Globals.TILE_SIZE / 128.0)
+			sprite.scale = Vector2(GlobalSnaketower.TILE_SIZE / 128.0, GlobalSnaketower.TILE_SIZE / 128.0)
 			sprite.modulate = Color(0.2, 0.6, 1.0) # Body fallback
 			node = sprite
 			
@@ -102,11 +102,11 @@ func add_segment(pos: Vector2i):
 func update_visuals():
 	for i in range(segments.size()):
 		if i == 0:
-			visual_nodes[i].position = (Vector2(segments[i]) * Globals.TILE_SIZE) + Vector2(Globals.TILE_SIZE / 2.0, Globals.TILE_SIZE / 2.0)
+			visual_nodes[i].position = (Vector2(segments[i]) * GlobalSnaketower.TILE_SIZE) + Vector2(GlobalSnaketower.TILE_SIZE / 2.0, GlobalSnaketower.TILE_SIZE / 2.0)
 		else:
-			visual_nodes[i].position = Vector2(segments[i]) * Globals.TILE_SIZE
+			visual_nodes[i].position = Vector2(segments[i]) * GlobalSnaketower.TILE_SIZE
 	if has_node("Camera2D") and not segments.is_empty():
-		$Camera2D.position = Vector2(segments[0]) * Globals.TILE_SIZE + Vector2(Globals.TILE_SIZE / 2.0, Globals.TILE_SIZE / 2.0)
+		$Camera2D.position = Vector2(segments[0]) * GlobalSnaketower.TILE_SIZE + Vector2(GlobalSnaketower.TILE_SIZE / 2.0, GlobalSnaketower.TILE_SIZE / 2.0)
 
 func update_grid_registration():
 	# Only unregister cells that are currently registered to THIS snake
@@ -211,7 +211,7 @@ func move_segments(target: Vector2i, grow: bool, dir: Vector2i = Vector2i.ZERO):
 			var sprite = Sprite2D.new()
 			sprite.texture = preload("res://icon.svg")
 			sprite.centered = true
-			sprite.scale = Vector2(Globals.TILE_SIZE / 128.0, Globals.TILE_SIZE / 128.0)
+			sprite.scale = Vector2(GlobalSnaketower.TILE_SIZE / 128.0, GlobalSnaketower.TILE_SIZE / 128.0)
 			sprite.modulate = Color(0.2, 0.6, 1.0)
 			node = sprite
 		add_child(node)
