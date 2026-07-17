@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://byhqxksku3yux"]
+[gd_scene load_steps=0 format=3 uid="uid://byhqxksku3yux"]
 
 [ext_resource type="Script" uid="uid://brqbbgyoh5hbg" path="res://scripts/snake_tower/goal/GoalFlag.gd" id="1_sw6bq"]
 [ext_resource type="Texture2D" uid="uid://bhao8hlkra657" path="res://assets/snake_tower/flag_animation.png" id="2_qf47m"]

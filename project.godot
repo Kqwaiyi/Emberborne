@@ -24,6 +24,7 @@ config/icon="res://icon.svg"
 GlobalSnaketower="*res://scripts/snake_tower/core/global_snaketower.gd"
 LevelManager="*res://scripts/snake_tower/core/LevelManager.gd"
 SceneManager="*res://scenes/core/SceneManager.tscn"
+GameState="*res://scripts/cat_game/autoload/game_state.gd"
 DialogueManager="*res://scripts/core/DialogueManager.gd"
 MusicManager="*res://scripts/core/MusicManager.gd"
 GameGlobal="*res://scripts/core/game_global.gd"
@@ -107,6 +108,17 @@ dialogue_advance={
 2d_physics/layer_7="VisionBlocker"
 2d_physics/layer_8="EnemyCatchArea"
 
+[layer_names]
+
+2d_physics/layer_1="WorldSolid"
+2d_physics/layer_2="Player"
+2d_physics/layer_3="Enemy"
+2d_physics/layer_4="Mouse"
+2d_physics/layer_5="Exit"
+2d_physics/layer_6="HideZone"
+2d_physics/layer_7="VisionBlocker"
+2d_physics/layer_8="EnemyCatchArea"
+
 [physics]
 
 3d/physics_engine="Jolt Physics"
@@ -115,4 +127,4 @@ dialogue_advance={
 
 textures/canvas_textures/default_texture_filter=0
 rendering_device/driver.windows="d3d12"
-renderer/canvas_textures/default_texture_filter=0
+environment/defaults/default_clear_color=Color(0, 0, 0, 1)

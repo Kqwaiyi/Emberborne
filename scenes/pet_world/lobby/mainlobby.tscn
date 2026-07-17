@@ -1,0 +1,122 @@
+[gd_scene load_steps=11 format=3 uid="uid://cn6g6axp4jjsy"]
+
+[ext_resource type="Texture2D" uid="uid://ded2c6w7mkhk8" path="res://assets/pet_world_assets/Room1.png" id="1_5yqg7"]
+[ext_resource type="Texture2D" uid="uid://gwkgvmxrd20" path="res://assets/pet_world_assets/background2.png" id="1_gedky"]
+[ext_resource type="Texture2D" uid="uid://bqlf6t6sah5xf" path="res://assets/pet_world_assets/CatRoomDecorations.png" id="2_g78u4"]
+[ext_resource type="PackedScene" uid="uid://dv2rs7tn4jujg" path="res://scenes/pet_world/characters/cat.tscn" id="3_cat"]
+[ext_resource type="PackedScene" uid="uid://bjfakway4r2wh" path="res://scenes/pet_world/characters/snake.tscn" id="4_snake"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mq7y1"]
+size = Vector2(20, 305.48358)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gedky"]
+size = Vector2(20, 289.75635)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vop27"]
+size = Vector2(20, 317.523)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mq7y1"]
+texture = ExtResource("2_g78u4")
+1:0/size_in_atlas = Vector2i(4, 6)
+1:0/0 = 0
+12:1/size_in_atlas = Vector2i(4, 7)
+12:1/0 = 0
+0:14/size_in_atlas = Vector2i(4, 4)
+0:14/0 = 0
+8:14/size_in_atlas = Vector2i(2, 2)
+8:14/0 = 0
+0:18/size_in_atlas = Vector2i(8, 8)
+0:18/0 = 0
+8:18/size_in_atlas = Vector2i(4, 8)
+8:18/0 = 0
+0:34/size_in_atlas = Vector2i(7, 8)
+0:34/0 = 0
+12:27/size_in_atlas = Vector2i(4, 5)
+12:27/0 = 0
+20:31/size_in_atlas = Vector2i(4, 3)
+20:31/0 = 0
+20:46/size_in_atlas = Vector2i(4, 4)
+20:46/0 = 0
+26:42/size_in_atlas = Vector2i(2, 2)
+26:42/0 = 0
+36:34/size_in_atlas = Vector2i(4, 4)
+36:34/0 = 0
+30:24/size_in_atlas = Vector2i(2, 2)
+30:24/0 = 0
+32:24/size_in_atlas = Vector2i(2, 2)
+32:24/0 = 0
+34:24/size_in_atlas = Vector2i(8, 10)
+34:24/0 = 0
+20:14/size_in_atlas = Vector2i(8, 6)
+20:14/0 = 0
+28:12/size_in_atlas = Vector2i(2, 4)
+28:12/0 = 0
+43:12/size_in_atlas = Vector2i(5, 6)
+43:12/0 = 0
+58:29/size_in_atlas = Vector2i(4, 7)
+58:29/0 = 0
+45:42/size_in_atlas = Vector2i(2, 6)
+45:42/0 = 0
+20:8/size_in_atlas = Vector2i(8, 6)
+20:8/0 = 0
+32:2/size_in_atlas = Vector2i(2, 2)
+32:2/0 = 0
+42:19/size_in_atlas = Vector2i(6, 9)
+42:19/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_gedky"]
+sources/0 = SubResource("TileSetAtlasSource_mq7y1")
+
+[node name="Mainlobby" type="Node2D"]
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(3.2789536, -2.8750076)
+scale = Vector2(0.63603, 0.6437301)
+texture = ExtResource("1_gedky")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-123.86097, 51.89751)
+rotation = 1.0471976
+scale = Vector2(0.99999994, 0.99999994)
+shape = SubResource("RectangleShape2D_mq7y1")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(140.85046, 47.758976)
+rotation = 2.0943952
+scale = Vector2(0.99999994, 0.99999994)
+shape = SubResource("RectangleShape2D_gedky")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-127.023315, 195.05833)
+rotation = 2.0943952
+scale = Vector2(0.99999994, 0.99999994)
+shape = SubResource("RectangleShape2D_gedky")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(142, 192)
+rotation = 4.1887903
+scale = Vector2(0.99999994, 0.99999994)
+shape = SubResource("RectangleShape2D_vop27")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -1)
+scale = Vector2(1.2958984, 1.2958984)
+texture = ExtResource("1_5yqg7")
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_gedky")
+format = 2
+layer_0/tile_data = PackedInt32Array(-196594, 2818048, 12, -393207, 65536, 0, -327697, 0, 14, -327680, 2359296, 34, -262141, 786432, 1, 65522, 0, 34, -131066, 3801088, 29, 458746, 1310720, 8, 327689, 1310720, 14, 131088, 524288, 18, -65525, 524288, 18, 655358, 1310720, 31, 524293, 1310720, 46, 327684, 524288, 14, -327692, 1966080, 24, -327694, 2097152, 24, -589820, 1835008, 12, 458750, 2097152, 2, 393214, 1703936, 42, -131079, 0, 18, -655363, 2752512, 19)
+
+[node name="Cat" parent="." instance=ExtResource("3_cat")]
+position = Vector2(-86, 91)
+
+[node name="Snake" parent="." instance=ExtResource("4_snake")]
+position = Vector2(151, 91)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(1.2, 1.2)
+
+[node name="Shadow" type="Node2D" parent="."]

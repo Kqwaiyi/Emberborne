@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://8bx015urajli"]
+
+[ext_resource type="Script" uid="uid://bk0mk3x6qgwai" path="res://scripts/cat_game/environment/hiding_spot.gd" id="1_hiding"]
+
+[sub_resource type="RectangleShape2D" id="1_hide_shape"]
+size = Vector2(31.500345, 39.00038)
+
+[sub_resource type="RectangleShape2D" id="2_vision_shape"]
+size = Vector2(145.00146, 52.00061)
+
+[node name="HidingSpot" type="Node2D"]
+script = ExtResource("1_hiding")
+
+[node name="HideArea" type="Area2D" parent="."]
+collision_layer = 32
+collision_mask = 2
+
+[node name="HideCollision" type="CollisionShape2D" parent="HideArea"]
+shape = SubResource("1_hide_shape")
+
+[node name="VisionBlocker" type="StaticBody2D" parent="."]
+collision_layer = 64
+collision_mask = 0
+
+[node name="VisionCollision" type="CollisionShape2D" parent="VisionBlocker"]
+shape = SubResource("2_vision_shape")

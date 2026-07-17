@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://bl1jkw030abc"]
+[gd_scene load_steps=0 format=3 uid="uid://bl1jkw030abc"]
 
 [ext_resource type="Script" path="res://scripts/snake_tower/level/CameraLimit.gd" id="1_cl"]
 

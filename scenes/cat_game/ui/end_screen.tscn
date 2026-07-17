@@ -1,0 +1,92 @@
+[gd_scene load_steps=3 format=3 uid="uid://cae1w4ffii4j5"]
+
+[ext_resource type="Script" uid="uid://ve3iv3hgdh8x" path="res://scripts/cat_game/ui/end_screen.gd" id="1_end"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_panel"]
+content_margin_left = 24.0
+content_margin_top = 20.0
+content_margin_right = 24.0
+content_margin_bottom = 20.0
+bg_color = Color(0.898, 0.816, 0.663, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.216, 0.149, 0.086, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+shadow_color = Color(0.05, 0.02, 0.01, 0.5)
+shadow_size = 14
+
+[node name="EndScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource("1_end")
+
+[node name="BG" type="ColorRect" parent="."]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0, 0, 0, 1)
+
+[node name="Panel" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -310.0
+offset_top = -185.0
+offset_right = 310.0
+offset_bottom = 169.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_panel")
+
+[node name="VBox" type="VBoxContainer" parent="Panel"]
+layout_mode = 2
+theme_override_constants/separation = 14
+
+[node name="CongratLabel" type="Label" parent="Panel/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.18, 0.12, 0.07, 1)
+theme_override_font_sizes/font_size = 40
+text = "✦  CONGRATULATIONS!  ✦"
+horizontal_alignment = 1
+
+[node name="TitleDiv" type="ColorRect" parent="Panel/VBox"]
+custom_minimum_size = Vector2(0, 3)
+layout_mode = 2
+color = Color(0.216, 0.149, 0.086, 0.65)
+
+[node name="SubLabel" type="Label" parent="Panel/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.3, 0.2, 0.1, 1)
+theme_override_font_sizes/font_size = 25
+text = "YOUR TOTAL SCORE"
+horizontal_alignment = 1
+
+[node name="ScoreCenter" type="CenterContainer" parent="Panel/VBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ScoreRow" type="HBoxContainer" parent="Panel/VBox/ScoreCenter"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="BotDiv" type="ColorRect" parent="Panel/VBox"]
+custom_minimum_size = Vector2(0, 2)
+layout_mode = 2
+color = Color(0.216, 0.149, 0.086, 0.5)
+
+[node name="BracketLabel" type="Label" parent="Panel/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.3, 0.2, 0.1, 1)
+theme_override_font_sizes/font_size = 25
+text = "You have placed  # ..."
+horizontal_alignment = 1

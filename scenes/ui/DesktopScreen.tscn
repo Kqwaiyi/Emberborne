@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://dcq7dwev8rxn4"]
+[gd_scene load_steps=0 format=3 uid="uid://dcq7dwev8rxn4"]
 
 [ext_resource type="Script" uid="uid://72p8h488uib3" path="res://scripts/ui/DesktopScreen.gd" id="1_script"]
 [ext_resource type="PackedScene" uid="uid://d2k4j5l6m7n8o" path="res://scenes/ui/DesktopAppButton.tscn" id="2_button"]

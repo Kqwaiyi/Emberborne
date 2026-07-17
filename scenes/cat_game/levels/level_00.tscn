@@ -1,0 +1,573 @@
+[gd_scene load_steps=24 format=3 uid="uid://nsnt58r8p8gl"]
+
+[ext_resource type="PackedScene" uid="uid://b2qxfiflox5xx" path="res://scenes/cat_game/characters/cat.tscn" id="2_cat"]
+[ext_resource type="PackedScene" uid="uid://dvwclk57xvglw" path="res://scenes/cat_game/characters/human.tscn" id="3_human"]
+[ext_resource type="PackedScene" uid="uid://p2tgovs3wppl" path="res://scenes/cat_game/characters/dog.tscn" id="4_dog"]
+[ext_resource type="PackedScene" uid="uid://fb2upb5dyg5b" path="res://scenes/cat_game/characters/mouse.tscn" id="5_mouse"]
+[ext_resource type="PackedScene" uid="uid://8bx015urajli" path="res://scenes/cat_game/environment/hiding_spot.tscn" id="6_hide"]
+[ext_resource type="PackedScene" path="res://scenes/cat_game/environment/exit_door.tscn" id="7_door"]
+[ext_resource type="PackedScene" path="res://scenes/cat_game/ui/hud.tscn" id="8_hud"]
+[ext_resource type="PackedScene" uid="uid://cmquucfy2ckxe" path="res://scenes/cat_game/ui/results_screen.tscn" id="9_results"]
+
+[sub_resource type="GDScript" id="GDScript_yex6o"]
+script/source = "## scripts/levels/level_01.gd
+## Attach to the Level01 root node in level_01.tscn.
+## Owns the timer, score, anger, mouse count, and HUD updates.
+## Coordinates all signals from cat, mice, enemies, and exit door.
+extends Node2D
+
+# ── Exported balance values ───────────────────────────────────────────────────
+@export var required_mice: int          = 3
+@export var starting_score: int         = 0
+@export var points_per_mouse: int       = 500
+@export var caught_penalty: int         = 300
+@export var maximum_time_bonus: int         = 1000
+@export var optimal_time_seconds: float     = 60.0
+@export var time_penalty_per_second: float  = 20.0
+@export var anger_per_detection: float  = 20.0
+@export var total_mice: int             = 5
+@export var next_scene_path: String     = \"\"
+
+# ── Runtime state ─────────────────────────────────────────────────────────────
+var _elapsed_time: float  = 0.0
+var _current_score: int   = 0
+var _mice_caught: int     = 0
+var _times_caught: int    = 0
+var _anger: float         = 0.0
+var _level_active: bool   = true
+
+# ── Node references ───────────────────────────────────────────────────────────
+@onready var _hud:            HUD         = $HUD
+@onready var _results:        ResultsScreen = $ResultsScreen
+@onready var _cat:            Cat         = $Characters/Cat
+@onready var _exit_door:      ExitDoor    = $ExitDoor
+
+func _ready() -> void:
+	_current_score = starting_score
+	_update_hud_all()
+	_hud.set_level_mice(total_mice)
+
+	# Connect cat signals
+	_cat.mouse_caught.connect(_on_mouse_caught)
+	_cat.player_caught.connect(_on_player_caught)
+
+	# Connect exit door
+	_exit_door.exit_attempted.connect(_on_exit_attempted)
+	_exit_door.level_completed.connect(_on_level_completed)
+
+	# Give all enemies a reference to the cat and an anger getter
+	for enemy in get_tree().get_nodes_in_group(\"enemy\"):
+		if enemy.has_method(\"setup\"):
+			enemy.setup(_cat, func() -> float: return _anger)
+		# Connect detection signal
+		if enemy.has_signal(\"detection_started\"):
+			enemy.detection_started.connect(_on_detection_started)
+		# Connect enemy catch area to cat
+		var catch_area := enemy.get_node_or_null(\"CatchArea\")
+		if catch_area is Area2D:
+			catch_area.body_entered.connect(_on_catch_area_body_entered)
+
+func _process(delta: float) -> void:
+	if not _level_active:
+		return
+	_elapsed_time += delta
+	_hud.update_time(_elapsed_time)
+
+	# Also update score display live as time bonus decays (optional)
+	_hud.update_score(_current_score)
+
+# ── Signal handlers ───────────────────────────────────────────────────────────
+
+func _on_mouse_caught(points: int) -> void:
+	_mice_caught  += 1
+	_current_score = max(0, _current_score + points)
+	_hud.update_mouse_count(_mice_caught, required_mice)
+	_hud.update_score(_current_score)
+
+	if _mice_caught >= required_mice:
+		_exit_door.activate()
+		match _mice_caught:
+			total_mice:
+				_hud.show_message(\"ALL MICE CAUGHT!  →  HEAD TO THE EXIT!\", Color(0.18, 0.88, 0.28, 1), 26, 4.0)
+			required_mice:
+				_hud.show_message(\"SATISFIED\", Color(1.0, 0.88, 0.2, 1), 30, 3.0)
+
+func _on_player_caught() -> void:
+	_times_caught  += 1
+	_current_score  = max(0, _current_score - caught_penalty)
+	_hud.update_caught_count(_times_caught)
+	_hud.update_score(_current_score)
+	_hud.show_message(\"HURT!  -%d PTS\" % caught_penalty, Color(1.0, 0.12, 0.08, 1), 32, 1.8, 18.0)
+
+func _on_detection_started() -> void:
+	_anger = min(100.0, _anger + anger_per_detection)
+	_hud.update_anger(_anger)
+
+func _on_exit_attempted() -> void:
+	_hud.show_message(\"NOT ENOUGH MICE!\", Color(1.0, 0.7, 0.1, 1), 24, 2.0, 7.0)
+
+func _on_level_completed() -> void:
+	if not _level_active:
+		return
+	_level_active = false
+
+	# Stop cat input; freeze enemies
+	_cat.disable_input()
+	for enemy in get_tree().get_nodes_in_group(\"enemy\"):
+		if enemy.has_method(\"disable\"):
+			enemy.disable()
+
+	# Calculate final score
+	var overtime: float = max(0.0, _elapsed_time - optimal_time_seconds)
+	var time_bonus: int = max(0, maximum_time_bonus - int(overtime * time_penalty_per_second))
+	_current_score = max(0, _current_score + time_bonus)
+
+	var mouse_points: int      = _mice_caught * points_per_mouse
+	var caught_deductions: int = _times_caught * caught_penalty
+	var level_total: int       = time_bonus + mouse_points - caught_deductions
+	var prev_total: int        = GameState.total_score
+	GameState.add_score(level_total)
+
+	_results.show_results(
+		_elapsed_time,
+		_mice_caught,
+		total_mice,
+		time_bonus,
+		mouse_points,
+		caught_deductions,
+		level_total,
+		prev_total,
+		GameState.total_score,
+		next_scene_path
+	)
+
+func _on_catch_area_body_entered(_body: Node) -> void:
+	# Hidden cats cannot be caught — the hiding spot protects them.
+	if _level_active and not _cat.is_hidden:
+		_cat.trigger_caught()
+
+# ── Public getter for anger (used by Callable in setup()) ─────────────────────
+func get_anger() -> float:
+	return _anger
+
+# ── Convenience ───────────────────────────────────────────────────────────────
+func _update_hud_all() -> void:
+	_hud.update_mouse_count(_mice_caught, required_mice)
+	_hud.update_time(_elapsed_time)
+	_hud.update_score(_current_score)
+	_hud.update_caught_count(_times_caught)
+	_hud.update_anger(_anger)
+"
+
+[sub_resource type="RectangleShape2D" id="sh_outer_h"]
+size = Vector2(1000, 20)
+
+[sub_resource type="RectangleShape2D" id="sh_outer_v"]
+size = Vector2(20, 800)
+
+[sub_resource type="RectangleShape2D" id="sh_int_h1"]
+size = Vector2(190, 16)
+
+[sub_resource type="RectangleShape2D" id="sh_int_h2"]
+size = Vector2(160, 16)
+
+[sub_resource type="RectangleShape2D" id="sh_int_h3"]
+size = Vector2(100, 16)
+
+[sub_resource type="RectangleShape2D" id="sh_int_h4"]
+size = Vector2(280, 16)
+
+[sub_resource type="RectangleShape2D" id="sh_bd_v1"]
+size = Vector2(16, 240)
+
+[sub_resource type="RectangleShape2D" id="sh_bd_v2"]
+size = Vector2(16, 220)
+
+[sub_resource type="RectangleShape2D" id="sh_int_v_top"]
+size = Vector2(16, 100)
+
+[sub_resource type="RectangleShape2D" id="sh_int_v_bot"]
+size = Vector2(16, 60)
+
+[sub_resource type="RectangleShape2D" id="sh_sofa"]
+size = Vector2(130, 55)
+
+[sub_resource type="RectangleShape2D" id="sh_armchair"]
+size = Vector2(50, 50)
+
+[sub_resource type="RectangleShape2D" id="sh_counter"]
+size = Vector2(90, 60)
+
+[sub_resource type="NavigationPolygon" id="nav_poly"]
+
+[node name="Level01" type="Node2D"]
+script = SubResource("GDScript_yex6o")
+
+[node name="Environment" type="Node2D" parent="."]
+
+[node name="Floor" type="ColorRect" parent="Environment"]
+z_index = -2
+offset_left = 120.0
+offset_top = 100.0
+offset_right = 1080.0
+offset_bottom = 860.0
+color = Color(0.86, 0.81, 0.71, 1)
+
+[node name="Walls" type="Node2D" parent="Environment"]
+
+[node name="WallTop" type="StaticBody2D" parent="Environment/Walls"]
+position = Vector2(600, 90)
+collision_layer = 65
+collision_mask = 0
+
+[node name="Vis" type="ColorRect" parent="Environment/Walls/WallTop"]
+offset_left = -500.0
+offset_top = -10.0
+offset_right = 500.0
+offset_bottom = 10.0
+color = Color(0.22, 0.22, 0.22, 1)
+
+[node name="Col" type="CollisionShape2D" parent="Environment/Walls/WallTop"]
+shape = SubResource("sh_outer_h")
+
+[node name="WallBottom" type="StaticBody2D" parent="Environment/Walls"]
+position = Vector2(600, 870)
+collision_layer = 65
+collision_mask = 0
+
+[node name="Vis" type="ColorRect" parent="Environment/Walls/WallBottom"]
+offset_left = -500.0
+offset_top = -10.0
+offset_right = 500.0
+offset_bottom = 10.0
+color = Color(0.22, 0.22, 0.22, 1)
+
+[node name="Col" type="CollisionShape2D" parent="Environment/Walls/WallBottom"]
+shape = SubResource("sh_outer_h")
+
+[node name="WallLeft" type="StaticBody2D" parent="Environment/Walls"]
+position = Vector2(110, 480)
+collision_layer = 65
+collision_mask = 0
+
+[node name="Vis" type="ColorRect" parent="Environment/Walls/WallLeft"]
+offset_left = -10.0
+offset_top = -400.0
+offset_right = 10.0
+offset_bottom = 400.0
+color = Color(0.22, 0.22, 0.22, 1)
+
+[node name="Col" type="CollisionShape2D" parent="Environment/Walls/WallLeft"]
+shape = SubResource("sh_outer_v")
+
+[node name="WallRight" type="StaticBody2D" parent="Environment/Walls"]
+position = Vector2(1090, 480)
+collision_layer = 65
+collision_mask = 0
+
+[node name="Vis" type="ColorRect" parent="Environment/Walls/WallRight"]
+offset_left = -10.0
+offset_top = -400.0
+offset_right = 10.0
+offset_bottom = 400.0
+color = Color(0.22, 0.22, 0.22, 1)
+
+[node name="Col" type="CollisionShape2D" parent="Environment/Walls/WallRight"]
+shape = SubResource("sh_outer_v")
+
+[node name="IntH1" type="StaticBody2D" parent="Environment/Walls"]
+position = Vector2(215, 640)
+collision_layer = 65
+collision_mask = 0
+
+[node name="Vis" type="ColorRect" parent="Environment/Walls/IntH1"]
+offset_left = -95.0
+offset_top = -8.0
+offset_right = 95.0
+offset_bottom = 8.0
+color = Color(0.22, 0.22, 0.22, 1)
+
+[node name="Col" type="CollisionShape2D" parent="Environment/Walls/IntH1"]
+shape = SubResource("sh_int_h1")
+
+[node name="IntH2" type="StaticBody2D" parent="Environment/Walls"]
+position = Vector2(470, 640)
+collision_layer = 65
+collision_mask = 0
+
+[node name="Vis" type="ColorRect" parent="Environment/Walls/IntH2"]
+offset_left = -80.0
+offset_top = -8.0
+offset_right = 80.0
+offset_bottom = 8.0
+color = Color(0.22, 0.22, 0.22, 1)
+
+[node name="Col" type="CollisionShape2D" parent="Environment/Walls/IntH2"]
+shape = SubResource("sh_int_h2")
+
+[node name="IntH3" type="StaticBody2D" parent="Environment/Walls"]
+position = Vector2(680, 640)
+collision_layer = 65
+collision_mask = 0
+
+[node name="Vis" type="ColorRect" parent="Environment/Walls/IntH3"]
+offset_left = -50.0
+offset_top = -8.0
+offset_right = 50.0
+offset_bottom = 8.0
+color = Color(0.22, 0.22, 0.22, 1)
+
+[node name="Col" type="CollisionShape2D" parent="Environment/Walls/IntH3"]
+shape = SubResource("sh_int_h3")
+
+[node name="IntH4" type="StaticBody2D" parent="Environment/Walls"]
+position = Vector2(940, 640)
+collision_layer = 65
+collision_mask = 0
+
+[node name="Vis" type="ColorRect" parent="Environment/Walls/IntH4"]
+offset_left = -140.0
+offset_top = -8.0
+offset_right = 140.0
+offset_bottom = 8.0
+color = Color(0.22, 0.22, 0.22, 1)
+
+[node name="Col" type="CollisionShape2D" parent="Environment/Walls/IntH4"]
+shape = SubResource("sh_int_h4")
+
+[node name="BdV1" type="StaticBody2D" parent="Environment/Walls"]
+position = Vector2(580, 220)
+collision_layer = 65
+collision_mask = 0
+
+[node name="Vis" type="ColorRect" parent="Environment/Walls/BdV1"]
+offset_left = -8.0
+offset_top = -120.0
+offset_right = 8.0
+offset_bottom = 120.0
+color = Color(0.22, 0.22, 0.22, 1)
+
+[node name="Col" type="CollisionShape2D" parent="Environment/Walls/BdV1"]
+shape = SubResource("sh_bd_v1")
+
+[node name="BdV2" type="StaticBody2D" parent="Environment/Walls"]
+position = Vector2(580, 530)
+collision_layer = 65
+collision_mask = 0
+
+[node name="Vis" type="ColorRect" parent="Environment/Walls/BdV2"]
+offset_left = -8.0
+offset_top = -110.0
+offset_right = 8.0
+offset_bottom = 110.0
+color = Color(0.22, 0.22, 0.22, 1)
+
+[node name="Col" type="CollisionShape2D" parent="Environment/Walls/BdV2"]
+shape = SubResource("sh_bd_v2")
+
+[node name="HlV1" type="StaticBody2D" parent="Environment/Walls"]
+position = Vector2(360, 690)
+collision_layer = 65
+collision_mask = 0
+
+[node name="Vis" type="ColorRect" parent="Environment/Walls/HlV1"]
+offset_left = -8.0
+offset_top = -50.0
+offset_right = 8.0
+offset_bottom = 50.0
+color = Color(0.22, 0.22, 0.22, 1)
+
+[node name="Col" type="CollisionShape2D" parent="Environment/Walls/HlV1"]
+shape = SubResource("sh_int_v_top")
+
+[node name="HlV2" type="StaticBody2D" parent="Environment/Walls"]
+position = Vector2(360, 850)
+collision_layer = 65
+collision_mask = 0
+
+[node name="Vis" type="ColorRect" parent="Environment/Walls/HlV2"]
+offset_left = -8.0
+offset_top = -30.0
+offset_right = 8.0
+offset_bottom = 30.0
+color = Color(0.22, 0.22, 0.22, 1)
+
+[node name="Col" type="CollisionShape2D" parent="Environment/Walls/HlV2"]
+shape = SubResource("sh_int_v_bot")
+
+[node name="KlV1" type="StaticBody2D" parent="Environment/Walls"]
+position = Vector2(760, 690)
+collision_layer = 65
+collision_mask = 0
+
+[node name="Vis" type="ColorRect" parent="Environment/Walls/KlV1"]
+offset_left = -8.0
+offset_top = -50.0
+offset_right = 8.0
+offset_bottom = 50.0
+color = Color(0.22, 0.22, 0.22, 1)
+
+[node name="Col" type="CollisionShape2D" parent="Environment/Walls/KlV1"]
+shape = SubResource("sh_int_v_top")
+
+[node name="KlV2" type="StaticBody2D" parent="Environment/Walls"]
+position = Vector2(760, 850)
+collision_layer = 65
+collision_mask = 0
+
+[node name="Vis" type="ColorRect" parent="Environment/Walls/KlV2"]
+offset_left = -8.0
+offset_top = -30.0
+offset_right = 8.0
+offset_bottom = 30.0
+color = Color(0.22, 0.22, 0.22, 1)
+
+[node name="Col" type="CollisionShape2D" parent="Environment/Walls/KlV2"]
+shape = SubResource("sh_int_v_bot")
+
+[node name="SolidFurniture" type="Node2D" parent="Environment"]
+
+[node name="Sofa" type="StaticBody2D" parent="Environment/SolidFurniture"]
+position = Vector2(480, 765)
+collision_layer = 65
+collision_mask = 0
+
+[node name="Vis" type="ColorRect" parent="Environment/SolidFurniture/Sofa"]
+offset_left = -65.0
+offset_top = -27.0
+offset_right = 65.0
+offset_bottom = 27.0
+color = Color(0.45, 0.15, 0.6, 1)
+
+[node name="Col" type="CollisionShape2D" parent="Environment/SolidFurniture/Sofa"]
+shape = SubResource("sh_sofa")
+
+[node name="Armchair" type="StaticBody2D" parent="Environment/SolidFurniture"]
+position = Vector2(680, 760)
+collision_layer = 65
+collision_mask = 0
+
+[node name="Vis" type="ColorRect" parent="Environment/SolidFurniture/Armchair"]
+offset_left = -25.0
+offset_top = -25.0
+offset_right = 25.0
+offset_bottom = 25.0
+color = Color(0.45, 0.15, 0.6, 1)
+
+[node name="Col" type="CollisionShape2D" parent="Environment/SolidFurniture/Armchair"]
+shape = SubResource("sh_armchair")
+
+[node name="KitchenCounter" type="StaticBody2D" parent="Environment/SolidFurniture"]
+position = Vector2(970, 670)
+collision_layer = 65
+collision_mask = 0
+
+[node name="Vis" type="ColorRect" parent="Environment/SolidFurniture/KitchenCounter"]
+offset_left = -45.0
+offset_top = -30.0
+offset_right = 45.0
+offset_bottom = 30.0
+color = Color(0.45, 0.15, 0.6, 1)
+
+[node name="Col" type="CollisionShape2D" parent="Environment/SolidFurniture/KitchenCounter"]
+shape = SubResource("sh_counter")
+
+[node name="HidingFurniture" type="Node2D" parent="Environment"]
+
+[node name="Bed" parent="Environment/HidingFurniture" instance=ExtResource("6_hide")]
+position = Vector2(220, 220)
+
+[node name="StudyTable" parent="Environment/HidingFurniture" instance=ExtResource("6_hide")]
+position = Vector2(820, 250)
+
+[node name="LivingTable" parent="Environment/HidingFurniture" instance=ExtResource("6_hide")]
+position = Vector2(620, 760)
+
+[node name="KitchenTable" parent="Environment/HidingFurniture" instance=ExtResource("6_hide")]
+position = Vector2(880, 770)
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+navigation_polygon = SubResource("nav_poly")
+
+[node name="PatrolRoutes" type="Node2D" parent="."]
+
+[node name="Human01Route" type="Node2D" parent="PatrolRoutes"]
+
+[node name="P1" type="Marker2D" parent="PatrolRoutes/Human01Route"]
+position = Vector2(300, 400)
+
+[node name="P2" type="Marker2D" parent="PatrolRoutes/Human01Route"]
+position = Vector2(200, 520)
+
+[node name="P3" type="Marker2D" parent="PatrolRoutes/Human01Route"]
+position = Vector2(439, 538)
+
+[node name="P4" type="Marker2D" parent="PatrolRoutes/Human01Route"]
+position = Vector2(300, 399)
+
+[node name="Human02Route" type="Node2D" parent="PatrolRoutes"]
+
+[node name="P1" type="Marker2D" parent="PatrolRoutes/Human02Route"]
+position = Vector2(800, 200)
+
+[node name="P2" type="Marker2D" parent="PatrolRoutes/Human02Route"]
+position = Vector2(960, 300)
+
+[node name="P3" type="Marker2D" parent="PatrolRoutes/Human02Route"]
+position = Vector2(960, 760)
+
+[node name="P4" type="Marker2D" parent="PatrolRoutes/Human02Route"]
+position = Vector2(932, 471)
+
+[node name="Dog01Route" type="Node2D" parent="PatrolRoutes"]
+
+[node name="P1" type="Marker2D" parent="PatrolRoutes/Dog01Route"]
+position = Vector2(440, 680)
+
+[node name="P2" type="Marker2D" parent="PatrolRoutes/Dog01Route"]
+position = Vector2(727, 680)
+
+[node name="P3" type="Marker2D" parent="PatrolRoutes/Dog01Route"]
+position = Vector2(729, 830)
+
+[node name="P4" type="Marker2D" parent="PatrolRoutes/Dog01Route"]
+position = Vector2(388, 832)
+
+[node name="Characters" type="Node2D" parent="."]
+
+[node name="Cat" parent="Characters" instance=ExtResource("2_cat")]
+position = Vector2(220, 820)
+
+[node name="Human01" parent="Characters" instance=ExtResource("3_human")]
+position = Vector2(373, 397)
+patrol_route = NodePath("../../PatrolRoutes/Human01Route")
+
+[node name="Human02" parent="Characters" instance=ExtResource("3_human")]
+position = Vector2(794, 200)
+patrol_route = NodePath("../../PatrolRoutes/Human02Route")
+
+[node name="Dog01" parent="Characters" instance=ExtResource("4_dog")]
+position = Vector2(434, 680)
+patrol_route = NodePath("../../PatrolRoutes/Dog01Route")
+
+[node name="Mouse01" parent="Characters" instance=ExtResource("5_mouse")]
+position = Vector2(294, 300)
+
+[node name="Mouse02" parent="Characters" instance=ExtResource("5_mouse")]
+position = Vector2(549, 730)
+
+[node name="Mouse03" parent="Characters" instance=ExtResource("5_mouse")]
+position = Vector2(874, 720)
+
+[node name="Mouse04" parent="Characters" instance=ExtResource("5_mouse")]
+position = Vector2(774, 300)
+
+[node name="Mouse05" parent="Characters" instance=ExtResource("5_mouse")]
+position = Vector2(304, 720)
+
+[node name="ExitDoor" parent="." instance=ExtResource("7_door")]
+position = Vector2(195, 840)
+
+[node name="HUD" parent="." instance=ExtResource("8_hud")]
+
+[node name="ResultsScreen" parent="." instance=ExtResource("9_results")]

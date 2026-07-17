@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://kp20cjl2qus"]
+[gd_scene load_steps=0 format=3 uid="uid://kp20cjl2qus"]
 
 [ext_resource type="Script" uid="uid://dk1kmbo7tngwt" path="res://scripts/snake_tower/level/Level.gd" id="1_lcshh"]
 [ext_resource type="Texture2D" uid="uid://bv703dobust4x" path="res://assets/World/Glacial-mountains-parallax-background_vnitti/Layers/sky_lightened.png" id="2_ph70u"]

@@ -1,0 +1,39 @@
+[gd_resource type="SpriteFrames" load_steps=6 format=3 uid="uid://fjhoyeba7cni"]
+
+[ext_resource type="Texture2D" uid="uid://co7aoiysirwir" path="res://assets/sprites/rat/rat3.png" id="1_u7ycy"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_puxdo"]
+atlas = ExtResource("1_u7ycy")
+region = Rect2(0, 19, 32, 13)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sltrn"]
+atlas = ExtResource("1_u7ycy")
+region = Rect2(32, 19, 32, 13)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mvgo5"]
+atlas = ExtResource("1_u7ycy")
+region = Rect2(64, 19, 32, 13)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8iyof"]
+atlas = ExtResource("1_u7ycy")
+region = Rect2(96, 19, 32, 13)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_puxdo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sltrn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mvgo5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8iyof")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]

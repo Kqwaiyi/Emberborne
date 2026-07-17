@@ -1,0 +1,310 @@
+[gd_scene load_steps=8 format=3 uid="uid://cmquucfy2ckxe"]
+
+[ext_resource type="Script" uid="uid://bi1jkjod1gksn" path="res://scripts/cat_game/ui/results_screen.gd" id="1_results"]
+[ext_resource type="Texture2D" uid="uid://c31eweol7rhif" path="res://assets/ui/Loot/cat.png" id="2_cat"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_panel"]
+content_margin_left = 16.0
+content_margin_top = 16.0
+content_margin_right = 16.0
+content_margin_bottom = 16.0
+bg_color = Color(0.898, 0.816, 0.663, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.216, 0.149, 0.086, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+shadow_color = Color(0.05, 0.02, 0.01, 0.45)
+shadow_size = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_btn_normal"]
+content_margin_left = 12.0
+content_margin_top = 9.0
+content_margin_right = 12.0
+content_margin_bottom = 9.0
+bg_color = Color(0.69, 0.545, 0.376, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.216, 0.149, 0.086, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_btn_pressed"]
+content_margin_left = 12.0
+content_margin_top = 9.0
+content_margin_right = 12.0
+content_margin_bottom = 9.0
+bg_color = Color(0.545, 0.424, 0.278, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.216, 0.149, 0.086, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_btn_hover"]
+content_margin_left = 12.0
+content_margin_top = 9.0
+content_margin_right = 12.0
+content_margin_bottom = 9.0
+bg_color = Color(0.824, 0.686, 0.525, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.216, 0.149, 0.086, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_btn_focus"]
+bg_color = Color(0, 0, 0, 0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.216, 0.149, 0.086, 0.6)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[node name="ResultsScreen" type="CanvasLayer"]
+process_mode = 3
+visible = false
+script = ExtResource("1_results")
+
+[node name="Overlay" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0, 0, 0, 0.55)
+
+[node name="Panel" type="PanelContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -182.0
+offset_right = 200.0
+offset_bottom = 182.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_panel")
+
+[node name="VBox" type="VBoxContainer" parent="Panel"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="TitleLabel" type="Label" parent="Panel/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.18, 0.12, 0.07, 1)
+theme_override_font_sizes/font_size = 22
+text = "✦  LEVEL CLEAR  ✦"
+horizontal_alignment = 1
+
+[node name="TitleDivider" type="ColorRect" parent="Panel/VBox"]
+custom_minimum_size = Vector2(0, 3)
+layout_mode = 2
+color = Color(0.216, 0.149, 0.086, 0.65)
+
+[node name="ContentHBox" type="HBoxContainer" parent="Panel/VBox"]
+layout_mode = 2
+theme_override_constants/separation = 14
+
+[node name="CatPortrait" type="TextureRect" parent="Panel/VBox/ContentHBox"]
+texture_filter = 1
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("2_cat")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="StatsBox" type="VBoxContainer" parent="Panel/VBox/ContentHBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_override_constants/separation = 3
+
+[node name="TimeRow" type="HBoxContainer" parent="Panel/VBox/ContentHBox/StatsBox"]
+layout_mode = 2
+
+[node name="Key" type="Label" parent="Panel/VBox/ContentHBox/StatsBox/TimeRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.18, 0.12, 0.07, 1)
+theme_override_font_sizes/font_size = 15
+text = "Time"
+
+[node name="Val" type="Label" parent="Panel/VBox/ContentHBox/StatsBox/TimeRow"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.18, 0.12, 0.07, 1)
+theme_override_font_sizes/font_size = 15
+text = "00:00"
+horizontal_alignment = 2
+
+[node name="MiceRow" type="HBoxContainer" parent="Panel/VBox/ContentHBox/StatsBox"]
+layout_mode = 2
+
+[node name="Key" type="Label" parent="Panel/VBox/ContentHBox/StatsBox/MiceRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.18, 0.12, 0.07, 1)
+theme_override_font_sizes/font_size = 15
+text = "Mice"
+
+[node name="Val" type="Label" parent="Panel/VBox/ContentHBox/StatsBox/MiceRow"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.18, 0.12, 0.07, 1)
+theme_override_font_sizes/font_size = 15
+text = "0 / 0"
+horizontal_alignment = 2
+
+[node name="Sep1" type="HSeparator" parent="Panel/VBox/ContentHBox/StatsBox"]
+layout_mode = 2
+
+[node name="BonusRow" type="HBoxContainer" parent="Panel/VBox/ContentHBox/StatsBox"]
+layout_mode = 2
+
+[node name="Key" type="Label" parent="Panel/VBox/ContentHBox/StatsBox/BonusRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.25, 0.17, 0.09, 1)
+theme_override_font_sizes/font_size = 13
+text = "Time Bonus"
+
+[node name="Val" type="Label" parent="Panel/VBox/ContentHBox/StatsBox/BonusRow"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.25, 0.17, 0.09, 1)
+theme_override_font_sizes/font_size = 13
+text = "+0"
+horizontal_alignment = 2
+
+[node name="MouseRow" type="HBoxContainer" parent="Panel/VBox/ContentHBox/StatsBox"]
+layout_mode = 2
+
+[node name="Key" type="Label" parent="Panel/VBox/ContentHBox/StatsBox/MouseRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.25, 0.17, 0.09, 1)
+theme_override_font_sizes/font_size = 13
+text = "Mice Points"
+
+[node name="Val" type="Label" parent="Panel/VBox/ContentHBox/StatsBox/MouseRow"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.25, 0.17, 0.09, 1)
+theme_override_font_sizes/font_size = 13
+text = "+0"
+horizontal_alignment = 2
+
+[node name="HurtRow" type="HBoxContainer" parent="Panel/VBox/ContentHBox/StatsBox"]
+layout_mode = 2
+
+[node name="Key" type="Label" parent="Panel/VBox/ContentHBox/StatsBox/HurtRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.25, 0.17, 0.09, 1)
+theme_override_font_sizes/font_size = 13
+text = "Hurt"
+
+[node name="Val" type="Label" parent="Panel/VBox/ContentHBox/StatsBox/HurtRow"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.25, 0.17, 0.09, 1)
+theme_override_font_sizes/font_size = 13
+text = "0"
+horizontal_alignment = 2
+
+[node name="Sep2" type="HSeparator" parent="Panel/VBox/ContentHBox/StatsBox"]
+layout_mode = 2
+
+[node name="LevelRow" type="HBoxContainer" parent="Panel/VBox/ContentHBox/StatsBox"]
+layout_mode = 2
+
+[node name="Key" type="Label" parent="Panel/VBox/ContentHBox/StatsBox/LevelRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.18, 0.12, 0.07, 1)
+theme_override_font_sizes/font_size = 15
+text = "Level Total"
+
+[node name="Val" type="Label" parent="Panel/VBox/ContentHBox/StatsBox/LevelRow"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.18, 0.12, 0.07, 1)
+theme_override_font_sizes/font_size = 15
+text = "+0"
+horizontal_alignment = 2
+
+[node name="PrevRow" type="HBoxContainer" parent="Panel/VBox/ContentHBox/StatsBox"]
+layout_mode = 2
+
+[node name="Key" type="Label" parent="Panel/VBox/ContentHBox/StatsBox/PrevRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.25, 0.17, 0.09, 1)
+theme_override_font_sizes/font_size = 13
+text = "Previous"
+
+[node name="Val" type="Label" parent="Panel/VBox/ContentHBox/StatsBox/PrevRow"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.25, 0.17, 0.09, 1)
+theme_override_font_sizes/font_size = 13
+text = "0"
+horizontal_alignment = 2
+
+[node name="NewRow" type="HBoxContainer" parent="Panel/VBox/ContentHBox/StatsBox"]
+layout_mode = 2
+
+[node name="Key" type="Label" parent="Panel/VBox/ContentHBox/StatsBox/NewRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.14, 0.09, 0.04, 1)
+theme_override_font_sizes/font_size = 16
+text = "NEW TOTAL"
+
+[node name="Val" type="Label" parent="Panel/VBox/ContentHBox/StatsBox/NewRow"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.14, 0.09, 0.04, 1)
+theme_override_font_sizes/font_size = 16
+text = "0"
+horizontal_alignment = 2
+
+[node name="BotDivider" type="ColorRect" parent="Panel/VBox"]
+custom_minimum_size = Vector2(0, 2)
+layout_mode = 2
+color = Color(0.216, 0.149, 0.086, 0.5)
+
+[node name="MessageLabel" type="Label" parent="Panel/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.3, 0.18, 0.08, 1)
+theme_override_font_sizes/font_size = 14
+text = "Nice job!"
+horizontal_alignment = 1
+
+[node name="NextButton" type="Button" parent="Panel/VBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.14, 0.09, 0.04, 1)
+theme_override_colors/font_pressed_color = Color(0.06, 0.04, 0.02, 1)
+theme_override_colors/font_hover_color = Color(0.06, 0.04, 0.02, 1)
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxFlat_btn_normal")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_btn_pressed")
+theme_override_styles/hover = SubResource("StyleBoxFlat_btn_hover")
+theme_override_styles/focus = SubResource("StyleBoxFlat_btn_focus")
+text = "NEXT  >"

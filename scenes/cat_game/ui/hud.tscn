@@ -1,0 +1,234 @@
+[gd_scene load_steps=8 format=3 uid="uid://hud_scene"]
+
+[ext_resource type="Script" path="res://scripts/cat_game/ui/hud.gd" id="1_hud"]
+[ext_resource type="Texture2D" path="res://assets/ui/Loot/cat.png" id="2_cat"]
+[ext_resource type="Texture2D" path="res://assets/ui/Loot/Clock.png" id="3_clock"]
+[ext_resource type="Texture2D" path="res://assets/ui/Loot/rat.png" id="4_rat"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_panel"]
+bg_color = Color(0.898, 0.816, 0.663, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.216, 0.149, 0.086, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+content_margin_left = 8.0
+content_margin_top = 8.0
+content_margin_right = 8.0
+content_margin_bottom = 8.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bar_fill"]
+bg_color = Color(0.78, 0.19, 0.09, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bar_bg"]
+bg_color = Color(0.471, 0.373, 0.271, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_hud")
+
+[node name="HUDPanel" type="PanelContainer" parent="."]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 280.0
+offset_bottom = 104.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_panel")
+
+[node name="HBox" type="HBoxContainer" parent="HUDPanel"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="CatPortrait" type="TextureRect" parent="HUDPanel/HBox"]
+layout_mode = 2
+custom_minimum_size = Vector2(72, 72)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+expand_mode = 1
+texture = ExtResource("2_cat")
+stretch_mode = 5
+texture_filter = 1
+
+[node name="Divider" type="VSeparator" parent="HUDPanel/HBox"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/separator_color = Color(0.216, 0.149, 0.086, 0.5)
+
+[node name="InfoBox" type="VBoxContainer" parent="HUDPanel/HBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_override_constants/separation = 6
+
+[node name="TimeRow" type="HBoxContainer" parent="HUDPanel/HBox/InfoBox"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="ClockIcon" type="TextureRect" parent="HUDPanel/HBox/InfoBox/TimeRow"]
+layout_mode = 2
+custom_minimum_size = Vector2(22, 22)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+expand_mode = 1
+texture = ExtResource("3_clock")
+stretch_mode = 5
+texture_filter = 1
+
+[node name="TimeLabel" type="Label" parent="HUDPanel/HBox/InfoBox/TimeRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+text = "00:00"
+theme_override_font_sizes/font_size = 18
+theme_override_colors/font_color = Color(0.18, 0.12, 0.07, 1)
+
+[node name="MiceRow" type="HBoxContainer" parent="HUDPanel/HBox/InfoBox"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="RatIcon" type="TextureRect" parent="HUDPanel/HBox/InfoBox/MiceRow"]
+layout_mode = 2
+custom_minimum_size = Vector2(28, 22)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+expand_mode = 1
+texture = ExtResource("4_rat")
+stretch_mode = 5
+texture_filter = 1
+
+[node name="MiceLabel" type="Label" parent="HUDPanel/HBox/InfoBox/MiceRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+text = "0 / 3"
+theme_override_font_sizes/font_size = 18
+theme_override_colors/font_color = Color(0.18, 0.12, 0.07, 1)
+
+[node name="TopRightPanel" type="PanelContainer" parent="."]
+anchor_left = 1.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 0.0
+offset_left = -296.0
+offset_top = 10.0
+offset_right = -10.0
+offset_bottom = 104.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_panel")
+
+[node name="VBox" type="VBoxContainer" parent="TopRightPanel"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="AngerHBox" type="HBoxContainer" parent="TopRightPanel/VBox"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="FaceBox" type="Control" parent="TopRightPanel/VBox/AngerHBox"]
+layout_mode = 2
+custom_minimum_size = Vector2(40, 40)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="FaceIcon" type="TextureRect" parent="TopRightPanel/VBox/AngerHBox/FaceBox"]
+layout_mode = 1
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
+expand_mode = 1
+stretch_mode = 5
+texture_filter = 1
+
+[node name="TopIcon" type="TextureRect" parent="TopRightPanel/VBox/AngerHBox/FaceBox"]
+layout_mode = 1
+anchor_left = 1.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 0.0
+offset_left = -14.0
+offset_top = -2.0
+offset_right = 4.0
+offset_bottom = 16.0
+expand_mode = 1
+stretch_mode = 5
+texture_filter = 1
+
+[node name="BarBox" type="VBoxContainer" parent="TopRightPanel/VBox/AngerHBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_override_constants/separation = 3
+
+[node name="AngerTitle" type="Label" parent="TopRightPanel/VBox/AngerHBox/BarBox"]
+layout_mode = 2
+text = "ANGER"
+theme_override_font_sizes/font_size = 11
+theme_override_colors/font_color = Color(0.18, 0.12, 0.07, 1)
+
+[node name="AngerBar" type="ProgressBar" parent="TopRightPanel/VBox/AngerHBox/BarBox"]
+layout_mode = 2
+custom_minimum_size = Vector2(140, 16)
+max_value = 100.0
+value = 0.0
+show_percentage = false
+theme_override_styles/fill = SubResource("StyleBoxFlat_bar_fill")
+theme_override_styles/background = SubResource("StyleBoxFlat_bar_bg")
+
+[node name="StatsSep" type="HSeparator" parent="TopRightPanel/VBox"]
+layout_mode = 2
+theme_override_colors/separator_color = Color(0.216, 0.149, 0.086, 0.35)
+
+[node name="InfoLine" type="Label" parent="TopRightPanel/VBox"]
+layout_mode = 2
+horizontal_alignment = 1
+text = "Points: 0  |  Mice: × 0"
+theme_override_font_sizes/font_size = 12
+theme_override_colors/font_color = Color(0.25, 0.17, 0.09, 1)
+
+[node name="MessageLabel" type="Label" parent="."]
+visible = false
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -310.0
+offset_top = -110.0
+offset_right = 310.0
+offset_bottom = -46.0
+horizontal_alignment = 1
+vertical_alignment = 1
+text = ""
+autowrap_mode = 1
+theme_override_font_sizes/font_size = 22
+theme_override_colors/font_color = Color(1, 1, 0.8, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0.75)
+theme_override_constants/outline_size = 4
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.85)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+
+[node name="MessageTimer" type="Timer" parent="."]
+one_shot = true
+wait_time = 2.5
