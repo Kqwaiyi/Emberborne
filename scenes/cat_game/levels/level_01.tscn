@@ -2496,6 +2496,7 @@ position = Vector2(-145, -123)
 position = Vector2(-143, 4)
 
 [node name="p5" type="Marker2D" parent="Patrol Routes/Dog01Route"]
+position = Vector2(0, -1)
 
 [node name="Dog02Route" type="Node2D" parent="Patrol Routes"]
 position = Vector2(-49, 769)
