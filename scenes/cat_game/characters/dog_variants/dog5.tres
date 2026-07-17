@@ -1,4 +1,4 @@
-[gd_resource type="SpriteFrames" load_steps=34 format=3 uid="uid://bfmuwocr81ve7"]
+[gd_resource type="SpriteFrames" format=3 uid="uid://bfmuwocr81ve7"]
 
 [ext_resource type="Texture2D" uid="uid://032yp21bwulu" path="res://assets/sprites/dogs/dog5.png" id="1_rik03"]
 
@@ -157,7 +157,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_374bq")
 }],
-"loop": true,
+"loop": 1,
 "name": &"Bark",
 "speed": 14.0
 }, {
@@ -186,7 +186,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_fj3v3")
 }],
-"loop": true,
+"loop": 1,
 "name": &"Run",
 "speed": 5.0
 }, {
@@ -215,7 +215,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_vda3t")
 }],
-"loop": true,
+"loop": 1,
 "name": &"Walk",
 "speed": 5.0
 }, {
@@ -244,7 +244,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_mjvno")
 }],
-"loop": true,
+"loop": 1,
 "name": &"Walk_chase",
 "speed": 5.0
 }]
