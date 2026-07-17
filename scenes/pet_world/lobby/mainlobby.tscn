@@ -1,7 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://cn6g6axp4jjsy"]
+[gd_scene load_steps=7 format=3 uid="uid://cn6g6axp4jjsy"]
 
 [ext_resource type="Texture2D" uid="uid://ded2c6w7mkhk8" path="res://assets/pet_world_assets/Room1.png" id="1_5yqg7"]
 [ext_resource type="Texture2D" uid="uid://bqlf6t6sah5xf" path="res://assets/pet_world_assets/CatRoomDecorations.png" id="2_g78u4"]
+[ext_resource type="PackedScene" uid="uid://dv2rs7tn4jujg" path="res://scenes/pet_world/characters/cat.tscn" id="3_cat"]
+[ext_resource type="PackedScene" uid="uid://bjfakway4r2wh" path="res://scenes/pet_world/characters/snake.tscn" id="4_snake"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mq7y1"]
 texture = ExtResource("2_g78u4")
@@ -66,3 +68,9 @@ texture = ExtResource("1_5yqg7")
 tile_set = SubResource("TileSet_gedky")
 format = 2
 layer_0/tile_data = PackedInt32Array(-196594, 2818048, 12, -393207, 65536, 0, -327697, 0, 14, -327680, 2359296, 34, -262141, 786432, 1, 65522, 0, 34, -131066, 3801088, 29, 458746, 1310720, 8, 327689, 1310720, 14, 131088, 524288, 18, -65525, 524288, 18, 655358, 1310720, 31, 524293, 1310720, 46, 327684, 524288, 14, -327692, 1966080, 24, -327694, 2097152, 24, -589820, 1835008, 12, 458750, 2097152, 2, 393214, 1703936, 42, -131079, 0, 18, -655363, 2752512, 19)
+
+[node name="Cat" parent="." instance=ExtResource("3_cat")]
+position = Vector2(100, 100)
+
+[node name="Snake" parent="." instance=ExtResource("4_snake")]
+position = Vector2(200, 100)

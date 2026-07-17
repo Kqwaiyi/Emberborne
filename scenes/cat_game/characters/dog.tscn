@@ -1,9 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://p2tgovs3wppl"]
+[gd_scene load_steps=7 format=3 uid="uid://p2tgovs3wppl"]
 
 [ext_resource type="Script" uid="uid://b40vdvjlmot7" path="res://scripts/cat_game/characters/dog.gd" id="1_dog"]
 [ext_resource type="Script" uid="uid://dc83e8ygmgd17" path="res://scripts/cat_game/environment/vision_cone.gd" id="2_cone"]
 [ext_resource type="SpriteFrames" uid="uid://bfmuwocr81ve7" path="res://scenes/cat_game/characters/dog_variants/dog5.tres" id="3_f0e8s"]
-[ext_resource type="Script" uid="uid://dskuwaluiv83h" path="res://scripts/cat_game/characters/dog_animator.gd" id="4_doganim"]
 [ext_resource type="Script" uid="uid://dyabx23k351gr" path="res://scripts/cat_game/characters/shadow.gd" id="99_shadow"]
 
 [sub_resource type="CircleShape2D" id="1_body"]
@@ -39,12 +38,6 @@ shape = SubResource("RectangleShape2D_0rwps")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 
-[node name="Visual" type="AnimatedSprite2D" parent="."]
-position = Vector2(1, -8)
-sprite_frames = ExtResource("3_f0e8s")
-animation = &"Walk"
-script = ExtResource("4_doganim")
-
 [node name="AlertIcon" type="Label" parent="."]
 visible = false
 offset_left = -6.0
@@ -54,3 +47,8 @@ offset_bottom = -52.0
 theme_override_colors/font_color = Color(1, 0.85, 0, 1)
 theme_override_font_sizes/font_size = 28
 text = "!"
+
+[node name="Visual" type="AnimatedSprite2D" parent="."]
+position = Vector2(1, -8)
+sprite_frames = ExtResource("3_f0e8s")
+animation = &"Bark"

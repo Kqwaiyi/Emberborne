@@ -323,5 +323,5 @@ zoom = Vector2(2, 2)
 [node name="Visual" type="AnimatedSprite2D" parent="."]
 position = Vector2(-7, -10)
 sprite_frames = SubResource("SpriteFrames_fm8fw")
-animation = &"idle1"
+animation = &"walk_right"
 script = ExtResource("3_catanim")
