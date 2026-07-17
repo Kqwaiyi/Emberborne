@@ -1,9 +1,9 @@
 [gd_scene load_steps=44 format=3 uid="uid://b2qxfiflox5xx"]
 
-[ext_resource type="Script" path="res://scripts/cat_game/characters/shadow.gd" id="99_shadow"]
 [ext_resource type="Script" uid="uid://c5kcqc1ewjkpc" path="res://scripts/cat_game/characters/cat.gd" id="1_catscript"]
 [ext_resource type="Texture2D" uid="uid://3c11ac21823c" path="res://assets/sprites/cat/Cat.png" id="2_tmpp7"]
 [ext_resource type="Script" uid="uid://dh2avewhkna3e" path="res://scripts/cat_game/characters/cat_animator.gd" id="3_catanim"]
+[ext_resource type="Script" uid="uid://dyabx23k351gr" path="res://scripts/cat_game/characters/shadow.gd" id="99_shadow"]
 
 [sub_resource type="CircleShape2D" id="1_body_shape"]
 radius = 12.0
@@ -301,8 +301,8 @@ collision_layer = 2
 script = ExtResource("1_catscript")
 
 [node name="Shadow" type="Node2D" parent="."]
-position = Vector2(0, 14)
 z_index = -1
+position = Vector2(0, 14)
 script = ExtResource("99_shadow")
 
 [node name="BodyCollision" type="CollisionShape2D" parent="."]
@@ -323,5 +323,5 @@ zoom = Vector2(2, 2)
 [node name="Visual" type="AnimatedSprite2D" parent="."]
 position = Vector2(-7, -10)
 sprite_frames = SubResource("SpriteFrames_fm8fw")
-animation = &"idle2"
+animation = &"idle1"
 script = ExtResource("3_catanim")

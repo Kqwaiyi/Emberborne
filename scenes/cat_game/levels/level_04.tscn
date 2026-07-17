@@ -1,4 +1,4 @@
-[gd_scene load_steps=210 format=3 uid="uid://cvu1uypx4tmj"]
+[gd_scene load_steps=214 format=3 uid="uid://cvu1uypx4tmj"]
 
 [ext_resource type="Script" uid="uid://bsoa08gnlhoau" path="res://scripts/cat_game/levels/level_02.gd" id="1_kxtkb"]
 [ext_resource type="Texture2D" uid="uid://chvlnk4siv40s" path="res://assets/sprites/environment/Sample.png" id="2_eoyah"]
@@ -180,7 +180,7 @@ size = Vector2(21, 43)
 size = Vector2(36.000362, 96.00097)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ns4l0"]
-size = Vector2(36.000397, 96.00096)
+size = Vector2(16.400002, 16.065994)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pd6ml"]
 size = Vector2(36.000362, 72.000725)
@@ -269,6 +269,12 @@ size = Vector2(95.5, 49.5625)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_psrg5"]
 size = Vector2(191.75, 46.78125)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yfw6e"]
+size = Vector2(12.800017, 15.157913)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5e28e"]
+size = Vector2(12.000038, 15.999977)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4of6q"]
 size = Vector2(30.000038, 40.000397)
 
@@ -353,8 +359,11 @@ size = Vector2(36.000397, 72.000725)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uch05"]
 size = Vector2(1211.5, 67)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_degob"]
-size = Vector2(30, 664.25)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xogew"]
+size = Vector2(30, 412)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mmbys"]
+size = Vector2(31, 277)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8mrgk"]
 size = Vector2(30, 138.125)
@@ -385,6 +394,9 @@ size = Vector2(29.5, 383.5625)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sa2wk"]
 size = Vector2(66.5, 96.78125)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xm5bo"]
+size = Vector2(16.00003, 16.065962)
 
 [node name="Level04" type="Node2D"]
 position = Vector2(113, 15)
@@ -2476,13 +2488,6 @@ position = Vector2(2169, 345)
 z_index = -999
 scale = Vector2(2.5, 2.5)
 
-[node name="black" type="Sprite2D" parent="section2/Floor2"]
-self_modulate = Color(0, 0, 0, 1)
-z_index = 2
-position = Vector2(350.80005, 305.2)
-scale = Vector2(0.82499695, 0.94999886)
-texture = ExtResource("109_s7qis")
-
 [node name="Sprite2D138" type="Sprite2D" parent="section2/Floor2"]
 position = Vector2(275.59998, 216.4)
 texture = ExtResource("109_s7qis")
@@ -2845,12 +2850,6 @@ texture = ExtResource("109_s7qis")
 
 [node name="Sprite2D238" type="Sprite2D" parent="section2/Floor2"]
 position = Vector2(339.59998, 296.40002)
-texture = ExtResource("109_s7qis")
-
-[node name="Sprite2D240" type="Sprite2D" parent="section2/Floor2"]
-self_modulate = Color(0.63529414, 0.63529414, 0.63529414, 1)
-z_index = 1
-position = Vector2(339.59998, 304.80002)
 texture = ExtResource("109_s7qis")
 
 [node name="Sprite2D239" type="Sprite2D" parent="section2/Floor2"]
@@ -4728,6 +4727,41 @@ shape = SubResource("RectangleShape2D_psrg5")
 [node name="InteriorWall6" type="CollisionShape2D" parent="section2/WallCollision"]
 position = Vector2(576, 904)
 shape = SubResource("RectangleShape2D_psrg5")
+
+[node name="transition node" type="Node2D" parent="section2"]
+
+[node name="black" type="Sprite2D" parent="section2/transition node"]
+self_modulate = Color(0, 0, 0, 1)
+z_index = 2
+position = Vector2(877, 763)
+scale = Vector2(2.0624924, 2.3749971)
+texture = ExtResource("109_s7qis")
+
+[node name="Sprite2D240" type="Sprite2D" parent="section2/transition node"]
+self_modulate = Color(0.63529414, 0.63529414, 0.63529414, 1)
+z_index = 1
+position = Vector2(849, 763)
+scale = Vector2(2.5, 2.375002)
+texture = ExtResource("109_s7qis")
+script = ExtResource("110_ga3np")
+
+[node name="HideArea" type="Area2D" parent="section2/transition node/Sprite2D240"]
+collision_layer = 32
+collision_mask = 2
+
+[node name="HideCollision" type="CollisionShape2D" parent="section2/transition node/Sprite2D240/HideArea"]
+position = Vector2(-1.5999756, 0)
+scale = Vector2(0.99999976, 0.9999999)
+shape = SubResource("RectangleShape2D_yfw6e")
+
+[node name="VisionBlocker" type="StaticBody2D" parent="section2/transition node/Sprite2D240"]
+collision_layer = 64
+collision_mask = 0
+
+[node name="VisionCollision" type="CollisionShape2D" parent="section2/transition node/Sprite2D240/VisionBlocker"]
+position = Vector2(-1.5999756, 0)
+scale = Vector2(0.99999976, 0.9999999)
+shape = SubResource("RectangleShape2D_5e28e")
 
 [node name="section1" type="Node2D" parent="."]
 position = Vector2(3911, -469)
@@ -6939,10 +6973,6 @@ texture = ExtResource("84_bfxfs")
 position = Vector2(-967, 397.5)
 texture = ExtResource("84_bfxfs")
 
-[node name="Sprite2D174" type="Sprite2D" parent="section1/wall"]
-position = Vector2(-967, 381.5)
-texture = ExtResource("84_bfxfs")
-
 [node name="Sprite2D175" type="Sprite2D" parent="section1/wall"]
 position = Vector2(-967, 429.5)
 texture = ExtResource("84_bfxfs")
@@ -7312,7 +7342,7 @@ texture = ExtResource("97_wakha")
 position = Vector2(477, -535)
 
 [node name="ExitDoor" parent="section1/Door" instance=ExtResource("4_pspp5")]
-position = Vector2(-1311.0001, 1450)
+position = Vector2(-1311.0001, 1448)
 scale = Vector2(0.99999994, 0.99999994)
 metadata/_edit_group_ = true
 
@@ -8506,8 +8536,12 @@ position = Vector2(-1338.75, 1165)
 shape = SubResource("RectangleShape2D_uch05")
 
 [node name="InnerRightWall" type="CollisionShape2D" parent="section1/WallCollision"]
-position = Vector2(-1936, 863.875)
-shape = SubResource("RectangleShape2D_degob")
+position = Vector2(-1936, 990)
+shape = SubResource("RectangleShape2D_xogew")
+
+[node name="InnerRightWall6" type="CollisionShape2D" parent="section1/WallCollision"]
+position = Vector2(-1932.5, 609.5)
+shape = SubResource("RectangleShape2D_mmbys")
 
 [node name="InnerRightWall2" type="CollisionShape2D" parent="section1/WallCollision"]
 position = Vector2(-1260, 836.9375)
@@ -8570,8 +8604,41 @@ shape = SubResource("RectangleShape2D_sa2wk")
 position = Vector2(-886, 899)
 shape = SubResource("RectangleShape2D_sa2wk")
 
-[node name="Cat" parent="." instance=ExtResource("114_cjj0f")]
-position = Vector2(3077, 1107)
+[node name="RightWall5" type="CollisionShape2D" parent="section1/WallCollision"]
+position = Vector2(-836, 848)
+shape = SubResource("RectangleShape2D_sa2wk")
+
+[node name="Transition node" type="Node2D" parent="section1"]
+
+[node name="black" type="Sprite2D" parent="section1/Transition node"]
+self_modulate = Color(0, 0, 0, 1)
+z_index = 2
+position = Vector2(-1934, 765)
+scale = Vector2(2, 2.303)
+texture = ExtResource("109_s7qis")
+
+[node name="Sprite2D240" type="Sprite2D" parent="section1/Transition node"]
+self_modulate = Color(0.63529414, 0.63529414, 0.63529414, 1)
+position = Vector2(-1898, 765.00006)
+scale = Vector2(2.5, 2.303)
+texture = ExtResource("109_s7qis")
+script = ExtResource("110_ga3np")
+
+[node name="HideArea" type="Area2D" parent="section1/Transition node/Sprite2D240"]
+collision_layer = 32
+collision_mask = 2
+
+[node name="HideCollision" type="CollisionShape2D" parent="section1/Transition node/Sprite2D240/HideArea"]
+position = Vector2(0, -0.21716309)
+shape = SubResource("RectangleShape2D_xm5bo")
+
+[node name="VisionBlocker" type="StaticBody2D" parent="section1/Transition node/Sprite2D240"]
+collision_layer = 64
+collision_mask = 0
+
+[node name="VisionCollision" type="CollisionShape2D" parent="section1/Transition node/Sprite2D240/VisionBlocker"]
+position = Vector2(-0.2000122, -0.21714783)
+shape = SubResource("RectangleShape2D_ns4l0")
 
 [node name="Patrol Routes" type="Node2D" parent="."]
 position = Vector2(2793, -1501)
@@ -8786,23 +8853,104 @@ position = Vector2(-400, -74)
 [node name="Mouse01Route" type="Node2D" parent="Patrol Routes"]
 position = Vector2(2115, 1401)
 
+[node name="Marker2D" type="Marker2D" parent="Patrol Routes/Mouse01Route"]
+position = Vector2(-1901, 1096)
+
+[node name="Marker2D2" type="Marker2D" parent="Patrol Routes/Mouse01Route"]
+position = Vector2(-2013, 1091)
+
+[node name="Marker2D3" type="Marker2D" parent="Patrol Routes/Mouse01Route"]
+position = Vector2(-2043, 1026)
+
 [node name="Mouse02Route" type="Node2D" parent="Patrol Routes"]
 position = Vector2(2185, 1178)
+
+[node name="Marker2D" type="Marker2D" parent="Patrol Routes/Mouse02Route"]
+position = Vector2(-2594, 1400)
+
+[node name="Marker2D2" type="Marker2D" parent="Patrol Routes/Mouse02Route"]
+position = Vector2(-2530, 1402)
+
+[node name="Marker2D3" type="Marker2D" parent="Patrol Routes/Mouse02Route"]
+position = Vector2(-2561, 1366)
+
+[node name="Marker2D4" type="Marker2D" parent="Patrol Routes/Mouse02Route"]
+position = Vector2(-2594, 1400)
 
 [node name="Mouse03Route" type="Node2D" parent="Patrol Routes"]
 position = Vector2(2564, 1194)
 
+[node name="Marker2D" type="Marker2D" parent="Patrol Routes/Mouse03Route"]
+position = Vector2(-3154, 513)
+
+[node name="Marker2D2" type="Marker2D" parent="Patrol Routes/Mouse03Route"]
+position = Vector2(-3295, 547)
+
+[node name="Marker2D3" type="Marker2D" parent="Patrol Routes/Mouse03Route"]
+position = Vector2(-3183, 583)
+
+[node name="Marker2D4" type="Marker2D" parent="Patrol Routes/Mouse03Route"]
+position = Vector2(-3154, 513)
+
 [node name="Mouse04Route" type="Node2D" parent="Patrol Routes"]
 position = Vector2(219, 631)
+
+[node name="Marker2D" type="Marker2D" parent="Patrol Routes/Mouse04Route"]
+position = Vector2(-241, 1759)
+
+[node name="Marker2D2" type="Marker2D" parent="Patrol Routes/Mouse04Route"]
+position = Vector2(-264, 1798)
+
+[node name="Marker2D3" type="Marker2D" parent="Patrol Routes/Mouse04Route"]
+position = Vector2(-215, 1801)
 
 [node name="Mouse05Route" type="Node2D" parent="Patrol Routes"]
 position = Vector2(-45, 749)
 
+[node name="Marker2D" type="Marker2D" parent="Patrol Routes/Mouse05Route"]
+position = Vector2(-136, 2152)
+
+[node name="Marker2D2" type="Marker2D" parent="Patrol Routes/Mouse05Route"]
+position = Vector2(-36, 2153)
+
+[node name="Marker2D4" type="Marker2D" parent="Patrol Routes/Mouse05Route"]
+position = Vector2(-38, 2112)
+
+[node name="Marker2D5" type="Marker2D" parent="Patrol Routes/Mouse05Route"]
+position = Vector2(-137, 2110)
+
+[node name="Marker2D3" type="Marker2D" parent="Patrol Routes/Mouse05Route"]
+position = Vector2(-136, 2152)
+
 [node name="Mouse06Route" type="Node2D" parent="Patrol Routes"]
 position = Vector2(-161, 557)
 
+[node name="Marker2D" type="Marker2D" parent="Patrol Routes/Mouse06Route"]
+position = Vector2(152, 1565)
+
+[node name="Marker2D2" type="Marker2D" parent="Patrol Routes/Mouse06Route"]
+position = Vector2(183, 1528)
+
+[node name="Marker2D3" type="Marker2D" parent="Patrol Routes/Mouse06Route"]
+position = Vector2(215, 1583)
+
+[node name="Marker2D4" type="Marker2D" parent="Patrol Routes/Mouse06Route"]
+position = Vector2(152, 1565)
+
 [node name="Mouse07Route" type="Node2D" parent="Patrol Routes"]
 position = Vector2(3291, 1093)
+
+[node name="Marker2D" type="Marker2D" parent="Patrol Routes/Mouse07Route"]
+position = Vector2(-3671, 1034)
+
+[node name="Marker2D2" type="Marker2D" parent="Patrol Routes/Mouse07Route"]
+position = Vector2(-3636, 1014)
+
+[node name="Marker2D3" type="Marker2D" parent="Patrol Routes/Mouse07Route"]
+position = Vector2(-3751, 1013)
+
+[node name="Marker2D4" type="Marker2D" parent="Patrol Routes/Mouse07Route"]
+position = Vector2(-3671, 1034)
 
 [node name="Characters" type="Node2D" parent="."]
 position = Vector2(5365, -550)
@@ -9003,6 +9151,9 @@ patrol_route = NodePath("../../Patrol Routes/Mouse06Route")
 [node name="Mouse07" parent="Characters" instance=ExtResource("113_5507m")]
 position = Vector2(-2952, 1176)
 patrol_route = NodePath("../../Patrol Routes/Mouse07Route")
+
+[node name="Cat" parent="." instance=ExtResource("114_cjj0f")]
+position = Vector2(3027, 503)
 
 [editable path="enviroment (for map making)/Chairs/ChairHide1"]
 [editable path="enviroment (for map making)/Chairs/ChairHide2"]

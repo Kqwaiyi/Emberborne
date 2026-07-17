@@ -2434,6 +2434,14 @@ texture = ExtResource("109_niilh")
 position = Vector2(47.99999, 329.60004)
 texture = ExtResource("109_niilh")
 
+[node name="Sprite2D141" type="Sprite2D" parent="section1/Floor2"]
+position = Vector2(32.000015, 345.2)
+texture = ExtResource("109_niilh")
+
+[node name="Sprite2D153" type="Sprite2D" parent="section1/Floor2"]
+position = Vector2(47.999996, 345.60004)
+texture = ExtResource("109_niilh")
+
 [node name="Sprite2D120" type="Sprite2D" parent="section1/Floor2"]
 position = Vector2(63.99999, 329.60004)
 texture = ExtResource("109_niilh")
@@ -3153,7 +3161,7 @@ texture = ExtResource("94_43b2l")
 position = Vector2(1826, -588)
 
 [node name="ExitDoor" parent="section1/Door" instance=ExtResource("4_ldp3s")]
-position = Vector2(-1311.0001, 1450)
+position = Vector2(-1311, 1453)
 scale = Vector2(0.99999994, 0.99999994)
 metadata/_edit_group_ = true
 
@@ -3680,6 +3688,10 @@ shape = SubResource("wall_left")
 
 [node name="BottomWall2" type="CollisionShape2D" parent="section1/WallCollision"]
 position = Vector2(610.75, 865)
+shape = SubResource("RectangleShape2D_ypy8s")
+
+[node name="BottomWall3" type="CollisionShape2D" parent="section1/WallCollision"]
+position = Vector2(508, 930)
 shape = SubResource("RectangleShape2D_ypy8s")
 
 [node name="section3" type="Node2D" parent="."]

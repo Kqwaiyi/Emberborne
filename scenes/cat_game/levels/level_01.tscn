@@ -2443,12 +2443,6 @@ ray_count = 20
 sprite_frames = ExtResource("111_l1b3u")
 animation = &"Bark"
 
-[node name="AlertIcon" parent="Characters/Dog01" index="6"]
-offset_left = -6.0
-offset_top = -52.0
-offset_right = -6.0
-offset_bottom = -52.0
-
 [node name="Dog03" parent="Characters" instance=ExtResource("110_68qd6")]
 position = Vector2(-215, 606)
 patrol_route = NodePath("../../Patrol Routes/Dog03Route")
@@ -2459,12 +2453,6 @@ ray_count = 20
 [node name="Visual" parent="Characters/Dog03" index="5"]
 sprite_frames = ExtResource("112_5nwic")
 animation = &"Bark"
-
-[node name="AlertIcon" parent="Characters/Dog03" index="6"]
-offset_left = -6.0
-offset_top = -52.0
-offset_right = -6.0
-offset_bottom = -52.0
 
 [node name="Mouse02" parent="Characters" instance=ExtResource("113_rjs0v")]
 position = Vector2(-45, 750)
