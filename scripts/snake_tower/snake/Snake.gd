@@ -3,6 +3,13 @@ class_name Snake
 
 @export var tail_scene: PackedScene
 
+var head_directions = {
+	Vector2i(1, 0): {"rot": 0.0, "flip_h": false}, # Right
+	Vector2i(-1, 0): {"rot": 0.0, "flip_h": true}, # Left
+	Vector2i(0, 1): {"rot": PI/2, "flip_h": false}, # Down
+	Vector2i(0, -1): {"rot": -PI/2, "flip_h": false} # Up
+}
+
 var segments: Array[Vector2i] = []
 var visual_nodes: Array[Node2D] = []
 
@@ -56,6 +63,10 @@ func init_snake(start_positions: Array[Vector2i]):
 	check_gravity()
 	if has_node("Camera2D"):
 		$Camera2D.reset_smoothing()
+		var target_y = LevelManager.death_y
+		if LevelManager.camera_limit_y != -1:
+			target_y = LevelManager.camera_limit_y
+		$Camera2D.limit_bottom = (target_y * Globals.TILE_SIZE) + (Globals.TILE_SIZE * 2)
 
 func add_segment(pos: Vector2i):
 	segments.append(pos)
@@ -68,7 +79,7 @@ func add_segment(pos: Vector2i):
 		else:
 			var sprite = Sprite2D.new()
 			sprite.texture = preload("res://icon.svg")
-			sprite.centered = false
+			sprite.centered = true
 			sprite.scale = Vector2(Globals.TILE_SIZE / 128.0, Globals.TILE_SIZE / 128.0)
 			sprite.modulate = Color(0.1, 0.4, 0.8) # Head
 			node = sprite
@@ -78,7 +89,7 @@ func add_segment(pos: Vector2i):
 		else:
 			var sprite = Sprite2D.new()
 			sprite.texture = preload("res://icon.svg")
-			sprite.centered = false
+			sprite.centered = true
 			sprite.scale = Vector2(Globals.TILE_SIZE / 128.0, Globals.TILE_SIZE / 128.0)
 			sprite.modulate = Color(0.2, 0.6, 1.0) # Body fallback
 			node = sprite
@@ -90,7 +101,10 @@ func add_segment(pos: Vector2i):
 
 func update_visuals():
 	for i in range(segments.size()):
-		visual_nodes[i].position = Vector2(segments[i]) * Globals.TILE_SIZE
+		if i == 0:
+			visual_nodes[i].position = (Vector2(segments[i]) * Globals.TILE_SIZE) + Vector2(Globals.TILE_SIZE / 2.0, Globals.TILE_SIZE / 2.0)
+		else:
+			visual_nodes[i].position = Vector2(segments[i]) * Globals.TILE_SIZE
 	if has_node("Camera2D") and not segments.is_empty():
 		$Camera2D.position = Vector2(segments[0]) * Globals.TILE_SIZE + Vector2(Globals.TILE_SIZE / 2.0, Globals.TILE_SIZE / 2.0)
 
@@ -99,7 +113,7 @@ func update_grid_registration():
 	for i in range(segments.size()):
 		var cell = LevelManager.get_cell(segments[i])
 		if cell == LevelManager.CellType.SNAKE_HEAD or cell == LevelManager.CellType.SNAKE_BODY:
-			LevelManager.unregister_cell(segments[i])
+			LevelManager.unregister_cell(segments[i], cell)
 	
 	for i in range(segments.size()):
 		if i == 0:
@@ -142,36 +156,43 @@ func try_move(dir: Vector2i):
 	if cell == LevelManager.CellType.TERRAIN:
 		return
 	elif cell == LevelManager.CellType.APPLE:
-		move_segments(target, true)
+		if has_node("EatAudio"): $EatAudio.play()
+		move_segments(target, true, dir)
 		LevelManager.consume_apple(target)
 	elif cell == LevelManager.CellType.SPIKE:
-		move_segments(target, false) # visually move into it
+		if has_node("DieAudio"): $DieAudio.play()
+		move_segments(target, false, dir) # visually move into it
+		set_process(false)
 		LevelManager.trigger_loss()
 		return
 	elif cell == LevelManager.CellType.GOAL:
-		move_segments(target, false)
+		if has_node("MoveAudio"): $MoveAudio.play()
+		move_segments(target, false, dir)
+		set_process(false)
 		LevelManager.trigger_win()
 		return
 	elif cell == LevelManager.CellType.BOX:
 		var box = LevelManager.get_box(target)
 		if box and box.try_push(dir):
-			move_segments(target, false)
+			if has_node("MoveAudio"): $MoveAudio.play()
+			move_segments(target, false, dir)
 		else:
 			return
 	elif cell == LevelManager.CellType.SNAKE_BODY or cell == LevelManager.CellType.SNAKE_HEAD:
 		return
 	else:
-		move_segments(target, false)
+		if has_node("MoveAudio"): $MoveAudio.play()
+		move_segments(target, false, dir)
 	
 	update_grid_registration()
 	update_visuals()
 	check_gravity()
 
-func move_segments(target: Vector2i, grow: bool):
+func move_segments(target: Vector2i, grow: bool, dir: Vector2i = Vector2i.ZERO):
 	for i in range(segments.size()):
 		var cell = LevelManager.get_cell(segments[i])
 		if cell == LevelManager.CellType.SNAKE_HEAD or cell == LevelManager.CellType.SNAKE_BODY:
-			LevelManager.unregister_cell(segments[i])
+			LevelManager.unregister_cell(segments[i], cell)
 			
 	var new_segments: Array[Vector2i] = []
 	new_segments.append(target)
@@ -189,12 +210,18 @@ func move_segments(target: Vector2i, grow: bool):
 		else:
 			var sprite = Sprite2D.new()
 			sprite.texture = preload("res://icon.svg")
-			sprite.centered = false
+			sprite.centered = true
 			sprite.scale = Vector2(Globals.TILE_SIZE / 128.0, Globals.TILE_SIZE / 128.0)
 			sprite.modulate = Color(0.2, 0.6, 1.0)
 			node = sprite
 		add_child(node)
 		visual_nodes.append(node)
+		
+	if dir != Vector2i.ZERO and visual_nodes.size() > 0 and head_directions.has(dir):
+		var head = visual_nodes[0]
+		if head is Sprite2D:
+			head.rotation = head_directions[dir]["rot"]
+			head.flip_h = head_directions[dir]["flip_h"]
 
 func check_gravity():
 	if LevelManager.check_support(segments):
@@ -210,7 +237,7 @@ func do_fall_step():
 	for i in range(segments.size()):
 		var cell = LevelManager.get_cell(segments[i])
 		if cell == LevelManager.CellType.SNAKE_HEAD or cell == LevelManager.CellType.SNAKE_BODY:
-			LevelManager.unregister_cell(segments[i])
+			LevelManager.unregister_cell(segments[i], cell)
 			
 	for i in range(segments.size()):
 		segments[i] += Vector2i(0, 1)
@@ -218,11 +245,21 @@ func do_fall_step():
 	update_grid_registration()
 	update_visuals()
 	
+	for seg in segments:
+		if seg.y >= LevelManager.death_y:
+			if has_node("DieAudio"): $DieAudio.play()
+			set_process(false)
+			LevelManager.trigger_loss()
+			return
+	
 	if landing_on_spike:
+		if has_node("DieAudio"): $DieAudio.play()
+		set_process(false)
 		LevelManager.trigger_loss()
 		return
 		
 	if landing_on_goal:
+		set_process(false)
 		LevelManager.trigger_win()
 		return
 		

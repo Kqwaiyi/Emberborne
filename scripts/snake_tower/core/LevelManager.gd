@@ -16,7 +16,8 @@ var apple_nodes: Dictionary = {}
 var spike_nodes: Dictionary = {}
 var box_nodes: Dictionary = {}
 var goal_node: Node = null
-
+var death_y: int = 100
+var camera_limit_y: int = -1
 signal level_won
 signal level_lost
 signal apple_eaten(pos)
@@ -30,6 +31,8 @@ func reset():
 	spike_nodes.clear()
 	box_nodes.clear()
 	goal_node = null
+	death_y = 100
+	camera_limit_y = -1
 
 func register_cell(pos: Vector2i, type: int, node: Node = null):
 	grid[pos] = type
@@ -42,11 +45,18 @@ func register_cell(pos: Vector2i, type: int, node: Node = null):
 	elif type == CellType.BOX and node:
 		box_nodes[pos] = node
 
-func unregister_cell(pos: Vector2i):
+func unregister_cell(pos: Vector2i, type: int = -1):
+	var actual_type = get_cell(pos)
+	if type != -1 and actual_type != type:
+		return
+		
 	grid.erase(pos)
-	apple_nodes.erase(pos)
-	spike_nodes.erase(pos)
-	box_nodes.erase(pos)
+	if actual_type == CellType.APPLE:
+		apple_nodes.erase(pos)
+	elif actual_type == CellType.SPIKE:
+		spike_nodes.erase(pos)
+	elif actual_type == CellType.BOX:
+		box_nodes.erase(pos)
 
 func get_cell(pos: Vector2i) -> int:
 	if grid.has(pos):
@@ -103,7 +113,7 @@ func consume_apple(pos: Vector2i):
 	if apple_nodes.has(pos):
 		var apple = apple_nodes[pos]
 		apple.eat()
-		unregister_cell(pos)
+		unregister_cell(pos, CellType.APPLE)
 		apple_eaten.emit()
 
 func trigger_win():

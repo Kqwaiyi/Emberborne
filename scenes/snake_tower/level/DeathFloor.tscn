@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://dqr4xl3boav1w"]
+
+[ext_resource type="Script" path="res://scripts/snake_tower/level/DeathFloor.gd" id="1_df"]
+
+[node name="DeathFloor" type="Node2D" unique_id=2081512411]
+script = ExtResource("1_df")

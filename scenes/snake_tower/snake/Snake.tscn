@@ -4,6 +4,12 @@
 [ext_resource type="Texture2D" uid="uid://cyuob1afxadjh" path="res://icon.svg" id="2_sn"]
 [ext_resource type="PackedScene" uid="uid://cb5k72y6k5n3q" path="res://scenes/snake_tower/snake/SnakeTail.tscn" id="3_tail"]
 
+[sub_resource type="AudioStreamWAV" id="AudioStreamWAV_move"]
+
+[sub_resource type="AudioStreamWAV" id="AudioStreamWAV_eat"]
+
+[sub_resource type="AudioStreamWAV" id="AudioStreamWAV_die"]
+
 [node name="Snake" type="Node2D" unique_id=1937127888]
 script = ExtResource("1_sn")
 tail_scene = ExtResource("3_tail")
@@ -12,7 +18,15 @@ tail_scene = ExtResource("3_tail")
 modulate = Color(0.78851336, 0, 0.037665393, 1)
 scale = Vector2(0.125, 0.125)
 texture = ExtResource("2_sn")
-centered = false
+
+[node name="MoveAudio" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamWAV_move")
+
+[node name="EatAudio" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamWAV_eat")
+
+[node name="DieAudio" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamWAV_die")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1023042072]
 zoom = Vector2(4, 4)

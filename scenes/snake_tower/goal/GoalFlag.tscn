@@ -1,13 +1,58 @@
-[gd_scene load_steps=3 format=3]
+[gd_scene format=3 uid="uid://dn21xk1j5l7aq"]
 
-[ext_resource type="Script" path="res://scripts/snake_tower/goal/GoalFlag.gd" id="1_g"]
-[ext_resource type="Texture2D" path="res://icon.svg" id="2_g"]
+[ext_resource type="Script" uid="uid://brqbbgyoh5hbg" path="res://scripts/snake_tower/goal/GoalFlag.gd" id="1_g"]
+[ext_resource type="Texture2D" uid="uid://bhao8hlkra657" path="res://assets/snake_tower/flag_animation.png" id="2_e751f"]
 
-[node name="GoalFlag" type="Node2D"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_aga33"]
+atlas = ExtResource("2_e751f")
+region = Rect2(0, 0, 60, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bw4cn"]
+atlas = ExtResource("2_e751f")
+region = Rect2(60, 0, 60, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yxe1l"]
+atlas = ExtResource("2_e751f")
+region = Rect2(120, 0, 60, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ha6l6"]
+atlas = ExtResource("2_e751f")
+region = Rect2(180, 0, 60, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xgi4n"]
+atlas = ExtResource("2_e751f")
+region = Rect2(240, 0, 60, 60)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xvx6h"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aga33")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bw4cn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yxe1l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ha6l6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xgi4n")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="GoalFlag" type="Node2D" unique_id=1045403204]
 script = ExtResource("1_g")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(0.2, 0.8, 0.2, 1)
-scale = Vector2(0.125, 0.125)
-texture = ExtResource("2_g")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=302041706]
+position = Vector2(3, -2)
+scale = Vector2(0.29852, 0.29940534)
+sprite_frames = SubResource("SpriteFrames_xvx6h")
+autoplay = "default"
+frame_progress = 0.8014912
 centered = false

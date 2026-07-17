@@ -18,21 +18,27 @@ func _deferred_init():
 func try_push(dir: Vector2i) -> bool:
 	var target = grid_pos + dir
 	if LevelManager.get_cell(target) == LevelManager.CellType.EMPTY:
-		LevelManager.unregister_cell(grid_pos)
+		LevelManager.unregister_cell(grid_pos, LevelManager.CellType.BOX)
 		grid_pos = target
 		position = Vector2(grid_pos) * Globals.TILE_SIZE
 		LevelManager.register_cell(grid_pos, LevelManager.CellType.BOX, self)
+		check_gravity()
 		return true
 	return false
 
 func _process(delta):
+	check_gravity()
 	if is_falling:
 		fall_timer += delta
 		if fall_timer >= fall_interval:
-			fall_timer = 0.0
-			do_fall_step()
-	else:
-		check_gravity()
+			# Extra safety check before taking the physical step
+			var below = grid_pos + Vector2i(0, 1)
+			if LevelManager.get_cell(below) == LevelManager.CellType.EMPTY:
+				fall_timer = 0.0
+				do_fall_step()
+			else:
+				is_falling = false
+				fall_timer = 0.0
 
 func check_gravity():
 	var below = grid_pos + Vector2i(0, 1)
@@ -49,7 +55,7 @@ func check_gravity():
 		fall_timer = 0.0
 
 func do_fall_step():
-	LevelManager.unregister_cell(grid_pos)
+	LevelManager.unregister_cell(grid_pos, LevelManager.CellType.BOX)
 	grid_pos += Vector2i(0, 1)
 	position = Vector2(grid_pos) * Globals.TILE_SIZE
 	LevelManager.register_cell(grid_pos, LevelManager.CellType.BOX, self)
