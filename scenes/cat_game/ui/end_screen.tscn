@@ -1,8 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://end_screen"]
+[gd_scene load_steps=3 format=3 uid="uid://cae1w4ffii4j5"]
 
-[ext_resource type="Script" path="res://scripts/cat_game/ui/end_screen.gd" id="1_end"]
+[ext_resource type="Script" uid="uid://ve3iv3hgdh8x" path="res://scripts/cat_game/ui/end_screen.gd" id="1_end"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_panel"]
+content_margin_left = 24.0
+content_margin_top = 20.0
+content_margin_right = 24.0
+content_margin_bottom = 20.0
 bg_color = Color(0.898, 0.816, 0.663, 1)
 border_width_left = 4
 border_width_top = 4
@@ -13,106 +17,59 @@ corner_radius_top_left = 8
 corner_radius_top_right = 8
 corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
-content_margin_left = 24.0
-content_margin_top = 20.0
-content_margin_right = 24.0
-content_margin_bottom = 20.0
-shadow_color = Color(0.05, 0.02, 0.01, 0.50)
+shadow_color = Color(0.05, 0.02, 0.01, 0.5)
 shadow_size = 14
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_btn"]
-bg_color = Color(0.69, 0.545, 0.376, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.216, 0.149, 0.086, 1)
-corner_radius_top_left = 4
-corner_radius_top_right = 4
-corner_radius_bottom_right = 4
-corner_radius_bottom_left = 4
-content_margin_left = 12.0
-content_margin_top = 9.0
-content_margin_right = 12.0
-content_margin_bottom = 9.0
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_btn_hover"]
-bg_color = Color(0.824, 0.686, 0.525, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.216, 0.149, 0.086, 1)
-corner_radius_top_left = 4
-corner_radius_top_right = 4
-corner_radius_bottom_right = 4
-corner_radius_bottom_left = 4
-content_margin_left = 12.0
-content_margin_top = 9.0
-content_margin_right = 12.0
-content_margin_bottom = 9.0
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_btn_pressed"]
-bg_color = Color(0.545, 0.424, 0.278, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.216, 0.149, 0.086, 1)
-corner_radius_top_left = 4
-corner_radius_top_right = 4
-corner_radius_bottom_right = 4
-corner_radius_bottom_left = 4
-content_margin_left = 12.0
-content_margin_top = 9.0
-content_margin_right = 12.0
-content_margin_bottom = 9.0
-
 [node name="EndScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource("1_end")
 
 [node name="BG" type="ColorRect" parent="."]
+layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color(0, 0, 0, 1)
 
 [node name="Panel" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -310.0
-offset_top = -200.0
+offset_top = -185.0
 offset_right = 310.0
-offset_bottom = 200.0
-grow_horizontal = 0
-grow_vertical = 0
+offset_bottom = 169.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_panel")
 
 [node name="VBox" type="VBoxContainer" parent="Panel"]
 layout_mode = 2
-theme_override_constants/separation = 12
+theme_override_constants/separation = 14
 
 [node name="CongratLabel" type="Label" parent="Panel/VBox"]
 layout_mode = 2
-horizontal_alignment = 1
-text = "✦  CONGRATULATIONS!  ✦"
-theme_override_font_sizes/font_size = 24
 theme_override_colors/font_color = Color(0.18, 0.12, 0.07, 1)
+theme_override_font_sizes/font_size = 40
+text = "✦  CONGRATULATIONS!  ✦"
+horizontal_alignment = 1
 
 [node name="TitleDiv" type="ColorRect" parent="Panel/VBox"]
-layout_mode = 2
 custom_minimum_size = Vector2(0, 3)
+layout_mode = 2
 color = Color(0.216, 0.149, 0.086, 0.65)
 
 [node name="SubLabel" type="Label" parent="Panel/VBox"]
 layout_mode = 2
-horizontal_alignment = 1
+theme_override_colors/font_color = Color(0.3, 0.2, 0.1, 1)
+theme_override_font_sizes/font_size = 25
 text = "YOUR TOTAL SCORE"
-theme_override_font_sizes/font_size = 15
-theme_override_colors/font_color = Color(0.30, 0.20, 0.10, 1)
+horizontal_alignment = 1
 
 [node name="ScoreCenter" type="CenterContainer" parent="Panel/VBox"]
 layout_mode = 2
@@ -123,25 +80,13 @@ layout_mode = 2
 theme_override_constants/separation = 8
 
 [node name="BotDiv" type="ColorRect" parent="Panel/VBox"]
-layout_mode = 2
 custom_minimum_size = Vector2(0, 2)
-color = Color(0.216, 0.149, 0.086, 0.50)
+layout_mode = 2
+color = Color(0.216, 0.149, 0.086, 0.5)
 
 [node name="BracketLabel" type="Label" parent="Panel/VBox"]
 layout_mode = 2
+theme_override_colors/font_color = Color(0.3, 0.2, 0.1, 1)
+theme_override_font_sizes/font_size = 25
+text = "You have placed  # ..."
 horizontal_alignment = 1
-text = "You have placed — in your bracket"
-theme_override_font_sizes/font_size = 13
-theme_override_colors/font_color = Color(0.30, 0.20, 0.10, 1)
-
-[node name="PlayAgainButton" type="Button" parent="Panel/VBox"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "PLAY AGAIN"
-theme_override_font_sizes/font_size = 15
-theme_override_colors/font_color = Color(0.14, 0.09, 0.04, 1)
-theme_override_colors/font_hover_color = Color(0.06, 0.04, 0.02, 1)
-theme_override_colors/font_pressed_color = Color(0.06, 0.04, 0.02, 1)
-theme_override_styles/normal = SubResource("StyleBoxFlat_btn")
-theme_override_styles/hover = SubResource("StyleBoxFlat_btn_hover")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_btn_pressed")

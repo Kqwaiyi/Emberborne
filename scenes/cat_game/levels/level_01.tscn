@@ -58,7 +58,7 @@
 [ext_resource type="PackedScene" path="res://scenes/cat_game/environment/exit_door.tscn" id="201_door"]
 [ext_resource type="Script" uid="uid://bqh3brfi1re2c" path="res://scripts/cat_game/environment/cactus_hazard.gd" id="202_cactus"]
 [ext_resource type="PackedScene" path="res://scenes/cat_game/ui/hud.tscn" id="203_hud"]
-[ext_resource type="PackedScene" path="res://scenes/cat_game/ui/results_screen.tscn" id="204_results"]
+[ext_resource type="PackedScene" uid="uid://cmquucfy2ckxe" path="res://scenes/cat_game/ui/results_screen.tscn" id="204_results"]
 
 [sub_resource type="RectangleShape2D" id="sf_counter_v"]
 size = Vector2(10.000004, 47.75)
@@ -136,7 +136,7 @@ size = Vector2(157, 5.25)
 script = ExtResource("199_level")
 starting_score = 0
 maximum_time_bonus = 1000
-optimal_time_seconds = 12.0
+optimal_time_seconds = 20.0
 time_penalty_per_second = 100.0
 next_scene_path = "res://scenes/cat_game/levels/level_02.tscn"
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=131 format=3 uid="uid://ckem05uh45a4"]
+[gd_scene load_steps=133 format=3 uid="uid://ckem05uh45a4"]
 
 [ext_resource type="Texture2D" uid="uid://c8qnum6m38yjg" path="res://assets/sprites/environment/output/tile_0_0.png" id="3_yy7jo"]
 [ext_resource type="Texture2D" uid="uid://csn12mmbrnrr3" path="res://assets/sprites/environment/output/tile_0_1.png" id="4_ekg0j"]
@@ -72,6 +72,8 @@
 [ext_resource type="PackedScene" uid="uid://8bx015urajli" path="res://scenes/cat_game/environment/hiding_spot.tscn" id="200_hide"]
 [ext_resource type="PackedScene" path="res://scenes/cat_game/environment/exit_door.tscn" id="201_door"]
 [ext_resource type="Script" uid="uid://bqh3brfi1re2c" path="res://scripts/cat_game/environment/cactus_hazard.gd" id="202_cactus"]
+[ext_resource type="PackedScene" path="res://scenes/cat_game/ui/hud.tscn" id="hud_l2"]
+[ext_resource type="PackedScene" path="res://scenes/cat_game/ui/results_screen.tscn" id="results_l2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_716oc"]
 size = Vector2(253, 67)
@@ -249,6 +251,12 @@ size = Vector2(36.000397, 72.000725)
 
 [node name="Level02" type="Node2D"]
 script = ExtResource("199_level")
+required_mice = 4
+starting_score = 0
+maximum_time_bonus = 2000
+optimal_time_seconds = 120.0
+time_penalty_per_second = 25.0
+total_mice = 7
 next_scene_path = "res://scenes/cat_game/levels/level_03.tscn"
 
 [node name="map2" type="Node2D" parent="."]
@@ -4858,7 +4866,6 @@ texture = ExtResource("5_3aba1")
 [node name="Coloured_Long_table4" type="Node2D" parent="map2/Table"]
 position = Vector2(282, 592)
 scale = Vector2(3, 3)
-metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="map2/Table/Coloured_Long_table4"]
 position = Vector2(-7, 0)
@@ -4877,7 +4884,7 @@ position = Vector2(9, 0)
 scale = Vector2(0.33333, 0.33333)
 
 [node name="HideCollision" parent="map2/Table/Coloured_Long_table4/TableHide/HideArea" index="0"]
-position = Vector2(-2.000005, 17.000048)
+position = Vector2(-2.000005, 1.0000095)
 shape = SubResource("RectangleShape2D_qamn1")
 
 [node name="VisionCollision" parent="map2/Table/Coloured_Long_table4/TableHide/VisionBlocker" index="0"]
@@ -6048,7 +6055,11 @@ sprite_frames = ExtResource("112_5nwic")
 animation = &"Bark"
 
 [node name="Cat" parent="." instance=ExtResource("102_ngoas")]
-position = Vector2(1648, 1961)
+position = Vector2(1625, 1982)
+
+[node name="HUD" parent="." instance=ExtResource("hud_l2")]
+
+[node name="ResultsScreen" parent="." instance=ExtResource("results_l2")]
 
 [editable path="map2/Door/ExitDoor"]
 [editable path="map2/Chairs/HidingSpot"]

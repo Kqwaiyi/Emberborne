@@ -1,4 +1,4 @@
-[gd_scene load_steps=154 format=3 uid="uid://dpts701whw3s"]
+[gd_scene load_steps=156 format=3 uid="uid://dpts701whw3s"]
 
 [ext_resource type="Script" uid="uid://bsoa08gnlhoau" path="res://scripts/cat_game/levels/level_02.gd" id="1_knpcn"]
 [ext_resource type="Texture2D" uid="uid://u0g7oy8asqi8" path="res://assets/sprites/environment/door_closed.png" id="3_od75w"]
@@ -86,6 +86,8 @@
 [ext_resource type="SpriteFrames" uid="uid://cmkvoaf2lslxi" path="res://scenes/cat_game/characters/dog_variants/dog4.tres" id="112_af4dh"]
 [ext_resource type="SpriteFrames" uid="uid://bspk2plmij7hd" path="res://scenes/cat_game/characters/dog_variants/dog3.tres" id="113_i0vt7"]
 [ext_resource type="PackedScene" uid="uid://fb2upb5dyg5b" path="res://scenes/cat_game/characters/mouse.tscn" id="114_p0khi"]
+[ext_resource type="PackedScene" path="res://scenes/cat_game/ui/hud.tscn" id="hud_l3"]
+[ext_resource type="PackedScene" path="res://scenes/cat_game/ui/results_screen.tscn" id="results_l3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2byil"]
 size = Vector2(31.500345, 39.00038)
@@ -291,6 +293,11 @@ size = Vector2(16.000036, 16.000015)
 [node name="Level03" type="Node2D"]
 position = Vector2(-2401, -1150)
 script = ExtResource("1_knpcn")
+required_mice = 5
+starting_score = 0
+maximum_time_bonus = 1000
+optimal_time_seconds = 120.0
+total_mice = 7
 next_scene_path = "res://scenes/cat_game/levels/level_04.tscn"
 
 [node name="Patrol Routes" type="Node2D" parent="."]
@@ -4660,6 +4667,10 @@ patrol_route = NodePath("../../Patrol Routes/Mouse07Route")
 
 [node name="Cat" parent="." instance=ExtResource("110_g5bg3")]
 position = Vector2(2444, 1416)
+
+[node name="HUD" parent="." instance=ExtResource("hud_l3")]
+
+[node name="ResultsScreen" parent="." instance=ExtResource("results_l3")]
 
 [editable path="section1/Door/ExitDoor"]
 [editable path="section1/Chairs/ChairHide3"]

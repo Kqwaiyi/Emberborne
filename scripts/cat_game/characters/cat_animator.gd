@@ -28,6 +28,9 @@ var _current_anim: String = ""
 var _last_h_dir: String   = "right"
 var _stopped_time: float  = 0.0
 
+func _ready() -> void:
+	_play("walk_right")
+
 func _process(delta: float) -> void:
 	if idle_delay > 0.0 and (_current_anim == "" or _current_anim.begins_with("idle")):
 		_stopped_time += delta

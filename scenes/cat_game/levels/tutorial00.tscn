@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://byd7ye2p1btx0"]
+[gd_scene load_steps=46 format=3 uid="uid://byd7ye2p1btx0"]
 
 [ext_resource type="Script" uid="uid://bsoa08gnlhoau" path="res://scripts/cat_game/levels/level_02.gd" id="1_egvdl"]
 [ext_resource type="Texture2D" uid="uid://c6hf42lml3pkx" path="res://assets/sprites/environment/wall and floor tiles/tile_2_8.png" id="2_8wkct"]
@@ -28,6 +28,9 @@
 [ext_resource type="Texture2D" uid="uid://bac8ci07iafs0" path="res://assets/sprites/environment/output/tile_13_11.png" id="34_4dnk1"]
 [ext_resource type="Texture2D" uid="uid://vweksugkkb2c" path="res://assets/sprites/environment/output/tile_13_5.png" id="39_nktx4"]
 [ext_resource type="Texture2D" uid="uid://yvbfn6vcrlc3" path="res://assets/sprites/environment/output/tile_13_6.png" id="40_f4ah8"]
+[ext_resource type="Texture2D" uid="uid://sbd6tkeb6on" path="res://assets/sprites/environment/output/tile_13_8.png" id="41_u1vrx"]
+[ext_resource type="Texture2D" uid="uid://dgmi01ha1x78h" path="res://assets/sprites/environment/output/tile_14_14.png" id="42_mibft"]
+[ext_resource type="Texture2D" uid="uid://5nmglvwimtid" path="res://assets/sprites/environment/output/tile_14_15.png" id="43_jutho"]
 [ext_resource type="Texture2D" uid="uid://bexg04orn4tqq" path="res://assets/sprites/environment/output/tile_8_19.png" id="50_tolgh"]
 [ext_resource type="Texture2D" uid="uid://rxhp2fici63p" path="res://assets/sprites/environment/output/tile_8_20.png" id="51_drnmo"]
 [ext_resource type="PackedScene" uid="uid://b2qxfiflox5xx" path="res://scenes/cat_game/characters/cat.tscn" id="72_vwyt6"]
@@ -1821,7 +1824,8 @@ scale = Vector2(2.031249, 1.7812493)
 texture = ExtResource("14_1eyuy")
 
 [node name="Rbed3" type="Node2D" parent="map node"]
-position = Vector2(134, -11)
+position = Vector2(-1490, 1306)
+scale = Vector2(3, 3)
 metadata/_edit_group_ = true
 
 [node name="Sprite2D13" type="Sprite2D" parent="map node/Rbed3"]
@@ -1853,7 +1857,7 @@ position = Vector2(-15.750153, 19.125183)
 shape = SubResource("RectangleShape2D_00t3p")
 
 [node name="Coloured_round_table" type="Node2D" parent="map node"]
-position = Vector2(-798, 459.00003)
+position = Vector2(-1741, 1186)
 scale = Vector2(3, 3)
 metadata/_edit_group_ = true
 
@@ -1879,72 +1883,93 @@ shape = SubResource("RectangleShape2D_nee7v")
 
 [node name="curved table" type="Node2D" parent="map node"]
 position = Vector2(-1996, 1358)
-scale = Vector2(2, 2)
+scale = Vector2(3, 3)
 
 [node name="Sprite2D10" type="Sprite2D" parent="map node/curved table"]
-position = Vector2(167.5, -104)
+position = Vector2(119.50032, -65.83333)
 texture = ExtResource("28_xge03")
 
 [node name="Sprite2D11" type="Sprite2D" parent="map node/curved table"]
-position = Vector2(120.833, -104)
+position = Vector2(72.83332, -65.83333)
 texture = ExtResource("29_023vb")
 
 [node name="Sprite2D13" type="Sprite2D" parent="map node/curved table"]
-position = Vector2(120.83325, -88.16669)
+position = Vector2(72.83357, -50.00002)
 texture = ExtResource("30_igrmu")
 
 [node name="Sprite2D15" type="Sprite2D" parent="map node/curved table"]
-position = Vector2(120.83325, -75.5)
+position = Vector2(72.83357, -37.333332)
 texture = ExtResource("31_0dims")
+
+[node name="Sprite2D6" type="Sprite2D" parent="map node/curved table"]
+position = Vector2(104.00032, -65.83333)
+texture = ExtResource("39_nktx4")
+
+[node name="Sprite2D7" type="Sprite2D" parent="map node/curved table"]
+position = Vector2(88.50032, -65.83333)
+texture = ExtResource("40_f4ah8")
 
 [node name="curved table 2" type="Node2D" parent="map node"]
 position = Vector2(-2302, 1139)
-scale = Vector2(2, 2)
+scale = Vector2(3, 3)
 
 [node name="Sprite2D17" type="Sprite2D" parent="map node/curved table 2"]
-position = Vector2(302, 34)
+position = Vector2(196.16667, 32.166668)
 texture = ExtResource("27_k3olw")
 
 [node name="Sprite2D18" type="Sprite2D" parent="map node/curved table 2"]
-position = Vector2(318, 34)
+position = Vector2(212.16667, 32.166668)
 texture = ExtResource("28_n1x3f")
 
 [node name="Sprite2D12" type="Sprite2D" parent="map node/curved table 2"]
-position = Vector2(333.83325, 34)
+position = Vector2(227.99992, 32.166668)
 texture = ExtResource("32_w824r")
 
 [node name="Sprite2D14" type="Sprite2D" parent="map node/curved table 2"]
-position = Vector2(333.83325, 49.666687)
-texture = ExtResource("34_4dnk1")
-
-[node name="Sprite2D15" type="Sprite2D" parent="map node/curved table 2"]
-position = Vector2(333.833, 65.5)
-texture = ExtResource("34_4dnk1")
-
-[node name="Sprite2D19" type="Sprite2D" parent="map node/curved table 2"]
-position = Vector2(333.833, 81.5)
-texture = ExtResource("34_4dnk1")
-
-[node name="Sprite2D20" type="Sprite2D" parent="map node/curved table 2"]
-position = Vector2(333.833, 84)
+position = Vector2(227.99992, 47.833355)
 texture = ExtResource("34_4dnk1")
 
 [node name="Sprite2D16" type="Sprite2D" parent="map node/curved table 2"]
-position = Vector2(333.833, 98.5)
+position = Vector2(227.99968, 63.666668)
 texture = ExtResource("33_17bii")
 
 [node name="Sprite2D6" type="Sprite2D" parent="map node"]
-position = Vector2(-1692, 1150)
-scale = Vector2(2, 2)
+position = Vector2(-1522.5, 1235.5)
+scale = Vector2(3, 3)
 texture = ExtResource("39_nktx4")
 
 [node name="Sprite2D7" type="Sprite2D" parent="map node"]
-position = Vector2(-1723, 1150)
-scale = Vector2(2, 2)
+position = Vector2(-1570.5, 1235.5)
+scale = Vector2(3, 3)
 texture = ExtResource("40_f4ah8")
 
+[node name="Sprite2D9" type="Sprite2D" parent="map node"]
+position = Vector2(-1378.5, 1235.5)
+scale = Vector2(3, 3)
+texture = ExtResource("41_u1vrx")
+
+[node name="Sprite2D23" type="Sprite2D" parent="map node"]
+position = Vector2(-1474.5, 1235.5)
+scale = Vector2(3, 3)
+texture = ExtResource("27_k3olw")
+
+[node name="Sprite2D24" type="Sprite2D" parent="map node"]
+position = Vector2(-1426.5, 1235.5)
+scale = Vector2(3, 3)
+texture = ExtResource("28_n1x3f")
+
+[node name="Sprite2D19" type="Sprite2D" parent="map node"]
+position = Vector2(-1282.5001, 1235.5)
+scale = Vector2(3, 3)
+texture = ExtResource("42_mibft")
+
+[node name="Sprite2D20" type="Sprite2D" parent="map node"]
+position = Vector2(-1330.5001, 1235.5)
+scale = Vector2(3, 3)
+texture = ExtResource("43_jutho")
+
 [node name="Cat" parent="." instance=ExtResource("72_vwyt6")]
-position = Vector2(1135, 1916)
+position = Vector2(1193, 1864)
 
 [editable path="map node/Door/ExitDoor"]
 [editable path="map node/Rbed3/BedHide"]
