@@ -84,10 +84,10 @@ The `Snake.gd` is the most complex entity, handling input, multi-segment movemen
 
 *   **Process Mode:** Set to `Node.PROCESS_MODE_ALWAYS` so it continues to calculate delta time even when the main game tree is paused.
 *   **Save-Scum Timer System:** To prevent penalizing players for trying to figure out a puzzle, the timer uses a save-scum mechanic.
-    *   `current_level_time`: A temporary variable tracking the time spent on the current attempt. This is incremented every frame during active gameplay.
-    *   `total_time_elapsed`: A persistent datastore of accumulated time across all completed levels.
-    *   When the player wins a level (touches the goal), `Globals.commit_time()` is called, moving the temporary time into the persistent datastore.
-    *   When a level is reset, restarted due to death, or the player closes/opens the laptop, `Globals._on_scene_loaded` triggers and instantly resets the `current_level_time` to `0.0`. This discards any time spent on a failed attempt.
+	*   `current_level_time`: A temporary variable tracking the time spent on the current attempt. This is incremented every frame during active gameplay.
+	*   `total_time_elapsed`: A persistent datastore of accumulated time across all completed levels.
+	*   When the player wins a level (touches the goal), `Globals.commit_time()` is called, moving the temporary time into the persistent datastore.
+	*   When a level is reset, restarted due to death, or the player closes/opens the laptop, `Globals._on_scene_loaded` triggers and instantly resets the `current_level_time` to `0.0`. This discards any time spent on a failed attempt.
 *   **Dynamic Real-Time UI (`Level.gd`):** The total elapsed time is dynamically displayed on screen (from Level 2 onwards). Rather than manually editing each `.tscn` file, `Level.gd` instantiates a `Label` on `_ready()`, aligns it beneath the physical reset button, and seamlessly sums `total_time_elapsed` and `current_level_time` every frame.
 *   **Return to Home UI (`Level*.tscn` & `Level.gd`):** Each level scene contains a `HomeButton` node within its `UILayer`, positioned alongside the Reset button. Pressing this button triggers the `return_to_home()` method inside `Level.gd`, which uses `_switch_level(home_scene_path)` to safely navigate back to the designated starting level (configurable via the `@export var home_scene_path`). This transition fully integrates with the `LaptopUI` system.
 *   **Scene Hook:** Connects to `SceneManager.scene_loaded`. When a scene finishes loading, it checks if the scene path is within a valid minigame directory (`res://scenes/snake_tower/level/`) or explicitly listed in a dictionary. If valid, the timer runs; if it is the final end screen (`LevelLast.tscn`) or invalid, it pauses.

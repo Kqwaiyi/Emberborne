@@ -114,8 +114,8 @@ color_preset = "crimson"
 
 [node name="AppButton2" parent="AppGrid" unique_id=562105279 instance=ExtResource("2_button")]
 layout_mode = 2
-app_name = "MODULE 02"
-target_scene = "res://scenes/ui/DesktopScreen.tscn"
+app_name = "MESSENGER"
+target_scene = "res://scenes/ui/CutsceneMessenger.tscn"
 icon_texture = ExtResource("3_icon")
 color_preset = "emerald"
 
