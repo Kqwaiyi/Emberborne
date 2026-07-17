@@ -1,0 +1,62 @@
+[gd_scene format=3 uid="uid://c13eyjf4wigvx"]
+
+[ext_resource type="Script" uid="uid://dyabx23k351gr" path="res://scripts/cat_game/characters/shadow.gd" id="2_d2amu"]
+[ext_resource type="Script" path="res://scripts/scifi_home/character/player.gd" id="13_player"]
+[ext_resource type="Script" uid="uid://oclwxt2xw2qs" path="res://scripts/cat_game/characters/layered_character.gd" id="4_hmd57"]
+[ext_resource type="SpriteFrames" uid="uid://c0xdhf3pdll40" path="res://scenes/cat_game/characters/human_variants/outfit1.tres" id="5_2qb4s"]
+[ext_resource type="SpriteFrames" uid="uid://bir3fr7jt7xx0" path="res://scenes/cat_game/characters/human_variants/outfit2.tres" id="6_lff0q"]
+[ext_resource type="SpriteFrames" uid="uid://c4xlagsd0xiyo" path="res://scenes/cat_game/characters/human_variants/outfit3.tres" id="7_hr8ae"]
+[ext_resource type="SpriteFrames" uid="uid://bn3toc4d0xgku" path="res://scenes/cat_game/characters/human_variants/hair1.tres" id="8_utr3q"]
+[ext_resource type="SpriteFrames" uid="uid://bsjwjxdkvoptb" path="res://scenes/cat_game/characters/human_variants/hair2.tres" id="9_rppcv"]
+[ext_resource type="SpriteFrames" uid="uid://pffadsbf5sqd" path="res://scenes/cat_game/characters/human_variants/hat1.tres" id="10_0bi4f"]
+[ext_resource type="SpriteFrames" uid="uid://cqjxvp1wo1exp" path="res://scenes/cat_game/characters/human_variants/hat2.tres" id="11_3eawd"]
+[ext_resource type="SpriteFrames" uid="uid://brhcc85u8d7mv" path="res://scenes/cat_game/characters/human_variants/body.tres" id="12_bsivt"]
+
+[sub_resource type="CircleShape2D" id="1_body"]
+radius = 11.045361
+
+[node name="Player" type="CharacterBody2D" unique_id=1282809848]
+collision_layer = 2
+collision_mask = 1
+script = ExtResource("13_player")
+
+[node name="Shadow" type="Node2D" parent="." unique_id=857253790]
+z_index = -1
+position = Vector2(0, 12)
+script = ExtResource("2_d2amu")
+
+[node name="BodyCollision" type="CollisionShape2D" parent="." unique_id=372244914]
+shape = SubResource("1_body")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Visual" type="Node2D" parent="." unique_id=1469507102]
+scale = Vector2(2.5, 2.5)
+script = ExtResource("4_hmd57")
+outfit_variants = Array[SpriteFrames]([ExtResource("5_2qb4s"), ExtResource("6_lff0q"), ExtResource("7_hr8ae")])
+hair_variants = Array[SpriteFrames]([ExtResource("8_utr3q"), ExtResource("9_rppcv")])
+hat_variants = Array[SpriteFrames]([ExtResource("10_0bi4f"), ExtResource("11_3eawd")])
+starting_outfit = null
+starting_hair = null
+starting_hat = null
+run_threshold = 9999.0
+idle_delay = null
+
+[node name="LayerBase" type="AnimatedSprite2D" parent="Visual" unique_id=439474350]
+sprite_frames = ExtResource("12_bsivt")
+animation = &"walk_right"
+
+[node name="LayerOutfit" type="AnimatedSprite2D" parent="Visual" unique_id=1864246687]
+self_modulate = Color(0.29997092, 0.4813339, 0.6898417, 1)
+sprite_frames = ExtResource("6_lff0q")
+animation = &"walk_right"
+
+[node name="LayerHair" type="AnimatedSprite2D" parent="Visual" unique_id=1209824945]
+self_modulate = Color(0.28627452, 0.15294118, 0.1254902, 1)
+sprite_frames = ExtResource("8_utr3q")
+animation = &"walk_right"
+
+[node name="LayerHat" type="AnimatedSprite2D" parent="Visual" unique_id=340148147]
+visible = false
+sprite_frames = ExtResource("10_0bi4f")
+animation = &"walk_right"

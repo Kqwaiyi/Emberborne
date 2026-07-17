@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://es8ugws3qpvh" path="res://assets/scifi_home/RCCapartmentTILESETrevamped/RCCapartmentTILESET/mockups/apartmentexteriorMOCKUP1.png" id="8_ruksc"]
 [ext_resource type="Texture2D" uid="uid://dokhpl4ai2r4" path="res://assets/scifi_home/WILL USE !/!$animateddoorsAPARTMENT.png" id="9_60mna"]
 [ext_resource type="Texture2D" uid="uid://uqs1okhmatuy" path="res://assets/scifi_home/WILL USE !/apartmentexteriorA5.png" id="9_f1tkd"]
+[ext_resource type="PackedScene" uid="uid://c13eyjf4wigvx" path="res://scenes/scifi_home/character/main character.tscn" id="10_char"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mdo6h"]
 texture = ExtResource("1_k7ymq")
@@ -2628,6 +2629,8 @@ sources/6 = SubResource("TileSetAtlasSource_hlxts")
 sources/7 = SubResource("TileSetAtlasSource_60mna")
 sources/8 = SubResource("TileSetAtlasSource_541lj")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fm8fw"]
+
 [node name="Map" type="Node2D" unique_id=801796816]
 
 [node name="TileMap" type="TileMap" parent="." unique_id=1085419593]
@@ -2670,9 +2673,19 @@ use_parent_material = true
 tile_map_data = PackedByteArray("AAASAOz/AQABAAkAAAAYAOz/AQABAAkAAADq/w4ABAAPAAcAAADq/xAABAAOAAcAAADr/xAABAAOAAcAAADs/w4ABAAOAAYAAADs/xEABAAPAAYAAADt/xAABAAOAAYAAADx/w4ABAAEAAUAAADz/w4AAQABAAkAAAD2/wQABAAAAAUAAAD3/wUABAAAAAUAAAD6/wAABAAEAAYAAAD6/wEABAAFAAYAAAD6/wMABAAEAAcAAAD6/wQABAAFAAcAAAD8/wUABAACAAUAAADt/xUABgAEAAAAAADt/xgABgAEAAEAAADx/xMABgAHAAAAAADx/xYABgAHAAEAAADv/xoABgALAAAAAADv/x0ABgALAAEAAADv/yAABgALAAIAAADy/xoABgAMAAAAAADy/x0ABgAMAAEAAADy/yAABgAMAAIAAAA=")
 tile_set = SubResource("TileSet_fm8fw")
 
+[node name="Player" parent="." unique_id=568852055 instance=ExtResource("10_char")]
+position = Vector2(-214, 49)
+
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1925084723]
 visible = false
 modulate = Color(1, 1, 1, 0.38431373)
 z_index = -100
 scale = Vector2(3, 3)
 texture = ExtResource("8_ruksc")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=636002530]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1949734694]
+shape = SubResource("RectangleShape2D_fm8fw")
+
+[editable path="Player"]
