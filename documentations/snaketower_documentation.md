@@ -72,6 +72,10 @@ The `Snake.gd` is the most complex entity, handling input, multi-segment movemen
 *   **Fall Phase:** Every `fall_interval` (0.07s), the entire snake shifts down by `Vector2i(0, 1)`.
 *   **Lethality:** During a fall step, it explicitly checks `check_gravity_death` and `check_gravity_win` to resolve landing on spikes or the goal. It also checks if any segment's Y coordinate exceeds `LevelManager.death_y` (configured by a `DeathFloor` node) to trigger a reset if the snake falls off the map.
 
+### Visuals & Audio
+*   **Head Rotation:** The snake's head sprite dynamically rotates and flips to match the current movement direction based on a configuration dictionary. It utilizes centered positioning to rotate strictly around its grid cell center.
+*   **SFX Placeholders:** `Snake.tscn` contains dedicated `AudioStreamPlayer` nodes (`MoveAudio`, `EatAudio`, `DieAudio`). These are triggered internally by `Snake.gd` during relevant grid interactions (e.g., eating an apple, falling on a spike, or moving successfully).
+
 ---
 
 ## 5. Global State & Timers (`Globals.gd`)
@@ -80,10 +84,10 @@ The `Snake.gd` is the most complex entity, handling input, multi-segment movemen
 
 *   **Process Mode:** Set to `Node.PROCESS_MODE_ALWAYS` so it continues to calculate delta time even when the main game tree is paused.
 *   **Save-Scum Timer System:** To prevent penalizing players for trying to figure out a puzzle, the timer uses a save-scum mechanic.
-    *   `current_level_time`: A temporary variable tracking the time spent on the current attempt. This is incremented every frame during active gameplay.
-    *   `total_time_elapsed`: A persistent datastore of accumulated time across all completed levels.
-    *   When the player wins a level (touches the goal), `Globals.commit_time()` is called, moving the temporary time into the persistent datastore.
-    *   When a level is reset, restarted due to death, or the player closes/opens the laptop, `Globals._on_scene_loaded` triggers and instantly resets the `current_level_time` to `0.0`. This discards any time spent on a failed attempt.
+	*   `current_level_time`: A temporary variable tracking the time spent on the current attempt. This is incremented every frame during active gameplay.
+	*   `total_time_elapsed`: A persistent datastore of accumulated time across all completed levels.
+	*   When the player wins a level (touches the goal), `Globals.commit_time()` is called, moving the temporary time into the persistent datastore.
+	*   When a level is reset, restarted due to death, or the player closes/opens the laptop, `Globals._on_scene_loaded` triggers and instantly resets the `current_level_time` to `0.0`. This discards any time spent on a failed attempt.
 *   **Dynamic Real-Time UI (`Level.gd`):** The total elapsed time is dynamically displayed on screen (from Level 2 onwards). Rather than manually editing each `.tscn` file, `Level.gd` instantiates a `Label` on `_ready()`, aligns it beneath the physical reset button, and seamlessly sums `total_time_elapsed` and `current_level_time` every frame.
 *   **Return to Home UI (`Level*.tscn` & `Level.gd`):** Each level scene contains a `HomeButton` node within its `UILayer`, positioned alongside the Reset button. Pressing this button triggers the `return_to_home()` method inside `Level.gd`, which uses `_switch_level(home_scene_path)` to safely navigate back to the designated starting level (configurable via the `@export var home_scene_path`). This transition fully integrates with the `LaptopUI` system.
 *   **Scene Hook:** Connects to `SceneManager.scene_loaded`. When a scene finishes loading, it checks if the scene path is within a valid minigame directory (`res://scenes/snake_tower/level/`) or explicitly listed in a dictionary. If valid, the timer runs; if it is the final end screen (`LevelLast.tscn`) or invalid, it pauses.
@@ -155,3 +159,13 @@ Because `LaptopUI` is fully self-contained and utilizes Godot's Group system, ad
 5.  Load it into the laptop by querying the new manager for the correct path and passing it to `LaptopUI.open_laptop(path)`.
 
 `LaptopUI` will handle the rendering, transitions, and ensure the time tracking is perfectly synchronized with the open/close states of the holographic display.
+
+---
+
+## 8. Audio Integration
+
+The Snake Tower utilizes the global `MusicManager` autoload for background music persistence and dedicated `AudioStreamPlayer` nodes for local sound effects.
+
+*   **Background Music:** Upon loading any level (`Level.gd _ready()`), the minigame requests the `"minigame_bgm"` track from `MusicManager`. Because `MusicManager` handles track caching, this won't restart the song unnecessarily on every level reload.
+*   **Home Transition:** When the player uses the Home button to exit the minigame, `Level.gd` instructs `MusicManager` to play the `"pet_home"` track, ensuring a seamless audio transition back to the main laptop desktop environment.
+*   **Local SFX:** Movement, eating, and death sounds are handled locally within `Snake.tscn` using dedicated `AudioStreamPlayer` nodes triggered by `Snake.gd` and `Level.gd`.

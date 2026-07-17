@@ -49,3 +49,7 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "Your Time: 00:00.00"
 horizontal_alignment = 1
+
+[node name="LeaderboardList" type="VBoxContainer" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 5

@@ -26,7 +26,7 @@ func _ready():
 
 func _process(_delta):
 	if time_label != null:
-		var total_seconds = Globals.total_time_elapsed + Globals.current_level_time
+		var total_seconds = GlobalSnaketower.total_time_elapsed + GlobalSnaketower.current_level_time
 		var minutes = int(total_seconds) / 60
 		var seconds = int(total_seconds) % 60
 		var milliseconds = int((total_seconds - int(total_seconds)) * 100)
@@ -36,10 +36,10 @@ func _on_level_won():
 	if _is_transitioning: return
 	_is_transitioning = true
 	print("Level Won!")
-	Globals.commit_time()
-	var next_level = Globals.get_next_level(scene_file_path)
+	GlobalSnaketower.commit_time()
+	var next_level = GlobalSnaketower.get_next_level(scene_file_path)
 	if next_level != "":
-		Globals.update_minigame_level(next_level)
+		GlobalSnaketower.update_minigame_level(next_level)
 		_switch_level(next_level)
 	else:
 		print("You beat the game!")
@@ -86,6 +86,6 @@ func _input(event):
 func return_to_home():
 	if _is_transitioning: return
 	_is_transitioning = true
-	Globals.reset_attempt_timer()
+	GlobalSnaketower.reset_attempt_timer()
 	MusicManager.play_music("pet_home", true)
 	_switch_level(home_scene_path)

@@ -7,9 +7,9 @@ var fall_timer: float = 0.0
 var fall_interval: float = 0.07
 
 func _ready():
-	grid_pos = Vector2i((position / float(Globals.TILE_SIZE)).round())
+	grid_pos = Vector2i((position / float(GlobalSnaketower.TILE_SIZE)).round())
 	# Snap to precise grid position
-	position = Vector2(grid_pos) * Globals.TILE_SIZE
+	position = Vector2(grid_pos) * GlobalSnaketower.TILE_SIZE
 	call_deferred("_deferred_init")
 
 func _deferred_init():
@@ -20,7 +20,7 @@ func try_push(dir: Vector2i) -> bool:
 	if LevelManager.get_cell(target) == LevelManager.CellType.EMPTY:
 		LevelManager.unregister_cell(grid_pos, LevelManager.CellType.BOX)
 		grid_pos = target
-		position = Vector2(grid_pos) * Globals.TILE_SIZE
+		position = Vector2(grid_pos) * GlobalSnaketower.TILE_SIZE
 		LevelManager.register_cell(grid_pos, LevelManager.CellType.BOX, self)
 		check_gravity()
 		return true
@@ -57,6 +57,6 @@ func check_gravity():
 func do_fall_step():
 	LevelManager.unregister_cell(grid_pos, LevelManager.CellType.BOX)
 	grid_pos += Vector2i(0, 1)
-	position = Vector2(grid_pos) * Globals.TILE_SIZE
+	position = Vector2(grid_pos) * GlobalSnaketower.TILE_SIZE
 	LevelManager.register_cell(grid_pos, LevelManager.CellType.BOX, self)
 	check_gravity()
