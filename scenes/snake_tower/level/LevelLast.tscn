@@ -1,8 +1,26 @@
-[gd_scene load_steps=2 format=3 uid="uid://some_unique_id_levellast"]
+[gd_scene format=3 uid="uid://clecag4wxry7o"]
 
-[ext_resource type="Script" path="res://scripts/snake_tower/level/LevelLast.gd" id="1_levellast"]
+[ext_resource type="Script" uid="uid://dxms4gcjfm8pd" path="res://scripts/snake_tower/level/LevelLast.gd" id="1_levellast"]
 
-[node name="LevelLast" type="Control"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_panel"]
+content_margin_left = 24.0
+content_margin_top = 20.0
+content_margin_right = 24.0
+content_margin_bottom = 20.0
+bg_color = Color(0.898, 0.816, 0.663, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.216, 0.149, 0.086, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+shadow_color = Color(0.05, 0.02, 0.01, 0.5)
+shadow_size = 14
+
+[node name="LevelLast" type="Control" unique_id=1096034380]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -11,45 +29,73 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_levellast")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="BG" type="ColorRect" parent="." unique_id=819727737]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.1, 0.1, 0.1, 1)
+color = Color(0, 0, 0, 1)
 
-[node name="CenterContainer" type="CenterContainer" parent="."]
+[node name="Panel" type="PanelContainer" parent="." unique_id=2948193]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -310.0
+offset_top = -250.0
+offset_right = 310.0
+offset_bottom = 250.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_panel")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+[node name="VBox" type="VBoxContainer" parent="Panel" unique_id=1391611467]
 layout_mode = 2
-theme_override_constants/separation = 20
+theme_override_constants/separation = 14
 
-[node name="TitleLabel" type="Label" parent="CenterContainer/VBoxContainer"]
+[node name="CongratLabel" type="Label" parent="Panel/VBox" unique_id=398794981]
 layout_mode = 2
-theme_override_font_sizes/font_size = 48
-text = "Congratulations!"
+theme_override_colors/font_color = Color(0.18, 0.12, 0.07, 1)
+theme_override_font_sizes/font_size = 40
+text = "✦  CONGRATULATIONS!  ✦"
 horizontal_alignment = 1
 
-[node name="SubtitleLabel" type="Label" parent="CenterContainer/VBoxContainer"]
+[node name="TitleDiv" type="ColorRect" parent="Panel/VBox" unique_id=102028777]
+custom_minimum_size = Vector2(0, 3)
 layout_mode = 2
-theme_override_font_sizes/font_size = 24
-text = "You have beaten the Snake Tower!"
+color = Color(0.216, 0.149, 0.086, 0.65)
+
+[node name="SubLabel" type="Label" parent="Panel/VBox" unique_id=1729483530]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.3, 0.2, 0.1, 1)
+theme_override_font_sizes/font_size = 25
+text = "YOUR TOTAL TIME"
 horizontal_alignment = 1
 
-[node name="TimeLabel" type="Label" parent="CenterContainer/VBoxContainer"]
+[node name="ScoreCenter" type="CenterContainer" parent="Panel/VBox" unique_id=777817063]
 layout_mode = 2
-theme_override_font_sizes/font_size = 32
-text = "Your Time: 00:00.00"
+size_flags_horizontal = 3
+
+[node name="ScoreRow" type="HBoxContainer" parent="Panel/VBox/ScoreCenter" unique_id=1374246057]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="BotDiv" type="ColorRect" parent="Panel/VBox" unique_id=16145643]
+custom_minimum_size = Vector2(0, 2)
+layout_mode = 2
+color = Color(0.216, 0.149, 0.086, 0.5)
+
+[node name="BracketLabel" type="Label" parent="Panel/VBox" unique_id=1905331360]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.3, 0.2, 0.1, 1)
+theme_override_font_sizes/font_size = 25
+text = "You have placed  # ..."
 horizontal_alignment = 1
 
-[node name="LeaderboardList" type="VBoxContainer" parent="CenterContainer/VBoxContainer"]
+[node name="LeaderboardList" type="VBoxContainer" parent="Panel/VBox" unique_id=344469840]
 layout_mode = 2
 theme_override_constants/separation = 5

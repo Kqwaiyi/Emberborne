@@ -109,11 +109,11 @@ res://
 │           └── end_screen.gd           ← final animated score reveal
 │
 └── assets/
-    ├── sprites/                        ← character and environment sprite sheets
-    │   ├── dogs/                       ← dog variant PNGs (dog1.png–dog5.png)
-    │   └── ...
-    └── ui/
-        └── Loot/                       ← anger face stage images (stage1–3 .png)
+	├── sprites/                        ← character and environment sprite sheets
+	│   ├── dogs/                       ← dog variant PNGs (dog1.png–dog5.png)
+	│   └── ...
+	└── ui/
+		└── Loot/                       ← anger face stage images (stage1–3 .png)
 ```
 
 ---
@@ -1152,20 +1152,20 @@ In `end_screen.gd`, reorder `_apply_color()`:
 
 ```gdscript
 func _apply_color() -> void:
-    var score_color: Color
-    if _total >= 15000:
-        score_color = _GREEN
-    elif _total >= 13000:
-        score_color = _YELLOW
-    elif _total >= 11000:
-        score_color = _ORANGE
-    elif _total >= 10000:
-        _rainbow_active = true
-        return
-    else:
-        score_color = _RED
-    for label in _digit_labels:
-        label.add_theme_color_override("font_color", score_color)
+	var score_color: Color
+	if _total >= 15000:
+		score_color = _GREEN
+	elif _total >= 13000:
+		score_color = _YELLOW
+	elif _total >= 11000:
+		score_color = _ORANGE
+	elif _total >= 10000:
+		_rainbow_active = true
+		return
+	else:
+		score_color = _RED
+	for label in _digit_labels:
+		label.add_theme_color_override("font_color", score_color)
 ```
 
 ### Fixing Transition NodePaths

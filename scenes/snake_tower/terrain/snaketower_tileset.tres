@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://df72k07a11uqp"]
+[gd_resource type="TileSet" format=3 uid="uid://df72k07a11uqp"]
 
 [ext_resource type="Texture2D" uid="uid://c41gpbo555sn4" path="res://assets/snake_tower/snaketower_tileset.png" id="1_5kh22"]
 
