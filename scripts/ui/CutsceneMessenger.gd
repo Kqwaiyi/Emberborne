@@ -1,4 +1,9 @@
+class_name CutsceneMessenger
 extends Control
+
+@export var sfx_incoming: AudioStream = null
+@export var sfx_typing: AudioStream = null
+@export var sfx_outgoing: AudioStream = null
 
 # ═══════════════════════════════════════════════════════════════════════
 # CUTSCENE MESSENGER
@@ -27,7 +32,7 @@ const COLOR_SEPARATOR       := Color("1A2C23")
 
 # ─── Layout Constants ────────────────────────────────────────────────
 const HEADER_HEIGHT     := 56
-const BUBBLE_MAX_WIDTH_RATIO := 0.70  # max bubble width as fraction of viewport
+const BUBBLE_MAX_WIDTH_RATIO := 0.85  # max bubble width as fraction of viewport
 const BUBBLE_CORNER     := 12
 const BUBBLE_TAIL_CORNER := 2
 const BUBBLE_H_MARGIN   := 10
@@ -58,34 +63,47 @@ var _sender_data: Dictionary = {}
 var _current_index: int = 0
 var _current_key: String = ""
 var _is_playing: bool = false
-var _is_animating_bubble: bool = false
+var _is_processing_bubble: bool = false
 var _bubble_tween: Tween = null
+var _typing_tween: Tween = null
+var _expand_tween: Tween = null
+var _decrypt_tween: Tween = null
 var _indicator_tween: Tween = null
 var _current_bubble_node: Control = null  # Reference to the bubble being animated
+var _audio_incoming: AudioStreamPlayer
+var _audio_typing: AudioStreamPlayer
+var _audio_outgoing: AudioStreamPlayer
+
+var _audio_back_hover: AudioStreamPlayer
+var _audio_back_click: AudioStreamPlayer
+var _back_button_tween: Tween = null
 
 # ─── Completion Tracking ─────────────────────────────────────────────
 # Static var persists across scene loads within a single game session.
 static var _completed_cutscenes: Dictionary = {}
 
-# ─── Pending Cutscene Key ────────────────────────────────────────────
-# Set this before loading the scene via LaptopUI.change_scene().
-# _ready() will automatically open the cutscene with this key.
-static var _pending_key: String = "test"
+# ─── External Queueing API ───────────────────────────────────────────
+static var queued_cutscene_key: String = "test"
+static var has_unread_cutscene: bool = true
 
-## Call this static method before loading CutsceneMessenger via change_scene.
-## Example: CutsceneMessenger.set_pending_cutscene("my_key")
-static func set_pending_cutscene(key: String) -> void:
-	_pending_key = key
+## Call this to queue up the next cutscene to be played in the messenger.
+## If connected, this will trigger the desktop icon notification badge.
+static func queue_cutscene(key: String) -> void:
+	queued_cutscene_key = key
+	if not _completed_cutscenes.has(key):
+		has_unread_cutscene = true
+	else:
+		has_unread_cutscene = false
 
 
 func _ready() -> void:
 	_build_ui()
 	_advance_indicator.hide()
 
-	# Automatically open the pending cutscene
-	if _pending_key != "":
+	# Automatically open the queued cutscene
+	if queued_cutscene_key != "":
 		# Defer to ensure the scene tree is fully set up
-		call_deferred("open_scene", _pending_key)
+		call_deferred("open_scene", queued_cutscene_key)
 
 
 # ═══════════════════════════════════════════════════════════════════════
@@ -108,6 +126,20 @@ func open_scene(key: String) -> void:
 	_sender_data = script.get_sender()
 	_lines = script.get_lines()
 
+	# Pre-calculate timestamps based on real system time
+	var time_dict = Time.get_time_dict_from_system()
+	var current_hour = time_dict.hour
+	var current_minute = time_dict.minute
+	
+	for i in range(_lines.size()):
+		_lines[i]["timestamp"] = "%02d:%02d" % [current_hour, current_minute]
+		# Add 1 to 3 minutes random offset for next message
+		var offset = (randi() % 3) + 1
+		current_minute += offset
+		if current_minute >= 60:
+			current_minute = current_minute % 60
+			current_hour = (current_hour + 1) % 24
+
 	# Populate header bar
 	_sender_name.text = _sender_data.get("name", "Unknown")
 	var pfp_path: String = _sender_data.get("profile_picture", "")
@@ -116,6 +148,8 @@ func open_scene(key: String) -> void:
 
 	# Check if already completed
 	if _is_cutscene_completed(key):
+		if key == queued_cutscene_key:
+			has_unread_cutscene = false
 		_display_full_history()
 	else:
 		_start_playback(key)
@@ -130,7 +164,7 @@ func _input(event: InputEvent) -> void:
 		return
 
 	if event.is_action_pressed("dialogue_advance"):
-		if _is_animating_bubble:
+		if _is_processing_bubble:
 			_complete_bubble_animation()
 		else:
 			_advance_indicator.hide()
@@ -148,6 +182,8 @@ func _is_cutscene_completed(key: String) -> bool:
 
 func _mark_cutscene_completed(key: String) -> void:
 	_completed_cutscenes[key] = true
+	if key == queued_cutscene_key:
+		has_unread_cutscene = false
 
 func _start_playback(_key: String) -> void:
 	_current_index = 0
@@ -159,13 +195,25 @@ func _display_next_bubble() -> void:
 		_finish_playback()
 		return
 
+	_is_processing_bubble = true
 	var line = _lines[_current_index]
+	var sender = line.get("sender", "them")
 	var bubble = _create_bubble(line)
+	
+	var msg_label = bubble.find_child("MessageLabel", true, false)
+	var time_label = bubble.find_child("TimeLabel", true, false)
+	time_label.hide()
+	
+	if sender == "them":
+		msg_label.text = "typing..."
+	else:
+		msg_label.text = _scramble_string(line.get("text", ""))
+		
 	_chat_vbox.add_child(bubble)
 	_current_index += 1
 
 	# Animate the bubble pop-in
-	_play_bubble_animation(bubble, line.get("sender", "them"))
+	_play_bubble_animation(bubble, sender)
 
 func _finish_playback() -> void:
 	_is_playing = false
@@ -199,6 +247,9 @@ func _create_bubble(line: Dictionary) -> Control:
 	outer.add_theme_constant_override("margin_right", 12)
 	outer.add_theme_constant_override("margin_top", BUBBLE_SPACING / 2)
 	outer.add_theme_constant_override("margin_bottom", BUBBLE_SPACING / 2)
+	
+	outer.set_meta("final_text", text)
+	outer.set_meta("sender", sender)
 
 	# ── HBoxContainer for alignment ─────────────────────────────────
 	var hbox = HBoxContainer.new()
@@ -220,6 +271,8 @@ func _create_bubble(line: Dictionary) -> Control:
 	style.content_margin_right = BUBBLE_H_MARGIN
 	style.content_margin_top = BUBBLE_V_MARGIN
 	style.content_margin_bottom = BUBBLE_V_MARGIN
+	style.shadow_color = Color(0.12, 0.23, 0.18, 0.6) if not is_me else Color(0.04, 0.36, 0.23, 0.6)
+	style.shadow_size = 8
 	bubble_panel.add_theme_stylebox_override("panel", style)
 
 	# Calculate max bubble width
@@ -231,13 +284,31 @@ func _create_bubble(line: Dictionary) -> Control:
 	inner_vbox.add_theme_constant_override("separation", 2)
 	bubble_panel.add_child(inner_vbox)
 
+	# Calculate required width
+	var font = ThemeDB.fallback_font
+	var text_size = font.get_string_size(text, HORIZONTAL_ALIGNMENT_LEFT, -1, 13)
+	var time_size = font.get_string_size(line.get("timestamp", "00:00"), HORIZONTAL_ALIGNMENT_LEFT, -1, 10)
+	var required_width = max(text_size.x, time_size.x) + 16 # padding
+	var target_width = min(required_width, max_bubble_width)
+	
+	outer.set_meta("target_width", target_width)
+
 	# Message text
 	var msg_label = RichTextLabel.new()
+	msg_label.name = "MessageLabel"
 	msg_label.bbcode_enabled = true
 	msg_label.text = text
 	msg_label.fit_content = true
 	msg_label.scroll_active = false
-	msg_label.custom_minimum_size.x = min(max_bubble_width, 250.0)
+	
+	if not _is_playing:
+		msg_label.custom_minimum_size.x = target_width
+	else:
+		if is_me:
+			msg_label.custom_minimum_size.x = target_width
+		else:
+			msg_label.custom_minimum_size.x = 60 # Start small for typing
+
 	msg_label.add_theme_color_override("default_color", COLOR_BUBBLE_TEXT)
 	msg_label.add_theme_font_size_override("normal_font_size", 13)
 	msg_label.mouse_filter = Control.MOUSE_FILTER_IGNORE
@@ -245,9 +316,8 @@ func _create_bubble(line: Dictionary) -> Control:
 
 	# Decorative timestamp
 	var time_label = Label.new()
-	var fake_hour = 20
-	var fake_minute = 30 + (_current_index if _is_playing else _lines.find(line))
-	time_label.text = "%02d:%02d" % [fake_hour, fake_minute % 60]
+	time_label.name = "TimeLabel"
+	time_label.text = line.get("timestamp", "00:00")
 	time_label.add_theme_color_override("font_color", COLOR_TIMESTAMP)
 	time_label.add_theme_font_size_override("font_size", 10)
 	time_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
@@ -270,7 +340,6 @@ func _create_bubble(line: Dictionary) -> Control:
 # ═══════════════════════════════════════════════════════════════════════
 
 func _play_bubble_animation(bubble: Control, sender: String) -> void:
-	_is_animating_bubble = true
 	_current_bubble_node = bubble
 
 	# Set initial state
@@ -296,23 +365,115 @@ func _play_bubble_animation(bubble: Control, sender: String) -> void:
 	_bubble_tween.tween_property(bubble, "modulate:a", 1.0, BUBBLE_FADE_DURATION)\
 		.set_ease(Tween.EASE_OUT)
 
-	_bubble_tween.finished.connect(_on_bubble_animation_finished)
+	_bubble_tween.finished.connect(_on_bubble_animation_finished.bind(bubble, sender))
 	_scroll_to_bottom()
 
-func _on_bubble_animation_finished() -> void:
-	_is_animating_bubble = false
-	_current_bubble_node = null
-	_advance_indicator.show()
-	_start_indicator_animation()
-	_scroll_to_bottom()
+func _on_bubble_animation_finished(bubble: Control, sender: String) -> void:
+	if sender == "them":
+		_start_typing_phase(bubble)
+	else:
+		_start_decrypt_phase(bubble)
+
+func _start_typing_phase(bubble: Control) -> void:
+	if _audio_typing and _audio_typing.stream:
+		_audio_typing.play()
+		
+	var msg_label = bubble.find_child("MessageLabel", true, false)
+	
+	_typing_tween = create_tween().set_loops(3)
+	_typing_tween.tween_callback(func(): msg_label.text = "typing.")
+	_typing_tween.tween_interval(0.3)
+	_typing_tween.tween_callback(func(): msg_label.text = "typing..")
+	_typing_tween.tween_interval(0.3)
+	_typing_tween.tween_callback(func(): msg_label.text = "typing...")
+	_typing_tween.tween_interval(0.3)
+	
+	_typing_tween.finished.connect(func():
+		if _audio_typing: _audio_typing.stop()
+		_start_expand_phase(bubble)
+	)
+
+func _start_expand_phase(bubble: Control) -> void:
+	var msg_label = bubble.find_child("MessageLabel", true, false)
+	var target_width = bubble.get_meta("target_width", 250.0)
+	
+	_expand_tween = create_tween()
+	_expand_tween.tween_property(msg_label, "custom_minimum_size:x", target_width, 0.2)\
+		.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
+	
+	_expand_tween.finished.connect(func():
+		_start_decrypt_phase(bubble)
+	)
+
+func _start_decrypt_phase(bubble: Control) -> void:
+	var msg_label = bubble.find_child("MessageLabel", true, false)
+	var time_label = bubble.find_child("TimeLabel", true, false)
+	var final_text = bubble.get_meta("final_text", "")
+	var sender = bubble.get_meta("sender", "them")
+	
+	msg_label.text = _scramble_string(final_text)
+	
+	_decrypt_tween = create_tween()
+	_decrypt_tween.tween_method(_update_decrypt.bind(msg_label, final_text), 0.0, 1.0, 0.5)
+	
+	_decrypt_tween.finished.connect(func():
+		msg_label.text = final_text
+		if time_label: time_label.show()
+		
+		if sender == "me" and _audio_outgoing and _audio_outgoing.stream:
+			_audio_outgoing.play()
+		elif sender == "them" and _audio_incoming and _audio_incoming.stream:
+			_audio_incoming.play()
+			
+		_is_processing_bubble = false
+		_current_bubble_node = null
+		_advance_indicator.show()
+		_start_indicator_animation()
+		_scroll_to_bottom()
+	)
+
+func _update_decrypt(progress: float, msg_label: RichTextLabel, final_text: String) -> void:
+	var reveal_count = int(progress * final_text.length())
+	var revealed = final_text.substr(0, reveal_count)
+	var scrambled_len = final_text.length() - reveal_count
+	var scrambled = _scramble_string(final_text.substr(reveal_count, scrambled_len))
+	msg_label.text = revealed + scrambled
+
+func _scramble_string(text: String) -> String:
+	var chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*"
+	var result = ""
+	for i in text.length():
+		if text[i] == " ":
+			result += " "
+		else:
+			result += chars[randi() % chars.length()]
+	return result
 
 func _complete_bubble_animation() -> void:
 	if _bubble_tween and _bubble_tween.is_valid():
 		_bubble_tween.kill()
+	if _typing_tween and _typing_tween.is_valid():
+		_typing_tween.kill()
+	if _expand_tween and _expand_tween.is_valid():
+		_expand_tween.kill()
+	if _decrypt_tween and _decrypt_tween.is_valid():
+		_decrypt_tween.kill()
+		
+	if _audio_typing: _audio_typing.stop()
+		
 	if _current_bubble_node and is_instance_valid(_current_bubble_node):
 		_current_bubble_node.scale = Vector2(1.0, 1.0)
 		_current_bubble_node.modulate.a = 1.0
-	_is_animating_bubble = false
+		
+		var msg_label = _current_bubble_node.find_child("MessageLabel", true, false)
+		var time_label = _current_bubble_node.find_child("TimeLabel", true, false)
+		if msg_label:
+			msg_label.text = _current_bubble_node.get_meta("final_text", "")
+			msg_label.custom_minimum_size.x = _current_bubble_node.get_meta("target_width", 250.0)
+		if time_label:
+			time_label.show()
+			
+	_is_processing_bubble = false
 	_current_bubble_node = null
 	_advance_indicator.show()
 	_start_indicator_animation()
@@ -349,10 +510,36 @@ func _scroll_to_bottom() -> void:
 # BACK BUTTON
 # ═══════════════════════════════════════════════════════════════════════
 
+func _on_back_button_hovered() -> void:
+	if _audio_back_hover and _audio_back_hover.stream:
+		_audio_back_hover.play()
+		
+	if _back_button_tween and _back_button_tween.is_valid():
+		_back_button_tween.kill()
+	_back_button_tween = create_tween().set_parallel(true)
+	_back_button_tween.tween_property(_back_button, "scale", Vector2(1.1, 1.1), 0.15).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BACK)
+	_back_button_tween.tween_property(_back_button, "modulate", Color(1.0, 1.0, 1.0), 0.15).set_ease(Tween.EASE_OUT)
+
+func _on_back_button_unhovered() -> void:
+	if _back_button_tween and _back_button_tween.is_valid():
+		_back_button_tween.kill()
+	_back_button_tween = create_tween().set_parallel(true)
+	_back_button_tween.tween_property(_back_button, "scale", Vector2(1.0, 1.0), 0.15).set_ease(Tween.EASE_OUT)
+	_back_button_tween.tween_property(_back_button, "modulate", COLOR_HEADER_TEXT, 0.15).set_ease(Tween.EASE_OUT)
+
+func _on_back_button_down() -> void:
+	if _audio_back_click and _audio_back_click.stream:
+		_audio_back_click.play()
+		
+	if _back_button_tween and _back_button_tween.is_valid():
+		_back_button_tween.kill()
+	_back_button_tween = create_tween()
+	_back_button_tween.tween_property(_back_button, "scale", Vector2(0.9, 0.9), 0.05).set_ease(Tween.EASE_OUT)
+
 func _on_back_button_pressed() -> void:
 	var laptops = get_tree().get_nodes_in_group("laptop_ui")
 	if laptops.size() > 0:
-		laptops[0].change_scene("res://scenes/ui/DesktopScreen.tscn")
+		laptops[0].change_scene("res://scenes/ui/DesktopScreen.tscn", 0.5)
 
 
 # ═══════════════════════════════════════════════════════════════════════
@@ -406,8 +593,28 @@ func _build_ui() -> void:
 	var back_icon_path = "res://assets/sprites/messenger/icon_back.png"
 	if ResourceLoader.exists(back_icon_path):
 		_back_button.texture_normal = load(back_icon_path)
+	
+	_back_button.pivot_offset = Vector2(16, 16)
+	_back_button.mouse_entered.connect(_on_back_button_hovered)
+	_back_button.mouse_exited.connect(_on_back_button_unhovered)
+	_back_button.button_down.connect(_on_back_button_down)
 	_back_button.pressed.connect(_on_back_button_pressed)
 	header_hbox.add_child(_back_button)
+
+	# Audio for back button
+	_audio_back_hover = AudioStreamPlayer.new()
+	var hover_stream = load("res://assets/sounds/futuristic_ui/Hover.mp3")
+	if hover_stream:
+		_audio_back_hover.stream = hover_stream
+	_audio_back_hover.volume_db = -5.0
+	add_child(_audio_back_hover)
+
+	_audio_back_click = AudioStreamPlayer.new()
+	var click_stream = load("res://assets/sounds/futuristic_ui/Click.mp3")
+	if click_stream:
+		_audio_back_click.stream = click_stream
+	_audio_back_click.volume_db = -2.0
+	add_child(_audio_back_click)
 
 	# Profile picture
 	_profile_picture = TextureRect.new()
@@ -495,7 +702,7 @@ func _build_ui() -> void:
 
 	# ── Advance Indicator ────────────────────────────────────────────
 	_advance_indicator = Label.new()
-	_advance_indicator.text = "▼"
+	_advance_indicator.text = "[ AWAITING INPUT_ ]"
 	_advance_indicator.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	_advance_indicator.add_theme_color_override("font_color", COLOR_ADVANCE_IND)
 	_advance_indicator.add_theme_font_size_override("font_size", 16)
@@ -504,3 +711,16 @@ func _build_ui() -> void:
 	_advance_indicator.offset_bottom = -8
 	_advance_indicator.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	add_child(_advance_indicator)
+	
+	# ── Audio Players ────────────────────────────────────────────────
+	_audio_incoming = AudioStreamPlayer.new()
+	_audio_incoming.stream = sfx_incoming
+	add_child(_audio_incoming)
+	
+	_audio_typing = AudioStreamPlayer.new()
+	_audio_typing.stream = sfx_typing
+	add_child(_audio_typing)
+	
+	_audio_outgoing = AudioStreamPlayer.new()
+	_audio_outgoing.stream = sfx_outgoing
+	add_child(_audio_outgoing)

@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://2nsxw3i5jl14" path="res://scripts/ui/LaptopUI.gd" id="1_laptop"]
 [ext_resource type="Shader" uid="uid://dhp3x846hdr8j" path="res://assets/shaders/hologram_scanlines.gdshader" id="2_scanlines"]
 [ext_resource type="Shader" uid="uid://5ty4sautt5bw" path="res://assets/shaders/hologram_glitch.gdshader" id="3_glitch"]
+[ext_resource type="Script" path="res://scripts/ui/HoloCloseButton.gd" id="4_holoclose"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_panel"]
 bg_color = Color(0.02, 0.05, 0.08, 0.85)
@@ -159,15 +160,11 @@ theme_override_font_sizes/font_size = 13
 [node name="CloseButton" type="Button" parent="CenterContainer/DisplayPanel/HeaderBar" unique_id=1605195813]
 custom_minimum_size = Vector2(32, 28)
 layout_mode = 2
-theme_override_colors/font_color = Color(0, 0.9, 1, 0.8)
-theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
-theme_override_colors/font_hover_color = Color(1, 0.2, 0.3, 1)
-theme_override_font_sizes/font_size = 16
-theme_override_styles/normal = SubResource("StyleBoxFlat_btn_normal")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_btn_pressed")
-theme_override_styles/hover = SubResource("StyleBoxFlat_btn_hover")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_focus")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_focus")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_focus")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_focus")
-text = "✕"
+script = ExtResource("4_holoclose")
 
 [node name="CornerDecorations" type="Control" parent="CenterContainer/DisplayPanel" unique_id=1385527524]
 layout_mode = 1

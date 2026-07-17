@@ -32,6 +32,8 @@ var _transition_tween: Tween = null
 var _is_animating: bool = false
 var _anim_tween: Tween = null
 var _corners: Array = []
+var _panel_stylebox: StyleBoxFlat = null
+var _glow_tween: Tween = null
 
 # ─── Holographic constants ───────────────────────────────────────────
 const HOLO_CYAN := Color(0.0, 0.9, 1.0, 1.0)
@@ -39,15 +41,31 @@ const HOLO_CYAN_DIM := Color(0.0, 0.9, 1.0, 0.6)
 const CORNER_LENGTH := 20.0
 const CORNER_WIDTH := 2.0
 
+var _open_audio: AudioStreamPlayer = null
+
 func _ready():
 	# Ensure the UI can process even when the tree is paused
 	process_mode = Node.PROCESS_MODE_ALWAYS
+
+	# Setup audio player
+	_open_audio = AudioStreamPlayer.new()
+	var open_stream = load("res://assets/sounds/laptop_ui/laptop_ui_open.mp3")
+	if open_stream:
+		_open_audio.stream = open_stream
+	add_child(_open_audio)
 
 	# Register in group so minigames can discover the host laptop
 	add_to_group("laptop_ui")
 
 	# Connect the close button
 	close_button.pressed.connect(close_laptop)
+	close_button.press_state_changed.connect(_on_close_button_press_state_changed)
+
+	# Duplicate the panel stylebox so we can animate it independently
+	var panel_style = display_panel.get_theme_stylebox("panel")
+	if panel_style and panel_style is StyleBoxFlat:
+		_panel_stylebox = panel_style.duplicate()
+		display_panel.add_theme_stylebox_override("panel", _panel_stylebox)
 
 	# Cache the pivot for scale animations (center of panel)
 	display_panel.pivot_offset = display_panel.custom_minimum_size / 2.0
@@ -87,12 +105,44 @@ func open_laptop(minigame_scene_path: String = "", fade_duration: float = 0.5) -
 
 	opened.emit()
 
+func _on_close_button_press_state_changed(is_pressed: bool) -> void:
+	if not _panel_stylebox or _is_animating:
+		return
+		
+	if _glow_tween and _glow_tween.is_valid():
+		_glow_tween.kill()
+		
+	_glow_tween = create_tween().set_parallel(true)
+	if is_pressed:
+		var red_border = Color(1.0, 0.2, 0.2, 0.8)
+		var red_shadow = Color(1.0, 0.2, 0.2, 0.4)
+		var red_text = Color(1.0, 0.2, 0.2, 0.9)
+		_glow_tween.tween_property(_panel_stylebox, "border_color", red_border, 0.1)
+		_glow_tween.tween_property(_panel_stylebox, "shadow_color", red_shadow, 0.1)
+		_glow_tween.tween_property(status_label, "theme_override_colors/font_color", red_text, 0.1)
+		for corner in _corners:
+			_glow_tween.tween_property(corner.h, "color", red_border, 0.1)
+			_glow_tween.tween_property(corner.v, "color", red_border, 0.1)
+	else:
+		var cyan_border = Color(0.0, 0.9, 1.0, 0.4)
+		var cyan_shadow = Color(0.0, 0.9, 1.0, 0.15)
+		var cyan_text = Color(0.0, 0.9, 1.0, 0.9)
+		_glow_tween.tween_property(_panel_stylebox, "border_color", cyan_border, 0.4).set_ease(Tween.EASE_OUT)
+		_glow_tween.tween_property(_panel_stylebox, "shadow_color", cyan_shadow, 0.4).set_ease(Tween.EASE_OUT)
+		_glow_tween.tween_property(status_label, "theme_override_colors/font_color", cyan_text, 0.4).set_ease(Tween.EASE_OUT)
+		for corner in _corners:
+			_glow_tween.tween_property(corner.h, "color", HOLO_CYAN_DIM, 0.4).set_ease(Tween.EASE_OUT)
+			_glow_tween.tween_property(corner.v, "color", HOLO_CYAN_DIM, 0.4).set_ease(Tween.EASE_OUT)
+
 ## Closes the laptop UI with a holographic shutdown animation.
 ## Clears the SubViewport, unpauses the main game, and notifies time trackers.
 func close_laptop() -> void:
 	if _is_animating:
 		return
 	_is_animating = true
+	
+	if close_button.has_method("lock"):
+		close_button.lock()
 
 	# Cancel any pending scene transition
 	_cancel_transition()
@@ -229,11 +279,23 @@ func _set_hidden_state() -> void:
 	scan_lines.modulate.a = 0.0
 	header_bar.modulate.a = 0.0
 	close_button.modulate.a = 0.0
+	
+	if close_button.has_method("reset"):
+		close_button.reset()
+		
+	# Reset glow colors to cyan in case they were locked as red during shutdown
+	if _panel_stylebox:
+		_panel_stylebox.border_color = Color(0.0, 0.9, 1.0, 0.4)
+		_panel_stylebox.shadow_color = Color(0.0, 0.9, 1.0, 0.15)
+	status_label.add_theme_color_override("font_color", Color(0.0, 0.9, 1.0, 0.9))
+		
 	status_label.text = ""
 	_set_glitch_intensity(0.0)
 	for corner in _corners:
 		corner.h.modulate.a = 0.0
 		corner.v.modulate.a = 0.0
+		corner.h.color = HOLO_CYAN_DIM
+		corner.v.color = HOLO_CYAN_DIM
 
 ## Holographic boot sequence (~0.6s):
 ## 1. Background tint fades in
@@ -245,6 +307,13 @@ func _set_hidden_state() -> void:
 func _play_open_animation() -> void:
 	if _anim_tween and _anim_tween.is_valid():
 		_anim_tween.kill()
+
+	if _open_audio and _open_audio.stream:
+		var target_duration = 0.6
+		var stream_len = _open_audio.stream.get_length()
+		if stream_len > 0.0:
+			_open_audio.pitch_scale = stream_len / target_duration
+		_open_audio.play()
 
 	_anim_tween = create_tween().set_parallel(true)
 

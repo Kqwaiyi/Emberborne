@@ -30,7 +30,7 @@ The module is fully independent — it owns its own scene transition system, vis
 				*   `GlitchOverlay` (`ColorRect` — `ShaderMaterial` with `hologram_glitch.gdshader`, covers full panel)
 				*   `HeaderBar` (`HBoxContainer` — anchored at top of panel, 30px tall)
 					*   `StatusLabel` (`Label` — "◆ SYSTEM ONLINE", cyan, 13px)
-					*   `CloseButton` (`Button` — styled "✕" with holographic button theme)
+					*   `CloseButton` (`Button` — borderless, uses custom `HoloCloseButton.gd` for procedural holographic drawing and audio)
 				*   `CornerDecorations` (`Control` — container for 4 programmatic L-shaped corner brackets)
 
 ---
@@ -76,6 +76,12 @@ The shutdown sequence is snappier than the open:
 2.  Corner brackets fade out. Scan lines disappear.
 3.  Display compresses vertically back to a thin line.
 4.  Line and background tint fade out.
+
+### UI Interactions & Audio Synchronization
+The Laptop UI features dynamic, synchronized audio-visual feedback:
+*   **Procedural Close Button**: `HoloCloseButton.gd` overrides `_draw()` to procedurally animate a holographic "✕" with L-shaped brackets that snap inward on hover and compress on press. It dynamically loads and plays sound effects for hover (`Hover.mp3`), generic clicks (`Click.mp3`), and confirmed close actions (`laptop_ui_close.mp3`).
+*   **Glow Synchronization**: When the close button is held down, it emits a `press_state_changed` signal. `LaptopUI.gd` listens to this and synchronizes the entire interface—tweening the panel's border, outer glow, corner brackets, and "SYSTEM ONLINE" text from cyan to an aggressive red. If the click is cancelled, they tween smoothly back to cyan. During the closing animation, the button state locks to preserve the red color until shutdown completes.
+*   **Audio Speed Matching**: The boot animation plays `laptop_ui_open.mp3`. Because the visual boot sequence takes a strict ~0.6 seconds, `LaptopUI.gd` dynamically calculates the ratio between the audio file's native length and the 0.6s target, applying it to the `AudioStreamPlayer.pitch_scale`. This guarantees the boot sound always finishes exactly when the holographic screen finishes expanding.
 
 ### Lifecycle Cleanup & Group Notifications
 When `close_laptop()` is triggered (via the ✕ button):
