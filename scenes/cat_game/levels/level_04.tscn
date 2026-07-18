@@ -306,7 +306,7 @@ script = ExtResource("1_kxtkb")
 required_mice = 1
 starting_score = 0
 maximum_time_bonus = 1000
-optimal_time_seconds = 120.0
+optimal_time_seconds = 240.0
 total_mice = 7
 next_scene_path = "res://scenes/cat_game/ui/end_screen.tscn"
 
@@ -6415,7 +6415,7 @@ metadata/_edit_group_ = true
 [node name="VisionCone" parent="Characters/Dog01" index="2"]
 ray_count = 20
 
-[node name="Visual" parent="Characters/Dog01" index="6"]
+[node name="Visual" parent="Characters/Dog01" index="7"]
 sprite_frames = ExtResource("111_kl4m0")
 animation = &"Bark"
 
@@ -6427,7 +6427,7 @@ metadata/_edit_group_ = true
 [node name="VisionCone" parent="Characters/Dog02" index="2"]
 ray_count = 20
 
-[node name="Visual" parent="Characters/Dog02" index="6"]
+[node name="Visual" parent="Characters/Dog02" index="7"]
 sprite_frames = ExtResource("112_xv4l3")
 animation = &"Bark"
 
@@ -6439,7 +6439,7 @@ metadata/_edit_group_ = true
 [node name="VisionCone" parent="Characters/Dog03" index="2"]
 ray_count = 20
 
-[node name="Visual" parent="Characters/Dog03" index="6"]
+[node name="Visual" parent="Characters/Dog03" index="7"]
 sprite_frames = ExtResource("116_degob")
 animation = &"Bark"
 
@@ -6451,7 +6451,7 @@ metadata/_edit_group_ = true
 [node name="VisionCone" parent="Characters/Dog04" index="2"]
 ray_count = 20
 
-[node name="Visual" parent="Characters/Dog04" index="6"]
+[node name="Visual" parent="Characters/Dog04" index="7"]
 sprite_frames = ExtResource("117_gxwku")
 animation = &"Bark"
 
@@ -6463,7 +6463,7 @@ metadata/_edit_group_ = true
 [node name="VisionCone" parent="Characters/Dog05" index="2"]
 ray_count = 20
 
-[node name="Visual" parent="Characters/Dog05" index="6"]
+[node name="Visual" parent="Characters/Dog05" index="7"]
 animation = &"Bark"
 
 [node name="Human01" parent="Characters" unique_id=665881277 instance=ExtResource("118_ga3np")]

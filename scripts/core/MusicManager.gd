@@ -22,6 +22,8 @@ var _music_tracks: Dictionary = {
 }
 
 func _ready() -> void:
+	process_mode = Node.PROCESS_MODE_ALWAYS
+
 	_audio_player = AudioStreamPlayer.new()
 	add_child(_audio_player)
 	_audio_player.finished.connect(_on_audio_finished)

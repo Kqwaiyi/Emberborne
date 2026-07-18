@@ -1,0 +1,204 @@
+[gd_scene format=3 uid="uid://bgg3i0bxf2bt6"]
+
+[ext_resource type="Script" uid="uid://ulrbmlcttp33" path="res://scripts/pet_world/lobby/lobby_manager.gd" id="1_cmg1n"]
+[ext_resource type="Texture2D" uid="uid://gwkgvmxrd20" path="res://assets/pet_world_assets/background2.png" id="2_kesak"]
+[ext_resource type="Texture2D" uid="uid://ded2c6w7mkhk8" path="res://assets/pet_world_assets/Room1.png" id="3_686fa"]
+[ext_resource type="Texture2D" uid="uid://bqlf6t6sah5xf" path="res://assets/pet_world_assets/CatRoomDecorations.png" id="4_wbiva"]
+[ext_resource type="PackedScene" uid="uid://dv2rs7tn4jujg" path="res://scenes/pet_world/characters/cat.tscn" id="5_60fg1"]
+[ext_resource type="PackedScene" uid="uid://bjfakway4r2wh" path="res://scenes/pet_world/characters/snake.tscn" id="6_yk35a"]
+[ext_resource type="PackedScene" path="res://scenes/pet_world/lobby/pet_info_panel.tscn" id="7_u1gjx"]
+[ext_resource type="AudioStream" uid="uid://d4ccaq4w36wue" path="res://assets/music/pet_world/cat_pet.mp3" id="8_qetnj"]
+[ext_resource type="AudioStream" uid="uid://dnk60du6ku8hk" path="res://assets/music/pet_world/snake hiss.mp3" id="9_fwsnx"]
+[ext_resource type="Texture2D" uid="uid://po3or31566gw" path="res://assets/pet_world_assets/additional/egg_03_16x16.png" id="10_3r1kp"]
+[ext_resource type="Texture2D" uid="uid://bp37a3hdbsdru" path="res://assets/pet_world_assets/additional/egg_04_16x16.png" id="11_r4tj6"]
+[ext_resource type="Texture2D" uid="uid://iqgbmqyrvjto" path="res://assets/pet_world_assets/additional/trophy_a_36x36.png" id="12_0qkn2"]
+[ext_resource type="Texture2D" uid="uid://b0xkisadq32cb" path="res://assets/pet_world_assets/additional/trophy_b_36x36.png" id="13_d8uu1"]
+[ext_resource type="Texture2D" uid="uid://yhc1j8e1joxf" path="res://assets/pet_world_assets/additional/trophy_c_36x36.png" id="14_da50k"]
+[ext_resource type="Texture2D" uid="uid://dr5od6vhrd6gh" path="res://assets/pet_world_assets/additional/medal_c_36x36.png" id="15_ge7wh"]
+[ext_resource type="Texture2D" uid="uid://df505abvh8q4r" path="res://assets/pet_world_assets/additional/medal_b_36x36.png" id="16_gmw4h"]
+[ext_resource type="Texture2D" uid="uid://ccx7ua4y6h4tr" path="res://assets/pet_world_assets/additional/medal_a_36x36.png" id="17_fruu7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mq7y1"]
+size = Vector2(20, 305.48358)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gedky"]
+size = Vector2(20, 289.75635)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vop27"]
+size = Vector2(20, 317.523)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mq7y1"]
+texture = ExtResource("4_wbiva")
+1:0/size_in_atlas = Vector2i(4, 6)
+1:0/0 = 0
+12:1/size_in_atlas = Vector2i(4, 7)
+12:1/0 = 0
+0:14/size_in_atlas = Vector2i(4, 4)
+0:14/0 = 0
+8:14/size_in_atlas = Vector2i(2, 2)
+8:14/0 = 0
+0:18/size_in_atlas = Vector2i(8, 8)
+0:18/0 = 0
+8:18/size_in_atlas = Vector2i(4, 8)
+8:18/0 = 0
+0:34/size_in_atlas = Vector2i(7, 8)
+0:34/0 = 0
+12:27/size_in_atlas = Vector2i(4, 5)
+12:27/0 = 0
+20:31/size_in_atlas = Vector2i(4, 3)
+20:31/0 = 0
+20:46/size_in_atlas = Vector2i(4, 4)
+20:46/0 = 0
+26:42/size_in_atlas = Vector2i(2, 2)
+26:42/0 = 0
+36:34/size_in_atlas = Vector2i(4, 4)
+36:34/0 = 0
+30:24/size_in_atlas = Vector2i(2, 2)
+30:24/0 = 0
+32:24/size_in_atlas = Vector2i(2, 2)
+32:24/0 = 0
+34:24/size_in_atlas = Vector2i(8, 10)
+34:24/0 = 0
+20:14/size_in_atlas = Vector2i(8, 6)
+20:14/0 = 0
+28:12/size_in_atlas = Vector2i(2, 4)
+28:12/0 = 0
+43:12/size_in_atlas = Vector2i(5, 6)
+43:12/0 = 0
+58:29/size_in_atlas = Vector2i(4, 7)
+58:29/0 = 0
+45:42/size_in_atlas = Vector2i(2, 6)
+45:42/0 = 0
+20:8/size_in_atlas = Vector2i(8, 6)
+20:8/0 = 0
+32:2/size_in_atlas = Vector2i(2, 2)
+32:2/0 = 0
+42:19/size_in_atlas = Vector2i(6, 9)
+42:19/0 = 0
+20:35/size_in_atlas = Vector2i(4, 3)
+20:35/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_gedky"]
+sources/0 = SubResource("TileSetAtlasSource_mq7y1")
+
+[node name="Mainlobby" type="Node2D" unique_id=1428965732]
+script = ExtResource("1_cmg1n")
+
+[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=537930130]
+position = Vector2(3.2789536, -2.8750076)
+scale = Vector2(0.63603, 0.6437301)
+texture = ExtResource("2_kesak")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=2131289763]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=907255528]
+position = Vector2(-123.86097, 51.89751)
+rotation = 1.0471976
+scale = Vector2(0.99999994, 0.99999994)
+shape = SubResource("RectangleShape2D_mq7y1")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D" unique_id=1733683626]
+position = Vector2(140.85046, 47.758976)
+rotation = 2.0943952
+scale = Vector2(0.99999994, 0.99999994)
+shape = SubResource("RectangleShape2D_gedky")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D" unique_id=2086848090]
+position = Vector2(-127.023315, 195.05833)
+rotation = 2.0943952
+scale = Vector2(0.99999994, 0.99999994)
+shape = SubResource("RectangleShape2D_gedky")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D" unique_id=912279113]
+position = Vector2(142, 192)
+rotation = 4.1887903
+scale = Vector2(0.99999994, 0.99999994)
+shape = SubResource("RectangleShape2D_vop27")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2118839892]
+position = Vector2(4, -3)
+scale = Vector2(1.2958984, 1.2958984)
+texture = ExtResource("3_686fa")
+
+[node name="TileMap" type="TileMap" parent="." unique_id=783578237]
+tile_set = SubResource("TileSet_gedky")
+format = 2
+layer_0/tile_data = PackedInt32Array(-262144, 1310720, 8, -65533, 1310720, 35, -3, 1310720, 31)
+
+[node name="Cat" parent="." unique_id=89740987 instance=ExtResource("5_60fg1")]
+position = Vector2(33, 84)
+
+[node name="AnimatedSprite2D" parent="Cat" index="2"]
+position = Vector2(73, -109)
+animation = &"sad"
+
+[node name="Snake" parent="." unique_id=2011487917 instance=ExtResource("6_yk35a")]
+position = Vector2(151, 91)
+
+[node name="AnimatedSprite2D" parent="Snake" index="2"]
+position = Vector2(-139.00002, -97)
+animation = &"sad"
+frame = 3
+frame_progress = 0.6056124
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=161345221]
+zoom = Vector2(1.2, 1.2)
+
+[node name="Shadow" type="Node2D" parent="." unique_id=786709167]
+
+[node name="PetInfoPanel" parent="." unique_id=1655046249 instance=ExtResource("7_u1gjx")]
+
+[node name="CatPetAudio" type="AudioStreamPlayer" parent="." unique_id=894362798]
+stream = ExtResource("8_qetnj")
+
+[node name="SnakeHissAudio" type="AudioStreamPlayer" parent="." unique_id=1712915729]
+stream = ExtResource("9_fwsnx")
+volume_db = -15.0
+pitch_scale = 0.6
+
+[node name="additional stuff" type="Node2D" parent="." unique_id=1508890804]
+visible = false
+
+[node name="egg" type="Sprite2D" parent="additional stuff" unique_id=1299474096]
+visible = false
+position = Vector2(-21.999998, -58)
+scale = Vector2(2.28125, 2.28125)
+texture = ExtResource("10_3r1kp")
+
+[node name="egg2" type="Sprite2D" parent="additional stuff" unique_id=1985281869]
+visible = false
+position = Vector2(-38, -48)
+scale = Vector2(2.25, 2.25)
+texture = ExtResource("11_r4tj6")
+
+[node name="trophy" type="Sprite2D" parent="additional stuff" unique_id=1100379797]
+visible = false
+position = Vector2(-1, 50)
+texture = ExtResource("12_0qkn2")
+
+[node name="trophy2" type="Sprite2D" parent="additional stuff" unique_id=1598887275]
+position = Vector2(-87, 95)
+texture = ExtResource("13_d8uu1")
+
+[node name="trophy3" type="Sprite2D" parent="additional stuff" unique_id=166279109]
+position = Vector2(155, 81)
+texture = ExtResource("14_da50k")
+
+[node name="medal" type="Sprite2D" parent="additional stuff" unique_id=1177823836]
+position = Vector2(4, 46)
+texture = ExtResource("15_ge7wh")
+region_enabled = true
+region_rect = Rect2(5.737, 11.673, 19.948, 24.327)
+
+[node name="medal2" type="Sprite2D" parent="additional stuff" unique_id=1490660197]
+position = Vector2(20, 106)
+texture = ExtResource("16_gmw4h")
+region_enabled = true
+region_rect = Rect2(8.949423, 11.673332, 17.177406, 24.326668)
+
+[node name="medal3" type="Sprite2D" parent="additional stuff" unique_id=1973990548]
+visible = false
+texture = ExtResource("17_fruu7")
+
+[editable path="Cat"]
+[editable path="Snake"]
