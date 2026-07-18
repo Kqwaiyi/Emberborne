@@ -1,6 +1,7 @@
 extends Node2D
 
 func _ready():
+	process_mode = Node.PROCESS_MODE_ALWAYS
 	print("Test Scene Ready!")
 	print("Press '1' to test global transition (0.5s fade).")
 	print("Press '2' to test global transition (0.0s fade).")
@@ -43,3 +44,6 @@ func _input(event):
 		elif event.keycode == KEY_6:
 			print("Testing TaskManager...")
 			TaskManager.show_task("NEW DIRECTIVE", "Objective updated: Retrieve the [sz=24][sh rate=20.0 level=5]lost artifact[/sh][/sz] in the ruins.")
+		elif event.keycode == KEY_7:
+			print("Testing CutsceneMessenger Queue (Dynamic Update)...")
+			CutsceneMessenger.queue_cutscene("test2")

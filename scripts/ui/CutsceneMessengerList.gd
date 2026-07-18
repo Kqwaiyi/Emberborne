@@ -18,7 +18,11 @@ var _audio_back_hover: AudioStreamPlayer
 var _audio_back_click: AudioStreamPlayer
 
 func _ready() -> void:
+	add_to_group("messenger_listener")
 	_build_ui()
+	_populate_conversation_list()
+
+func _on_cutscene_queued(_key: String) -> void:
 	_populate_conversation_list()
 
 func _populate_conversation_list() -> void:
@@ -216,7 +220,7 @@ func _populate_conversation_list() -> void:
 			badge.add_theme_stylebox_override("panel", b_style)
 			inner_hbox.add_child(badge)
 			
-			var badge_tween = create_tween().set_loops()
+			var badge_tween = badge.create_tween().set_loops()
 			badge_tween.tween_property(badge, "modulate:a", 0.4, 0.8).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_SINE)
 			badge_tween.tween_property(badge, "modulate:a", 1.0, 0.8).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_SINE)
 			
@@ -250,7 +254,7 @@ func _populate_conversation_list() -> void:
 				if pvbox.has_meta("tween"):
 					var old_t = pvbox.get_meta("tween")
 					if old_t and old_t.is_valid(): old_t.kill()
-				var pt = create_tween()
+				var pt = pvbox.create_tween()
 				pt.tween_property(pvbox, "modulate:a", 1.0, 0.2)
 				pvbox.set_meta("tween", pt)
 		)
@@ -268,7 +272,7 @@ func _populate_conversation_list() -> void:
 				if pvbox.has_meta("tween"):
 					var old_t = pvbox.get_meta("tween")
 					if old_t and old_t.is_valid(): old_t.kill()
-				var pt = create_tween()
+				var pt = pvbox.create_tween()
 				pt.tween_property(pvbox, "modulate:a", 0.0, 0.2)
 				pvbox.set_meta("tween", pt)
 		)
@@ -294,7 +298,7 @@ func _populate_conversation_list() -> void:
 				panel.global_position = start_pos
 				panel.size = start_size
 				
-				var pt = create_tween().set_parallel(true)
+				var pt = panel.create_tween().set_parallel(true)
 				pt.tween_property(panel, "global_position:x", start_pos.x + 2000.0, 0.4).set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_EXPO)
 				pt.tween_property(panel, "modulate:a", 0.0, 0.3).set_delay(0.1)
 				
@@ -318,12 +322,13 @@ func _populate_conversation_list() -> void:
 	for child in _list_vbox.get_children():
 		child.modulate.a = 0.0
 		var c_margin = child.get_child(0).get_child(0)
-		var t = create_tween().set_parallel(true)
+		var t = child.create_tween().set_parallel(true)
 		t.tween_property(child, "modulate:a", 1.0, 0.3).set_delay(delay).set_ease(Tween.EASE_OUT)
 		t.tween_property(c_margin, "theme_override_constants/margin_left", 16, 0.4).set_delay(delay).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BACK)
 		
 		var row_data = child.get_meta("row_data")
 		var scramble = func(val: float):
+			if not is_instance_valid(row_data["name_lbl"]): return
 			var chars = "!@#$%^&*0123456789ABCDEF"
 			
 			var n_len = row_data["target_name"].length()

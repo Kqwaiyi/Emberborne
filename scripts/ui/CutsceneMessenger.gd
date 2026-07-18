@@ -17,7 +17,12 @@ signal cutscene_completed(key: String)
 # ─── Cutscene Registry ───────────────────────────────────────────────
 # Maps string keys → res:// paths to cutscene .gd data files.
 const CUTSCENE_PATHS: Dictionary = {
-	"test": "res://scenes/ui/cutscenes/test_cutscene.gd",
+	"phase1_irschat1": "res://scenes/ui/cutscenes/phase1_irschat1.gd",
+	"phase1_irschat2": "res://scenes/ui/cutscenes/phase1_irschat2.gd",
+	"phase1_irschat3": "res://scenes/ui/cutscenes/phase1_irschat3.gd",
+	"phase1_irschat4": "res://scenes/ui/cutscenes/phase1_irschat4.gd",
+	"phase3_loanchat1": "res://scenes/ui/cutscenes/phase3_loanchat1.gd",
+	"phase3_loanchat2": "res://scenes/ui/cutscenes/phase3_loanchat2.gd"
 }
 
 # ─── Color Palette (gray-green, WhatsApp-inspired, sci-fi) ──────────
@@ -90,8 +95,8 @@ static var _contact_profile_pics: Dictionary = {}
 static var selected_contact: String = ""
 
 # ─── External Queueing API ───────────────────────────────────────────
-static var queued_cutscene_key: String = "test"
-static var has_unread_cutscene: bool = true
+static var queued_cutscene_key: String = ""
+static var has_unread_cutscene: bool = false
 
 ## Call this to queue up the next cutscene to be played in the messenger.
 ## If connected, this will trigger the desktop icon notification badge.
@@ -101,15 +106,27 @@ static func queue_cutscene(key: String) -> void:
 		has_unread_cutscene = true
 	else:
 		has_unread_cutscene = false
+		
+	var tree = Engine.get_main_loop()
+	if tree and tree is SceneTree:
+		tree.call_group("messenger_listener", "_on_cutscene_queued", key)
 
 
 func _ready() -> void:
+	add_to_group("messenger_listener")
 	_build_ui()
 	_advance_indicator.hide()
 
 	if selected_contact != "":
 		_open_chat_for_contact(selected_contact)
 		selected_contact = ""
+
+func _on_cutscene_queued(key: String) -> void:
+	var script = load(CUTSCENE_PATHS.get(key, ""))
+	if script != null:
+		var contact_name = script.get_sender().get("name", "Unknown")
+		if contact_name == _current_contact:
+			open_scene(key)
 
 
 # ═══════════════════════════════════════════════════════════════════════

@@ -1,20 +1,33 @@
 extends Node
 
+
+## USER DEFINED GAMESTATE. DO NOT TOUCH
 enum StoryState {
 	NONE,
-	SCENE_1_EXPOSITION,          # Black screen exposition
-	SCENE_1_APARTMENT_INTRO,     # Dialogue: "Finally... 12 hours..."
-	TASK_CHECK_HOLOGRAM,         # Task: "Use the S62 Hologram..."
-	CUTSCENE_ARS_EMERGENCY,      # Chat with Immediate Response System
-	TASK_GO_TO_PET_WORLD,        # Task: "Terminate... go to pet world"
-	SCENE_1_PET_WORLD_DIALOGUE,  # Dialogue with Cat and Snake
-	TASK_CHECK_MESSENGER,        # Task: "Go to messenger"
-	CUTSCENE_LOAN_BOT,           # Chat with Loan Bot
-	SCENE_2_DOOR,                # 3 Months Later, at door
-	TASK_GO_TO_PET_WORLD_2,      # Task: "Open hologram and head to pet world"
-	TASK_JOIN_TOURNAMENT,        # Task: "Choose a pet and join tournament"
-	TOURNAMENT_PLAYING,          # Playing minigames
-	ENDING                       # Game Over / Endings
+	PHASE1_EXPOSITION, # Black screen exposition
+	PHASE1_APARTMENT, # Dialogue: "Finally... 12 hours..."
+	PHASE1_TASK_CHECK_HOLOGRAM, # Task: "Use the S62 Hologram..."
+	PHASE1_IRSMAIN1, # Chat with Immediate Response System
+	PHASE1_IRSDIALOGUE1,
+	PHASE1_IRSMAIN2,
+	PHASE1_IRSDIALOGUE2,
+	PHASE1_IRSMAIN3,
+	PHASE1_IRSDIALOGUE3,
+	PHASE1_IRSMAIN4,
+	PHASE1_IRSDIALOGUE4,
+	PHASE1_TASK_GO_TO_PET_WORLD, # Prompts player to check petworld
+
+	PHASE2_PETWORLD_ENTRY, # Enters the petworld
+	PHASE2_TASK_GO_TO_MESSENGER, # Prompts player to check messenger
+
+	PHASE3_LOANCHAT1,
+	PHASE3_LOANDIALOGUE1,
+	PHASE3_LOANCHAT2,
+	PHASE3_LOANDIALOGUE2,
+
+	PHASE4_DOOR,
+	PHASE4_TASK_GO_TO_PET_WORLD_,
+	PHASE4_TASK_JOIN_TOURNAMENT
 }
 
 var current_story_state: StoryState = StoryState.NONE

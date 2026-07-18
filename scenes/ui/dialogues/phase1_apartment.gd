@@ -18,7 +18,7 @@ static func get_lines() -> Array:
 		},
 		{
 			"speaker": "You",
-			"text": "[sz=16]Like I make any of the decisions…[/sz]",
+			"text": "[sz=14][i]Like I make any of the decisions…[/i][/sz]",
 			"portrait": "res://assets/sprites/portraits/portrait_template.png"
 		},
 		{

@@ -80,6 +80,12 @@ Call the static function from anywhere:
 CutsceneMessenger.queue_cutscene("mission_1")
 ```
 
+### Dynamic Live Updates
+
+In addition to static state updates, calling `queue_cutscene()` broadcasts a live event to any active messenger screens via `SceneTree.call_group("messenger_listener", "_on_cutscene_queued", key)`. 
+- If the player is actively viewing the **List Screen**, the UI instantly rebuilds itself to surface the new contact or unread badge without needing to close and reopen the UI.
+- If the player is actively viewing the **Chat Screen** of the target contact, the scene automatically re-initializes and begins playing the newly queued message bubbles seamlessly.
+
 ### Reacting to Completion
 
 The main `CutsceneMessenger` node emits a signal the exact moment a cutscene is internally marked as completed (which occurs instantly when the final dialogue bubble spawns):
