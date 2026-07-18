@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://bjfakway4r2wh"]
+[gd_scene format=3 uid="uid://bjfakway4r2wh"]
 
 [ext_resource type="Script" uid="uid://dyabx23k351gr" path="res://scripts/cat_game/characters/shadow.gd" id="1_k7ftf"]
 [ext_resource type="Texture2D" uid="uid://bp3dptmn3s8p4" path="res://assets/pet_world_assets/Snake Animation Green.png" id="2_utfjq"]

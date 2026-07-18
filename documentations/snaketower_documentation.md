@@ -78,16 +78,17 @@ The `Snake.gd` is the most complex entity, handling input, multi-segment movemen
 
 ---
 
-## 5. Global State & Timers (`Globals.gd`)
+### 5. Global State & Timers (`global_snaketower.gd` & `game_global.gd`)
 
-`Globals.gd` is an Autoload singleton dedicated to tracking persistence across level changes. It handles the **Total Time Elapsed**, tracks the **Furthest Unlocked Level**, prevents level regression, and provides a **Save-Scum Timer System**.
+`global_snaketower.gd` (Autoload `GlobalSnaketower`) is dedicated to tracking persistence across level changes. It handles the **Total Time Elapsed**, tracks the **Furthest Unlocked Level**, prevents level regression, and provides a **Save-Scum Timer System**.
+`game_global.gd` (Autoload `GameGlobal`) is a broader tracker that saves final outcomes for minigames, such as the player's final placement in the Snake Tower leaderboard.
 
 *   **Process Mode:** Set to `Node.PROCESS_MODE_ALWAYS` so it continues to calculate delta time even when the main game tree is paused.
 *   **Save-Scum Timer System:** To prevent penalizing players for trying to figure out a puzzle, the timer uses a save-scum mechanic.
 	*   `current_level_time`: A temporary variable tracking the time spent on the current attempt. This is incremented every frame during active gameplay.
 	*   `total_time_elapsed`: A persistent datastore of accumulated time across all completed levels.
-	*   When the player wins a level (touches the goal), `Globals.commit_time()` is called, moving the temporary time into the persistent datastore.
-	*   When a level is reset, restarted due to death, or the player closes/opens the laptop, `Globals._on_scene_loaded` triggers and instantly resets the `current_level_time` to `0.0`. This discards any time spent on a failed attempt.
+	*   When the player wins a level (touches the goal), `GlobalSnaketower.commit_time()` is called, moving the temporary time into the persistent datastore.
+	*   When a level is reset, restarted due to death, or the player closes/opens the laptop, `GlobalSnaketower._on_scene_loaded` triggers and instantly resets the `current_level_time` to `0.0`. This discards any time spent on a failed attempt.
 *   **Dynamic Real-Time UI (`Level.gd`):** The total elapsed time is dynamically displayed on screen (from Level 2 onwards). Rather than manually editing each `.tscn` file, `Level.gd` instantiates a `Label` on `_ready()`, aligns it beneath the physical reset button, and seamlessly sums `total_time_elapsed` and `current_level_time` every frame.
 *   **Return to Home UI (`Level*.tscn` & `Level.gd`):** Each level scene contains a `HomeButton` node within its `UILayer`, positioned alongside the Reset button. Pressing this button triggers the `return_to_home()` method inside `Level.gd`, which uses `_switch_level(home_scene_path)` to safely navigate back to the designated starting level (configurable via the `@export var home_scene_path`). This transition fully integrates with the `LaptopUI` system.
 *   **Scene Hook:** Connects to `SceneManager.scene_loaded`. When a scene finishes loading, it checks if the scene path is within a valid minigame directory (`res://scenes/snake_tower/level/`) or explicitly listed in a dictionary. If valid, the timer runs; if it is the final end screen (`LevelLast.tscn`) or invalid, it pauses.
@@ -105,9 +106,9 @@ The minigame does not run directly in the main world space; it is a nested simul
 A self-contained `CanvasLayer` representing the diegetic holographic interface. It owns its own asynchronous scene loading and fade transition system — it does **not** delegate to `SceneManager`.
 *   **Opening:** Plays a holographic boot animation, pauses the main game (`get_tree().paused = true`), and loads the target minigame scene into its internal `SubViewport` via `LaptopUI.change_scene()`. Since `LaptopUI` has `PROCESS_MODE_ALWAYS`, it functions normally while the background world freezes.
 *   **Level Transitions:** When a minigame needs to advance levels, `Level.gd` discovers the host laptop via `get_tree().get_nodes_in_group("laptop_ui")` and calls `laptop.change_scene(target_scene, 0.5)`. This triggers a localized fade-to-black within the laptop screen without affecting the main game view.
-*   **Timer Synchronization:** Before instantiating a new scene, `LaptopUI` calls `get_tree().call_group("minigame_time_trackers", "_on_laptop_scene_loaded", path)` so that `Globals.gd` can update its timer state before the new level's `_ready()` fires.
-*   *Note on Modularity:* `LaptopUI` does not track snake tower logic. Callers should wrap their requested paths with `Globals.get_resume_level(path)` before calling `open_laptop()` to ensure proper progression logic is respected.
-*   **Closing:** Plays a holographic shutdown animation, hides the UI, unpauses the main game, clears the `SubViewport` contents to free memory, and broadcasts a `"pause_time"` method call to the `"minigame_time_trackers"` group. This ensures `Globals.gd` stops counting time when the player closes the laptop.
+*   **Timer Synchronization:** Before instantiating a new scene, `LaptopUI` calls `get_tree().call_group("minigame_time_trackers", "_on_laptop_scene_loaded", path)` so that `GlobalSnaketower` can update its timer state before the new level's `_ready()` fires.
+*   *Note on Modularity:* `LaptopUI` does not track snake tower logic. Callers should wrap their requested paths with `GlobalSnaketower.get_resume_level(path)` before calling `open_laptop()` to ensure proper progression logic is respected.
+*   **Closing:** Plays a holographic shutdown animation, hides the UI, unpauses the main game, clears the `SubViewport` contents to free memory, and broadcasts a `"pause_time"` method call to the `"minigame_time_trackers"` group. This ensures `GlobalSnaketower` stops counting time when the player closes the laptop.
 
 ### Integration Flow Diagram
 
@@ -115,29 +116,29 @@ A self-contained `CanvasLayer` representing the diegetic holographic interface. 
 sequenceDiagram
 	participant Player
 	participant MainGameInteractable
-	participant Globals
+	participant GlobalSnaketower
 	participant LaptopUI
 	participant SubViewport
 	
 	Player->>MainGameInteractable: Interact
-	MainGameInteractable->>Globals: get_resume_level("Level1.tscn")
-	Globals-->>MainGameInteractable: returns "Level3.tscn" (furthest)
+	MainGameInteractable->>GlobalSnaketower: get_resume_level("Level1.tscn")
+	GlobalSnaketower-->>MainGameInteractable: returns "Level3.tscn" (furthest)
 	MainGameInteractable->>LaptopUI: open_laptop("Level3.tscn")
 	LaptopUI->>LaptopUI: play boot animation
 	LaptopUI->>SceneTree: pause main game
 	LaptopUI->>LaptopUI: change_scene() — async load + fade
-	LaptopUI->>Globals: call_group("_on_laptop_scene_loaded", path)
-	Globals->>Globals: check path -> update timer
+	LaptopUI->>GlobalSnaketower: call_group("_on_laptop_scene_loaded", path)
+	GlobalSnaketower->>GlobalSnaketower: check path -> update timer
 	LaptopUI->>SubViewport: instantiate Level3
 	
 	loop Minigame Active
 		Player->>Snake: input
 		Snake->>LevelManager: process grid logic
-		Globals->>Globals: accumulate time
+		GlobalSnaketower->>GlobalSnaketower: accumulate time
 	end
 	
 	Note over Player,LaptopUI: Level Won
-	LaptopUI->>Globals: call_group("_on_laptop_scene_loaded", next_path)
+	LaptopUI->>GlobalSnaketower: call_group("_on_laptop_scene_loaded", next_path)
 	LaptopUI->>SubViewport: instantiate next level (via change_scene)
 	
 	Note over Player,LaptopUI: Player closes laptop
@@ -145,11 +146,34 @@ sequenceDiagram
 	LaptopUI->>LaptopUI: play shutdown animation
 	LaptopUI->>SceneTree: unpause main game
 	LaptopUI->>SubViewport: clear_minigame()
-	LaptopUI->>Globals: call_group("pause_time")
-	Globals->>Globals: timer stops
+	LaptopUI->>GlobalSnaketower: call_group("pause_time")
+	GlobalSnaketower->>GlobalSnaketower: timer stops
 ```
 
-## 7. Future Minigame Considerations
+---
+
+## 7. Leaderboard & Final Screen (`LevelLast.gd`)
+
+The final level serves as a victory screen, dynamically framing the player's performance with a time-based fake leaderboard algorithm. It calculates a player's rank based on their `total_time_elapsed` from `GlobalSnaketower`:
+*   **< 8 minutes:** 1st place.
+*   **< 10 minutes:** 2nd place.
+*   **< 12 minutes:** 3rd place.
+*   **< 15 minutes:** 4th place.
+*   **> 15 minutes:** Rank decays via a quadratic curve capping at the 10,000th place.
+
+### Final Screen UI & Animation
+The end screen (`LevelLast.tscn`) utilizes a centered, stylized `PanelContainer` (cream background, brown borders, shadow) matching the project's broader minigame aesthetic.
+*   **Time Reveal Animation:** The core feature is a fast-paced, slot-machine style animation (`_animate()`). When the scene loads, the digits of the player's time shuffle continuously, locking in sequentially from left to right.
+*   **Rank Color Coding:** Once the time is fully revealed, the text changes color to reflect the player's final rank (`_apply_color()`):
+    *   **1st Place:** Dynamic shifting rainbow animation (processed in `_process`).
+    *   **Top 3:** Solid Gold.
+    *   **Top 10:** Solid Green.
+    *   **Below 10:** Solid Red.
+*   **Dynamic Leaderboard:** After the animation completes, it dynamically generates UI nodes (`HBoxContainer` and `Label` nodes) for the top 3 times, the user's specific rank, and filler ranks directly above and below the user's position using randomly chosen dummy names. This elegantly frames the user's victory, and the final calculated place is committed to `GameGlobal`.
+
+---
+
+## 8. Future Minigame Considerations
 
 Because `LaptopUI` is fully self-contained and utilizes Godot's Group system, adding a completely separate minigame inside the laptop interface requires minimal coupling:
 1.  Create the new minigame scenes and its own global manager.
@@ -162,10 +186,10 @@ Because `LaptopUI` is fully self-contained and utilizes Godot's Group system, ad
 
 ---
 
-## 8. Audio Integration
+## 9. Audio Integration
 
 The Snake Tower utilizes the global `MusicManager` autoload for background music persistence and dedicated `AudioStreamPlayer` nodes for local sound effects.
 
 *   **Background Music:** Upon loading any level (`Level.gd _ready()`), the minigame requests the `"minigame_bgm"` track from `MusicManager`. Because `MusicManager` handles track caching, this won't restart the song unnecessarily on every level reload.
 *   **Home Transition:** When the player uses the Home button to exit the minigame, `Level.gd` instructs `MusicManager` to play the `"pet_home"` track, ensuring a seamless audio transition back to the main laptop desktop environment.
-*   **Local SFX:** Movement, eating, and death sounds are handled locally within `Snake.tscn` using dedicated `AudioStreamPlayer` nodes triggered by `Snake.gd` and `Level.gd`.
+*   **Local SFX:** Movement, eating, and death sounds are handled locally within `Snake.tscn` using dedicated `AudioStreamPlayer` nodes triggered by `Snake.gd` and `Level.gd`.gd`.

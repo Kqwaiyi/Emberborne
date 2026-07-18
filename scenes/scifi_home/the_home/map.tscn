@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://p3iq8c44n40l" path="res://assets/sprites/humans/naked human.png" id="11_syddv"]
 [ext_resource type="Texture2D" uid="uid://d30mp6deypys" path="res://assets/sprites/humans/hair1.png" id="12_2u0fs"]
 [ext_resource type="PackedScene" path="res://scenes/scifi_home/interaction/hologram_door.tscn" id="12_holo"]
+[ext_resource type="PackedScene" uid="uid://cxab321y70xra" path="res://scenes/ui/LaptopUI.tscn" id="13_laptop"]
 [ext_resource type="Script" uid="uid://b4msr7je2nlbf" path="res://scripts/scifi_home/map.gd" id="map_script"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mdo6h"]
@@ -3103,5 +3104,7 @@ debug_color = Color(0.21586639, 0.6397563, 0, 0.41960785)
 position = Vector2(-205, 310)
 scale = Vector2(0.6, 0.6)
 next_scene_path = "res://scenes/core/TestScene.tscn"
+
+[node name="LaptopUI" parent="." unique_id=888269756 instance=ExtResource("13_laptop")]
 
 [editable path="Player"]

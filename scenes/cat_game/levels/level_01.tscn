@@ -1,4 +1,4 @@
-[gd_scene load_steps=84 format=3 uid="uid://cajixu3dagc23"]
+[gd_scene format=3 uid="uid://cajixu3dagc23"]
 
 [ext_resource type="Texture2D" uid="uid://chvlnk4siv40s" path="res://assets/sprites/environment/Sample.png" id="1_fa1h0"]
 [ext_resource type="Texture2D" uid="uid://c8qnum6m38yjg" path="res://assets/sprites/environment/output/tile_0_0.png" id="3_yy7jo"]

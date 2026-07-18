@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://brqbbgyoh5hbg" path="res://scripts/snake_tower/goal/GoalFlag.gd" id="1_g"]
 [ext_resource type="Texture2D" uid="uid://bhao8hlkra657" path="res://assets/snake_tower/flag_animation.png" id="2_e751f"]
 
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_aga33"]
 atlas = ExtResource("2_e751f")
 region = Rect2(0, 0, 60, 60)

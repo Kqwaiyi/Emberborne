@@ -23,15 +23,16 @@ The `DialogueManager` is a global Autoload singleton that provides a modular, da
 ### Overlay Node Tree
 ```
 DialogueOverlay (CanvasLayer — Layer 110, PROCESS_MODE_ALWAYS)
-└── DialogueBox (PanelContainer — anchored to bottom ~28% of screen)
+└── DialogueBox (PanelContainer — anchored to bottom ~28% of screen, cyan glowing border)
     └── MarginContainer
-        └── HBoxContainer
-            ├── PortraitContainer (PanelContainer — fixed 96×96, hidden when no portrait)
-            │   └── Portrait (TextureRect — expand fit, keep aspect)
-            └── VBoxContainer
-                ├── SpeakerLabel (Label — gold accent color, 20px)
-                ├── DialogueLabel (RichTextLabel — typewriter target, 16px)
-                └── AdvanceIndicator (Label — "▼", pulsing, hidden during typewriter)
+        ├── HBoxContainer
+        │   ├── PortraitContainer (PanelContainer — fixed 96×96, hidden when no portrait)
+        │   │   └── Portrait (TextureRect — expand fit, keep aspect)
+        │   └── VBoxContainer
+        │       ├── SpeakerLabel (Label — cyan/blue accent color, 28px)
+        │       ├── DialogueLabel (RichTextLabel — typewriter target, 22px)
+        │       └── AdvanceIndicator (Label — "▼", pulsing, hidden during typewriter)
+        └── SkipButton (Button — top right, "SKIP >>")
 ```
 
 ### CanvasLayer Ordering
@@ -51,7 +52,7 @@ The overlay renders above all other systems in the project:
 ### Three-Layer Input Blocking
 This is the most critical behavior of the system. When dialogue is active, input must be blocked across three distinct pathways that Godot uses to deliver events. Failing to address all three results in partial input leakage:
 
-1.  **`_input()` interception (SceneTree events)**: `DialogueManager` uses `_input()` instead of `_unhandled_input()`. Because `_input()` runs earlier in Godot's event propagation pipeline than `_unhandled_input()`, this ensures `DialogueManager` sees and consumes the `InputEvent` *before* any game node's `_input()` or `_unhandled_input()` can process it. After handling the advance logic, `get_viewport().set_input_as_handled()` is called unconditionally to mark the event as consumed for the entire tree.
+1.  **`_input()` interception (SceneTree events)**: `DialogueManager` uses `_input()` instead of `_unhandled_input()`. Because `_input()` runs earlier in Godot's event propagation pipeline than `_unhandled_input()`, this ensures `DialogueManager` sees and consumes the `InputEvent` *before* any game node's `_input()` or `_unhandled_input()` can process it. *Note: Because this aggressive blocking also prevents UI `Control` nodes from receiving mouse clicks, the manager manually detects left-clicks over the `SkipButton`'s geometry to process skip logic before unconditionally calling `get_viewport().set_input_as_handled()`.*
 
 2.  **SubViewportContainer isolation**: `SubViewportContainer` nodes forward input events directly into their child `SubViewport` via their own `_input()` callback, which happens *in parallel* with the main tree's propagation — not after it. `set_input_as_handled()` on the root viewport does **not** prevent this. To solve this, when dialogue starts, `DialogueManager` walks the entire scene tree and calls `set_process_input(false)` and `set_process_unhandled_input(false)` on every `SubViewportContainer` found. Their original processing state is cached in `_blocked_viewport_containers` and fully restored when dialogue ends.
 
@@ -74,13 +75,25 @@ This returns an `Array` of `Dictionary` objects. Each dictionary represents one 
 
 Because each file is an independent module, new dialogues can be added or removed at any time without modifying `DialogueManager.gd` or `DialogueOverlay.gd`.
 
-### Typewriter Effect & Advance Logic
-Text is revealed character-by-character using a `Tween` that animates the `RichTextLabel.visible_ratio` property from `0.0` to `1.0`. The speed is controlled by the `TYPEWRITER_SPEED` constant (`0.03` seconds per character) in `DialogueOverlay.gd`.
+### Inline Formatting (BBCode)
+The `DialogueLabel` supports both standard Godot BBCode and custom preprocessed tags to dynamically format text. The typewriter animation properly synchronizes with all tags (they do not incorrectly extend the animation duration).
 
-The advance interaction has two stages, handled in `DialogueManager._input()`:
+*   **`[b]text[/b]`**: Bolds the text. Font size is explicitly preserved to match the base size (22px).
+*   **`[i]text[/i]`**: Italicizes the text. Font size is explicitly preserved to match the base size (22px).
+*   **`[sz=X]text[/sz]`**: Custom font size tag. Example: `[sz=16]whisper[/sz]` or `[sz=32]SHOUT[/sz]`. Maps dynamically to Godot's `[font_size]`.
+*   **`[sh rate=X level=Y]text[/sh]`**: Shaking text effect. Example: `[sh]scared[/sh]` or `[sh rate=20.0 level=5]custom shake[/sh]`. This leverages Godot's native character shake so the UI panel itself does not jitter.
+
+### Typewriter Effect & Advance Logic
+Text is revealed character-by-character using a `Tween` that animates the `RichTextLabel.visible_characters` property from `0` to the total character count. The speed is controlled by the `TYPEWRITER_SPEED` constant (`0.03` seconds per character) in `DialogueOverlay.gd`.
+
+The advance interaction has three interactions, handled in `DialogueManager._input()`:
 
 1.  **If the typewriter is still animating**: Pressing `dialogue_advance` calls `DialogueOverlay.complete_typewriter()`, which kills the tween and instantly sets `visible_ratio = 1.0`. The ▼ indicator then appears.
 2.  **If the typewriter has finished**: Pressing `dialogue_advance` calls `DialogueManager.advance()`, which increments the line index and displays the next line, or calls `close_dialogue()` if the sequence is exhausted.
+3.  **Skip Button**: Left-clicking over the `SkipButton` geometry immediately calls `close_dialogue()`, terminating the sequence entirely and playing the out animation.
+
+### Visuals and Animations
+The UI features a futuristic cyan/blue visual style. The overlay plays a "hologram boot-up" animation (scaling vertically) upon `show_box()`, a brief glitch/flicker effect upon `display_line()`, and a "power down" animation upon `hide_box()`.
 
 ### Lazy Overlay Instantiation
 `DialogueOverlay.tscn` is not instantiated at startup. `DialogueManager._ensure_overlay()` is called at the beginning of every `start_dialogue()` invocation. If the overlay node does not yet exist (or has been freed), it is loaded, instantiated, and added directly to `get_tree().root` at that point. This keeps startup cost zero for scenes where no dialogue is ever triggered.
@@ -130,7 +143,8 @@ DialogueManager.dialogue_started
 DialogueManager.dialogue_line_displayed
 
 # Fired when the sequence ends, either naturally (last line advanced) or via close_dialogue().
-DialogueManager.dialogue_finished
+# Passes the file path string (or "" if started from an array).
+DialogueManager.dialogue_finished(file_path: String)
 ```
 
 ---
@@ -140,9 +154,9 @@ DialogueManager.dialogue_finished
 1.  Create a new `.gd` file in `res://scenes/ui/dialogues/`. Copy `test_dialogue.gd` as a starting template.
 2.  Implement `static func get_lines() -> Array` returning your line data.
 3.  Trigger it from any node in the project:
-    ```gdscript
-    DialogueManager.start_dialogue("res://scenes/ui/dialogues/my_new_dialogue.gd")
-    ```
+	```gdscript
+	DialogueManager.start_dialogue("res://scenes/ui/dialogues/my_new_dialogue.gd")
+	```
 
 No changes to `DialogueManager.gd`, `DialogueOverlay.gd`, or `project.godot` are required.
 

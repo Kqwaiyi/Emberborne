@@ -100,8 +100,7 @@ func open_laptop(minigame_scene_path: String = "", fade_duration: float = 0.5) -
 	_is_animating = false
 
 	# Load the minigame if a path is provided, otherwise default to Desktop
-	var scene_to_load = minigame_scene_path if minigame_scene_path != "" else DESKTOP_SCENE
-	change_scene(scene_to_load, fade_duration)
+	change_scene(DESKTOP_SCENE, fade_duration)
 
 	opened.emit()
 

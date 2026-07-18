@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://mnrcd8x5r4u2"]
+[gd_scene format=3 uid="uid://mnrcd8x5r4u2"]
 
 [ext_resource type="Texture2D" uid="uid://caayhkn6qfwn3" path="res://assets/sprites/environment/Enviroment Tile sheet.png" id="1_rqd2m"]
 [ext_resource type="Texture2D" uid="uid://ckja8nv33xlxq" path="res://assets/sprites/environment/roguelikeSheet_transparent.png" id="2_scvo5"]

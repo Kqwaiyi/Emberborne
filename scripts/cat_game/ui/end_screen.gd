@@ -15,13 +15,24 @@ var _digit_labels: Array[Label] = []
 
 var _rainbow_active: bool = false
 var _rainbow_hue: float = 0.0
+var _place: int = 0
+
+var dummy_names: Array[String] = ["CatLover99", "PawMaster", "PixelCat", "SpeedyPaws", "ScratchKing", "Meowz", "NyanNyan", "FelineGood", "KittyKat", "Purrfect"]
 
 @onready var _score_row: HBoxContainer = $Panel/VBox/ScoreCenter/ScoreRow
 @onready var _bracket_label: Label = $Panel/VBox/BracketLabel
+@onready var _leaderboard_list: VBoxContainer = $Panel/VBox/LeaderboardList
 
 
 func _ready() -> void:
 	_total = GameState.total_score
+	_place = _calculate_place(_total)
+	
+	GameGlobal.cat_game_final_place = _place
+	GameGlobal.set_minigame_finish_place("cat_game", _place)
+	
+	_bracket_label.hide()
+	_leaderboard_list.hide()
 
 	var score_text: String = str(maxi(0, _total))
 
@@ -30,6 +41,19 @@ func _ready() -> void:
 
 	_build_digits()
 	_animate()
+
+func _calculate_place(score: int) -> int:
+	if score >= 15000:
+		return 1
+	elif score >= 13000:
+		return 2
+	elif score >= 10000:
+		return 3
+	elif score >= 8000:
+		return 4
+	else:
+		var place = 4 + floor(pow((8000.0 - float(score)) / 80.0, 2.0))
+		return clampi(int(place), 5, 10000)
 
 
 func _build_digits() -> void:
@@ -53,37 +77,51 @@ func _build_digits() -> void:
 
 
 func _animate() -> void:
-	await get_tree().create_timer(0.7).timeout
+	await get_tree().create_timer(0.3).timeout
+	
+	var total_steps: int = 12
+	var temp_idx: int = 0
+	for i in range(_digit_vals.size()):
+		total_steps += maxi(4, 10 - temp_idx * 2)
+		temp_idx += 1
+		
+	var step_delay: float = 3.0 / float(total_steps)
 
 	# Shuffle all digits together.
-	for _shuffle_step: int in range(22):
+	for _shuffle_step: int in range(12):
 		for label: Label in _digit_labels:
 			var random_index: int = randi() % 10
 			label.text = _SHUFFLE[random_index]
 
-		await get_tree().create_timer(0.055).timeout
+		await get_tree().create_timer(step_delay).timeout
 
 	# Reveal digits one at a time from left to right.
+	var digit_idx = 0
 	for i: int in range(_digit_vals.size()):
-		var spins: int = maxi(5, 13 - i * 3)
+		var spins: int = maxi(4, 10 - digit_idx * 2)
 
 		for _spin_step: int in range(spins):
-			for j: int in range(i, _digit_labels.size()):
+			for j: int in range(digit_idx, _digit_labels.size()):
 				var random_index: int = randi() % 10
 				_digit_labels[j].text = _SHUFFLE[random_index]
 
-			await get_tree().create_timer(0.055).timeout
+			await get_tree().create_timer(step_delay).timeout
 
-		_digit_labels[i].text = str(_digit_vals[i])
-		_digit_labels[i].add_theme_color_override(
+		_digit_labels[digit_idx].text = str(_digit_vals[i])
+		_digit_labels[digit_idx].add_theme_color_override(
 			"font_color",
 			_GOLD
 		)
+		digit_idx += 1
 
-		await get_tree().create_timer(0.30).timeout
-
-	await get_tree().create_timer(0.55).timeout
+	await get_tree().create_timer(0.3).timeout
 	_apply_color()
+	
+	_bracket_label.text = "You have placed  # " + str(_place)
+	_bracket_label.show()
+	
+	_generate_leaderboard(_place, _total)
+	_leaderboard_list.show()
 
 
 func _apply_color() -> void:
@@ -136,3 +174,122 @@ func _process(delta: float) -> void:
 			"font_color",
 			rainbow_color
 		)
+
+func _create_entry(rank: String, username: String, score_val: int, is_player: bool = false) -> void:
+	var hbox: HBoxContainer = HBoxContainer.new()
+	hbox.alignment = BoxContainer.ALIGNMENT_CENTER
+	hbox.add_theme_constant_override("separation", 20)
+	
+	var rank_label: Label = Label.new()
+	rank_label.text = rank
+	rank_label.custom_minimum_size = Vector2(100, 0)
+	rank_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_LEFT
+	rank_label.add_theme_font_size_override("font_size", 20)
+	rank_label.add_theme_color_override("font_color", Color(0.3, 0.2, 0.1, 1))
+	
+	var name_label: Label = Label.new()
+	name_label.text = username
+	name_label.custom_minimum_size = Vector2(200, 0)
+	name_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	name_label.add_theme_font_size_override("font_size", 20)
+	name_label.add_theme_color_override("font_color", Color(0.3, 0.2, 0.1, 1))
+	
+	var score_lbl: Label = Label.new()
+	score_lbl.text = str(score_val)
+	score_lbl.custom_minimum_size = Vector2(100, 0)
+	score_lbl.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
+	score_lbl.add_theme_font_size_override("font_size", 20)
+	score_lbl.add_theme_color_override("font_color", Color(0.3, 0.2, 0.1, 1))
+	
+	if is_player:
+		var color: Color = Color(0.7, 0.4, 0.05, 1) # Darker gold/orange
+		rank_label.add_theme_color_override("font_color", color)
+		name_label.add_theme_color_override("font_color", color)
+		score_lbl.add_theme_color_override("font_color", color)
+	
+	hbox.add_child(rank_label)
+	hbox.add_child(name_label)
+	hbox.add_child(score_lbl)
+	
+	_leaderboard_list.add_child(hbox)
+
+func _create_separator() -> void:
+	var label: Label = Label.new()
+	label.text = "..."
+	label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	label.add_theme_font_size_override("font_size", 20)
+	label.add_theme_color_override("font_color", Color(0.3, 0.2, 0.1, 1))
+	_leaderboard_list.add_child(label)
+
+func _generate_leaderboard(player_place: int, player_score: int) -> void:
+	dummy_names.shuffle()
+	var name_idx: int = 0
+	
+	var top3_scores: Array[int] = []
+	if player_place == 1:
+		top3_scores = [
+			player_score,
+			maxi(player_score - randi_range(50, 500), 13500),
+			maxi(player_score - randi_range(600, 1500), 12500)
+		]
+	elif player_place == 2:
+		top3_scores = [
+			player_score + randi_range(50, 1500),
+			player_score,
+			maxi(player_score - randi_range(50, 500), 10500)
+		]
+	else:
+		top3_scores = [
+			15500 + randi_range(50, 2000),
+			14500 + randi_range(50, 1000),
+			13500 + randi_range(50, 800)
+		]
+		if player_place == 3:
+			top3_scores[2] = player_score
+	
+	# Output Top 3
+	for i in range(1, 4):
+		if i == player_place:
+			_create_entry(str(i) + ".", "You", player_score, true)
+		else:
+			_create_entry(str(i) + ".", dummy_names[name_idx], top3_scores[i-1])
+			name_idx += 1
+			
+	if player_place <= 3:
+		for i in range(4, 7):
+			var s: int = maxi(top3_scores[2] - randi_range(100, 500) * (i - 3), 0)
+			_create_entry(str(i) + ".", dummy_names[name_idx], s)
+			name_idx += 1
+		_create_separator()
+		return
+	
+	if player_place <= 7:
+		for i in range(4, player_place + 3):
+			if i == player_place:
+				_create_entry(str(i) + ".", "You", player_score, true)
+			else:
+				var s: int = player_score - randi_range(20, 150) * (i - player_place)
+				if i < player_place:
+					s = player_score + randi_range(20, 150) * (player_place - i)
+				_create_entry(str(i) + ".", dummy_names[name_idx], maxi(s, 0))
+				name_idx += 1
+		_create_separator()
+		return
+		
+	# Player is > 7
+	_create_separator()
+	
+	for i in range(player_place - 2, player_place):
+		var s: int = player_score + randi_range(20, 100) * (player_place - i)
+		_create_entry(str(i) + ".", dummy_names[name_idx], s)
+		name_idx += 1
+		
+	_create_entry(str(player_place) + ".", "You", player_score, true)
+	
+	for i in range(player_place + 1, mini(player_place + 3, 10001)):
+		var s: int = player_score - randi_range(20, 100) * (i - player_place)
+		_create_entry(str(i) + ".", dummy_names[name_idx], maxi(s, 0))
+		name_idx += 1
+		
+	if player_place < 9998:
+		_create_separator()

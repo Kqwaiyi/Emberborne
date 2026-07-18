@@ -4,14 +4,15 @@ extends Node
 signal dialogue_started
 ## Emitted each time a new line is displayed.
 signal dialogue_line_displayed
-## Emitted when the entire dialogue sequence ends.
-signal dialogue_finished
+## Emitted when the entire dialogue sequence ends. Passes the file path (or "" if started from an array).
+signal dialogue_finished(file_path: String)
 
 var _is_active: bool = false
 var _lines: Array = []
 var _current_index: int = 0
 var _overlay: Node = null
 var _blocked_viewport_containers: Array = []
+var _current_dialogue_path: String = ""
 
 const OVERLAY_SCENE_PATH = "res://scenes/ui/DialogueOverlay.tscn"
 
@@ -23,6 +24,13 @@ func _ready() -> void:
 func _input(event: InputEvent) -> void:
 	if not _is_active:
 		return
+
+	# Handle Skip Button click manually because we block all input
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+		if _overlay and _overlay.has_method("is_skip_button_hovered") and _overlay.is_skip_button_hovered():
+			close_dialogue()
+			get_viewport().set_input_as_handled()
+			return
 
 	# Handle the dialogue advance action
 	if event.is_action_pressed("dialogue_advance"):
@@ -58,6 +66,7 @@ func start_dialogue(dialogue_path: String) -> void:
 		push_error("DialogueManager: Failed to load dialogue script: " + dialogue_path)
 		return
 
+	_current_dialogue_path = dialogue_path
 	var lines = script.get_lines()
 	start_dialogue_from_array(lines)
 
@@ -110,7 +119,9 @@ func close_dialogue() -> void:
 	if _overlay:
 		_overlay.hide_box()
 
-	dialogue_finished.emit()
+	var path = _current_dialogue_path
+	_current_dialogue_path = ""
+	dialogue_finished.emit(path)
 
 func _display_current_line() -> void:
 	var line = _lines[_current_index]

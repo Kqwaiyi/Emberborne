@@ -1,9 +1,25 @@
-[gd_scene load_steps=5 format=3 uid="uid://hologram_door_01"]
+[gd_scene load_steps=9 format=3 uid="uid://hologram_door_01"]
 
 [ext_resource type="Script" path="res://scripts/scifi_home/interaction/hologram_door.gd" id="1_door"]
+[ext_resource type="Shader" path="res://assets/shaders/hologram_glitch.gdshader" id="2_glitch"]
+[ext_resource type="Shader" path="res://assets/shaders/traveling_border.gdshader" id="3_border"]
 
 [sub_resource type="CircleShape2D" id="CSh_zone"]
 radius = 44.0
+
+[sub_resource type="ShaderMaterial" id="SM_glitch"]
+shader = ExtResource("2_glitch")
+shader_parameter/intensity = 0.05
+
+[sub_resource type="ShaderMaterial" id="SM_border"]
+shader = ExtResource("3_border")
+shader_parameter/border_color = Color(0.0, 0.85, 1.0, 1.0)
+shader_parameter/border_width = 2.0
+shader_parameter/rect_size = Vector2(34.0, 34.0)
+shader_parameter/corner_radius = 4.0
+shader_parameter/speed = 1.0
+shader_parameter/tail_length = 0.6
+shader_parameter/hover_intensity = 0.5
 
 [sub_resource type="StyleBoxFlat" id="SBF_prompt"]
 bg_color = Color(0.02, 0.04, 0.10, 0.88)
@@ -18,12 +34,12 @@ corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 
 [sub_resource type="StyleBoxFlat" id="SBF_key"]
-bg_color = Color(0.0, 0.85, 1.0, 0.12)
+bg_color = Color(0.0, 0.0, 0.0, 0.0)
 border_width_left = 1
 border_width_top = 1
 border_width_right = 1
 border_width_bottom = 3
-border_color = Color(0.0, 0.85, 1.0, 0.9)
+border_color = Color(0.0, 0.85, 1.0, 0.0)
 corner_radius_top_left = 4
 corner_radius_top_right = 4
 corner_radius_bottom_right = 4
@@ -47,25 +63,62 @@ visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 
-[node name="PromptBox" type="PanelContainer" parent="Prompt/PromptRoot"]
+[node name="PromptContainer" type="Control" parent="Prompt/PromptRoot"]
+layout_mode = 1
+anchors_preset = 7
 anchor_left = 0.5
-anchor_right = 0.5
 anchor_top = 1.0
+anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -130.0
-offset_right = 130.0
 offset_top = -95.0
+offset_right = 130.0
 offset_bottom = -48.0
+grow_horizontal = 2
+grow_vertical = 0
+pivot_offset = Vector2(130, 23.5)
+
+[node name="PromptBox" type="PanelContainer" parent="Prompt/PromptRoot/PromptContainer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_styles/panel = SubResource("SBF_prompt")
 
-[node name="HBox" type="HBoxContainer" parent="Prompt/PromptRoot/PromptBox"]
+[node name="GlitchOverlay" type="ColorRect" parent="Prompt/PromptRoot/PromptContainer"]
+material = SubResource("SM_glitch")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBox" type="HBoxContainer" parent="Prompt/PromptRoot/PromptContainer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_constants/separation = 10
 
-[node name="KeyBox" type="PanelContainer" parent="Prompt/PromptRoot/PromptBox/HBox"]
+[node name="Padding" type="Control" parent="Prompt/PromptRoot/PromptContainer/HBox"]
+custom_minimum_size = Vector2(4, 0)
+layout_mode = 2
+
+[node name="KeyCenter" type="CenterContainer" parent="Prompt/PromptRoot/PromptContainer/HBox"]
+layout_mode = 2
+
+[node name="KeyBox" type="PanelContainer" parent="Prompt/PromptRoot/PromptContainer/HBox/KeyCenter"]
+material = SubResource("SM_border")
 custom_minimum_size = Vector2(34.0, 34.0)
+layout_mode = 2
 theme_override_styles/panel = SubResource("SBF_key")
 
-[node name="KeyLabel" type="Label" parent="Prompt/PromptRoot/PromptBox/HBox/KeyBox"]
+[node name="KeyLabel" type="Label" parent="Prompt/PromptRoot/PromptContainer/HBox/KeyCenter/KeyBox"]
 layout_mode = 2
 text = "E"
 horizontal_alignment = 1
@@ -73,9 +126,9 @@ vertical_alignment = 1
 theme_override_colors/font_color = Color(0.0, 0.9, 1.0, 1.0)
 theme_override_font_sizes/font_size = 17
 
-[node name="PromptLabel" type="Label" parent="Prompt/PromptRoot/PromptBox/HBox"]
+[node name="PromptLabel" type="Label" parent="Prompt/PromptRoot/PromptContainer/HBox"]
 layout_mode = 2
-text = "  Interact"
+text = "  SYSTEM_LINK"
 vertical_alignment = 1
 theme_override_colors/font_color = Color(0.82, 0.95, 1.0, 1.0)
 theme_override_font_sizes/font_size = 15

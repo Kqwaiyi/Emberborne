@@ -1,4 +1,4 @@
-[gd_scene load_steps=0 format=3 uid="uid://d2k4j5l6m7n8o"]
+[gd_scene format=3 uid="uid://d2k4j5l6m7n8o"]
 
 [ext_resource type="Script" uid="uid://df1hhx507jsa4" path="res://scripts/ui/DesktopAppButton.gd" id="1_script"]
 [ext_resource type="Shader" uid="uid://b7jyur0212rr5" path="res://assets/shaders/traveling_border.gdshader" id="2_shader"]
@@ -52,7 +52,6 @@ shadow_size = 6
 
 [node name="DesktopAppButton" type="MarginContainer" unique_id=711378227]
 custom_minimum_size = Vector2(160, 140)
-anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5

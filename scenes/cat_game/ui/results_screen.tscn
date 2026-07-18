@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cmquucfy2ckxe"]
+[gd_scene format=3 uid="uid://cmquucfy2ckxe"]
 
 [ext_resource type="Script" uid="uid://bi1jkjod1gksn" path="res://scripts/cat_game/ui/results_screen.gd" id="1_results"]
 [ext_resource type="Texture2D" uid="uid://c31eweol7rhif" path="res://assets/ui/Loot/cat.png" id="2_cat"]

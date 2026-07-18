@@ -1,4 +1,4 @@
-[gd_scene load_steps=133 format=3 uid="uid://ckem05uh45a4"]
+[gd_scene format=3 uid="uid://ckem05uh45a4"]
 
 [ext_resource type="Texture2D" uid="uid://c8qnum6m38yjg" path="res://assets/sprites/environment/output/tile_0_0.png" id="3_yy7jo"]
 [ext_resource type="Texture2D" uid="uid://csn12mmbrnrr3" path="res://assets/sprites/environment/output/tile_0_1.png" id="4_ekg0j"]
@@ -73,7 +73,7 @@
 [ext_resource type="PackedScene" path="res://scenes/cat_game/environment/exit_door.tscn" id="201_door"]
 [ext_resource type="Script" uid="uid://bqh3brfi1re2c" path="res://scripts/cat_game/environment/cactus_hazard.gd" id="202_cactus"]
 [ext_resource type="PackedScene" path="res://scenes/cat_game/ui/hud.tscn" id="hud_l2"]
-[ext_resource type="PackedScene" path="res://scenes/cat_game/ui/results_screen.tscn" id="results_l2"]
+[ext_resource type="PackedScene" uid="uid://cmquucfy2ckxe" path="res://scenes/cat_game/ui/results_screen.tscn" id="results_l2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_716oc"]
 size = Vector2(253, 67)
