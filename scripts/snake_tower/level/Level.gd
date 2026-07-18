@@ -2,7 +2,7 @@ extends Node2D
 
 var _is_transitioning: bool = false
 var time_label: Label = null
-@export var home_scene_path: String = "res://scenes/snake_tower/level/Level1.tscn"
+@export var home_scene_path: String = "res://scenes/pet_world/lobby/mainlobby.tscn"
 
 func _enter_tree():
 	LevelManager.reset()
@@ -87,5 +87,5 @@ func return_to_home():
 	if _is_transitioning: return
 	_is_transitioning = true
 	GlobalSnaketower.reset_attempt_timer()
-	MusicManager.play_music("scifi_home", true)
+	MusicManager.play_music("pet_world", true)
 	_switch_level(home_scene_path)

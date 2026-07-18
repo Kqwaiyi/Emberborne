@@ -3,8 +3,8 @@ extends Node
 signal music_started
 signal music_stopped
 
-var fade_in_duration: float = 1.0
-var fade_out_duration: float = 1.0
+var fade_in_duration: float = 0.7
+var fade_out_duration: float = 0.7
 
 var _audio_player: AudioStreamPlayer
 var _timer: Timer
@@ -22,6 +22,7 @@ var _music_tracks: Dictionary = {
 }
 
 func _ready() -> void:
+	process_mode = Node.PROCESS_MODE_ALWAYS
 	_audio_player = AudioStreamPlayer.new()
 	add_child(_audio_player)
 	_audio_player.finished.connect(_on_audio_finished)

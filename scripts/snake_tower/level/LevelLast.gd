@@ -11,6 +11,7 @@ var _digit_chars: Array[String] = []
 var _digit_labels: Array[Label] = []
 var _place: int = 0
 var _time: float = 0.0
+var _is_transitioning: bool = false
 
 var _rainbow_active: bool = false
 var _rainbow_hue: float = 0.0
@@ -277,5 +278,17 @@ func _generate_leaderboard(player_place: int, player_time: float):
 		_create_entry(str(i) + ".", dummy_names[name_idx], _format_time(t))
 		name_idx += 1
 		
-	if player_place < 9997:
-		_create_separator()
+		if player_place < 9997:
+			_create_separator()
+
+func _on_back_button_pressed():
+	if _is_transitioning: return
+	_is_transitioning = true
+	GlobalSnaketower.reset_attempt_timer()
+	MusicManager.play_music("pet_world", true)
+	
+	var laptops = get_tree().get_nodes_in_group("laptop_ui")
+	if laptops.size() > 0:
+		laptops[0].change_scene("res://scenes/pet_world/lobby/mainlobby.tscn", 0.5)
+	else:
+		SceneManager.change_scene_to_file("res://scenes/pet_world/lobby/mainlobby.tscn")

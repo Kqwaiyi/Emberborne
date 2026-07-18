@@ -14,7 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://bl1jkw030abc" path="res://scenes/snake_tower/level/CameraLimit.tscn" id="11_5xcfn"]
 [ext_resource type="PackedScene" uid="uid://c03dy1hc7ccnh" path="res://scenes/snake_tower/apple/Apple.tscn" id="12_fl72t"]
 [ext_resource type="PackedScene" uid="uid://bl26wsuj527bu" path="res://scenes/snake_tower/box/Box.tscn" id="13_rc3g3"]
-[ext_resource type="Texture2D" uid="uid://cyuob1afxadjh" path="res://icon.svg" id="99_home_icon"]
+[ext_resource type="Texture2D" uid="uid://bho4rvclvjjcd" path="res://assets/sprites/messenger/icon_back.svg" id="99_home_icon"]
 
 [node name="Level" type="Node2D" unique_id=954905236]
 script = ExtResource("1_51bk6")

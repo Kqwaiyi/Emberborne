@@ -108,7 +108,24 @@ func _on_pet_btn_pressed() -> void:
 	pet_action_requested.emit(_current_pet)
 
 func _on_tourn_btn_pressed() -> void:
-	pass
+	if _current_pet == null:
+		return
+		
+	var target_scene := ""
+	if _current_pet.name == "Cat":
+		target_scene = "res://scenes/cat_game/core/main.tscn"
+	elif _current_pet.name == "Snake":
+		target_scene = GlobalSnaketower.get_resume_level("")
+		
+	if target_scene != "":
+		var laptops = get_tree().get_nodes_in_group("laptop_ui")
+		if laptops.size() > 0:
+			laptops[0].change_scene(target_scene, 0.5)
+		else:
+			if SceneManager.has_method("change_scene_to_file"):
+				SceneManager.change_scene_to_file(target_scene, 0.5)
+			else:
+				get_tree().change_scene_to_file(target_scene)
 
 # ---------------------------------------------------------------------------
 # UI construction

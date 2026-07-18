@@ -14,7 +14,7 @@
 [ext_resource type="PackedScene" path="res://scenes/snake_tower/spike/Spike.tscn" id="12_3apk1"]
 [ext_resource type="PackedScene" uid="uid://c03dy1hc7ccnh" path="res://scenes/snake_tower/apple/Apple.tscn" id="13_6xqse"]
 [ext_resource type="PackedScene" path="res://scenes/snake_tower/goal/UpsideDownFlag.tscn" id="14_3apk1"]
-[ext_resource type="Texture2D" uid="uid://cyuob1afxadjh" path="res://icon.svg" id="99_home_icon"]
+[ext_resource type="Texture2D" uid="uid://bho4rvclvjjcd" path="res://assets/sprites/messenger/icon_back.svg" id="99_home_icon"]
 
 [node name="Level" type="Node2D" unique_id=954905236]
 script = ExtResource("1_lfxys")
