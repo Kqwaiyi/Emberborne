@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bsc2ya2ki6is3"
+path="res://.godot/imported/leaderboard - Copy.mp3-4a446a930fcacba19a03590a56420e31.mp3str"
+
+[deps]
+
+source_file="res://assets/music/cat_game/leaderboard - Copy.mp3"
+dest_files=["res://.godot/imported/leaderboard - Copy.mp3-4a446a930fcacba19a03590a56420e31.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

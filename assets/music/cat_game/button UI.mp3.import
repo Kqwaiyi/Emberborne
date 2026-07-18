@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cs7cj228rsmrx"
+path="res://.godot/imported/button UI.mp3-8b44eb71912f9f4af39894a6a3cb9435.mp3str"
+
+[deps]
+
+source_file="res://assets/music/cat_game/button UI.mp3"
+dest_files=["res://.godot/imported/button UI.mp3-8b44eb71912f9f4af39894a6a3cb9435.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

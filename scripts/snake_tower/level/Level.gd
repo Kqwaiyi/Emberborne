@@ -8,7 +8,7 @@ func _enter_tree():
 	LevelManager.reset()
 
 func _ready():
-	MusicManager.play_music("minigame_bgm", true)
+	MusicManager.play_music("snake_tower")
 	# Start the timer whenever a level is loaded (handles direct editor runs)
 	get_tree().call_group("minigame_time_trackers", "start_time")
 	
@@ -87,5 +87,5 @@ func return_to_home():
 	if _is_transitioning: return
 	_is_transitioning = true
 	GlobalSnaketower.reset_attempt_timer()
-	MusicManager.play_music("pet_home", true)
+	MusicManager.play_music("scifi_home", true)
 	_switch_level(home_scene_path)

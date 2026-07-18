@@ -1,5 +1,6 @@
 [gd_scene format=4 uid="uid://2ubyf38pmh2m"]
 
+[ext_resource type="Script" path="res://scripts/scifi_home/map.gd" id="map_script"]
 [ext_resource type="Texture2D" uid="uid://crrrlx2ydg57h" path="res://assets/scifi_home/WILL USE !/apartmentexteriorA5b.png" id="1_k7ymq"]
 [ext_resource type="Texture2D" uid="uid://dpetpm0td6kor" path="res://assets/scifi_home/WILL USE !/apartmentexteriorBprops.png" id="2_f1tkd"]
 [ext_resource type="Texture2D" uid="uid://vajrmoxqmihu" path="res://assets/scifi_home/WILL USE !/apartmentexteriorEalphanumerics.png" id="3_60mna"]
@@ -2954,6 +2955,7 @@ size = Vector2(34, 52.5)
 size = Vector2(93.5, 51)
 
 [node name="Map" type="Node2D" unique_id=801796816]
+script = ExtResource("map_script")
 
 [node name="TileMap" type="TileMap" parent="." unique_id=1085419593]
 z_index = -10

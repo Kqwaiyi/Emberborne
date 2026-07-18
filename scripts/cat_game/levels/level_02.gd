@@ -24,6 +24,7 @@ var _hud: HUD = null
 var _results: ResultsScreen = null
 
 func _ready() -> void:
+	MusicManager.play_music("cat_game")
 	_hud     = get_node_or_null("HUD") as HUD
 	_results = get_node_or_null("ResultsScreen") as ResultsScreen
 

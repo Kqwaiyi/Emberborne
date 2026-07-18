@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://8jkx3kbx088p"
+path="res://.godot/imported/snake_tower_BGM.mp3-1fa8efd8d65992145cc84bf86657080f.mp3str"
+
+[deps]
+
+source_file="res://assets/music/snake tower/snake_tower_BGM.mp3"
+dest_files=["res://.godot/imported/snake_tower_BGM.mp3-1fa8efd8d65992145cc84bf86657080f.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

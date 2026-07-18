@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dt1b43rr610g6"
+path="res://.godot/imported/spike.mp3-af6bdbebdeb6a86ef00a75c7c92ad42c.mp3str"
+
+[deps]
+
+source_file="res://assets/music/snake tower/spike.mp3"
+dest_files=["res://.godot/imported/spike.mp3-af6bdbebdeb6a86ef00a75c7c92ad42c.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

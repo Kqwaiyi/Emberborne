@@ -12,18 +12,20 @@ var _fade_tween: Tween
 var _current_path: String = ""
 var _repeat: bool = false
 var _repeat_delay: float = 3.5
+var _target_volume_db: float = 0.0
 
-# Optional: Add keys here that map to string paths like "res://assets/audio/music.ogg"
 var _music_tracks: Dictionary = {
-	"minigame_bgm": "res://assets/audio/placeholder_bgm.ogg",
-	"pet_home": "res://assets/audio/placeholder_pet_home.ogg"
+	"cat_game":    { "path": "res://assets/music/cat_game/cat_game_BGM.mp3",          "volume_db": -15 },
+	"snake_tower": { "path": "res://assets/music/snake tower/snake_tower_BGM.mp3",    "volume_db": -10 },
+	"pet_world":   { "path": "res://assets/music/pet_world/pet_world_BGM.mp3",        "volume_db": -15 },
+	"scifi_home":  { "path": "res://assets/music/scifi-world/scifi_home_BGM.mp3",     "volume_db": -15 },
 }
 
 func _ready() -> void:
 	_audio_player = AudioStreamPlayer.new()
 	add_child(_audio_player)
 	_audio_player.finished.connect(_on_audio_finished)
-	
+
 	_timer = Timer.new()
 	add_child(_timer)
 	_timer.one_shot = true
@@ -32,14 +34,16 @@ func _ready() -> void:
 ## Starts playing music from the given path or dictionary key.
 ## If repeat is true, it loops with a 3.5s delay.
 func play_music(path: String, repeat: bool = true) -> void:
-	# If a dictionary key is provided, resolve it to the full path.
+	# If a dictionary key is provided, resolve it to the full path and read its volume.
 	if _music_tracks.has(path):
-		path = _music_tracks[path]
-		
+		var entry: Dictionary = _music_tracks[path]
+		_target_volume_db = entry.get("volume_db", 0.0)
+		path = entry["path"]
+
 	# If the requested music is already playing, do nothing.
 	if _current_path == path and _audio_player.playing:
 		return
-		
+
 	# If the requested music is currently waiting in the delay timer, do nothing.
 	if _current_path == path and not _audio_player.playing and not _timer.is_stopped():
 		return
@@ -53,10 +57,10 @@ func play_music(path: String, repeat: bool = true) -> void:
 func _fade_out_and_play(path: String, repeat: bool) -> void:
 	_repeat = false # Prevent it from looping while fading out
 	_timer.stop()
-	
+
 	if _fade_tween and _fade_tween.is_valid():
 		_fade_tween.kill()
-		
+
 	_fade_tween = create_tween()
 	_fade_tween.tween_property(_audio_player, "volume_db", -80.0, fade_out_duration)
 	_fade_tween.tween_callback(func():
@@ -68,18 +72,18 @@ func _fade_out_and_play(path: String, repeat: bool) -> void:
 func _start_track(path: String, repeat: bool) -> void:
 	_current_path = path
 	_repeat = repeat
-	
+
 	var stream = load(path)
 	if stream is AudioStream:
 		_audio_player.stream = stream
 		_audio_player.volume_db = -80.0
 		_audio_player.play()
 		music_started.emit()
-		
+
 		if _fade_tween and _fade_tween.is_valid():
 			_fade_tween.kill()
 		_fade_tween = create_tween()
-		_fade_tween.tween_property(_audio_player, "volume_db", 0.0, fade_in_duration)
+		_fade_tween.tween_property(_audio_player, "volume_db", _target_volume_db, fade_in_duration)
 	else:
 		push_error("MusicManager: Could not load audio stream from path: " + path)
 
@@ -88,10 +92,10 @@ func stop_music(instant: bool = false) -> void:
 	_repeat = false
 	_timer.stop()
 	_current_path = ""
-	
+
 	if not _audio_player.playing:
 		return
-		
+
 	if instant:
 		if _fade_tween and _fade_tween.is_valid():
 			_fade_tween.kill()
@@ -119,8 +123,8 @@ func _on_timer_timeout() -> void:
 		# When a loop restarts, fade it in
 		_audio_player.volume_db = -80.0
 		_audio_player.play()
-		
+
 		if _fade_tween and _fade_tween.is_valid():
 			_fade_tween.kill()
 		_fade_tween = create_tween()
-		_fade_tween.tween_property(_audio_player, "volume_db", 0.0, fade_in_duration)
+		_fade_tween.tween_property(_audio_player, "volume_db", _target_volume_db, fade_in_duration)
