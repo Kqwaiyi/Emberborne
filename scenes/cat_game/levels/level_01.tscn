@@ -132,7 +132,7 @@ size = Vector2(78.5, 31.5)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wus6y"]
 size = Vector2(157, 5.25)
 
-[node name="Level01" type="Node2D" unique_id=737435687]
+[node name="Level01" type="Node2D" unique_id=610868066]
 script = ExtResource("199_level")
 starting_score = 0
 maximum_time_bonus = 1000
@@ -140,855 +140,855 @@ optimal_time_seconds = 20.0
 time_penalty_per_second = 100.0
 next_scene_path = "res://scenes/cat_game/levels/level_02.tscn"
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=585984591]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1863082518]
 visible = false
 self_modulate = Color(0.19434929, 0.19434926, 0.19434926, 1)
 position = Vector2(-39, 677)
 texture = ExtResource("1_fa1h0")
 
-[node name="Cat" parent="." unique_id=155015586 instance=ExtResource("4_40jq8")]
+[node name="Cat" parent="." unique_id=448048738 instance=ExtResource("4_40jq8")]
 position = Vector2(-40, 825)
 
-[node name="enviroment (to use)" type="Node2D" parent="." unique_id=838138253]
+[node name="enviroment (to use)" type="Node2D" parent="." unique_id=199771915]
 
-[node name="Floor2" type="Node2D" parent="enviroment (to use)" unique_id=57319270]
+[node name="Floor2" type="Node2D" parent="enviroment (to use)" unique_id=28454593]
 z_index = -999
 scale = Vector2(2.5, 2.5)
 
-[node name="Sprite2D" type="Sprite2D" parent="enviroment (to use)/Floor2" unique_id=44954550]
+[node name="Sprite2D" type="Sprite2D" parent="enviroment (to use)/Floor2" unique_id=1073537708]
 position = Vector2(-112.000015, 214.90007)
 texture = ExtResource("97_rqu2v")
 
-[node name="Sprite2D2" type="Sprite2D" parent="enviroment (to use)/Floor2" unique_id=183090025]
+[node name="Sprite2D2" type="Sprite2D" parent="enviroment (to use)/Floor2" unique_id=1302478696]
 position = Vector2(-96.000015, 214.90007)
 texture = ExtResource("97_rqu2v")
 
-[node name="Sprite2D3" type="Sprite2D" parent="enviroment (to use)/Floor2" unique_id=1129845518]
+[node name="Sprite2D3" type="Sprite2D" parent="enviroment (to use)/Floor2" unique_id=1765889490]
 position = Vector2(-80.00005, 214.90007)
 texture = ExtResource("97_rqu2v")
 
-[node name="Sprite2D4" type="Sprite2D" parent="enviroment (to use)/Floor2" unique_id=926865660]
+[node name="Sprite2D4" type="Sprite2D" parent="enviroment (to use)/Floor2" unique_id=164375366]
 position = Vector2(-64, 214.90007)
 texture = ExtResource("97_rqu2v")
 
-[node name="Sprite2D5" type="Sprite2D" parent="enviroment (to use)/Floor2" unique_id=1237131347]
+[node name="Sprite2D5" type="Sprite2D" parent="enviroment (to use)/Floor2" unique_id=1595653281]
 position = Vector2(-112.00001, 230.79999)
 texture = ExtResource("97_rqu2v")
 
-[node name="Sprite2D6" type="Sprite2D" parent="enviroment (to use)/Floor2" unique_id=981826610]
+[node name="Sprite2D6" type="Sprite2D" parent="enviroment (to use)/Floor2" unique_id=910741348]
 position = Vector2(-96.00001, 230.79999)
 texture = ExtResource("97_rqu2v")
 
-[node name="Sprite2D7" type="Sprite2D" parent="enviroment (to use)/Floor2" unique_id=1544910851]
+[node name="Sprite2D7" type="Sprite2D" parent="enviroment (to use)/Floor2" unique_id=1099526181]
 position = Vector2(-80.000046, 230.79999)
 texture = ExtResource("97_rqu2v")
 
-[node name="Sprite2D8" type="Sprite2D" parent="enviroment (to use)/Floor2" unique_id=1057163530]
+[node name="Sprite2D8" type="Sprite2D" parent="enviroment (to use)/Floor2" unique_id=1257304414]
 position = Vector2(-63.99999, 230.79999)
 texture = ExtResource("97_rqu2v")
 
-[node name="Sprite2D9" type="Sprite2D" parent="enviroment (to use)/Floor2" unique_id=668435541]
+[node name="Sprite2D9" type="Sprite2D" parent="enviroment (to use)/Floor2" unique_id=1089876882]
 position = Vector2(-112, 246.79999)
 texture = ExtResource("97_rqu2v")
 
-[node name="Sprite2D10" type="Sprite2D" parent="enviroment (to use)/Floor2" unique_id=1972030939]
+[node name="Sprite2D10" type="Sprite2D" parent="enviroment (to use)/Floor2" unique_id=140651534]
 position = Vector2(-96, 246.79999)
 texture = ExtResource("97_rqu2v")
 
-[node name="Sprite2D11" type="Sprite2D" parent="enviroment (to use)/Floor2" unique_id=2080072657]
+[node name="Sprite2D11" type="Sprite2D" parent="enviroment (to use)/Floor2" unique_id=876081855]
 position = Vector2(-80.00004, 246.79999)
 texture = ExtResource("97_rqu2v")
 
-[node name="Sprite2D12" type="Sprite2D" parent="enviroment (to use)/Floor2" unique_id=1368047307]
+[node name="Sprite2D12" type="Sprite2D" parent="enviroment (to use)/Floor2" unique_id=985596919]
 position = Vector2(-63.99999, 246.79999)
 texture = ExtResource("97_rqu2v")
 
-[node name="Sprite2D13" type="Sprite2D" parent="enviroment (to use)/Floor2" unique_id=1333809511]
+[node name="Sprite2D13" type="Sprite2D" parent="enviroment (to use)/Floor2" unique_id=1943317308]
 position = Vector2(-112, 262.8)
 texture = ExtResource("97_rqu2v")
 
-[node name="Sprite2D14" type="Sprite2D" parent="enviroment (to use)/Floor2" unique_id=1826752301]
+[node name="Sprite2D14" type="Sprite2D" parent="enviroment (to use)/Floor2" unique_id=527689845]
 position = Vector2(-96, 262.8)
 texture = ExtResource("97_rqu2v")
 
-[node name="Sprite2D15" type="Sprite2D" parent="enviroment (to use)/Floor2" unique_id=1472936559]
+[node name="Sprite2D15" type="Sprite2D" parent="enviroment (to use)/Floor2" unique_id=1255876393]
 position = Vector2(-80.00004, 262.8)
 texture = ExtResource("97_rqu2v")
 
-[node name="Sprite2D16" type="Sprite2D" parent="enviroment (to use)/Floor2" unique_id=1449526773]
+[node name="Sprite2D16" type="Sprite2D" parent="enviroment (to use)/Floor2" unique_id=180027693]
 position = Vector2(-63.99999, 262.8)
 texture = ExtResource("97_rqu2v")
 
-[node name="Sprite2D17" type="Sprite2D" parent="enviroment (to use)/Floor2" unique_id=972572949]
+[node name="Sprite2D17" type="Sprite2D" parent="enviroment (to use)/Floor2" unique_id=1182319766]
 position = Vector2(-112, 278.8)
 texture = ExtResource("97_rqu2v")
 
-[node name="Sprite2D18" type="Sprite2D" parent="enviroment (to use)/Floor2" unique_id=1875801513]
+[node name="Sprite2D18" type="Sprite2D" parent="enviroment (to use)/Floor2" unique_id=925238715]
 position = Vector2(-96, 278.8)
 texture = ExtResource("97_rqu2v")
 
-[node name="Sprite2D19" type="Sprite2D" parent="enviroment (to use)/Floor2" unique_id=273314367]
+[node name="Sprite2D19" type="Sprite2D" parent="enviroment (to use)/Floor2" unique_id=376375393]
 position = Vector2(-80.00004, 278.8)
 texture = ExtResource("97_rqu2v")
 
-[node name="Sprite2D20" type="Sprite2D" parent="enviroment (to use)/Floor2" unique_id=530315100]
+[node name="Sprite2D20" type="Sprite2D" parent="enviroment (to use)/Floor2" unique_id=993069806]
 position = Vector2(-63.99999, 278.8)
 texture = ExtResource("97_rqu2v")
 
-[node name="Sprite2D21" type="Sprite2D" parent="enviroment (to use)/Floor2" unique_id=1482204255]
+[node name="Sprite2D21" type="Sprite2D" parent="enviroment (to use)/Floor2" unique_id=1145196252]
 position = Vector2(-112, 294.80002)
 texture = ExtResource("97_rqu2v")
 
-[node name="Sprite2D22" type="Sprite2D" parent="enviroment (to use)/Floor2" unique_id=1636286135]
+[node name="Sprite2D22" type="Sprite2D" parent="enviroment (to use)/Floor2" unique_id=2068727784]
 position = Vector2(-96, 294.80002)
 texture = ExtResource("97_rqu2v")
 
-[node name="Sprite2D23" type="Sprite2D" parent="enviroment (to use)/Floor2" unique_id=634395326]
+[node name="Sprite2D23" type="Sprite2D" parent="enviroment (to use)/Floor2" unique_id=275590955]
 position = Vector2(-80.00004, 294.80002)
 texture = ExtResource("97_rqu2v")
 
-[node name="Sprite2D24" type="Sprite2D" parent="enviroment (to use)/Floor2" unique_id=1787003432]
+[node name="Sprite2D24" type="Sprite2D" parent="enviroment (to use)/Floor2" unique_id=1546740963]
 position = Vector2(-63.99999, 294.80002)
 texture = ExtResource("97_rqu2v")
 
-[node name="Sprite2D25" type="Sprite2D" parent="enviroment (to use)/Floor2" unique_id=1608408487]
+[node name="Sprite2D25" type="Sprite2D" parent="enviroment (to use)/Floor2" unique_id=61857705]
 position = Vector2(-112, 310.4)
 texture = ExtResource("97_rqu2v")
 
-[node name="Sprite2D26" type="Sprite2D" parent="enviroment (to use)/Floor2" unique_id=1699618725]
+[node name="Sprite2D26" type="Sprite2D" parent="enviroment (to use)/Floor2" unique_id=299615890]
 position = Vector2(-96, 310.4)
 texture = ExtResource("97_rqu2v")
 
-[node name="Sprite2D27" type="Sprite2D" parent="enviroment (to use)/Floor2" unique_id=1411678651]
+[node name="Sprite2D27" type="Sprite2D" parent="enviroment (to use)/Floor2" unique_id=1419576145]
 position = Vector2(-80.00004, 310.4)
 texture = ExtResource("97_rqu2v")
 
-[node name="Sprite2D28" type="Sprite2D" parent="enviroment (to use)/Floor2" unique_id=358758112]
+[node name="Sprite2D28" type="Sprite2D" parent="enviroment (to use)/Floor2" unique_id=1453658416]
 position = Vector2(-63.99999, 310.4)
 texture = ExtResource("97_rqu2v")
 
-[node name="Sprite2D29" type="Sprite2D" parent="enviroment (to use)/Floor2" unique_id=158508455]
+[node name="Sprite2D29" type="Sprite2D" parent="enviroment (to use)/Floor2" unique_id=307964835]
 position = Vector2(-112, 326)
 texture = ExtResource("97_rqu2v")
 
-[node name="Sprite2D30" type="Sprite2D" parent="enviroment (to use)/Floor2" unique_id=1267090813]
+[node name="Sprite2D30" type="Sprite2D" parent="enviroment (to use)/Floor2" unique_id=638792204]
 position = Vector2(-96, 326)
 texture = ExtResource("97_rqu2v")
 
-[node name="Sprite2D31" type="Sprite2D" parent="enviroment (to use)/Floor2" unique_id=24035395]
+[node name="Sprite2D31" type="Sprite2D" parent="enviroment (to use)/Floor2" unique_id=871391827]
 position = Vector2(-80.00004, 326)
 texture = ExtResource("97_rqu2v")
 
-[node name="Sprite2D32" type="Sprite2D" parent="enviroment (to use)/Floor2" unique_id=1278375426]
+[node name="Sprite2D32" type="Sprite2D" parent="enviroment (to use)/Floor2" unique_id=1392541436]
 position = Vector2(-63.999985, 326)
 texture = ExtResource("97_rqu2v")
 
-[node name="Sprite2D33" type="Sprite2D" parent="enviroment (to use)/Floor2" unique_id=2040068953]
+[node name="Sprite2D33" type="Sprite2D" parent="enviroment (to use)/Floor2" unique_id=728445496]
 position = Vector2(-112, 342)
 texture = ExtResource("97_rqu2v")
 
-[node name="Sprite2D34" type="Sprite2D" parent="enviroment (to use)/Floor2" unique_id=1634417477]
+[node name="Sprite2D34" type="Sprite2D" parent="enviroment (to use)/Floor2" unique_id=1085994837]
 position = Vector2(-96, 342)
 texture = ExtResource("97_rqu2v")
 
-[node name="Sprite2D35" type="Sprite2D" parent="enviroment (to use)/Floor2" unique_id=944588936]
+[node name="Sprite2D35" type="Sprite2D" parent="enviroment (to use)/Floor2" unique_id=1879698292]
 position = Vector2(-80.00004, 342)
 texture = ExtResource("97_rqu2v")
 
-[node name="Sprite2D36" type="Sprite2D" parent="enviroment (to use)/Floor2" unique_id=747538343]
+[node name="Sprite2D36" type="Sprite2D" parent="enviroment (to use)/Floor2" unique_id=188432853]
 position = Vector2(-63.99999, 342)
 texture = ExtResource("97_rqu2v")
 
-[node name="Sprite2D37" type="Sprite2D" parent="enviroment (to use)/Floor2" unique_id=48930536]
+[node name="Sprite2D37" type="Sprite2D" parent="enviroment (to use)/Floor2" unique_id=738326003]
 position = Vector2(-48.000004, 280)
 texture = ExtResource("97_rqu2v")
 
-[node name="Sprite2D38" type="Sprite2D" parent="enviroment (to use)/Floor2" unique_id=855271642]
+[node name="Sprite2D38" type="Sprite2D" parent="enviroment (to use)/Floor2" unique_id=702934188]
 position = Vector2(-32.000004, 280)
 texture = ExtResource("97_rqu2v")
 
-[node name="Sprite2D39" type="Sprite2D" parent="enviroment (to use)/Floor2" unique_id=1288152921]
+[node name="Sprite2D39" type="Sprite2D" parent="enviroment (to use)/Floor2" unique_id=1166882027]
 position = Vector2(-16.000042, 280)
 texture = ExtResource("97_rqu2v")
 
-[node name="Sprite2D40" type="Sprite2D" parent="enviroment (to use)/Floor2" unique_id=43528837]
+[node name="Sprite2D40" type="Sprite2D" parent="enviroment (to use)/Floor2" unique_id=640401243]
 position = Vector2(7.6293945e-06, 280)
 texture = ExtResource("97_rqu2v")
 
-[node name="Sprite2D41" type="Sprite2D" parent="enviroment (to use)/Floor2" unique_id=915754097]
+[node name="Sprite2D41" type="Sprite2D" parent="enviroment (to use)/Floor2" unique_id=1820139088]
 position = Vector2(-48.000004, 296.00003)
 texture = ExtResource("97_rqu2v")
 
-[node name="Sprite2D42" type="Sprite2D" parent="enviroment (to use)/Floor2" unique_id=2019558787]
+[node name="Sprite2D42" type="Sprite2D" parent="enviroment (to use)/Floor2" unique_id=851798437]
 position = Vector2(-32.000004, 296.00003)
 texture = ExtResource("97_rqu2v")
 
-[node name="Sprite2D43" type="Sprite2D" parent="enviroment (to use)/Floor2" unique_id=321606529]
+[node name="Sprite2D43" type="Sprite2D" parent="enviroment (to use)/Floor2" unique_id=2038390396]
 position = Vector2(-16.000042, 296.00003)
 texture = ExtResource("97_rqu2v")
 
-[node name="Sprite2D44" type="Sprite2D" parent="enviroment (to use)/Floor2" unique_id=1482468441]
+[node name="Sprite2D44" type="Sprite2D" parent="enviroment (to use)/Floor2" unique_id=803107075]
 position = Vector2(7.6293945e-06, 296.00003)
 texture = ExtResource("97_rqu2v")
 
-[node name="Sprite2D45" type="Sprite2D" parent="enviroment (to use)/Floor2" unique_id=1415779323]
+[node name="Sprite2D45" type="Sprite2D" parent="enviroment (to use)/Floor2" unique_id=218537241]
 position = Vector2(-48.000004, 311.6)
 texture = ExtResource("97_rqu2v")
 
-[node name="Sprite2D46" type="Sprite2D" parent="enviroment (to use)/Floor2" unique_id=541404457]
+[node name="Sprite2D46" type="Sprite2D" parent="enviroment (to use)/Floor2" unique_id=1725726810]
 position = Vector2(-32.000004, 311.6)
 texture = ExtResource("97_rqu2v")
 
-[node name="Sprite2D47" type="Sprite2D" parent="enviroment (to use)/Floor2" unique_id=1686553893]
+[node name="Sprite2D47" type="Sprite2D" parent="enviroment (to use)/Floor2" unique_id=1083795321]
 position = Vector2(-16.000042, 311.6)
 texture = ExtResource("97_rqu2v")
 
-[node name="Sprite2D48" type="Sprite2D" parent="enviroment (to use)/Floor2" unique_id=1533958921]
+[node name="Sprite2D48" type="Sprite2D" parent="enviroment (to use)/Floor2" unique_id=641514915]
 position = Vector2(7.6293945e-06, 311.6)
 texture = ExtResource("97_rqu2v")
 
-[node name="Sprite2D49" type="Sprite2D" parent="enviroment (to use)/Floor2" unique_id=801204857]
+[node name="Sprite2D49" type="Sprite2D" parent="enviroment (to use)/Floor2" unique_id=1493959474]
 position = Vector2(-48.000004, 327.2)
 texture = ExtResource("97_rqu2v")
 
-[node name="Sprite2D50" type="Sprite2D" parent="enviroment (to use)/Floor2" unique_id=1959703447]
+[node name="Sprite2D50" type="Sprite2D" parent="enviroment (to use)/Floor2" unique_id=274553720]
 position = Vector2(-32.000004, 327.2)
 texture = ExtResource("97_rqu2v")
 
-[node name="Sprite2D51" type="Sprite2D" parent="enviroment (to use)/Floor2" unique_id=1025907997]
+[node name="Sprite2D51" type="Sprite2D" parent="enviroment (to use)/Floor2" unique_id=1882167073]
 position = Vector2(-16.000042, 327.2)
 texture = ExtResource("97_rqu2v")
 
-[node name="Sprite2D52" type="Sprite2D" parent="enviroment (to use)/Floor2" unique_id=395790668]
+[node name="Sprite2D52" type="Sprite2D" parent="enviroment (to use)/Floor2" unique_id=1464233271]
 position = Vector2(1.1444092e-05, 327.2)
 texture = ExtResource("97_rqu2v")
 
-[node name="Sprite2D53" type="Sprite2D" parent="enviroment (to use)/Floor2" unique_id=1992497281]
+[node name="Sprite2D53" type="Sprite2D" parent="enviroment (to use)/Floor2" unique_id=784078712]
 position = Vector2(16, 284.8)
 texture = ExtResource("97_rqu2v")
 
-[node name="Sprite2D54" type="Sprite2D" parent="enviroment (to use)/Floor2" unique_id=95694127]
+[node name="Sprite2D54" type="Sprite2D" parent="enviroment (to use)/Floor2" unique_id=608396165]
 position = Vector2(32, 284.8)
 texture = ExtResource("97_rqu2v")
 
-[node name="Sprite2D55" type="Sprite2D" parent="enviroment (to use)/Floor2" unique_id=1191940255]
+[node name="Sprite2D55" type="Sprite2D" parent="enviroment (to use)/Floor2" unique_id=74781254]
 position = Vector2(47.99996, 284.8)
 texture = ExtResource("97_rqu2v")
 
-[node name="Sprite2D56" type="Sprite2D" parent="enviroment (to use)/Floor2" unique_id=1157376002]
+[node name="Sprite2D56" type="Sprite2D" parent="enviroment (to use)/Floor2" unique_id=1255282932]
 position = Vector2(64.00001, 284.8)
 texture = ExtResource("97_rqu2v")
 
-[node name="Sprite2D57" type="Sprite2D" parent="enviroment (to use)/Floor2" unique_id=1810880933]
+[node name="Sprite2D57" type="Sprite2D" parent="enviroment (to use)/Floor2" unique_id=847117174]
 position = Vector2(16, 300.80002)
 texture = ExtResource("97_rqu2v")
 
-[node name="Sprite2D58" type="Sprite2D" parent="enviroment (to use)/Floor2" unique_id=1815862156]
+[node name="Sprite2D58" type="Sprite2D" parent="enviroment (to use)/Floor2" unique_id=882794137]
 position = Vector2(32, 300.80002)
 texture = ExtResource("97_rqu2v")
 
-[node name="Sprite2D59" type="Sprite2D" parent="enviroment (to use)/Floor2" unique_id=764644778]
+[node name="Sprite2D59" type="Sprite2D" parent="enviroment (to use)/Floor2" unique_id=1203580383]
 position = Vector2(47.99996, 300.80002)
 texture = ExtResource("97_rqu2v")
 
-[node name="Sprite2D60" type="Sprite2D" parent="enviroment (to use)/Floor2" unique_id=1101922190]
+[node name="Sprite2D60" type="Sprite2D" parent="enviroment (to use)/Floor2" unique_id=1841632041]
 position = Vector2(64.00001, 300.80002)
 texture = ExtResource("97_rqu2v")
 
-[node name="Sprite2D61" type="Sprite2D" parent="enviroment (to use)/Floor2" unique_id=1430134367]
+[node name="Sprite2D61" type="Sprite2D" parent="enviroment (to use)/Floor2" unique_id=1991537766]
 position = Vector2(16, 316.4)
 texture = ExtResource("97_rqu2v")
 
-[node name="Sprite2D62" type="Sprite2D" parent="enviroment (to use)/Floor2" unique_id=636282446]
+[node name="Sprite2D62" type="Sprite2D" parent="enviroment (to use)/Floor2" unique_id=577697252]
 position = Vector2(32, 316.4)
 texture = ExtResource("97_rqu2v")
 
-[node name="Sprite2D63" type="Sprite2D" parent="enviroment (to use)/Floor2" unique_id=1944110932]
+[node name="Sprite2D63" type="Sprite2D" parent="enviroment (to use)/Floor2" unique_id=1150873286]
 position = Vector2(47.99996, 316.4)
 texture = ExtResource("97_rqu2v")
 
-[node name="Sprite2D64" type="Sprite2D" parent="enviroment (to use)/Floor2" unique_id=606164308]
+[node name="Sprite2D64" type="Sprite2D" parent="enviroment (to use)/Floor2" unique_id=422345935]
 position = Vector2(64.00001, 316.4)
 texture = ExtResource("97_rqu2v")
 
-[node name="Sprite2D65" type="Sprite2D" parent="enviroment (to use)/Floor2" unique_id=741460039]
+[node name="Sprite2D65" type="Sprite2D" parent="enviroment (to use)/Floor2" unique_id=1359546415]
 position = Vector2(16, 332)
 texture = ExtResource("97_rqu2v")
 
-[node name="Sprite2D66" type="Sprite2D" parent="enviroment (to use)/Floor2" unique_id=1690092765]
+[node name="Sprite2D66" type="Sprite2D" parent="enviroment (to use)/Floor2" unique_id=1242393619]
 position = Vector2(32, 332)
 texture = ExtResource("97_rqu2v")
 
-[node name="Sprite2D67" type="Sprite2D" parent="enviroment (to use)/Floor2" unique_id=2098757539]
+[node name="Sprite2D67" type="Sprite2D" parent="enviroment (to use)/Floor2" unique_id=1814541150]
 position = Vector2(47.99996, 332)
 texture = ExtResource("97_rqu2v")
 
-[node name="Sprite2D68" type="Sprite2D" parent="enviroment (to use)/Floor2" unique_id=684099330]
+[node name="Sprite2D68" type="Sprite2D" parent="enviroment (to use)/Floor2" unique_id=951549936]
 position = Vector2(64.000015, 332)
 texture = ExtResource("97_rqu2v")
 
-[node name="Sprite2D69" type="Sprite2D" parent="enviroment (to use)/Floor2" unique_id=1053649884]
+[node name="Sprite2D69" type="Sprite2D" parent="enviroment (to use)/Floor2" unique_id=995208930]
 position = Vector2(28, 222)
 texture = ExtResource("97_rqu2v")
 
-[node name="Sprite2D70" type="Sprite2D" parent="enviroment (to use)/Floor2" unique_id=1920006943]
+[node name="Sprite2D70" type="Sprite2D" parent="enviroment (to use)/Floor2" unique_id=2004665776]
 position = Vector2(44, 222)
 texture = ExtResource("97_rqu2v")
 
-[node name="Sprite2D71" type="Sprite2D" parent="enviroment (to use)/Floor2" unique_id=1682741476]
+[node name="Sprite2D71" type="Sprite2D" parent="enviroment (to use)/Floor2" unique_id=1172261947]
 position = Vector2(59.99996, 222)
 texture = ExtResource("97_rqu2v")
 
-[node name="Sprite2D72" type="Sprite2D" parent="enviroment (to use)/Floor2" unique_id=1918978338]
+[node name="Sprite2D72" type="Sprite2D" parent="enviroment (to use)/Floor2" unique_id=1108832880]
 position = Vector2(76.000015, 222)
 texture = ExtResource("97_rqu2v")
 
-[node name="Sprite2D73" type="Sprite2D" parent="enviroment (to use)/Floor2" unique_id=1767401952]
+[node name="Sprite2D73" type="Sprite2D" parent="enviroment (to use)/Floor2" unique_id=308099005]
 position = Vector2(28, 238.00003)
 texture = ExtResource("97_rqu2v")
 
-[node name="Sprite2D74" type="Sprite2D" parent="enviroment (to use)/Floor2" unique_id=1493472865]
+[node name="Sprite2D74" type="Sprite2D" parent="enviroment (to use)/Floor2" unique_id=1330969660]
 position = Vector2(44, 238.00003)
 texture = ExtResource("97_rqu2v")
 
-[node name="Sprite2D75" type="Sprite2D" parent="enviroment (to use)/Floor2" unique_id=1369623381]
+[node name="Sprite2D75" type="Sprite2D" parent="enviroment (to use)/Floor2" unique_id=1822142923]
 position = Vector2(59.99996, 238.00003)
 texture = ExtResource("97_rqu2v")
 
-[node name="Sprite2D76" type="Sprite2D" parent="enviroment (to use)/Floor2" unique_id=1284946917]
+[node name="Sprite2D76" type="Sprite2D" parent="enviroment (to use)/Floor2" unique_id=1215286134]
 position = Vector2(76.000015, 238.00003)
 texture = ExtResource("97_rqu2v")
 
-[node name="Sprite2D77" type="Sprite2D" parent="enviroment (to use)/Floor2" unique_id=928824261]
+[node name="Sprite2D77" type="Sprite2D" parent="enviroment (to use)/Floor2" unique_id=1594426188]
 position = Vector2(28, 253.6)
 texture = ExtResource("97_rqu2v")
 
-[node name="Sprite2D78" type="Sprite2D" parent="enviroment (to use)/Floor2" unique_id=1484941825]
+[node name="Sprite2D78" type="Sprite2D" parent="enviroment (to use)/Floor2" unique_id=1747112709]
 position = Vector2(44, 253.6)
 texture = ExtResource("97_rqu2v")
 
-[node name="Sprite2D79" type="Sprite2D" parent="enviroment (to use)/Floor2" unique_id=1567425761]
+[node name="Sprite2D79" type="Sprite2D" parent="enviroment (to use)/Floor2" unique_id=1298820569]
 position = Vector2(59.99996, 253.6)
 texture = ExtResource("97_rqu2v")
 
-[node name="Sprite2D80" type="Sprite2D" parent="enviroment (to use)/Floor2" unique_id=966267576]
+[node name="Sprite2D80" type="Sprite2D" parent="enviroment (to use)/Floor2" unique_id=660466046]
 position = Vector2(76.000015, 253.6)
 texture = ExtResource("97_rqu2v")
 
-[node name="Sprite2D81" type="Sprite2D" parent="enviroment (to use)/Floor2" unique_id=1310657458]
+[node name="Sprite2D81" type="Sprite2D" parent="enviroment (to use)/Floor2" unique_id=1354591752]
 position = Vector2(28, 269.2)
 texture = ExtResource("97_rqu2v")
 
-[node name="Sprite2D82" type="Sprite2D" parent="enviroment (to use)/Floor2" unique_id=1653081142]
+[node name="Sprite2D82" type="Sprite2D" parent="enviroment (to use)/Floor2" unique_id=1048394291]
 position = Vector2(44, 269.2)
 texture = ExtResource("97_rqu2v")
 
-[node name="Sprite2D83" type="Sprite2D" parent="enviroment (to use)/Floor2" unique_id=167206332]
+[node name="Sprite2D83" type="Sprite2D" parent="enviroment (to use)/Floor2" unique_id=1170459212]
 position = Vector2(59.99996, 269.2)
 texture = ExtResource("97_rqu2v")
 
-[node name="Sprite2D84" type="Sprite2D" parent="enviroment (to use)/Floor2" unique_id=920624365]
+[node name="Sprite2D84" type="Sprite2D" parent="enviroment (to use)/Floor2" unique_id=1401307350]
 position = Vector2(76.000015, 269.2)
 texture = ExtResource("97_rqu2v")
 
-[node name="Sprite2D85" type="Sprite2D" parent="enviroment (to use)/Floor2" unique_id=898647632]
+[node name="Sprite2D85" type="Sprite2D" parent="enviroment (to use)/Floor2" unique_id=1427800637]
 position = Vector2(92, 238)
 texture = ExtResource("97_rqu2v")
 
-[node name="Sprite2D86" type="Sprite2D" parent="enviroment (to use)/Floor2" unique_id=783234476]
+[node name="Sprite2D86" type="Sprite2D" parent="enviroment (to use)/Floor2" unique_id=492314064]
 position = Vector2(92, 253.59998)
 texture = ExtResource("97_rqu2v")
 
-[node name="Sprite2D87" type="Sprite2D" parent="enviroment (to use)/Floor2" unique_id=972128116]
+[node name="Sprite2D87" type="Sprite2D" parent="enviroment (to use)/Floor2" unique_id=581167484]
 position = Vector2(92, 269.19998)
 texture = ExtResource("97_rqu2v")
 
-[node name="Sprite2D88" type="Sprite2D" parent="enviroment (to use)/Floor2" unique_id=505350804]
+[node name="Sprite2D88" type="Sprite2D" parent="enviroment (to use)/Floor2" unique_id=1512167917]
 position = Vector2(80, 285.2)
 texture = ExtResource("97_rqu2v")
 
-[node name="Sprite2D89" type="Sprite2D" parent="enviroment (to use)/Floor2" unique_id=466465121]
+[node name="Sprite2D89" type="Sprite2D" parent="enviroment (to use)/Floor2" unique_id=806154397]
 position = Vector2(80, 300.80002)
 texture = ExtResource("97_rqu2v")
 
-[node name="Sprite2D90" type="Sprite2D" parent="enviroment (to use)/Floor2" unique_id=359334975]
+[node name="Sprite2D90" type="Sprite2D" parent="enviroment (to use)/Floor2" unique_id=1304093617]
 position = Vector2(95.999985, 285.19998)
 texture = ExtResource("97_rqu2v")
 
-[node name="Sprite2D91" type="Sprite2D" parent="enviroment (to use)/Floor2" unique_id=1399888526]
+[node name="Sprite2D91" type="Sprite2D" parent="enviroment (to use)/Floor2" unique_id=160474964]
 position = Vector2(95.999985, 300.8)
 texture = ExtResource("97_rqu2v")
 
-[node name="Sprite2D92" type="Sprite2D" parent="enviroment (to use)/Floor2" unique_id=1759061159]
+[node name="Sprite2D92" type="Sprite2D" parent="enviroment (to use)/Floor2" unique_id=744516257]
 position = Vector2(80, 316.80002)
 texture = ExtResource("97_rqu2v")
 
-[node name="Sprite2D93" type="Sprite2D" parent="enviroment (to use)/Floor2" unique_id=1612144559]
+[node name="Sprite2D93" type="Sprite2D" parent="enviroment (to use)/Floor2" unique_id=693179910]
 position = Vector2(95.999985, 316.8)
 texture = ExtResource("97_rqu2v")
 
-[node name="Sprite2D94" type="Sprite2D" parent="enviroment (to use)/Floor2" unique_id=616726545]
+[node name="Sprite2D94" type="Sprite2D" parent="enviroment (to use)/Floor2" unique_id=1345236360]
 position = Vector2(9.094947e-13, 342.40002)
 texture = ExtResource("97_rqu2v")
 
-[node name="wall" type="Node2D" parent="enviroment (to use)" unique_id=2051760877]
+[node name="wall" type="Node2D" parent="enviroment (to use)" unique_id=1504236400]
 scale = Vector2(2, 2)
 
-[node name="Sprite2D108" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=1562597883]
+[node name="Sprite2D108" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=1786682089]
 position = Vector2(31, 298.5)
 texture = ExtResource("92_l1b3u")
 
-[node name="Sprite2D109" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=408351375]
+[node name="Sprite2D109" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=27128906]
 position = Vector2(117.5, 298.5)
 texture = ExtResource("93_5nwic")
 
-[node name="Sprite2D110" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=944710369]
+[node name="Sprite2D110" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=935124264]
 position = Vector2(63, 298.5)
 texture = ExtResource("91_68qd6")
 
-[node name="Sprite2D111" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=323957050]
+[node name="Sprite2D111" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=1755469881]
 position = Vector2(79, 298.5)
 texture = ExtResource("91_68qd6")
 
-[node name="Sprite2D112" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=1184679565]
+[node name="Sprite2D112" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=2129395536]
 position = Vector2(95, 298.5)
 texture = ExtResource("91_68qd6")
 
-[node name="Sprite2D" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=120634267]
+[node name="Sprite2D" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=2134734007]
 position = Vector2(18, 426.5)
 texture = ExtResource("76_8qdfo")
 
-[node name="Sprite2D3" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=166658572]
+[node name="Sprite2D3" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=1938915799]
 position = Vector2(-14, 426.5)
 texture = ExtResource("78_27xqr")
 
-[node name="Sprite2D2" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=767768918]
+[node name="Sprite2D2" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=1751332167]
 position = Vector2(-142, 234.5)
 texture = ExtResource("77_0kosv")
 
-[node name="Sprite2D4" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=1533235290]
+[node name="Sprite2D4" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=62570980]
 position = Vector2(-126, 234.5)
 texture = ExtResource("77_0kosv")
 
-[node name="Sprite2D5" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=858850491]
+[node name="Sprite2D5" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=1684056680]
 position = Vector2(-110, 234.5)
 texture = ExtResource("77_0kosv")
 
-[node name="Sprite2D6" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=1252028068]
+[node name="Sprite2D6" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=573907666]
 position = Vector2(-94, 234.5)
 texture = ExtResource("77_0kosv")
 
-[node name="Sprite2D7" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=1751695288]
+[node name="Sprite2D7" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=1553343295]
 position = Vector2(-78, 234.5)
 texture = ExtResource("77_0kosv")
 
-[node name="Sprite2D8" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=70298043]
+[node name="Sprite2D8" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=1276022476]
 position = Vector2(-46, 314.5)
 texture = ExtResource("77_0kosv")
 
-[node name="Sprite2D9" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=961987094]
+[node name="Sprite2D9" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=2092652361]
 position = Vector2(-30, 314.5)
 texture = ExtResource("77_0kosv")
 
-[node name="Sprite2D10" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=1945750464]
+[node name="Sprite2D10" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=153940901]
 position = Vector2(-14, 314.5)
 texture = ExtResource("77_0kosv")
 
-[node name="Sprite2D11" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=533936693]
+[node name="Sprite2D11" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=169733953]
 position = Vector2(2, 314.5)
 texture = ExtResource("77_0kosv")
 
-[node name="Sprite2D12" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=47385462]
+[node name="Sprite2D12" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=348973835]
 position = Vector2(34, 266.5)
 texture = ExtResource("77_0kosv")
 
-[node name="Sprite2D13" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=665110257]
+[node name="Sprite2D13" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=624111467]
 position = Vector2(50, 266.5)
 texture = ExtResource("77_0kosv")
 
-[node name="Sprite2D14" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=1172320583]
+[node name="Sprite2D14" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=19747897]
 position = Vector2(66, 266.5)
 texture = ExtResource("77_0kosv")
 
-[node name="Sprite2D15" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=1390754791]
+[node name="Sprite2D15" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=1194905940]
 position = Vector2(82, 266.5)
 texture = ExtResource("77_0kosv")
 
-[node name="Sprite2D16" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=554241114]
+[node name="Sprite2D16" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=1208585184]
 position = Vector2(98, 266.5)
 texture = ExtResource("77_0kosv")
 
-[node name="Sprite2D17" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=1031950544]
+[node name="Sprite2D17" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=936627857]
 position = Vector2(114, 266.5)
 texture = ExtResource("77_0kosv")
 
-[node name="Sprite2D18" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=245669346]
+[node name="Sprite2D18" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=1935997412]
 position = Vector2(-142, 426.5)
 texture = ExtResource("77_0kosv")
 
-[node name="Sprite2D19" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=1507664980]
+[node name="Sprite2D19" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=368877145]
 position = Vector2(-126, 426.5)
 texture = ExtResource("77_0kosv")
 
-[node name="Sprite2D20" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=1507820345]
+[node name="Sprite2D20" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=1386827096]
 position = Vector2(-110, 426.5)
 texture = ExtResource("77_0kosv")
 
-[node name="Sprite2D21" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=1730957422]
+[node name="Sprite2D21" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=805175051]
 position = Vector2(-94, 426.5)
 texture = ExtResource("77_0kosv")
 
-[node name="Sprite2D22" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=1752615438]
+[node name="Sprite2D22" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=1723755664]
 position = Vector2(-78, 426.5)
 texture = ExtResource("77_0kosv")
 
-[node name="Sprite2D23" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=1937072205]
+[node name="Sprite2D23" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=1181195190]
 position = Vector2(-62, 426.5)
 texture = ExtResource("77_0kosv")
 
-[node name="Sprite2D24" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=1830768045]
+[node name="Sprite2D24" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=1098253491]
 position = Vector2(-46, 426.5)
 texture = ExtResource("77_0kosv")
 
-[node name="Sprite2D25" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=1221197839]
+[node name="Sprite2D25" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=305021238]
 position = Vector2(-30, 426.5)
 texture = ExtResource("77_0kosv")
 
-[node name="Sprite2D26" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=2046434453]
+[node name="Sprite2D26" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=165431585]
 position = Vector2(34, 426.5)
 texture = ExtResource("77_0kosv")
 
-[node name="Sprite2D27" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=411735634]
+[node name="Sprite2D27" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=623556139]
 position = Vector2(50, 426.5)
 texture = ExtResource("77_0kosv")
 
-[node name="Sprite2D28" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=1654296503]
+[node name="Sprite2D28" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=227606186]
 position = Vector2(66, 426.5)
 texture = ExtResource("77_0kosv")
 
-[node name="Sprite2D29" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=649530242]
+[node name="Sprite2D29" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=2109546946]
 position = Vector2(98, 394.5)
 texture = ExtResource("77_0kosv")
 
-[node name="Sprite2D30" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=1034692700]
+[node name="Sprite2D30" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=303640660]
 position = Vector2(114, 394.5)
 texture = ExtResource("77_0kosv")
 
-[node name="Sprite2D31" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=1933812547]
+[node name="Sprite2D31" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=1183695944]
 position = Vector2(-158, 234.5)
 texture = ExtResource("83_mltvg")
 
-[node name="Sprite2D32" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=434440418]
+[node name="Sprite2D32" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=1586726053]
 position = Vector2(-62, 234.5)
 texture = ExtResource("84_kdqji")
 
-[node name="Sprite2D33" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=790296932]
+[node name="Sprite2D33" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=1971230734]
 position = Vector2(-62, 314.5)
 texture = ExtResource("85_livok")
 
-[node name="Sprite2D34" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=194322420]
+[node name="Sprite2D34" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=1131658315]
 position = Vector2(18, 314.5)
 texture = ExtResource("86_bum8x")
 
-[node name="Sprite2D35" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=1520605669]
+[node name="Sprite2D35" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=861943804]
 position = Vector2(18, 266.5)
 texture = ExtResource("83_mltvg")
 
-[node name="Sprite2D36" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=783303175]
+[node name="Sprite2D36" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=1785531706]
 position = Vector2(130, 266.5)
 texture = ExtResource("84_kdqji")
 
-[node name="Sprite2D37" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=7531411]
+[node name="Sprite2D37" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=1491572180]
 position = Vector2(130, 394.5)
 texture = ExtResource("86_bum8x")
 
-[node name="Sprite2D38" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=596835457]
+[node name="Sprite2D38" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=1387217062]
 position = Vector2(82, 394.5)
 texture = ExtResource("83_mltvg")
 
-[node name="Sprite2D39" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=119704815]
+[node name="Sprite2D39" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=73730413]
 position = Vector2(82, 426.5)
 texture = ExtResource("86_bum8x")
 
-[node name="Sprite2D40" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=2116018175]
+[node name="Sprite2D40" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=1816870792]
 position = Vector2(-158, 426.5)
 texture = ExtResource("85_livok")
 
-[node name="Sprite2D41" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=1901965277]
+[node name="Sprite2D41" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=449898645]
 position = Vector2(-158, 250.5)
 texture = ExtResource("81_udbal")
 
-[node name="Sprite2D42" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=9209909]
+[node name="Sprite2D42" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=1841622688]
 position = Vector2(-158, 298.5)
 texture = ExtResource("81_udbal")
 
-[node name="Sprite2D43" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=1732321611]
+[node name="Sprite2D43" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=1477429988]
 position = Vector2(-158, 282.5)
 texture = ExtResource("81_udbal")
 
-[node name="Sprite2D44" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=906184705]
+[node name="Sprite2D44" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=794980524]
 position = Vector2(-158, 266.5)
 texture = ExtResource("81_udbal")
 
-[node name="Sprite2D45" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=1571557291]
+[node name="Sprite2D45" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=2075829934]
 position = Vector2(-158, 314.5)
 texture = ExtResource("81_udbal")
 
-[node name="Sprite2D46" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=557130855]
+[node name="Sprite2D46" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=1865178440]
 position = Vector2(-158, 362.5)
 texture = ExtResource("81_udbal")
 
-[node name="Sprite2D47" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=1844243037]
+[node name="Sprite2D47" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=585909125]
 position = Vector2(-158, 346.5)
 texture = ExtResource("81_udbal")
 
-[node name="Sprite2D48" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=1995814488]
+[node name="Sprite2D48" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=2141573795]
 position = Vector2(-158, 330.5)
 texture = ExtResource("81_udbal")
 
-[node name="Sprite2D49" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=1791643053]
+[node name="Sprite2D49" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=2088200778]
 position = Vector2(-158, 378.5)
 texture = ExtResource("81_udbal")
 
-[node name="Sprite2D50" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=1372070694]
+[node name="Sprite2D50" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=1204291706]
 position = Vector2(-158, 410.5)
 texture = ExtResource("81_udbal")
 
-[node name="Sprite2D51" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=1634290325]
+[node name="Sprite2D51" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=2060271897]
 position = Vector2(-158, 394.5)
 texture = ExtResource("81_udbal")
 
-[node name="Sprite2D52" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=2070934449]
+[node name="Sprite2D52" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=1811489237]
 position = Vector2(-62, 250.5)
 texture = ExtResource("81_udbal")
 
-[node name="Sprite2D53" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=1544097796]
+[node name="Sprite2D53" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=1916534307]
 position = Vector2(-62, 298.5)
 texture = ExtResource("81_udbal")
 
-[node name="Sprite2D54" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=694556776]
+[node name="Sprite2D54" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=170915842]
 position = Vector2(-62, 282.5)
 texture = ExtResource("81_udbal")
 
-[node name="Sprite2D55" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=1389964411]
+[node name="Sprite2D55" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=636595646]
 position = Vector2(-62, 266.5)
 texture = ExtResource("81_udbal")
 
-[node name="Sprite2D56" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=910867780]
+[node name="Sprite2D56" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=1423214386]
 position = Vector2(18, 298.5)
 texture = ExtResource("81_udbal")
 
-[node name="Sprite2D57" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=1244401989]
+[node name="Sprite2D57" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=431555736]
 position = Vector2(18, 282.5)
 texture = ExtResource("81_udbal")
 
-[node name="Sprite2D58" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=197546623]
+[node name="Sprite2D58" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=239156113]
 position = Vector2(130, 298.5)
 texture = ExtResource("81_udbal")
 
-[node name="Sprite2D59" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=605268347]
+[node name="Sprite2D59" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=2024979289]
 position = Vector2(130, 282.5)
 texture = ExtResource("81_udbal")
 
-[node name="Sprite2D60" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=488309642]
+[node name="Sprite2D60" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=1310977468]
 position = Vector2(130, 314.5)
 texture = ExtResource("81_udbal")
 
-[node name="Sprite2D61" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=1312578441]
+[node name="Sprite2D61" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=2120713121]
 position = Vector2(130, 362.5)
 texture = ExtResource("81_udbal")
 
-[node name="Sprite2D62" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=1265361775]
+[node name="Sprite2D62" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=156042376]
 position = Vector2(130, 346.5)
 texture = ExtResource("81_udbal")
 
-[node name="Sprite2D63" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=1631374872]
+[node name="Sprite2D63" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=803536336]
 position = Vector2(130, 330.5)
 texture = ExtResource("81_udbal")
 
-[node name="Sprite2D64" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=1868099817]
+[node name="Sprite2D64" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=813925160]
 position = Vector2(130, 378.5)
 texture = ExtResource("81_udbal")
 
-[node name="Sprite2D65" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=1080603369]
+[node name="Sprite2D65" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=548491302]
 position = Vector2(82, 410.5)
 texture = ExtResource("81_udbal")
 
-[node name="Sprite2D66" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=270960873]
+[node name="Sprite2D66" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=727312499]
 position = Vector2(-142, 250.5)
 texture = ExtResource("100_xfyan")
 
-[node name="Sprite2D67" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=1921145295]
+[node name="Sprite2D67" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=1013638767]
 position = Vector2(-126, 250.5)
 texture = ExtResource("100_xfyan")
 
-[node name="Sprite2D68" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=250148319]
+[node name="Sprite2D68" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=336103009]
 position = Vector2(-110, 250.5)
 texture = ExtResource("100_xfyan")
 
-[node name="Sprite2D69" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=1469535640]
+[node name="Sprite2D69" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=1677536793]
 position = Vector2(-94, 250.5)
 texture = ExtResource("100_xfyan")
 
-[node name="Sprite2D70" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=1450056096]
+[node name="Sprite2D70" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=21373041]
 position = Vector2(-78, 250.5)
 texture = ExtResource("100_xfyan")
 
-[node name="Sprite2D71" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=1584750698]
+[node name="Sprite2D71" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=169689624]
 position = Vector2(34, 282.5)
 texture = ExtResource("100_xfyan")
 
-[node name="Sprite2D72" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=758208545]
+[node name="Sprite2D72" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=1873409182]
 position = Vector2(50, 282.5)
 texture = ExtResource("100_xfyan")
 
-[node name="Sprite2D73" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=472095351]
+[node name="Sprite2D73" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=1779720584]
 position = Vector2(66, 282.5)
 texture = ExtResource("100_xfyan")
 
-[node name="Sprite2D74" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=2074735893]
+[node name="Sprite2D74" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=1522556802]
 position = Vector2(82, 282.5)
 texture = ExtResource("100_xfyan")
 
-[node name="Sprite2D75" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=1606349700]
+[node name="Sprite2D75" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=1207491285]
 position = Vector2(98, 282.5)
 texture = ExtResource("100_xfyan")
 
-[node name="Sprite2D76" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=1319052686]
+[node name="Sprite2D76" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=1763965742]
 position = Vector2(114, 282.5)
 texture = ExtResource("100_xfyan")
 
-[node name="Sprite2D77" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=745894927]
+[node name="Sprite2D77" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=163159334]
 position = Vector2(114, 410.5)
 texture = ExtResource("91_68qd6")
 
-[node name="Sprite2D78" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=1809333692]
+[node name="Sprite2D78" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=1433762540]
 position = Vector2(18, 442.5)
 texture = ExtResource("92_l1b3u")
 
-[node name="Sprite2D79" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=368325346]
+[node name="Sprite2D79" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=772228826]
 position = Vector2(130, 410.5)
 texture = ExtResource("93_5nwic")
 
-[node name="Sprite2D80" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=597597751]
+[node name="Sprite2D80" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=1394020728]
 position = Vector2(98, 410.5)
 texture = ExtResource("91_68qd6")
 
-[node name="Sprite2D81" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=1393665786]
+[node name="Sprite2D81" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=435125739]
 position = Vector2(66, 442.5)
 texture = ExtResource("91_68qd6")
 
-[node name="Sprite2D82" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=783140615]
+[node name="Sprite2D82" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=302162837]
 position = Vector2(82, 442.5)
 texture = ExtResource("93_5nwic")
 
-[node name="Sprite2D83" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=460507654]
+[node name="Sprite2D83" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=1519759091]
 position = Vector2(50, 442.5)
 texture = ExtResource("91_68qd6")
 
-[node name="Sprite2D84" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=2110253951]
+[node name="Sprite2D84" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=840693850]
 position = Vector2(34, 442.5)
 texture = ExtResource("91_68qd6")
 
-[node name="Sprite2D85" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=1715215780]
+[node name="Sprite2D85" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=506196364]
 position = Vector2(-14, 442.5)
 texture = ExtResource("93_5nwic")
 
-[node name="Sprite2D86" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=1338959224]
+[node name="Sprite2D86" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=2072865149]
 position = Vector2(-158, 442.5)
 texture = ExtResource("92_l1b3u")
 
-[node name="Sprite2D87" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=1846727335]
+[node name="Sprite2D87" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=602785049]
 position = Vector2(-110, 442.5)
 texture = ExtResource("91_68qd6")
 
-[node name="Sprite2D88" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=1293497028]
+[node name="Sprite2D88" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=665962883]
 position = Vector2(-126, 442.5)
 texture = ExtResource("91_68qd6")
 
-[node name="Sprite2D89" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=123437132]
+[node name="Sprite2D89" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=526355148]
 position = Vector2(-142, 442.5)
 texture = ExtResource("91_68qd6")
 
-[node name="Sprite2D90" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=561703192]
+[node name="Sprite2D90" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=561715481]
 position = Vector2(-62, 442.5)
 texture = ExtResource("91_68qd6")
 
-[node name="Sprite2D91" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=127138489]
+[node name="Sprite2D91" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=1631017804]
 position = Vector2(-78, 442.5)
 texture = ExtResource("91_68qd6")
 
-[node name="Sprite2D92" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=1639344977]
+[node name="Sprite2D92" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=2101138808]
 position = Vector2(-94, 442.5)
 texture = ExtResource("91_68qd6")
 
-[node name="Sprite2D93" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=310753862]
+[node name="Sprite2D93" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=1743580912]
 position = Vector2(-30, 442.5)
 texture = ExtResource("91_68qd6")
 
-[node name="Sprite2D94" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=1450521276]
+[node name="Sprite2D94" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=1091587516]
 position = Vector2(-46, 442.5)
 texture = ExtResource("91_68qd6")
 
-[node name="Sprite2D95" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=2126627724]
+[node name="Sprite2D95" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=1303345190]
 position = Vector2(-62, 330.5)
 texture = ExtResource("94_rjs0v")
 
-[node name="Sprite2D96" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=1846747632]
+[node name="Sprite2D96" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=1558369227]
 position = Vector2(-46, 330.5)
 texture = ExtResource("95_a7hqc")
 
-[node name="Sprite2D97" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=2099786057]
+[node name="Sprite2D97" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=507547957]
 position = Vector2(18, 330.5)
 texture = ExtResource("96_cmn22")
 
-[node name="Sprite2D98" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=854694724]
+[node name="Sprite2D98" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=127804308]
 position = Vector2(-30, 330.5)
 texture = ExtResource("100_xfyan")
 
-[node name="Sprite2D99" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=163163391]
+[node name="Sprite2D99" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=1548987644]
 position = Vector2(-14, 330.5)
 texture = ExtResource("100_xfyan")
 
-[node name="Sprite2D100" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=1737460329]
+[node name="Sprite2D100" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=1751143066]
 position = Vector2(2, 330.5)
 texture = ExtResource("100_xfyan")
 
-[node name="Sprite2D101" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=1682030144]
+[node name="Sprite2D101" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=938297306]
 position = Vector2(-46, 346.5)
 texture = ExtResource("91_68qd6")
 
-[node name="Sprite2D102" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=1406644090]
+[node name="Sprite2D102" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=281180729]
 position = Vector2(-62, 346.5)
 texture = ExtResource("92_l1b3u")
 
-[node name="Sprite2D103" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=1452268675]
+[node name="Sprite2D103" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=1284763734]
 position = Vector2(18, 346.5)
 texture = ExtResource("93_5nwic")
 
-[node name="Sprite2D104" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=724735535]
+[node name="Sprite2D104" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=521932711]
 position = Vector2(-30, 346.5)
 texture = ExtResource("91_68qd6")
 
-[node name="Sprite2D105" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=1561261421]
+[node name="Sprite2D105" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=2048925237]
 position = Vector2(-14, 346.5)
 texture = ExtResource("91_68qd6")
 
-[node name="Sprite2D106" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=1938161853]
+[node name="Sprite2D106" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=2090177430]
 position = Vector2(2, 346.5)
 texture = ExtResource("91_68qd6")
 
-[node name="Sprite2D107" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=2071660419]
+[node name="Sprite2D107" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=1386666553]
 position = Vector2(47, 298.5)
 texture = ExtResource("91_68qd6")
 
-[node name="Sprite2D113" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=72129258]
+[node name="Sprite2D113" type="Sprite2D" parent="enviroment (to use)/wall" unique_id=87566304]
 position = Vector2(101.5, 298.5)
 texture = ExtResource("91_68qd6")
 
-[node name="Door" type="Node2D" parent="enviroment (to use)" unique_id=1902718055]
+[node name="Door" type="Node2D" parent="enviroment (to use)" unique_id=2071971609]
 
-[node name="ExitDoor" parent="enviroment (to use)/Door" unique_id=688934523 instance=ExtResource("201_door")]
+[node name="ExitDoor" parent="enviroment (to use)/Door" unique_id=1099416029 instance=ExtResource("201_door")]
 position = Vector2(5, 870)
 scale = Vector2(0.99999994, 0.99999994)
 
@@ -1001,126 +1001,126 @@ offset_right = 15.999998
 position = Vector2(-0.99999857, 6.5)
 scale = Vector2(0.9999998, 0.9999998)
 
-[node name="Door2" type="Sprite2D" parent="enviroment (to use)/Door/ExitDoor" unique_id=520598461]
+[node name="Door2" type="Sprite2D" parent="enviroment (to use)/Door/ExitDoor" unique_id=904912640]
 position = Vector2(-1.0000076, 2)
 scale = Vector2(2.031249, 1.7812493)
 texture = ExtResource("6_wuvb2")
 
-[node name="Side Furtniture" type="Node2D" parent="enviroment (to use)" unique_id=573111008]
+[node name="Side Furtniture" type="Node2D" parent="enviroment (to use)" unique_id=1356981209]
 z_index = 5
 position = Vector2(-245, 249)
 scale = Vector2(2, 2)
 
-[node name="Sprite2D2" type="Sprite2D" parent="enviroment (to use)/Side Furtniture" unique_id=758483607]
+[node name="Sprite2D2" type="Sprite2D" parent="enviroment (to use)/Side Furtniture" unique_id=1000718546]
 position = Vector2(-3.250002, 142.5)
 scale = Vector2(1.0294118, 1)
 texture = ExtResource("26_53ly8")
 
-[node name="Sprite2D6" type="Sprite2D" parent="enviroment (to use)/Side Furtniture" unique_id=748393889]
+[node name="Sprite2D6" type="Sprite2D" parent="enviroment (to use)/Side Furtniture" unique_id=828188949]
 position = Vector2(29, 142.5)
 texture = ExtResource("30_tkl01")
 
-[node name="Sprite2D10" type="Sprite2D" parent="enviroment (to use)/Side Furtniture" unique_id=1439433610]
+[node name="Sprite2D10" type="Sprite2D" parent="enviroment (to use)/Side Furtniture" unique_id=763028465]
 position = Vector2(45.000004, 142.5)
 texture = ExtResource("34_auxt5")
 
-[node name="side counter top" type="Node2D" parent="enviroment (to use)/Side Furtniture" unique_id=14790937]
+[node name="side counter top" type="Node2D" parent="enviroment (to use)/Side Furtniture" unique_id=872309042]
 position = Vector2(-110.5, 153)
 metadata/_edit_group_ = true
 
-[node name="Sprite2D11" type="Sprite2D" parent="enviroment (to use)/Side Furtniture/side counter top" unique_id=454647867]
+[node name="Sprite2D11" type="Sprite2D" parent="enviroment (to use)/Side Furtniture/side counter top" unique_id=1418894550]
 position = Vector2(91.33335, -10.5)
 texture = ExtResource("35_sa87b")
 
-[node name="Sprite2D13" type="Sprite2D" parent="enviroment (to use)/Side Furtniture/side counter top" unique_id=29154299]
+[node name="Sprite2D13" type="Sprite2D" parent="enviroment (to use)/Side Furtniture/side counter top" unique_id=1518105730]
 position = Vector2(91.33335, 5.5)
 texture = ExtResource("37_16xm8")
 
-[node name="Sprite2D15" type="Sprite2D" parent="enviroment (to use)/Side Furtniture/side counter top" unique_id=1453681469]
+[node name="Sprite2D15" type="Sprite2D" parent="enviroment (to use)/Side Furtniture/side counter top" unique_id=1887760525]
 position = Vector2(91.33335, 21.166668)
 texture = ExtResource("39_oyaq7")
 
-[node name="Collision" type="StaticBody2D" parent="enviroment (to use)/Side Furtniture/side counter top" unique_id=2131306388]
+[node name="Collision" type="StaticBody2D" parent="enviroment (to use)/Side Furtniture/side counter top" unique_id=1681260142]
 position = Vector2(91.33666, 5.333336)
 collision_layer = 65
 collision_mask = 0
 
-[node name="Shape" type="CollisionShape2D" parent="enviroment (to use)/Side Furtniture/side counter top/Collision" unique_id=1486573217]
+[node name="Shape" type="CollisionShape2D" parent="enviroment (to use)/Side Furtniture/side counter top/Collision" unique_id=1408204307]
 position = Vector2(-3.33667, -0.625)
 shape = SubResource("sf_counter_v")
 
-[node name="Collision2" type="StaticBody2D" parent="enviroment (to use)/Side Furtniture/side counter top" unique_id=2024393027]
+[node name="Collision2" type="StaticBody2D" parent="enviroment (to use)/Side Furtniture/side counter top" unique_id=1185365156]
 position = Vector2(107.666664, 5.163336)
 collision_layer = 65
 collision_mask = 0
 
-[node name="Shape" type="CollisionShape2D" parent="enviroment (to use)/Side Furtniture/side counter top/Collision2" unique_id=603652647]
+[node name="Shape" type="CollisionShape2D" parent="enviroment (to use)/Side Furtniture/side counter top/Collision2" unique_id=1283393114]
 position = Vector2(-11.666672, -16.663332)
 shape = SubResource("RectangleShape2D_5nwic")
 
-[node name="long_table" type="Node2D" parent="enviroment (to use)/Side Furtniture" unique_id=61906445]
+[node name="long_table" type="Node2D" parent="enviroment (to use)/Side Furtniture" unique_id=1781015476]
 
-[node name="Sprite2D19" type="Sprite2D" parent="enviroment (to use)/Side Furtniture" unique_id=1066123866]
+[node name="Sprite2D19" type="Sprite2D" parent="enviroment (to use)/Side Furtniture" unique_id=1601118203]
 position = Vector2(12.999996, 142.49998)
 texture = ExtResource("38_3aba1")
 
-[node name="Col_Sprite2D" type="StaticBody2D" parent="enviroment (to use)/Side Furtniture" unique_id=40673183]
+[node name="Col_Sprite2D" type="StaticBody2D" parent="enviroment (to use)/Side Furtniture" unique_id=1833830342]
 position = Vector2(42.663338, 141.99666)
 collision_layer = 65
 collision_mask = 0
 
-[node name="Col_Sprite2D2" type="StaticBody2D" parent="enviroment (to use)/Side Furtniture" unique_id=61235765]
+[node name="Col_Sprite2D2" type="StaticBody2D" parent="enviroment (to use)/Side Furtniture" unique_id=1860558740]
 position = Vector2(-4.000002, 142.50002)
 collision_layer = 65
 collision_mask = 0
 
-[node name="Shape" type="CollisionShape2D" parent="enviroment (to use)/Side Furtniture/Col_Sprite2D2" unique_id=410599491]
+[node name="Shape" type="CollisionShape2D" parent="enviroment (to use)/Side Furtniture/Col_Sprite2D2" unique_id=1146905147]
 position = Vector2(0, -0.49999428)
 shape = SubResource("sf_small")
 
-[node name="Col_Sprite2D6" type="StaticBody2D" parent="enviroment (to use)/Side Furtniture" unique_id=2115307907]
+[node name="Col_Sprite2D6" type="StaticBody2D" parent="enviroment (to use)/Side Furtniture" unique_id=2109425826]
 position = Vector2(28.496666, 142.50333)
 collision_layer = 65
 collision_mask = 0
 
-[node name="Shape" type="CollisionShape2D" parent="enviroment (to use)/Side Furtniture/Col_Sprite2D6" unique_id=565099786]
+[node name="Shape" type="CollisionShape2D" parent="enviroment (to use)/Side Furtniture/Col_Sprite2D6" unique_id=1373743083]
 position = Vector2(0.50333405, -0.5033264)
 shape = SubResource("sf_small")
 
-[node name="Col_Sprite2D10" type="StaticBody2D" parent="enviroment (to use)/Side Furtniture" unique_id=909112825]
+[node name="Col_Sprite2D10" type="StaticBody2D" parent="enviroment (to use)/Side Furtniture" unique_id=1279461117]
 position = Vector2(45.5, 142.5)
 collision_layer = 65
 collision_mask = 0
 
-[node name="Shape" type="CollisionShape2D" parent="enviroment (to use)/Side Furtniture/Col_Sprite2D10" unique_id=671286894]
+[node name="Shape" type="CollisionShape2D" parent="enviroment (to use)/Side Furtniture/Col_Sprite2D10" unique_id=718833543]
 position = Vector2(-1, -0.5)
 shape = SubResource("RectangleShape2D_2iexd")
 
-[node name="Col_Sprite2D19" type="StaticBody2D" parent="enviroment (to use)/Side Furtniture" unique_id=983208381]
+[node name="Col_Sprite2D19" type="StaticBody2D" parent="enviroment (to use)/Side Furtniture" unique_id=1761511570]
 position = Vector2(15.003326, 149.49666)
 collision_layer = 65
 collision_mask = 0
 
-[node name="Shape" type="CollisionShape2D" parent="enviroment (to use)/Side Furtniture/Col_Sprite2D19" unique_id=685973420]
+[node name="Shape" type="CollisionShape2D" parent="enviroment (to use)/Side Furtniture/Col_Sprite2D19" unique_id=992356502]
 position = Vector2(-2.5033264, -7.496643)
 shape = SubResource("sf_small")
 
-[node name="Table" type="Node2D" parent="enviroment (to use)" unique_id=1741129710]
+[node name="Table" type="Node2D" parent="enviroment (to use)" unique_id=1679276919]
 
-[node name="Coloured_round_table" type="Node2D" parent="enviroment (to use)/Table" unique_id=1920491865]
+[node name="Coloured_round_table" type="Node2D" parent="enviroment (to use)/Table" unique_id=941755904]
 position = Vector2(-416.00003, 759)
 scale = Vector2(3, 3)
 metadata/_edit_group_ = true
 
-[node name="Sprite2D" type="Sprite2D" parent="enviroment (to use)/Table/Coloured_round_table" unique_id=387108628]
+[node name="Sprite2D" type="Sprite2D" parent="enviroment (to use)/Table/Coloured_round_table" unique_id=830987221]
 position = Vector2(59, -5)
 texture = ExtResource("48_elyfg")
 
-[node name="Sprite2D2" type="Sprite2D" parent="enviroment (to use)/Table/Coloured_round_table" unique_id=702088138]
+[node name="Sprite2D2" type="Sprite2D" parent="enviroment (to use)/Table/Coloured_round_table" unique_id=676206578]
 position = Vector2(75, -5)
 texture = ExtResource("49_qfm0e")
 
-[node name="TableHide" parent="enviroment (to use)/Table/Coloured_round_table" unique_id=1686971021 instance=ExtResource("200_hide")]
+[node name="TableHide" parent="enviroment (to use)/Table/Coloured_round_table" unique_id=1400512269 instance=ExtResource("200_hide")]
 position = Vector2(67, -5)
 scale = Vector2(0.33333, 0.33333)
 
@@ -1132,24 +1132,24 @@ shape = SubResource("RectangleShape2D_n7raa")
 position = Vector2(-1.5, -1.5000305)
 shape = SubResource("RectangleShape2D_56087")
 
-[node name="Long_table" type="Node2D" parent="enviroment (to use)/Table" unique_id=130652071]
+[node name="Long_table" type="Node2D" parent="enviroment (to use)/Table" unique_id=1729736078]
 position = Vector2(614, -109)
 scale = Vector2(2, 2)
 metadata/_edit_group_ = true
 
-[node name="table1" type="Sprite2D" parent="enviroment (to use)/Table/Long_table" unique_id=1481200053]
+[node name="table1" type="Sprite2D" parent="enviroment (to use)/Table/Long_table" unique_id=65135618]
 position = Vector2(-248.99997, 401)
 texture = ExtResource("3_yy7jo")
 
-[node name="table2" type="Sprite2D" parent="enviroment (to use)/Table/Long_table" unique_id=1792817640]
+[node name="table2" type="Sprite2D" parent="enviroment (to use)/Table/Long_table" unique_id=1845717184]
 position = Vector2(-233, 401)
 texture = ExtResource("4_ekg0j")
 
-[node name="table3" type="Sprite2D" parent="enviroment (to use)/Table/Long_table" unique_id=2095986794]
+[node name="table3" type="Sprite2D" parent="enviroment (to use)/Table/Long_table" unique_id=114603888]
 position = Vector2(-217, 401)
 texture = ExtResource("5_3aba1")
 
-[node name="TableHide" parent="enviroment (to use)/Table/Long_table" unique_id=1812890601 instance=ExtResource("200_hide")]
+[node name="TableHide" parent="enviroment (to use)/Table/Long_table" unique_id=902878724 instance=ExtResource("200_hide")]
 position = Vector2(-233, 401)
 scale = Vector2(0.33333, 0.33333)
 
@@ -1161,63 +1161,63 @@ shape = SubResource("RectangleShape2D_rjs0v")
 position = Vector2(-1.5, -3)
 shape = SubResource("RectangleShape2D_a7hqc")
 
-[node name="Cactus" type="Node2D" parent="enviroment (to use)" unique_id=1403802785]
+[node name="Cactus" type="Node2D" parent="enviroment (to use)" unique_id=80652621]
 position = Vector2(812, 409)
 
-[node name="Sprite2D" type="Sprite2D" parent="enviroment (to use)/Cactus" unique_id=1227285567]
+[node name="Sprite2D" type="Sprite2D" parent="enviroment (to use)/Cactus" unique_id=1719308142]
 position = Vector2(-759, 288)
 scale = Vector2(3, 3)
 texture = ExtResource("50_3t7cx")
 
-[node name="CactusHazard" type="Area2D" parent="enviroment (to use)/Cactus" unique_id=978762004]
+[node name="CactusHazard" type="Area2D" parent="enviroment (to use)/Cactus" unique_id=1361213531]
 position = Vector2(-759, 288)
 collision_layer = 128
 collision_mask = 2
 script = ExtResource("202_cactus")
 
-[node name="CactusCollision" type="CollisionShape2D" parent="enviroment (to use)/Cactus/CactusHazard" unique_id=423407481]
+[node name="CactusCollision" type="CollisionShape2D" parent="enviroment (to use)/Cactus/CactusHazard" unique_id=219016349]
 position = Vector2(-2.5, -2.5)
 shape = SubResource("cactus_shape")
 
-[node name="Sprite2D2" type="Sprite2D" parent="enviroment (to use)/Cactus" unique_id=269353593]
+[node name="Sprite2D2" type="Sprite2D" parent="enviroment (to use)/Cactus" unique_id=897519744]
 position = Vector2(-1098.5, 227.5)
 scale = Vector2(3, 3)
 texture = ExtResource("50_3t7cx")
 
-[node name="CactusHazard2" type="Area2D" parent="enviroment (to use)/Cactus" unique_id=1664081049]
+[node name="CactusHazard2" type="Area2D" parent="enviroment (to use)/Cactus" unique_id=865251116]
 position = Vector2(-1098.5, 227.5)
 collision_layer = 128
 collision_mask = 2
 script = ExtResource("202_cactus")
 
-[node name="CactusCollision" type="CollisionShape2D" parent="enviroment (to use)/Cactus/CactusHazard2" unique_id=282640742]
+[node name="CactusCollision" type="CollisionShape2D" parent="enviroment (to use)/Cactus/CactusHazard2" unique_id=963023528]
 position = Vector2(-2.5, -2.5)
 shape = SubResource("cactus_shape")
 
-[node name="Sprite2D3" type="Sprite2D" parent="enviroment (to use)/Cactus" unique_id=500946673]
+[node name="Sprite2D3" type="Sprite2D" parent="enviroment (to use)/Cactus" unique_id=1069937637]
 position = Vector2(-947.5, 289.5)
 scale = Vector2(3, 3)
 texture = ExtResource("50_3t7cx")
 
-[node name="CactusHazard3" type="Area2D" parent="enviroment (to use)/Cactus" unique_id=1397139316]
+[node name="CactusHazard3" type="Area2D" parent="enviroment (to use)/Cactus" unique_id=861862288]
 position = Vector2(-947.5, 289.5)
 collision_layer = 128
 collision_mask = 2
 script = ExtResource("202_cactus")
 
-[node name="CactusCollision" type="CollisionShape2D" parent="enviroment (to use)/Cactus/CactusHazard3" unique_id=292227058]
+[node name="CactusCollision" type="CollisionShape2D" parent="enviroment (to use)/Cactus/CactusHazard3" unique_id=475414520]
 position = Vector2(-2.5, -2.5)
 shape = SubResource("cactus_shape")
 
-[node name="Chairs" type="Node2D" parent="enviroment (to use)" unique_id=561250960]
+[node name="Chairs" type="Node2D" parent="enviroment (to use)" unique_id=766703630]
 position = Vector2(1590, -220)
 scale = Vector2(2, 2)
 
-[node name="Chair2" type="Sprite2D" parent="enviroment (to use)/Chairs" unique_id=403760380]
+[node name="Chair2" type="Sprite2D" parent="enviroment (to use)/Chairs" unique_id=1597132251]
 position = Vector2(-720, 439)
 texture = ExtResource("10_ajtna")
 
-[node name="ChairHide2" parent="enviroment (to use)/Chairs" unique_id=636462616 instance=ExtResource("200_hide")]
+[node name="ChairHide2" parent="enviroment (to use)/Chairs" unique_id=406395630 instance=ExtResource("200_hide")]
 position = Vector2(-721, 440.33337)
 scale = Vector2(0.33333, 0.33333)
 
@@ -1229,11 +1229,11 @@ shape = SubResource("RectangleShape2D_xq6e7")
 position = Vector2(1, -1.5)
 shape = SubResource("RectangleShape2D_1bwbh")
 
-[node name="Chair6" type="Sprite2D" parent="enviroment (to use)/Chairs" unique_id=1409544358]
+[node name="Chair6" type="Sprite2D" parent="enviroment (to use)/Chairs" unique_id=813638097]
 position = Vector2(-814, 520.5)
 texture = ExtResource("10_ajtna")
 
-[node name="ChairHide8" parent="enviroment (to use)/Chairs" unique_id=1941790830 instance=ExtResource("200_hide")]
+[node name="ChairHide8" parent="enviroment (to use)/Chairs" unique_id=277696642 instance=ExtResource("200_hide")]
 position = Vector2(-815, 521.8334)
 scale = Vector2(0.33333, 0.33333)
 
@@ -1245,22 +1245,22 @@ shape = SubResource("RectangleShape2D_xq6e7")
 position = Vector2(1, -1.5)
 shape = SubResource("RectangleShape2D_1bwbh")
 
-[node name="Sofa" type="Node2D" parent="enviroment (to use)" unique_id=141794514]
+[node name="Sofa" type="Node2D" parent="enviroment (to use)" unique_id=1804684157]
 position = Vector2(-175, 390)
 scale = Vector2(3, 3)
 
-[node name="sofa1" type="Node2D" parent="enviroment (to use)/Sofa" unique_id=1445187717]
+[node name="sofa1" type="Node2D" parent="enviroment (to use)/Sofa" unique_id=1073271737]
 position = Vector2(-24.333334, 141)
 
-[node name="Sprite2D" type="Sprite2D" parent="enviroment (to use)/Sofa/sofa1" unique_id=199016689]
+[node name="Sprite2D" type="Sprite2D" parent="enviroment (to use)/Sofa/sofa1" unique_id=377052433]
 position = Vector2(-8.833334, -15.5)
 texture = ExtResource("71_jusep")
 
-[node name="Sprite2D3" type="Sprite2D" parent="enviroment (to use)/Sofa/sofa1" unique_id=1382714982]
+[node name="Sprite2D3" type="Sprite2D" parent="enviroment (to use)/Sofa/sofa1" unique_id=1653053881]
 position = Vector2(-8.833334, 0.5)
 texture = ExtResource("72_16xm8")
 
-[node name="SofaHide" parent="enviroment (to use)/Sofa" unique_id=1466753988 instance=ExtResource("200_hide")]
+[node name="SofaHide" parent="enviroment (to use)/Sofa" unique_id=824673731 instance=ExtResource("200_hide")]
 position = Vector2(-36, 124.33333)
 scale = Vector2(0.33333, 0.33333)
 
@@ -1272,130 +1272,130 @@ shape = SubResource("RectangleShape2D_8d8o3")
 position = Vector2(1, 26.000267)
 shape = SubResource("RectangleShape2D_ns4l0")
 
-[node name="Wall decors" type="Node2D" parent="enviroment (to use)" unique_id=397497752]
+[node name="Wall decors" type="Node2D" parent="enviroment (to use)" unique_id=206573734]
 position = Vector2(-213, 315)
 scale = Vector2(2, 2)
 
-[node name="Sprite2D" type="Sprite2D" parent="enviroment (to use)/Wall decors" unique_id=2117580305]
+[node name="Sprite2D" type="Sprite2D" parent="enviroment (to use)/Wall decors" unique_id=50033841]
 position = Vector2(26.5, 92.5)
 texture = ExtResource("50_55bvk")
 
-[node name="Sprite2D2" type="Sprite2D" parent="enviroment (to use)/Wall decors" unique_id=596599160]
+[node name="Sprite2D2" type="Sprite2D" parent="enviroment (to use)/Wall decors" unique_id=1549666689]
 position = Vector2(-32.5, 92.5)
 texture = ExtResource("51_irowp")
 
-[node name="Sprite2D3" type="Sprite2D" parent="enviroment (to use)/Wall decors" unique_id=835753752]
+[node name="Sprite2D3" type="Sprite2D" parent="enviroment (to use)/Wall decors" unique_id=842539114]
 position = Vector2(185.5, 131.5)
 texture = ExtResource("52_bmypg")
 
-[node name="Sprite2D7" type="Sprite2D" parent="enviroment (to use)/Wall decors" unique_id=1499034233]
+[node name="Sprite2D7" type="Sprite2D" parent="enviroment (to use)/Wall decors" unique_id=392625707]
 position = Vector2(118.5, 174)
 texture = ExtResource("56_16xm8")
 
-[node name="Sprite2D8" type="Sprite2D" parent="enviroment (to use)/Wall decors" unique_id=930325349]
+[node name="Sprite2D8" type="Sprite2D" parent="enviroment (to use)/Wall decors" unique_id=960530992]
 position = Vector2(-6, 92.5)
 texture = ExtResource("57_pvtoa")
 
-[node name="long_art_green" type="Node2D" parent="enviroment (to use)/Wall decors" unique_id=1917786615]
+[node name="long_art_green" type="Node2D" parent="enviroment (to use)/Wall decors" unique_id=662023016]
 
-[node name="potrait_orange" type="Node2D" parent="enviroment (to use)/Wall decors" unique_id=2050141214]
+[node name="potrait_orange" type="Node2D" parent="enviroment (to use)/Wall decors" unique_id=474687733]
 position = Vector2(34, 178)
 metadata/_edit_group_ = true
 
-[node name="Sprite2D9" type="Sprite2D" parent="enviroment (to use)/Wall decors/potrait_orange" unique_id=1680415317]
+[node name="Sprite2D9" type="Sprite2D" parent="enviroment (to use)/Wall decors/potrait_orange" unique_id=2018303776]
 position = Vector2(17.5, -6.5)
 texture = ExtResource("58_oyaq7")
 
-[node name="Sprite2D10" type="Sprite2D" parent="enviroment (to use)/Wall decors/potrait_orange" unique_id=1887415323]
+[node name="Sprite2D10" type="Sprite2D" parent="enviroment (to use)/Wall decors/potrait_orange" unique_id=707562756]
 position = Vector2(17.5, 9.5)
 texture = ExtResource("59_f75ti")
 
-[node name="potrait_green" type="Node2D" parent="enviroment (to use)/Wall decors" unique_id=1503948390]
+[node name="potrait_green" type="Node2D" parent="enviroment (to use)/Wall decors" unique_id=1012560480]
 
-[node name="Sprite2D11" type="Sprite2D" parent="enviroment (to use)/Wall decors/potrait_green" unique_id=193320106]
+[node name="Sprite2D11" type="Sprite2D" parent="enviroment (to use)/Wall decors/potrait_green" unique_id=1275850597]
 position = Vector2(214, 124)
 texture = ExtResource("60_vmfhe")
 
-[node name="Sprite2D12" type="Sprite2D" parent="enviroment (to use)/Wall decors/potrait_green" unique_id=1570449527]
+[node name="Sprite2D12" type="Sprite2D" parent="enviroment (to use)/Wall decors/potrait_green" unique_id=1294581544]
 position = Vector2(214, 140)
 texture = ExtResource("61_c0kbr")
 
-[node name="potrait_blue" type="Node2D" parent="enviroment (to use)/Wall decors" unique_id=1719042159]
+[node name="potrait_blue" type="Node2D" parent="enviroment (to use)/Wall decors" unique_id=97773453]
 
-[node name="Sprite2D13" type="Sprite2D" parent="enviroment (to use)/Wall decors/potrait_blue" unique_id=1284431894]
+[node name="Sprite2D13" type="Sprite2D" parent="enviroment (to use)/Wall decors/potrait_blue" unique_id=988422874]
 position = Vector2(155.5, 123.5)
 texture = ExtResource("62_0wu3f")
 
-[node name="Sprite2D14" type="Sprite2D" parent="enviroment (to use)/Wall decors/potrait_blue" unique_id=1289917465]
+[node name="Sprite2D14" type="Sprite2D" parent="enviroment (to use)/Wall decors/potrait_blue" unique_id=1711302372]
 position = Vector2(155.5, 139.5)
 texture = ExtResource("63_mjpo7")
 
-[node name="long_art_blue" type="Node2D" parent="enviroment (to use)/Wall decors" unique_id=51393847]
+[node name="long_art_blue" type="Node2D" parent="enviroment (to use)/Wall decors" unique_id=2121263751]
 
-[node name="Sprite2D18" type="Sprite2D" parent="enviroment (to use)/Wall decors/long_art_blue" unique_id=834659812]
+[node name="Sprite2D18" type="Sprite2D" parent="enviroment (to use)/Wall decors/long_art_blue" unique_id=1641013902]
 position = Vector2(72.5, 186)
 texture = ExtResource("67_a54xn")
 
-[node name="Sprite2D19" type="Sprite2D" parent="enviroment (to use)/Wall decors/long_art_blue" unique_id=1287697645]
+[node name="Sprite2D19" type="Sprite2D" parent="enviroment (to use)/Wall decors/long_art_blue" unique_id=303506025]
 position = Vector2(88.5, 186)
 texture = ExtResource("68_ctc55")
 
-[node name="Sprite2D20" type="Sprite2D" parent="enviroment (to use)/Wall decors/long_art_blue" unique_id=1286638901]
+[node name="Sprite2D20" type="Sprite2D" parent="enviroment (to use)/Wall decors/long_art_blue" unique_id=1976026725]
 position = Vector2(104.5, 186)
 texture = ExtResource("69_6lnja")
 
-[node name="WallCollision" type="StaticBody2D" parent="enviroment (to use)" unique_id=579147367]
+[node name="WallCollision" type="StaticBody2D" parent="enviroment (to use)" unique_id=616104464]
 scale = Vector2(2, 2)
 collision_layer = 65
 collision_mask = 0
 
-[node name="LeftWall" type="CollisionShape2D" parent="enviroment (to use)/WallCollision" unique_id=1710110507]
+[node name="LeftWall" type="CollisionShape2D" parent="enviroment (to use)/WallCollision" unique_id=2135963852]
 position = Vector2(-158, 338.5)
 shape = SubResource("wall_left")
 
-[node name="TopWallLeft" type="CollisionShape2D" parent="enviroment (to use)/WallCollision" unique_id=1548889230]
+[node name="TopWallLeft" type="CollisionShape2D" parent="enviroment (to use)/WallCollision" unique_id=1952943693]
 position = Vector2(-110, 242.5)
 shape = SubResource("wall_top_left")
 
-[node name="InnerLeftWall" type="CollisionShape2D" parent="enviroment (to use)/WallCollision" unique_id=2071216545]
+[node name="InnerLeftWall" type="CollisionShape2D" parent="enviroment (to use)/WallCollision" unique_id=870994643]
 position = Vector2(-62, 294.25)
 shape = SubResource("wall_inner_left")
 
-[node name="InteriorWall" type="CollisionShape2D" parent="enviroment (to use)/WallCollision" unique_id=1634862593]
+[node name="InteriorWall" type="CollisionShape2D" parent="enviroment (to use)/WallCollision" unique_id=1881237806]
 position = Vector2(-22, 330.5)
 shape = SubResource("wall_interior")
 
-[node name="InnerRightWall" type="CollisionShape2D" parent="enviroment (to use)/WallCollision" unique_id=1971800461]
+[node name="InnerRightWall" type="CollisionShape2D" parent="enviroment (to use)/WallCollision" unique_id=1632843507]
 position = Vector2(18, 306)
 shape = SubResource("wall_inner_right")
 
-[node name="TopWallRight" type="CollisionShape2D" parent="enviroment (to use)/WallCollision" unique_id=690390135]
+[node name="TopWallRight" type="CollisionShape2D" parent="enviroment (to use)/WallCollision" unique_id=959957799]
 position = Vector2(74, 282.25)
 shape = SubResource("wall_top_right")
 
-[node name="RightWall" type="CollisionShape2D" parent="enviroment (to use)/WallCollision" unique_id=1591700791]
+[node name="RightWall" type="CollisionShape2D" parent="enviroment (to use)/WallCollision" unique_id=985993061]
 position = Vector2(130, 338.5)
 shape = SubResource("wall_right")
 
-[node name="BottomWall" type="CollisionShape2D" parent="enviroment (to use)/WallCollision" unique_id=1229661402]
+[node name="BottomWall" type="CollisionShape2D" parent="enviroment (to use)/WallCollision" unique_id=1715732660]
 position = Vector2(-86, 435)
 shape = SubResource("RectangleShape2D_s4oqj")
 
-[node name="InteriorWall2" type="CollisionShape2D" parent="enviroment (to use)/WallCollision" unique_id=1661593644]
+[node name="InteriorWall2" type="CollisionShape2D" parent="enviroment (to use)/WallCollision" unique_id=2044011868]
 position = Vector2(106, 402.75)
 shape = SubResource("RectangleShape2D_4l6ck")
 
-[node name="BottomWall2" type="CollisionShape2D" parent="enviroment (to use)/WallCollision" unique_id=1295910883]
+[node name="BottomWall2" type="CollisionShape2D" parent="enviroment (to use)/WallCollision" unique_id=1048061822]
 position = Vector2(49.75, 435.5)
 shape = SubResource("RectangleShape2D_71go5")
 
-[node name="BottomWall3" type="CollisionShape2D" parent="enviroment (to use)/WallCollision" unique_id=937150767]
+[node name="BottomWall3" type="CollisionShape2D" parent="enviroment (to use)/WallCollision" unique_id=920401407]
 position = Vector2(5, 453.375)
 shape = SubResource("RectangleShape2D_wus6y")
 
-[node name="Characters" type="Node2D" parent="." unique_id=816588184]
+[node name="Characters" type="Node2D" parent="." unique_id=1708453095]
 
-[node name="Dog01" parent="Characters" unique_id=1782500386 instance=ExtResource("110_68qd6")]
+[node name="Dog01" parent="Characters" unique_id=1886492270 instance=ExtResource("110_68qd6")]
 position = Vector2(220, 752)
 patrol_route = NodePath("../../Patrol Routes/Dog01Route")
 
@@ -1406,7 +1406,7 @@ ray_count = 20
 sprite_frames = ExtResource("111_l1b3u")
 animation = &"Bark"
 
-[node name="Dog03" parent="Characters" unique_id=28523969 instance=ExtResource("110_68qd6")]
+[node name="Dog03" parent="Characters" unique_id=1154284979 instance=ExtResource("110_68qd6")]
 position = Vector2(-215, 606)
 patrol_route = NodePath("../../Patrol Routes/Dog03Route")
 
@@ -1417,103 +1417,103 @@ ray_count = 20
 sprite_frames = ExtResource("112_5nwic")
 animation = &"Bark"
 
-[node name="Mouse02" parent="Characters" unique_id=727705324 instance=ExtResource("113_rjs0v")]
+[node name="Mouse02" parent="Characters" unique_id=2055548632 instance=ExtResource("113_rjs0v")]
 position = Vector2(-45, 750)
 patrol_route = NodePath("../../Patrol Routes/Mouse02Route")
 
-[node name="Mouse01" parent="Characters" unique_id=2141500223 instance=ExtResource("113_rjs0v")]
+[node name="Mouse01" parent="Characters" unique_id=1539650957 instance=ExtResource("113_rjs0v")]
 position = Vector2(218, 631)
 patrol_route = NodePath("../../Patrol Routes/Mouse01Route")
 
-[node name="Mouse03" parent="Characters" unique_id=571507549 instance=ExtResource("113_rjs0v")]
+[node name="Mouse03" parent="Characters" unique_id=423386823 instance=ExtResource("113_rjs0v")]
 position = Vector2(-161, 557)
 patrol_route = NodePath("../../Patrol Routes/Mouse03Route")
 
-[node name="Patrol Routes" type="Node2D" parent="." unique_id=112032525]
+[node name="Patrol Routes" type="Node2D" parent="." unique_id=37149894]
 
-[node name="Dog01Route" type="Node2D" parent="Patrol Routes" unique_id=260944785]
+[node name="Dog01Route" type="Node2D" parent="Patrol Routes" unique_id=867708035]
 position = Vector2(222, 755)
 
-[node name="p1" type="Marker2D" parent="Patrol Routes/Dog01Route" unique_id=1869580150]
+[node name="p1" type="Marker2D" parent="Patrol Routes/Dog01Route" unique_id=628043830]
 gizmo_extents = 1.0
 
-[node name="p2" type="Marker2D" parent="Patrol Routes/Dog01Route" unique_id=1280466306]
+[node name="p2" type="Marker2D" parent="Patrol Routes/Dog01Route" unique_id=2071848782]
 position = Vector2(-2, -122)
 
-[node name="p3" type="Marker2D" parent="Patrol Routes/Dog01Route" unique_id=777753574]
+[node name="p3" type="Marker2D" parent="Patrol Routes/Dog01Route" unique_id=567215922]
 position = Vector2(-145, -123)
 
-[node name="p4" type="Marker2D" parent="Patrol Routes/Dog01Route" unique_id=2037347462]
+[node name="p4" type="Marker2D" parent="Patrol Routes/Dog01Route" unique_id=175615314]
 position = Vector2(-143, 4)
 
-[node name="p5" type="Marker2D" parent="Patrol Routes/Dog01Route" unique_id=1531728331]
+[node name="p5" type="Marker2D" parent="Patrol Routes/Dog01Route" unique_id=1332394804]
 position = Vector2(0, -1)
 
-[node name="Dog02Route" type="Node2D" parent="Patrol Routes" unique_id=1909065045]
+[node name="Dog02Route" type="Node2D" parent="Patrol Routes" unique_id=1259850534]
 position = Vector2(-49, 769)
 
-[node name="p1" type="Marker2D" parent="Patrol Routes/Dog02Route" unique_id=446321829]
+[node name="p1" type="Marker2D" parent="Patrol Routes/Dog02Route" unique_id=1714963622]
 position = Vector2(-2, -42)
 
-[node name="p2" type="Marker2D" parent="Patrol Routes/Dog02Route" unique_id=1729952451]
+[node name="p2" type="Marker2D" parent="Patrol Routes/Dog02Route" unique_id=1330337544]
 position = Vector2(-71, 1)
 
-[node name="p3" type="Marker2D" parent="Patrol Routes/Dog02Route" unique_id=128883478]
+[node name="p3" type="Marker2D" parent="Patrol Routes/Dog02Route" unique_id=1483248491]
 position = Vector2(56, 5)
 
-[node name="p4" type="Marker2D" parent="Patrol Routes/Dog02Route" unique_id=1762314440]
+[node name="p4" type="Marker2D" parent="Patrol Routes/Dog02Route" unique_id=1086897915]
 position = Vector2(-2, -42)
 
-[node name="Dog03Route" type="Node2D" parent="Patrol Routes" unique_id=1026427233]
+[node name="Dog03Route" type="Node2D" parent="Patrol Routes" unique_id=1698369399]
 position = Vector2(-242, 639)
 
-[node name="p1" type="Marker2D" parent="Patrol Routes/Dog03Route" unique_id=406949831]
+[node name="p1" type="Marker2D" parent="Patrol Routes/Dog03Route" unique_id=1409401010]
 position = Vector2(27, -33)
 
-[node name="p2" type="Marker2D" parent="Patrol Routes/Dog03Route" unique_id=65813730]
+[node name="p2" type="Marker2D" parent="Patrol Routes/Dog03Route" unique_id=664149021]
 position = Vector2(-41, 80)
 
-[node name="p3" type="Marker2D" parent="Patrol Routes/Dog03Route" unique_id=1666552620]
+[node name="p3" type="Marker2D" parent="Patrol Routes/Dog03Route" unique_id=103162629]
 position = Vector2(70, 73)
 
-[node name="p4" type="Marker2D" parent="Patrol Routes/Dog03Route" unique_id=2125217733]
+[node name="p4" type="Marker2D" parent="Patrol Routes/Dog03Route" unique_id=1541877734]
 position = Vector2(27, -33)
 
-[node name="Mouse01Route" type="Node2D" parent="Patrol Routes" unique_id=66843623]
+[node name="Mouse01Route" type="Node2D" parent="Patrol Routes" unique_id=890292301]
 position = Vector2(219, 631)
 
-[node name="Marker2D" type="Marker2D" parent="Patrol Routes/Mouse01Route" unique_id=2085683467]
+[node name="Marker2D" type="Marker2D" parent="Patrol Routes/Mouse01Route" unique_id=1070009772]
 
-[node name="Marker2D2" type="Marker2D" parent="Patrol Routes/Mouse01Route" unique_id=411237309]
+[node name="Marker2D2" type="Marker2D" parent="Patrol Routes/Mouse01Route" unique_id=373038843]
 position = Vector2(-142, 1)
 
-[node name="Marker2D3" type="Marker2D" parent="Patrol Routes/Mouse01Route" unique_id=1722822777]
+[node name="Marker2D3" type="Marker2D" parent="Patrol Routes/Mouse01Route" unique_id=1497573858]
 
-[node name="Mouse02Route" type="Node2D" parent="Patrol Routes" unique_id=871756072]
+[node name="Mouse02Route" type="Node2D" parent="Patrol Routes" unique_id=232619928]
 position = Vector2(-45, 749)
 
-[node name="Marker2D" type="Marker2D" parent="Patrol Routes/Mouse02Route" unique_id=303137087]
+[node name="Marker2D" type="Marker2D" parent="Patrol Routes/Mouse02Route" unique_id=726417339]
 
-[node name="Marker2D2" type="Marker2D" parent="Patrol Routes/Mouse02Route" unique_id=1180752263]
+[node name="Marker2D2" type="Marker2D" parent="Patrol Routes/Mouse02Route" unique_id=1845594455]
 position = Vector2(87, -29)
 
-[node name="Marker2D3" type="Marker2D" parent="Patrol Routes/Mouse02Route" unique_id=1548223751]
+[node name="Marker2D3" type="Marker2D" parent="Patrol Routes/Mouse02Route" unique_id=2054767392]
 position = Vector2(-55, -30)
 
-[node name="Mouse03Route" type="Node2D" parent="Patrol Routes" unique_id=1311904739]
+[node name="Mouse03Route" type="Node2D" parent="Patrol Routes" unique_id=481594570]
 position = Vector2(-161, 557)
 
-[node name="Marker2D" type="Marker2D" parent="Patrol Routes/Mouse03Route" unique_id=191670885]
+[node name="Marker2D" type="Marker2D" parent="Patrol Routes/Mouse03Route" unique_id=1252924315]
 
-[node name="Marker2D2" type="Marker2D" parent="Patrol Routes/Mouse03Route" unique_id=610050986]
+[node name="Marker2D2" type="Marker2D" parent="Patrol Routes/Mouse03Route" unique_id=1247132553]
 position = Vector2(-89, 10)
 
-[node name="Marker2D3" type="Marker2D" parent="Patrol Routes/Mouse03Route" unique_id=1407524917]
+[node name="Marker2D3" type="Marker2D" parent="Patrol Routes/Mouse03Route" unique_id=1661622181]
 position = Vector2(0, 24)
 
-[node name="HUD" parent="." unique_id=1993710416 instance=ExtResource("203_hud")]
+[node name="HUD" parent="." unique_id=816923870 instance=ExtResource("203_hud")]
 
-[node name="ResultsScreen" parent="." unique_id=1167122154 instance=ExtResource("204_results")]
+[node name="ResultsScreen" parent="." unique_id=1875741531 instance=ExtResource("204_results")]
 
 [editable path="enviroment (to use)/Door/ExitDoor"]
 [editable path="enviroment (to use)/Table/Coloured_round_table/TableHide"]

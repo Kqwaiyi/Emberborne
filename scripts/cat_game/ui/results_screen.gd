@@ -78,8 +78,14 @@ func show_results(
 	visible = true
 
 func _on_next_pressed() -> void:
-	get_tree().paused = false
-	if _next_path.is_empty():
-		get_tree().reload_current_scene()
+	GameState.save_progress(_next_path)
+	var laptops := get_tree().get_nodes_in_group("laptop_ui")
+	if laptops.size() > 0:
+		var target := _next_path if not _next_path.is_empty() else get_parent().scene_file_path
+		laptops[0].change_scene(target, 0.5)
 	else:
-		get_tree().change_scene_to_file(_next_path)
+		get_tree().paused = false
+		if _next_path.is_empty():
+			get_tree().reload_current_scene()
+		else:
+			get_tree().change_scene_to_file(_next_path)

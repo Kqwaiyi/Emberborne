@@ -7,8 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://bjfakway4r2wh" path="res://scenes/pet_world/characters/snake.tscn" id="4_snake"]
 [ext_resource type="Script" uid="uid://ulrbmlcttp33" path="res://scripts/pet_world/lobby/lobby_manager.gd" id="5_lobby"]
 [ext_resource type="PackedScene" path="res://scenes/pet_world/lobby/pet_info_panel.tscn" id="6_panel"]
-[ext_resource type="AudioStream" path="res://assets/music/pet_world/cat_pet.mp3" id="7_catpet"]
-[ext_resource type="AudioStream" path="res://assets/music/pet_world/snake hiss.mp3" id="8_snakehiss"]
+[ext_resource type="AudioStream" uid="uid://d4ccaq4w36wue" path="res://assets/music/pet_world/cat_pet.mp3" id="7_catpet"]
+[ext_resource type="AudioStream" uid="uid://dnk60du6ku8hk" path="res://assets/music/pet_world/snake hiss.mp3" id="8_snakehiss"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mq7y1"]
 size = Vector2(20, 305.48358)
@@ -71,6 +71,54 @@ texture = ExtResource("2_g78u4")
 [sub_resource type="TileSet" id="TileSet_gedky"]
 sources/0 = SubResource("TileSetAtlasSource_mq7y1")
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_back_n"]
+content_margin_left = 8.0
+content_margin_top = 6.0
+content_margin_right = 8.0
+content_margin_bottom = 6.0
+bg_color = Color(0.898, 0.816, 0.663, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.216, 0.149, 0.086, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_back_p"]
+content_margin_left = 8.0
+content_margin_top = 6.0
+content_margin_right = 8.0
+content_margin_bottom = 6.0
+bg_color = Color(0.68, 0.58, 0.42, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.216, 0.149, 0.086, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_back_h"]
+content_margin_left = 8.0
+content_margin_top = 6.0
+content_margin_right = 8.0
+content_margin_bottom = 6.0
+bg_color = Color(0.82, 0.73, 0.55, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.216, 0.149, 0.086, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
 [node name="Mainlobby" type="Node2D" unique_id=1428965732]
 script = ExtResource("5_lobby")
 
@@ -128,10 +176,27 @@ zoom = Vector2(1.2, 1.2)
 
 [node name="PetInfoPanel" parent="." unique_id=1655046249 instance=ExtResource("6_panel")]
 
-[node name="CatPetAudio" type="AudioStreamPlayer" parent="."]
+[node name="CatPetAudio" type="AudioStreamPlayer" parent="." unique_id=700638581]
 stream = ExtResource("7_catpet")
 
-[node name="SnakeHissAudio" type="AudioStreamPlayer" parent="."]
+[node name="SnakeHissAudio" type="AudioStreamPlayer" parent="." unique_id=1746360840]
 stream = ExtResource("8_snakehiss")
 volume_db = -15.0
 pitch_scale = 0.6
+
+[node name="BackLayer" type="CanvasLayer" parent="." unique_id=1732842315]
+
+[node name="BackButton" type="Button" parent="BackLayer" unique_id=201706222]
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 104.0
+offset_bottom = 104.0
+theme_override_colors/font_color = Color(0.18, 0.12, 0.07, 1)
+theme_override_colors/font_pressed_color = Color(0.18, 0.12, 0.07, 1)
+theme_override_colors/font_hover_color = Color(0.18, 0.12, 0.07, 1)
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxFlat_back_n")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_back_p")
+theme_override_styles/hover = SubResource("StyleBoxFlat_back_h")
+text = "Back
+←"

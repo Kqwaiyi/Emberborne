@@ -32,6 +32,7 @@ const CLICK_RADIUS := 28.0
 @onready var _panel           : PetInfoPanel      = $PetInfoPanel
 @onready var _cat_pet_audio   : AudioStreamPlayer = $CatPetAudio
 @onready var _snake_hiss_audio: AudioStreamPlayer = $SnakeHissAudio
+@onready var _back_button     : Button            = $BackLayer/BackButton
 
 var _selected_key    := ""
 var _selected_sprite : AnimatedSprite2D = null
@@ -44,6 +45,7 @@ func _ready() -> void:
 	scene_opened.emit()
 	MusicManager.play_music("pet_world")
 	_panel.pet_action_requested.connect(_on_pet_action)
+	_back_button.pressed.connect(_on_back_pressed)
 
 func _process(delta: float) -> void:
 	_pulse_t += delta * 2.2
@@ -104,6 +106,13 @@ func _remove_glow() -> void:
 		_glow_sprite.queue_free()
 	_glow_sprite     = null
 	_selected_sprite = null
+
+func _on_back_pressed() -> void:
+	var laptops := get_tree().get_nodes_in_group("laptop_ui")
+	if laptops.size() > 0:
+		laptops[0].change_scene("res://scenes/ui/DesktopScreen.tscn", 0.5)
+	else:
+		get_tree().change_scene_to_file("res://scenes/ui/DesktopScreen.tscn")
 
 func _on_pet_action(pet_node: Node) -> void:
 	var heart := FloatingHeart.new()

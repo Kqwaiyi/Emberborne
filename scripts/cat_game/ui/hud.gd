@@ -21,6 +21,7 @@ const _TOPS: Array[Texture2D] = [
 @onready var _message_label:  Label              = $MessageLabel
 @onready var _message_timer:  Timer              = $MessageTimer
 @onready var _finish_audio:   AudioStreamPlayer  = $FinishAudio
+@onready var _back_button:    Button             = $BackButton
 
 var _shake_tween:         Tween = null
 var _msg_base_offset_left: float = 0.0
@@ -32,6 +33,7 @@ func _ready() -> void:
 	_set_anger_stage(0)
 	_info_line.text = "Total Points: %d  |  Total Mice: 0" % GameState.total_score
 	_msg_base_offset_left = _message_label.offset_left
+	_back_button.pressed.connect(_on_back_pressed)
 
 func update_mouse_count(caught: int, required: int) -> void:
 	_mice_label.text = "%d / %d" % [caught, required]
@@ -80,6 +82,15 @@ func _shake_label(amplitude: float) -> void:
 func _set_anger_stage(stage: int) -> void:
 	_anger_face.texture = _FACES[stage]
 	_anger_top.texture  = _TOPS[stage]
+
+func _on_back_pressed() -> void:
+	var laptops := get_tree().get_nodes_in_group("laptop_ui")
+	if laptops.size() > 0:
+		laptops[0].change_scene("res://scenes/pet_world/lobby/mainlobby.tscn", 0.5)
+	else:
+		get_tree().paused = false
+		MusicManager.play_music("pet_world")
+		get_tree().change_scene_to_file("res://scenes/pet_world/lobby/mainlobby.tscn")
 
 func _on_message_timeout() -> void:
 	_message_label.visible = false
