@@ -108,7 +108,6 @@ func _on_level_completed() -> void:
 	var caught_deductions: int = _times_caught * caught_penalty
 	var level_total: int       = time_bonus + mouse_points - caught_deductions
 	var prev_total: int        = GameState.total_score
-	GameState.add_score(level_total)
 
 	if _results:
 		_results.show_results(
@@ -120,7 +119,7 @@ func _on_level_completed() -> void:
 			caught_deductions,
 			level_total,
 			prev_total,
-			GameState.total_score,
+			prev_total + level_total,
 			GameState.get_next_level(scene_file_path)
 		)
 
