@@ -1,10 +1,9 @@
 [gd_scene format=3 uid="uid://byd7ye2p1btx0"]
 
-[ext_resource type="Script" uid="uid://bsoa08gnlhoau" path="res://scripts/cat_game/levels/level_02.gd" id="1_egvdl"]
-[ext_resource type="Script" path="res://scripts/cat_game/levels/tutorial_level.gd" id="1_tutorial"]
-[ext_resource type="PackedScene" uid="uid://hud_scene" path="res://scenes/cat_game/ui/hud.tscn" id="2_hud"]
-[ext_resource type="PackedScene" uid="uid://cmquucfy2ckxe" path="res://scenes/cat_game/ui/results_screen.tscn" id="3_results"]
+[ext_resource type="Script" uid="uid://c0b3q8qwv4fuc" path="res://scripts/cat_game/levels/tutorial_level.gd" id="1_tutorial"]
 [ext_resource type="Texture2D" uid="uid://c6hf42lml3pkx" path="res://assets/sprites/environment/wall and floor tiles/tile_2_8.png" id="2_8wkct"]
+[ext_resource type="PackedScene" path="res://scenes/cat_game/ui/hud.tscn" id="2_hud"]
+[ext_resource type="PackedScene" uid="uid://cmquucfy2ckxe" path="res://scenes/cat_game/ui/results_screen.tscn" id="3_results"]
 [ext_resource type="Texture2D" uid="uid://ba2156x383hte" path="res://assets/sprites/environment/wall and floor tiles/tile_15_16.png" id="3_srtlc"]
 [ext_resource type="Texture2D" uid="uid://budygsw83hv5g" path="res://assets/sprites/environment/wall and floor tiles/tile_15_13.png" id="4_0qs06"]
 [ext_resource type="Texture2D" uid="uid://dqmp1qq20m8sr" path="res://assets/sprites/environment/wall and floor tiles/tile_12_14.png" id="5_ff620"]
@@ -42,6 +41,12 @@
 [ext_resource type="SpriteFrames" uid="uid://cmkvoaf2lslxi" path="res://scenes/cat_game/characters/dog_variants/dog4.tres" id="70_4kcis"]
 [ext_resource type="SpriteFrames" uid="uid://bspk2plmij7hd" path="res://scenes/cat_game/characters/dog_variants/dog3.tres" id="71_hq8tn"]
 [ext_resource type="PackedScene" uid="uid://b2qxfiflox5xx" path="res://scenes/cat_game/characters/cat.tscn" id="72_vwyt6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7ujw3"]
+size = Vector2(94, 67)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qrcko"]
+size = Vector2(855, 67)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_716oc"]
 size = Vector2(992, 67)
@@ -96,13 +101,12 @@ size = Vector2(21, 43)
 
 [node name="tutorial map" type="Node2D" unique_id=1371152845]
 script = ExtResource("1_tutorial")
-required_mice = 2
-total_mice = 2
 starting_score = 0
 points_per_mouse = 0
 caught_penalty = 0
 maximum_time_bonus = 0
 time_penalty_per_second = 0.0
+total_mice = 2
 next_scene_path = "res://scenes/cat_game/levels/level_01.tscn"
 
 [node name="seciton 1" type="Node2D" parent="." unique_id=1230646003]
@@ -1795,11 +1799,20 @@ position = Vector2(-565.5, 700)
 texture = ExtResource("4_0qs06")
 
 [node name="WallCollision" type="StaticBody2D" parent="seciton 1" unique_id=1638500970]
+position = Vector2(0, -1)
 collision_layer = 65
 collision_mask = 0
 
 [node name="InteriorWall" type="CollisionShape2D" parent="seciton 1/WallCollision" unique_id=944045595]
-position = Vector2(-1453, 1386)
+position = Vector2(-1903, 1387)
+shape = SubResource("RectangleShape2D_7ujw3")
+
+[node name="InteriorWall10" type="CollisionShape2D" parent="seciton 1/WallCollision" unique_id=1117258961]
+position = Vector2(-1389.5, 1388)
+shape = SubResource("RectangleShape2D_qrcko")
+
+[node name="InteriorWall9" type="CollisionShape2D" parent="seciton 1/WallCollision" unique_id=1042840798]
+position = Vector2(-1397, 1413)
 shape = SubResource("RectangleShape2D_716oc")
 
 [node name="InteriorWall2" type="CollisionShape2D" parent="seciton 1/WallCollision" unique_id=664010621]
@@ -2093,7 +2106,7 @@ texture = ExtResource("67_1vaix")
 [node name="characters" type="Node2D" parent="." unique_id=964852908]
 
 [node name="Dog02" parent="characters" unique_id=1581623067 instance=ExtResource("69_4smau")]
-position = Vector2(1793, 1780)
+position = Vector2(1801, 1903)
 patrol_route = NodePath("../../Patrol Routes/Dog 2")
 metadata/_edit_group_ = true
 
@@ -2117,7 +2130,7 @@ sprite_frames = ExtResource("71_hq8tn")
 animation = &"Bark"
 
 [node name="Mouse02" parent="characters" unique_id=1634676632 instance=ExtResource("37_01g5v")]
-position = Vector2(1674, 1788)
+position = Vector2(1777, 1858)
 patrol_route = NodePath("../../Patrol Routes/mouse 2")
 
 [node name="Mouse01" parent="characters" unique_id=614338540 instance=ExtResource("37_01g5v")]
@@ -2143,13 +2156,13 @@ position = Vector2(1447, 1894)
 [node name="Dog 2" type="Node2D" parent="Patrol Routes" unique_id=391773245]
 
 [node name="Marker2D" type="Marker2D" parent="Patrol Routes/Dog 2" unique_id=312878546]
-position = Vector2(1794, 1781)
+position = Vector2(1802, 1906)
 
 [node name="Marker2D2" type="Marker2D" parent="Patrol Routes/Dog 2" unique_id=32153557]
-position = Vector2(1666, 1786)
+position = Vector2(1804, 1768)
 
 [node name="Marker2D3" type="Marker2D" parent="Patrol Routes/Dog 2" unique_id=993568406]
-position = Vector2(1794, 1780)
+position = Vector2(1802, 1905)
 
 [node name="mouse 1" type="Node2D" parent="Patrol Routes" unique_id=160235057]
 
@@ -2165,13 +2178,13 @@ position = Vector2(1438, 1917)
 [node name="mouse 2" type="Node2D" parent="Patrol Routes" unique_id=252165773]
 
 [node name="Marker2D" type="Marker2D" parent="Patrol Routes/mouse 2" unique_id=1377489307]
-position = Vector2(1673, 1786)
+position = Vector2(1777, 1857)
 
 [node name="Marker2D2" type="Marker2D" parent="Patrol Routes/mouse 2" unique_id=698975120]
-position = Vector2(1835, 1786)
+position = Vector2(1844, 1858)
 
 [node name="Marker2D3" type="Marker2D" parent="Patrol Routes/mouse 2" unique_id=736959223]
-position = Vector2(1673, 1786)
+position = Vector2(1777, 1857)
 
 [node name="Cactus7" type="Node2D" parent="." unique_id=1759250604]
 position = Vector2(2726, 1622)
@@ -2197,13 +2210,13 @@ position = Vector2(892, 1504)
 
 [node name="Label" type="Label" parent="Labels" unique_id=1836387719]
 z_index = -100
-offset_left = 325.0
-offset_top = 363.0
-offset_right = 767.0
-offset_bottom = 559.0
+offset_left = 324.0
+offset_top = 369.0
+offset_right = 766.0
+offset_bottom = 565.0
 scale = Vector2(0.25, 0.25)
 theme_override_constants/line_spacing = -12
-theme_override_font_sizes/font_size = 64
+theme_override_font_sizes/font_size = 50
 text = "Press W/A/S/D
 To Move"
 horizontal_alignment = 1
@@ -2211,13 +2224,13 @@ metadata/_edit_use_anchors_ = true
 
 [node name="Label2" type="Label" parent="Labels" unique_id=609688582]
 z_index = -100
-offset_left = 558.0
-offset_top = 215.0
-offset_right = 1203.0
-offset_bottom = 455.0
+offset_left = 564.0
+offset_top = 220.0
+offset_right = 1209.0
+offset_bottom = 460.0
 scale = Vector2(0.25, 0.25)
 theme_override_constants/line_spacing = -12
-theme_override_font_sizes/font_size = 64
+theme_override_font_sizes/font_size = 50
 text = "Hide under 
 transparent 
 surfaces"
@@ -2226,35 +2239,66 @@ metadata/_edit_use_anchors_ = true
 
 [node name="Label3" type="Label" parent="Labels" unique_id=1884282909]
 z_index = -100
-offset_left = 610.0
-offset_top = 360.0
-offset_right = 1255.0
-offset_bottom = 600.0
+offset_left = 596.0
+offset_top = 369.0
+offset_right = 1241.0
+offset_bottom = 609.0
 scale = Vector2(0.25, 0.25)
 theme_override_constants/line_spacing = -12
-theme_override_font_sizes/font_size = 64
+theme_override_font_sizes/font_size = 50
 text = "Avoid the Dog 
 and catch the Rats"
 horizontal_alignment = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="Label4" type="Label" parent="Labels" unique_id=971886042]
+[node name="Label5" type="Label" parent="Labels" unique_id=1361545692]
 z_index = -100
-offset_left = 998.0
-offset_top = 290.0
-offset_right = 1643.0
-offset_bottom = 530.0
+offset_left = 775.0
+offset_top = 266.0
+offset_right = 1474.0
+offset_bottom = 506.0
 scale = Vector2(0.25, 0.25)
 theme_override_constants/line_spacing = -12
-theme_override_font_sizes/font_size = 64
+theme_override_font_sizes/font_size = 50
+text = "Being seen by the dog 
+Increases their anger which
+further increases their speed"
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Label4" type="Label" parent="Labels" unique_id=971886042]
+z_index = -100
+offset_left = 995.0
+offset_top = 346.0
+offset_right = 1640.0
+offset_bottom = 586.0
+scale = Vector2(0.25, 0.25)
+theme_override_constants/line_spacing = -12
+theme_override_font_sizes/font_size = 50
 text = "Be careful 
 of cactuses"
 horizontal_alignment = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="HUD" parent="." instance=ExtResource("2_hud")]
+[node name="Label6" type="Label" parent="Labels" unique_id=25598132]
+z_index = -100
+offset_left = 996.0
+offset_top = 258.0
+offset_right = 1641.0
+offset_bottom = 498.0
+scale = Vector2(0.25, 0.25)
+theme_override_constants/line_spacing = -12
+theme_override_font_sizes/font_size = 50
+text = "Completing the levels 
+quickly and catching 
+all the rats will
+yield the most points"
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
 
-[node name="ResultsScreen" parent="." instance=ExtResource("3_results")]
+[node name="HUD" parent="." unique_id=716651068 instance=ExtResource("2_hud")]
+
+[node name="ResultsScreen" parent="." unique_id=953825058 instance=ExtResource("3_results")]
 
 [editable path="seciton 1/Door/ExitDoor"]
 [editable path="seciton 1/Rbed3/BedHide"]
