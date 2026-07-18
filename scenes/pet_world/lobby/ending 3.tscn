@@ -86,6 +86,7 @@ scale = Vector2(0.63603, 0.6437301)
 texture = ExtResource("2_kh0bb")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=2131289763]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=907255528]
 position = Vector2(-123.86097, 51.89751)
@@ -124,12 +125,18 @@ layer_0/tile_data = PackedInt32Array(-196594, 2818048, 12, -393207, 65536, 0, -3
 [node name="Cat" parent="." unique_id=89740987 instance=ExtResource("5_vgpth")]
 position = Vector2(33, 84)
 
+[node name="BodyCollision" parent="Cat" index="0"]
+visible = false
+
 [node name="AnimatedSprite2D" parent="Cat" index="2"]
 position = Vector2(34.5, 76.5)
 animation = &"celebration"
 
 [node name="Snake" parent="." unique_id=2011487917 instance=ExtResource("6_fsodf")]
 position = Vector2(151, 91)
+
+[node name="BodyCollision" parent="Snake" index="0"]
+visible = false
 
 [node name="AnimatedSprite2D" parent="Snake" index="2"]
 position = Vector2(-189.29129, 69.34819)
