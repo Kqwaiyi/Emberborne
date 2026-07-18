@@ -93,7 +93,7 @@ func open_laptop(minigame_scene_path: String = "", fade_duration: float = 0.5) -
 	_is_animating = true
 
 	show()
-	get_tree().paused = true
+	### get_tree().paused = true
 	_set_hidden_state()
 
 	await _play_open_animation()
@@ -149,7 +149,7 @@ func close_laptop() -> void:
 	await _play_close_animation()
 
 	hide()
-	get_tree().paused = false
+	### get_tree().paused = false
 	clear_minigame()
 
 	# Notify all minigame time trackers to pause their timers when laptop closes

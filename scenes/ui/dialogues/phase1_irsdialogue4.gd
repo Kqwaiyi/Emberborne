@@ -9,6 +9,6 @@ static func get_lines() -> Array:
 		{
 			"speaker": "You",
 			"text": "[sz=14]Four months…[/sz]",
-			"portrait": "res://assets/sprites/portraits/portrait_template.png"
+			"portrait": "res://icons/you.png"
 		},
 	]

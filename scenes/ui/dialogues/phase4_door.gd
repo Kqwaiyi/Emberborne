@@ -9,11 +9,11 @@ static func get_lines() -> Array:
 		{
 			"speaker": "You",
 			"text": "cant believe its been >3 months<",
-			"portrait": "res://assets/sprites/portraits/portrait_template.png"
+			"portrait": "res://icons/you.png"
 		},
 		{
 			"speaker": "You",
 			"text": "hooh, lets get this over with",
-			"portrait": "res://assets/sprites/portraits/portrait_template.png"
+			"portrait": "res://icons/you.png"
 		}
 	]

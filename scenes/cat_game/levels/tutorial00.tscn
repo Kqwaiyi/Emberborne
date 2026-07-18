@@ -107,7 +107,6 @@ caught_penalty = 0
 maximum_time_bonus = 0
 time_penalty_per_second = 0.0
 total_mice = 2
-next_scene_path = "res://scenes/cat_game/levels/level_01.tscn"
 
 [node name="seciton 1" type="Node2D" parent="." unique_id=1230646003]
 position = Vector2(2960, 577)
@@ -2113,7 +2112,7 @@ metadata/_edit_group_ = true
 [node name="VisionCone" parent="characters/Dog02" index="2"]
 ray_count = 20
 
-[node name="Visual" parent="characters/Dog02" index="6"]
+[node name="Visual" parent="characters/Dog02" index="7"]
 sprite_frames = ExtResource("70_4kcis")
 animation = &"Bark"
 
@@ -2125,7 +2124,7 @@ metadata/_edit_group_ = true
 [node name="VisionCone" parent="characters/Dog01" index="2"]
 ray_count = 20
 
-[node name="Visual" parent="characters/Dog01" index="6"]
+[node name="Visual" parent="characters/Dog01" index="7"]
 sprite_frames = ExtResource("71_hq8tn")
 animation = &"Bark"
 

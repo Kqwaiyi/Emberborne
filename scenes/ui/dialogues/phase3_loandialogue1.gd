@@ -9,21 +9,21 @@ static func get_lines() -> Array:
 		{
 			"speaker": "You",
 			"text": "Five percent...",
-			"portrait": "res://assets/sprites/portraits/portrait_template.png"
+			"portrait": "res://icons/you.png"
 		},
 		{
 			"speaker": "You",
 			"text": "[i]The registration expires tonight.[/i]",
-			"portrait": "res://assets/sprites/portraits/portrait_template.png"
+			"portrait": "res://icons/you.png"
 		},
 		{
 			"speaker": "You",
 			"text": "…",
-			"portrait": "res://assets/sprites/portraits/portrait_template.png"
+			"portrait": "res://icons/you.png"
 		},
 		{
 			"speaker": "You",
 			"text": "[sh]I’ll find a way to repay it.[/sh]",
-			"portrait": "res://assets/sprites/portraits/portrait_template.png"
+			"portrait": "res://icons/you.png"
 		}
 	]

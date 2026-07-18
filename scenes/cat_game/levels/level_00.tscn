@@ -540,7 +540,7 @@ position = Vector2(388, 832)
 
 [node name="Characters" type="Node2D" parent="."]
 
-[node name="Cat" parent="Characters" instance=ExtResource("2_cat")]
+[node name="Cat" parent="." instance=ExtResource("2_cat")]
 position = Vector2(220, 820)
 
 [node name="Human01" parent="Characters" instance=ExtResource("3_human")]

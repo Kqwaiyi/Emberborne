@@ -9,46 +9,46 @@ static func get_lines() -> Array:
 		{
 			"speaker": "You",
 			"text": "[i]Finally…[/i]",
-			"portrait": "res://assets/sprites/portraits/portrait_template.png"
+			"portrait": "res://icons/you.png"
 		},
 		{
 			"speaker": "You",
 			"text": "Twelve hours reviewing rejected claims, and somehow [b]I’m[/b] the one getting blamed because the system [i]missed its quota[/i].",
-			"portrait": "res://assets/sprites/portraits/portrait_template.png"
+			"portrait": "res://icons/you.png"
 		},
 		{
 			"speaker": "You",
 			"text": "[sz=14][i]Like I make any of the decisions…[/i][/sz]",
-			"portrait": "res://assets/sprites/portraits/portrait_template.png"
+			"portrait": "res://icons/you.png"
 		},
 		{
 			"speaker": "You",
 			"text": "[b]Mom?[/b]",
-			"portrait": "res://assets/sprites/portraits/portrait_template.png"
+			"portrait": "res://icons/you.png"
 		},
 		{
 			"speaker": "You",
 			"text": "Her shoes are gone…",
-			"portrait": "res://assets/sprites/portraits/portrait_template.png"
+			"portrait": "res://icons/you.png"
 		},
 		{
 			"speaker": "You",
 			"text": "No message. No missed calls",
-			"portrait": "res://assets/sprites/portraits/portrait_template.png"
+			"portrait": "res://icons/you.png"
 		},
 		{
 			"speaker": "You",
 			"text": "What could have happened? I mean Maybe her brainchip lost connection Or her shift ran late. That happens.",
-			"portrait": "res://assets/sprites/portraits/portrait_template.png"
+			"portrait": "res://icons/you.png"
 		},
 		{
 			"speaker": "You",
 			"text": "[i]mom…[/i]",
-			"portrait": "res://assets/sprites/portraits/portrait_template.png"
+			"portrait": "res://icons/you.png"
 		},
 		{
 			"speaker": "You",
 			"text": "[sh]Something’s wrong.[/sh]",
-			"portrait": "res://assets/sprites/portraits/portrait_template.png"
+			"portrait": "res://icons/you.png"
 		}
 	]

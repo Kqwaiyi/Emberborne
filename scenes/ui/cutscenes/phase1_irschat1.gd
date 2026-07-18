@@ -4,7 +4,7 @@ extends RefCounted
 static func get_sender() -> Dictionary:
 	return {
 		"name": "Mom",
-		"profile_picture": "res://assets/sprites/messenger/pfp_placeholder.png"
+		"profile_picture": "res://icons/mom.jpg"
 	}
 
 static func get_lines() -> Array:
