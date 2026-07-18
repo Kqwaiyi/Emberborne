@@ -67,56 +67,56 @@ texture = ExtResource("2_g78u4")
 [sub_resource type="TileSet" id="TileSet_gedky"]
 sources/0 = SubResource("TileSetAtlasSource_mq7y1")
 
-[node name="Mainlobby" type="Node2D"]
+[node name="Mainlobby" type="Node2D" unique_id=1428965732]
 
-[node name="Sprite2D2" type="Sprite2D" parent="."]
+[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=537930130]
 position = Vector2(3.2789536, -2.8750076)
 scale = Vector2(0.63603, 0.6437301)
 texture = ExtResource("1_gedky")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=2131289763]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=907255528]
 position = Vector2(-123.86097, 51.89751)
 rotation = 1.0471976
 scale = Vector2(0.99999994, 0.99999994)
 shape = SubResource("RectangleShape2D_mq7y1")
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D" unique_id=1733683626]
 position = Vector2(140.85046, 47.758976)
 rotation = 2.0943952
 scale = Vector2(0.99999994, 0.99999994)
 shape = SubResource("RectangleShape2D_gedky")
 
-[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D" unique_id=2086848090]
 position = Vector2(-127.023315, 195.05833)
 rotation = 2.0943952
 scale = Vector2(0.99999994, 0.99999994)
 shape = SubResource("RectangleShape2D_gedky")
 
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D" unique_id=912279113]
 position = Vector2(142, 192)
 rotation = 4.1887903
 scale = Vector2(0.99999994, 0.99999994)
 shape = SubResource("RectangleShape2D_vop27")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2118839892]
 position = Vector2(0, -1)
 scale = Vector2(1.2958984, 1.2958984)
 texture = ExtResource("1_5yqg7")
 
-[node name="TileMap" type="TileMap" parent="."]
+[node name="TileMap" type="TileMap" parent="." unique_id=783578237]
 tile_set = SubResource("TileSet_gedky")
 format = 2
 layer_0/tile_data = PackedInt32Array(-196594, 2818048, 12, -393207, 65536, 0, -327697, 0, 14, -327680, 2359296, 34, -262141, 786432, 1, 65522, 0, 34, -131066, 3801088, 29, 458746, 1310720, 8, 327689, 1310720, 14, 131088, 524288, 18, -65525, 524288, 18, 655358, 1310720, 31, 524293, 1310720, 46, 327684, 524288, 14, -327692, 1966080, 24, -327694, 2097152, 24, -589820, 1835008, 12, 458750, 2097152, 2, 393214, 1703936, 42, -131079, 0, 18, -655363, 2752512, 19)
 
-[node name="Cat" parent="." instance=ExtResource("3_cat")]
+[node name="Cat" parent="." unique_id=89740987 instance=ExtResource("3_cat")]
 position = Vector2(-86, 91)
 
-[node name="Snake" parent="." instance=ExtResource("4_snake")]
+[node name="Snake" parent="." unique_id=2011487917 instance=ExtResource("4_snake")]
 position = Vector2(151, 91)
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="." unique_id=161345221]
 zoom = Vector2(1.2, 1.2)
 
-[node name="Shadow" type="Node2D" parent="."]
+[node name="Shadow" type="Node2D" parent="." unique_id=786709167]

@@ -1,0 +1,81 @@
+[gd_scene load_steps=5 format=3 uid="uid://hologram_door_01"]
+
+[ext_resource type="Script" path="res://scripts/scifi_home/interaction/hologram_door.gd" id="1_door"]
+
+[sub_resource type="CircleShape2D" id="CSh_zone"]
+radius = 44.0
+
+[sub_resource type="StyleBoxFlat" id="SBF_prompt"]
+bg_color = Color(0.02, 0.04, 0.10, 0.88)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.0, 0.85, 1.0, 0.5)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="SBF_key"]
+bg_color = Color(0.0, 0.85, 1.0, 0.12)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 3
+border_color = Color(0.0, 0.85, 1.0, 0.9)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[node name="HologramDoor" type="Node2D"]
+script = ExtResource("1_door")
+
+[node name="Zone" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="ZoneShape" type="CollisionShape2D" parent="Zone"]
+shape = SubResource("CSh_zone")
+
+[node name="Prompt" type="CanvasLayer" parent="."]
+layer = 5
+visible = false
+
+[node name="PromptRoot" type="Control" parent="Prompt"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="PromptBox" type="PanelContainer" parent="Prompt/PromptRoot"]
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = -130.0
+offset_right = 130.0
+offset_top = -95.0
+offset_bottom = -48.0
+theme_override_styles/panel = SubResource("SBF_prompt")
+
+[node name="HBox" type="HBoxContainer" parent="Prompt/PromptRoot/PromptBox"]
+theme_override_constants/separation = 10
+
+[node name="KeyBox" type="PanelContainer" parent="Prompt/PromptRoot/PromptBox/HBox"]
+custom_minimum_size = Vector2(34.0, 34.0)
+theme_override_styles/panel = SubResource("SBF_key")
+
+[node name="KeyLabel" type="Label" parent="Prompt/PromptRoot/PromptBox/HBox/KeyBox"]
+layout_mode = 2
+text = "E"
+horizontal_alignment = 1
+vertical_alignment = 1
+theme_override_colors/font_color = Color(0.0, 0.9, 1.0, 1.0)
+theme_override_font_sizes/font_size = 17
+
+[node name="PromptLabel" type="Label" parent="Prompt/PromptRoot/PromptBox/HBox"]
+layout_mode = 2
+text = "  Interact"
+vertical_alignment = 1
+theme_override_colors/font_color = Color(0.82, 0.95, 1.0, 1.0)
+theme_override_font_sizes/font_size = 15
