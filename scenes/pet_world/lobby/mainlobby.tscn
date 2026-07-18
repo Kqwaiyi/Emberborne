@@ -7,6 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://bjfakway4r2wh" path="res://scenes/pet_world/characters/snake.tscn" id="4_snake"]
 [ext_resource type="Script" uid="uid://ulrbmlcttp33" path="res://scripts/pet_world/lobby/lobby_manager.gd" id="5_lobby"]
 [ext_resource type="PackedScene" path="res://scenes/pet_world/lobby/pet_info_panel.tscn" id="6_panel"]
+[ext_resource type="AudioStream" path="res://assets/music/pet_world/cat_pet.mp3" id="7_catpet"]
+[ext_resource type="AudioStream" path="res://assets/music/pet_world/snake hiss.mp3" id="8_snakehiss"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mq7y1"]
 size = Vector2(20, 305.48358)
@@ -125,3 +127,11 @@ zoom = Vector2(1.2, 1.2)
 [node name="Shadow" type="Node2D" parent="." unique_id=786709167]
 
 [node name="PetInfoPanel" parent="." unique_id=1655046249 instance=ExtResource("6_panel")]
+
+[node name="CatPetAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_catpet")
+
+[node name="SnakeHissAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_snakehiss")
+volume_db = -15.0
+pitch_scale = 0.6

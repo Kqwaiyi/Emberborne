@@ -13,6 +13,7 @@
 [ext_resource type="SpriteFrames" uid="uid://brhcc85u8d7mv" path="res://scenes/cat_game/characters/human_variants/body.tres" id="12_bsivt"]
 [ext_resource type="Texture2D" uid="uid://d30mp6deypys" path="res://assets/sprites/humans/hair1.png" id="13_50nkd"]
 [ext_resource type="Script" uid="uid://c7oyd3rhklkqy" path="res://scripts/scifi_home/character/player.gd" id="13_player"]
+[ext_resource type="AudioStream" path="res://assets/music/scifi-world/human step.mp3" id="14_step"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_541lj"]
 size = Vector2(33, 40)
@@ -321,7 +322,7 @@ animation = &"walk_right"
 
 [node name="LayerOutfit" type="AnimatedSprite2D" parent="Visual" unique_id=1864246687]
 self_modulate = Color(0.29997092, 0.4813339, 0.6898417, 1)
-sprite_frames = SubResource("SpriteFrames_kvi8v")
+sprite_frames = ExtResource("5_2qb4s")
 animation = &"walk_right"
 
 [node name="LayerHair" type="AnimatedSprite2D" parent="Visual" unique_id=1209824945]
@@ -333,3 +334,6 @@ animation = &"walk_right"
 visible = false
 sprite_frames = ExtResource("10_0bi4f")
 animation = &"walk_right"
+
+[node name="StepAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_step")

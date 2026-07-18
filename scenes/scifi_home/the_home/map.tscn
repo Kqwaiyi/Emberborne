@@ -1,6 +1,5 @@
 [gd_scene format=4 uid="uid://2ubyf38pmh2m"]
 
-[ext_resource type="Script" path="res://scripts/scifi_home/map.gd" id="map_script"]
 [ext_resource type="Texture2D" uid="uid://crrrlx2ydg57h" path="res://assets/scifi_home/WILL USE !/apartmentexteriorA5b.png" id="1_k7ymq"]
 [ext_resource type="Texture2D" uid="uid://dpetpm0td6kor" path="res://assets/scifi_home/WILL USE !/apartmentexteriorBprops.png" id="2_f1tkd"]
 [ext_resource type="Texture2D" uid="uid://vajrmoxqmihu" path="res://assets/scifi_home/WILL USE !/apartmentexteriorEalphanumerics.png" id="3_60mna"]
@@ -15,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://p3iq8c44n40l" path="res://assets/sprites/humans/naked human.png" id="11_syddv"]
 [ext_resource type="Texture2D" uid="uid://d30mp6deypys" path="res://assets/sprites/humans/hair1.png" id="12_2u0fs"]
 [ext_resource type="PackedScene" path="res://scenes/scifi_home/interaction/hologram_door.tscn" id="12_holo"]
+[ext_resource type="Script" uid="uid://b4msr7je2nlbf" path="res://scripts/scifi_home/map.gd" id="map_script"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mdo6h"]
 texture = ExtResource("1_k7ymq")
@@ -2994,7 +2994,7 @@ tile_set = SubResource("TileSet_fm8fw")
 
 [node name="things2" type="TileMapLayer" parent="TileMap" unique_id=1353031783]
 use_parent_material = true
-tile_map_data = PackedByteArray("AAASAOz/AQABAAkAAAAYAOz/AQABAAkAAADq/w4ABAAPAAcAAADq/xAABAAOAAcAAADr/xAABAAOAAcAAADs/w4ABAAOAAYAAADs/xEABAAPAAYAAADt/xAABAAOAAYAAADx/w4ABAAEAAUAAADz/w4AAQABAAkAAAD2/wQABAAAAAUAAAD3/wUABAAAAAUAAAD6/wAABAAEAAYAAAD6/wEABAAFAAYAAAD6/wMABAAEAAcAAAD6/wQABAAFAAcAAAD8/wUABAACAAUAAADt/xUABgAEAAAAAADt/xgABgAEAAEAAADx/xMABgAHAAAAAADx/xYABgAHAAEAAADv/xoABgALAAAAAADv/x0ABgALAAEAAADv/yAABgALAAIAAADy/xoABgAMAAAAAADy/x0ABgAMAAEAAADy/yAABgAMAAIAAAA=")
+tile_map_data = PackedByteArray("AADq/w4ABAAPAAcAAADq/xAABAAOAAcAAADr/xAABAAOAAcAAADs/w4ABAAOAAYAAADs/xEABAAPAAYAAADt/xAABAAOAAYAAADx/w4ABAAEAAUAAADz/w4AAQABAAkAAAD2/wQABAAAAAUAAAD3/wUABAAAAAUAAAD6/wAABAAEAAYAAAD6/wEABAAFAAYAAAD6/wMABAAEAAcAAAD6/wQABAAFAAcAAAD8/wUABAACAAUAAADt/xUABgAEAAAAAADt/xgABgAEAAEAAADx/xMABgAHAAAAAADx/xYABgAHAAEAAADv/xoABgALAAAAAADv/x0ABgALAAEAAADv/yAABgALAAIAAADy/xoABgAMAAAAAADy/x0ABgAMAAEAAADy/yAABgAMAAIAAAAUAOv/AQABAAkAAAAaAOv/AQABAAkAAAA=")
 tile_set = SubResource("TileSet_fm8fw")
 
 [node name="Player" parent="." unique_id=568852055 instance=ExtResource("10_char")]

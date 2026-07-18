@@ -1,6 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://hud_scene"]
 
 [ext_resource type="Script" path="res://scripts/cat_game/ui/hud.gd" id="1_hud"]
+[ext_resource type="AudioStream" path="res://assets/music/cat_game/finish level.mp3" id="sfx_finish"]
 [ext_resource type="Texture2D" path="res://assets/ui/Loot/cat.png" id="2_cat"]
 [ext_resource type="Texture2D" path="res://assets/ui/Loot/Clock.png" id="3_clock"]
 [ext_resource type="Texture2D" path="res://assets/ui/Loot/rat.png" id="4_rat"]
@@ -232,3 +233,7 @@ theme_override_constants/shadow_offset_y = 2
 [node name="MessageTimer" type="Timer" parent="."]
 one_shot = true
 wait_time = 2.5
+
+[node name="FinishAudio" type="AudioStreamPlayer" parent="."]
+process_mode = 3
+stream = ExtResource("sfx_finish")

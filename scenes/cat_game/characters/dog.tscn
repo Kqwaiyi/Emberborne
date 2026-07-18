@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://dc83e8ygmgd17" path="res://scripts/cat_game/environment/vision_cone.gd" id="2_cone"]
 [ext_resource type="SpriteFrames" uid="uid://bfmuwocr81ve7" path="res://scenes/cat_game/characters/dog_variants/dog5.tres" id="3_f0e8s"]
 [ext_resource type="Script" uid="uid://dyabx23k351gr" path="res://scripts/cat_game/characters/shadow.gd" id="99_shadow"]
+[ext_resource type="AudioStream" path="res://assets/music/cat_game/dog_bark.mp3" id="sfx_bark"]
 [ext_resource type="Script" uid="uid://dskuwaluiv83h" path="res://scripts/cat_game/characters/dog_animator.gd" id="4_anim"]
 
 [sub_resource type="CircleShape2D" id="1_body"]
@@ -48,6 +49,9 @@ offset_bottom = -52.0
 theme_override_colors/font_color = Color(1, 0.85, 0, 1)
 theme_override_font_sizes/font_size = 28
 text = "!"
+
+[node name="DetectionAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("sfx_bark")
 
 [node name="Visual" type="AnimatedSprite2D" parent="."]
 position = Vector2(1, -8)

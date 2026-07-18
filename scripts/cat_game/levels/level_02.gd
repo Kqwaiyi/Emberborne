@@ -94,6 +94,8 @@ func _on_level_completed() -> void:
 	if not _level_active:
 		return
 	_level_active = false
+	if _hud:
+		_hud.play_finish_sound()
 	_cat.disable_input()
 	for enemy in get_tree().get_nodes_in_group("enemy"):
 		if enemy.has_method("disable"):

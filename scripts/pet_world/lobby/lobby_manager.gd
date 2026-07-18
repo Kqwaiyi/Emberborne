@@ -25,9 +25,11 @@ const PET_DATA := {
 
 const CLICK_RADIUS := 28.0
 
-@onready var _cat   : Node = $Cat
-@onready var _snake : Node = $Snake
-@onready var _panel : PetInfoPanel = $PetInfoPanel
+@onready var _cat             : Node              = $Cat
+@onready var _snake           : Node              = $Snake
+@onready var _panel           : PetInfoPanel      = $PetInfoPanel
+@onready var _cat_pet_audio   : AudioStreamPlayer = $CatPetAudio
+@onready var _snake_hiss_audio: AudioStreamPlayer = $SnakeHissAudio
 
 var _selected_key    := ""
 var _selected_sprite : AnimatedSprite2D = null
@@ -102,3 +104,6 @@ func _on_pet_action(pet_node: Node) -> void:
 	var heart := FloatingHeart.new()
 	heart.position = pet_node.global_position + Vector2(0.0, -32.0)
 	add_child(heart)
+	match _selected_key:
+		"cat":   _cat_pet_audio.play()
+		"snake": _snake_hiss_audio.play()

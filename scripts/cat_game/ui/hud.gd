@@ -18,8 +18,9 @@ const _TOPS: Array[Texture2D] = [
 @onready var _anger_face:    TextureRect = $TopRightPanel/VBox/AngerHBox/FaceBox/FaceIcon
 @onready var _anger_top:     TextureRect = $TopRightPanel/VBox/AngerHBox/FaceBox/TopIcon
 @onready var _info_line:     Label       = $TopRightPanel/VBox/InfoLine
-@onready var _message_label: Label       = $MessageLabel
-@onready var _message_timer: Timer       = $MessageTimer
+@onready var _message_label:  Label              = $MessageLabel
+@onready var _message_timer:  Timer              = $MessageTimer
+@onready var _finish_audio:   AudioStreamPlayer  = $FinishAudio
 
 var _shake_tween:         Tween = null
 var _msg_base_offset_left: float = 0.0
@@ -49,6 +50,9 @@ func set_level_mice(count: int) -> void:
 
 func update_score(_v: int) -> void:        pass
 func update_caught_count(_v: int) -> void: pass
+
+func play_finish_sound() -> void:
+	_finish_audio.play()
 
 func show_message(text: String, color: Color = Color(1, 1, 0.8, 1), size: int = 22, duration: float = 2.5, shake: float = 0.0) -> void:
 	_message_label.text = text

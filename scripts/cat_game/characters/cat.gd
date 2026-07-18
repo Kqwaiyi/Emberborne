@@ -36,6 +36,12 @@ var _decel: float = 0.0
 @onready var _visual: Node2D = $Visual
 @onready var _catch_area: Area2D = $MouseCatchArea
 @onready var _caught_sound: AudioStreamPlayer2D = $CaughtSound
+@onready var _cat_noise_audio: AudioStreamPlayer = $CatNoiseAudio
+@onready var _step_audio:        AudioStreamPlayer = $StepAudio
+@onready var _mouse_catch_audio: AudioStreamPlayer = $MouseCatchAudio
+
+var _cat_noise_timer: float = 10.0
+var _step_timer:      float = 0.0
 
 func _ready() -> void:
 	add_to_group("player")
@@ -46,6 +52,14 @@ func _ready() -> void:
 
 	_catch_area.body_entered.connect(_on_catch_area_body_entered)
 
+func _process(delta: float) -> void:
+	if not _input_enabled:
+		return
+	_cat_noise_timer -= delta
+	if _cat_noise_timer <= 0.0:
+		_cat_noise_timer = 10.0
+		_cat_noise_audio.play()
+
 func _physics_process(delta: float) -> void:
 	_tick_timers(delta)
 	if _input_enabled:
@@ -54,6 +68,7 @@ func _physics_process(delta: float) -> void:
 		# Slide to a stop when input is disabled (level complete)
 		velocity = velocity.move_toward(Vector2.ZERO, _decel * delta)
 	move_and_slide()
+	_tick_steps(delta)
 
 # ── Movement ──────────────────────────────────────────────────────────────────
 func _apply_movement(delta: float) -> void:
@@ -78,6 +93,16 @@ func _apply_movement(delta: float) -> void:
 	# cat_visual.gd handles rotation (placeholder) or animation (sprite mode).
 	if _visual.has_method("update_direction"):
 		_visual.call("update_direction", velocity)
+
+# ── Step sound ────────────────────────────────────────────────────────────────
+func _tick_steps(delta: float) -> void:
+	if velocity.length() > 20.0:
+		_step_timer -= delta
+		if _step_timer <= 0.0:
+			_step_audio.play()
+			_step_timer = 0.35
+	else:
+		_step_timer = 0.0
 
 # ── Timer ticks ───────────────────────────────────────────────────────────────
 func _tick_timers(delta: float) -> void:
@@ -131,6 +156,7 @@ func _on_catch_area_body_entered(body: Node) -> void:
 		var mouse_node := body as Mouse
 		if mouse_node != null and mouse_node.can_be_caught:
 			var pts: int = mouse_node.catch()
+			_mouse_catch_audio.play()
 			mouse_caught.emit(pts)
 
 # ── Outline drawing (placeholder — replace with shader later) ─────────────────

@@ -1,6 +1,7 @@
 [gd_scene load_steps=15 format=3 uid="uid://dvwclk57xvglw"]
 
 [ext_resource type="Script" uid="uid://djs3bfof0ptli" path="res://scripts/cat_game/characters/human.gd" id="1_human"]
+[ext_resource type="AudioStream" path="res://assets/music/cat_game/human angry.mp3" id="sfx_angry"]
 [ext_resource type="Script" uid="uid://dc83e8ygmgd17" path="res://scripts/cat_game/environment/vision_cone.gd" id="2_cone"]
 [ext_resource type="Script" uid="uid://oclwxt2xw2qs" path="res://scripts/cat_game/characters/layered_character.gd" id="3_pkgn7"]
 [ext_resource type="SpriteFrames" uid="uid://c0xdhf3pdll40" path="res://scenes/cat_game/characters/human_variants/outfit1.tres" id="4_4c5et"]
@@ -70,6 +71,9 @@ animation = &"walk_right"
 visible = false
 sprite_frames = ExtResource("9_x6irx")
 animation = &"walk_right"
+
+[node name="DetectionAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("sfx_angry")
 
 [node name="AlertIcon" type="Label" parent="."]
 visible = false

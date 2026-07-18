@@ -218,6 +218,9 @@ func _enter_alert() -> void:
 	detection_started.emit()
 	_set_visual_chasing(true)
 	_set_alert_icon(true)
+	var det := get_node_or_null("DetectionAudio")
+	if det:
+		det.play()
 
 func _enter_chase() -> void:
 	_set_alert_icon(false)

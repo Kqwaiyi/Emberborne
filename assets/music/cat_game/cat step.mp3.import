@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dbpf55ij6lerf"
+path="res://.godot/imported/cat step.mp3-55ca256e6cbd59a9473eb66684faf89a.mp3str"
+
+[deps]
+
+source_file="res://assets/music/cat_game/cat step.mp3"
+dest_files=["res://.godot/imported/cat step.mp3-55ca256e6cbd59a9473eb66684faf89a.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
