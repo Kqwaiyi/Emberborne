@@ -125,7 +125,7 @@ func _animate() -> void:
 
 
 func _apply_color() -> void:
-	if _total >= 10000:
+	if _total >= 15000:
 		_rainbow_active = true
 		return
 

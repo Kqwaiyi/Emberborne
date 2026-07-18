@@ -107,8 +107,8 @@ columns = 2
 
 [node name="AppButton1" parent="AppGrid" unique_id=126482440 instance=ExtResource("2_button")]
 layout_mode = 2
-app_name = "MODULE 01"
-target_scene = "res://scenes/ui/DesktopScreen.tscn"
+app_name = "PET HOME"
+target_scene = "res://scenes/pet_world/lobby/mainlobby.tscn"
 icon_texture = ExtResource("3_icon")
 color_preset = "crimson"
 

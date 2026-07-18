@@ -1,11 +1,11 @@
 [gd_scene format=3 uid="uid://c4xlbbkqbosit"]
 
-[ext_resource type="Script" path="res://scenes/core/exposition.gd" id="1_exposition"]
+[ext_resource type="Script" uid="uid://cy14fbdhcemty" path="res://scenes/core/exposition.gd" id="1_exposition"]
 
-[node name="Exposition" type="Node2D"]
+[node name="Exposition" type="Node2D" unique_id=1425705759]
 script = ExtResource("1_exposition")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1176176867]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0

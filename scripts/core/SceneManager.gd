@@ -70,6 +70,7 @@ func _switch_scene():
 	var packed_scene = ResourceLoader.load_threaded_get(_next_scene_path)
 	if packed_scene:
 		get_tree().change_scene_to_packed(packed_scene)
+		get_tree().paused = false
 		scene_loaded.emit()
 	else:
 		push_error("Loaded scene is null: " + _next_scene_path)

@@ -1,5 +1,7 @@
 extends Node2D
 
+signal scene_opened
+
 const FloatingHeart = preload("res://scripts/pet_world/lobby/floating_heart.gd")
 
 const PET_DATA := {
@@ -37,6 +39,9 @@ var _glow_sprite     : AnimatedSprite2D = null
 var _pulse_t         := 0.0
 
 func _ready() -> void:
+	if GameGlobal and GameGlobal.has_method("_on_lobby_scene_opened"):
+		scene_opened.connect(GameGlobal._on_lobby_scene_opened)
+	scene_opened.emit()
 	MusicManager.play_music("pet_world")
 	_panel.pet_action_requested.connect(_on_pet_action)
 
