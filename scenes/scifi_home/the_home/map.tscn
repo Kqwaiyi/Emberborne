@@ -3107,4 +3107,6 @@ next_scene_path = "res://scenes/core/TestScene.tscn"
 
 [node name="LaptopUI" parent="." unique_id=888269756 instance=ExtResource("13_laptop")]
 
+[node name="Node2D" type="Node2D" parent="." unique_id=1491471242]
+
 [editable path="Player"]
