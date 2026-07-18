@@ -1,6 +1,7 @@
 [gd_scene load_steps=0 format=3 uid="uid://d2yfl8j00hj4"]
 
 [ext_resource type="Script" uid="uid://bxnwe5ftskxog" path="res://scripts/ui/DialogueOverlay.gd" id="1_overlay"]
+[ext_resource type="AudioStream" uid="uid://yxqvcmgvqjs" path="res://assets/music/text_sound.mp3" id="2_audio"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_panel"]
 bg_color = Color(0.1, 0.1, 0.15, 0.92)
@@ -142,3 +143,6 @@ theme_override_colors/font_focus_color = Color(0.5, 0.95, 1, 1)
 theme_override_font_sizes/font_size = 14
 text = "SKIP >>"
 flat = true
+
+[node name="TypewriterSoundPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_audio")

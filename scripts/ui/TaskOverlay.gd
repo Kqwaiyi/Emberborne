@@ -5,10 +5,17 @@ extends CanvasLayer
 @onready var description_label: RichTextLabel = $PopupBox/MarginContainer/VBoxContainer/DescriptionLabel
 @onready var advance_indicator: Label = $PopupBox/MarginContainer/VBoxContainer/AdvanceIndicator
 @onready var status_pulse: ColorRect = $PopupBox/MarginContainer/VBoxContainer/HBoxHeader/StatusPulse
-@onready var audio_player: AudioStreamPlayer = $AudioStreamPlayer
+@onready var typewriter_audio: AudioStreamPlayer = $TypewriterAudio
+@onready var open_audio: AudioStreamPlayer = $OpenAudio
+@onready var close_audio: AudioStreamPlayer = $CloseAudio
 @onready var corner_decorations: Control = $PopupBox/CornerDecorations
 
+const STREAM_TEXT = preload("res://assets/music/text_sound.mp3")
+const STREAM_OPEN = preload("res://assets/sounds/laptop_ui/laptop_ui_open.mp3")
+const STREAM_CLOSE = preload("res://assets/music/quest.mp3")
+
 var _typewriter_tween: Tween = null
+var _typewriter_audio_tween: Tween = null
 var _indicator_tween: Tween = null
 var _pulse_tween: Tween = null
 var _is_typewriter_playing: bool = false
@@ -29,6 +36,11 @@ func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	popup_box.hide()
 	advance_indicator.hide()
+	
+	typewriter_audio.stream = STREAM_TEXT
+	open_audio.stream = STREAM_OPEN
+	close_audio.stream = STREAM_CLOSE
+	close_audio.volume_db = -15.0
 	
 	_regex_sz = RegEx.new()
 	_regex_sz.compile("\\[sz=(.*?)\\](.*?)\\[\\/sz\\]")
@@ -64,6 +76,11 @@ func display_task(title: String, description: String) -> void:
 
 	_is_typewriter_playing = true
 
+	if _typewriter_audio_tween and _typewriter_audio_tween.is_valid():
+		_typewriter_audio_tween.kill()
+	typewriter_audio.volume_db = 0.0
+	typewriter_audio.play()
+
 	# Kill any previous typewriter tween
 	if _typewriter_tween and _typewriter_tween.is_valid():
 		_typewriter_tween.kill()
@@ -74,10 +91,19 @@ func display_task(title: String, description: String) -> void:
 	_typewriter_tween.tween_property(description_label, "visible_characters", total_chars, duration)
 	_typewriter_tween.finished.connect(_on_typewriter_finished)
 
+func _stop_typewriter_audio() -> void:
+	if typewriter_audio.playing:
+		if _typewriter_audio_tween and _typewriter_audio_tween.is_valid():
+			_typewriter_audio_tween.kill()
+		_typewriter_audio_tween = create_tween()
+		_typewriter_audio_tween.tween_property(typewriter_audio, "volume_db", -80.0, 0.2)
+		_typewriter_audio_tween.tween_callback(func(): typewriter_audio.stop())
+
 func complete_typewriter() -> void:
 	if _typewriter_tween and _typewriter_tween.is_valid():
 		_typewriter_tween.kill()
 	description_label.visible_characters = -1
+	_stop_typewriter_audio()
 	
 	_decrypt_timer.stop()
 	title_label.text = _title_target
@@ -92,6 +118,12 @@ func is_typewriter_playing() -> bool:
 func show_box() -> void:
 	popup_box.modulate.a = 0.0
 	popup_box.pivot_offset = popup_box.size / 2.0
+	
+	if open_audio.stream:
+		var stream_len = open_audio.stream.get_length()
+		if stream_len > 0.0:
+			open_audio.pitch_scale = stream_len / 0.35
+		open_audio.play()
 	
 	# Stage 1: Thin horizontal line
 	popup_box.scale = Vector2(0.0, 0.02)
@@ -108,6 +140,12 @@ func show_box() -> void:
 	tween.tween_callback(_animate_corners_in).set_delay(0.1)
 
 func hide_box() -> void:
+	if close_audio.stream:
+		var stream_len = close_audio.stream.get_length()
+		if stream_len > 0.0:
+			close_audio.pitch_scale = stream_len / 0.2
+		close_audio.play()
+
 	_animate_corners_out()
 	popup_box.pivot_offset = popup_box.size / 2.0
 	var tween = create_tween()
@@ -118,6 +156,7 @@ func hide_box() -> void:
 
 func _on_typewriter_finished() -> void:
 	_is_typewriter_playing = false
+	_stop_typewriter_audio()
 	advance_indicator.show()
 	_start_indicator_animation()
 

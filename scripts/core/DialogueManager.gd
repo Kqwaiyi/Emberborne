@@ -14,10 +14,20 @@ var _overlay: Node = null
 var _blocked_viewport_containers: Array = []
 var _current_dialogue_path: String = ""
 
+var action_audio: AudioStreamPlayer
+
 const OVERLAY_SCENE_PATH = "res://scenes/ui/DialogueOverlay.tscn"
 
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
+	
+	action_audio = AudioStreamPlayer.new()
+	action_audio.stream = load("res://assets/music/space_notification.mp3")
+	add_child(action_audio)
+
+func _play_action_sound() -> void:
+	if action_audio:
+		action_audio.play()
 
 ## Uses _input() (not _unhandled_input) so events are intercepted BEFORE they
 ## reach any game node or SubViewportContainer in the tree.
@@ -28,12 +38,14 @@ func _input(event: InputEvent) -> void:
 	# Handle Skip Button click manually because we block all input
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 		if _overlay and _overlay.has_method("is_skip_button_hovered") and _overlay.is_skip_button_hovered():
+			_play_action_sound()
 			close_dialogue()
 			get_viewport().set_input_as_handled()
 			return
 
 	# Handle the dialogue advance action
 	if event.is_action_pressed("dialogue_advance"):
+		_play_action_sound()
 		if _overlay.is_typewriter_playing():
 			_overlay.complete_typewriter()
 		else:

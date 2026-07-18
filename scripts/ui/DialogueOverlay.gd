@@ -7,9 +7,11 @@ extends CanvasLayer
 @onready var dialogue_label: RichTextLabel = $DialogueBox/MarginContainer/HBoxContainer/VBoxContainer/DialogueLabel
 @onready var advance_indicator: Label = $DialogueBox/MarginContainer/HBoxContainer/VBoxContainer/AdvanceIndicator
 @onready var skip_button: Button = $DialogueBox/MarginContainer/SkipButton
+@onready var typewriter_audio: AudioStreamPlayer = $TypewriterSoundPlayer
 
 var _typewriter_tween: Tween = null
 var _indicator_tween: Tween = null
+var typewriter_audio_fade_tween: Tween = null
 var _is_typewriter_playing: bool = false
 var _regex_sz: RegEx = null
 var _regex_sh: RegEx = null
@@ -76,6 +78,8 @@ func display_line(speaker: String, text: String, portrait_path: String = "") -> 
 	_typewriter_tween = create_tween()
 	_typewriter_tween.tween_property(dialogue_label, "visible_characters", total_chars, duration)
 	_typewriter_tween.finished.connect(_on_typewriter_finished)
+	
+	_start_typewriter_sound()
 
 ## Instantly completes the typewriter animation, showing all text.
 func complete_typewriter() -> void:
@@ -83,6 +87,7 @@ func complete_typewriter() -> void:
 		_typewriter_tween.kill()
 	dialogue_label.visible_characters = -1
 	_is_typewriter_playing = false
+	_stop_typewriter_sound()
 	advance_indicator.show()
 	_start_indicator_animation()
 
@@ -120,6 +125,7 @@ func is_skip_button_hovered() -> bool:
 
 func _on_typewriter_finished() -> void:
 	_is_typewriter_playing = false
+	_stop_typewriter_sound()
 	advance_indicator.show()
 	_start_indicator_animation()
 
@@ -133,3 +139,18 @@ func _stop_indicator_animation() -> void:
 	if _indicator_tween and _indicator_tween.is_valid():
 		_indicator_tween.kill()
 	advance_indicator.modulate.a = 1.0
+
+func _start_typewriter_sound() -> void:
+	if typewriter_audio_fade_tween and typewriter_audio_fade_tween.is_valid():
+		typewriter_audio_fade_tween.kill()
+	typewriter_audio.volume_db = 0.0
+	if not typewriter_audio.playing:
+		typewriter_audio.play()
+
+func _stop_typewriter_sound() -> void:
+	if typewriter_audio.playing:
+		if typewriter_audio_fade_tween and typewriter_audio_fade_tween.is_valid():
+			typewriter_audio_fade_tween.kill()
+		typewriter_audio_fade_tween = create_tween()
+		typewriter_audio_fade_tween.tween_property(typewriter_audio, "volume_db", -60.0, 0.15).set_trans(Tween.TRANS_SINE)
+		typewriter_audio_fade_tween.tween_callback(typewriter_audio.stop)
