@@ -1,4 +1,4 @@
-[gd_resource type="SpriteFrames" load_steps=18 format=3 uid="uid://pffadsbf5sqd"]
+[gd_resource type="SpriteFrames" format=3 uid="uid://pffadsbf5sqd"]
 
 [ext_resource type="Texture2D" uid="uid://takvunv85agy" path="res://assets/sprites/humans/hat1.png" id="1_ppwrc"]
 

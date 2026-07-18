@@ -389,9 +389,9 @@ func _build_ui() -> void:
 	
 	var list_back = TextureButton.new()
 	list_back.custom_minimum_size = Vector2(32, 32)
-	list_back.stretch_mode = TextureButton.STRETCH_KEEP_ASPECT_CENTERED
+	list_back.stretch_mode = TextureButton.STRETCH_KEEP_CENTERED
 	list_back.modulate = COLOR_HEADER_TEXT
-	var list_back_icon_path = "res://assets/sprites/messenger/icon_back.png"
+	var list_back_icon_path = "res://assets/sprites/messenger/icon_back.svg"
 	if ResourceLoader.exists(list_back_icon_path):
 		list_back.texture_normal = load(list_back_icon_path)
 		

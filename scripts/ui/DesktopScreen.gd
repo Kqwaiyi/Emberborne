@@ -110,6 +110,13 @@ func _process(delta):
 	background.position = background.position.lerp(target_bg_pos, 5.0 * delta)
 	app_grid.position = app_grid.position.lerp(target_grid_pos, 8.0 * delta)
 
+func _input(event: InputEvent) -> void:
+	if event is InputEventKey and event.pressed and not event.echo:
+		if event.keycode == KEY_T:
+			var messenger = load("res://scripts/ui/CutsceneMessenger.gd")
+			if messenger:
+				messenger.queue_cutscene("voss_2")
+
 func _update_clock():
 	var time_dict = Time.get_time_dict_from_system()
 	var hour = time_dict.hour

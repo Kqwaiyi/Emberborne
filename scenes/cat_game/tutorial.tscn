@@ -1,4 +1,4 @@
-[gd_scene load_steps=131 format=3 uid="uid://dni083dipo2fr"]
+[gd_scene format=3 uid="uid://dni083dipo2fr"]
 
 [ext_resource type="Script" uid="uid://bsoa08gnlhoau" path="res://scripts/cat_game/levels/level_02.gd" id="1_ueaqg"]
 [ext_resource type="Texture2D" uid="uid://c6hf42lml3pkx" path="res://assets/sprites/environment/wall and floor tiles/tile_2_8.png" id="2_8ewx3"]

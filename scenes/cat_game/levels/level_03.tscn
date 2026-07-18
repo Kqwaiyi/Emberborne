@@ -1,4 +1,4 @@
-[gd_scene load_steps=156 format=3 uid="uid://dpts701whw3s"]
+[gd_scene format=3 uid="uid://dpts701whw3s"]
 
 [ext_resource type="Script" uid="uid://bsoa08gnlhoau" path="res://scripts/cat_game/levels/level_02.gd" id="1_knpcn"]
 [ext_resource type="Texture2D" uid="uid://u0g7oy8asqi8" path="res://assets/sprites/environment/door_closed.png" id="3_od75w"]

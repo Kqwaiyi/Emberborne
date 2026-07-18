@@ -1,4 +1,4 @@
-[gd_resource type="SpriteFrames" load_steps=18 format=3 uid="uid://bir3fr7jt7xx0"]
+[gd_resource type="SpriteFrames" format=3 uid="uid://bir3fr7jt7xx0"]
 
 [ext_resource type="Texture2D" uid="uid://dxtalfnwowcj3" path="res://assets/sprites/humans/outfit1.png" id="1_bct04"]
 

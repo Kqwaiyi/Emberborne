@@ -1,4 +1,4 @@
-[gd_resource type="SpriteFrames" load_steps=18 format=3 uid="uid://brhcc85u8d7mv"]
+[gd_resource type="SpriteFrames" format=3 uid="uid://brhcc85u8d7mv"]
 
 [ext_resource type="Texture2D" uid="uid://p3iq8c44n40l" path="res://assets/sprites/humans/naked human.png" id="1_2cp82"]
 

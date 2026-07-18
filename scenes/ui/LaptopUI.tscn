@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://2nsxw3i5jl14" path="res://scripts/ui/LaptopUI.gd" id="1_laptop"]
 [ext_resource type="Shader" uid="uid://dhp3x846hdr8j" path="res://assets/shaders/hologram_scanlines.gdshader" id="2_scanlines"]
 [ext_resource type="Shader" uid="uid://5ty4sautt5bw" path="res://assets/shaders/hologram_glitch.gdshader" id="3_glitch"]
-[ext_resource type="Script" path="res://scripts/ui/HoloCloseButton.gd" id="4_holoclose"]
+[ext_resource type="Script" uid="uid://c60iow5tmrriw" path="res://scripts/ui/HoloCloseButton.gd" id="4_holoclose"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_panel"]
 bg_color = Color(0.02, 0.05, 0.08, 0.85)
@@ -28,42 +28,6 @@ shader_parameter/scroll_speed = 15.0
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_glitch"]
 shader = ExtResource("3_glitch")
 shader_parameter/intensity = 0.0
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_btn_normal"]
-bg_color = Color(0.01, 0.03, 0.06, 0.9)
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-border_color = Color(0, 0.9, 1, 0.3)
-corner_radius_top_left = 2
-corner_radius_top_right = 2
-corner_radius_bottom_right = 2
-corner_radius_bottom_left = 2
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_btn_pressed"]
-bg_color = Color(0, 0.25, 0.35, 1)
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-border_color = Color(0, 1, 1, 0.9)
-corner_radius_top_left = 2
-corner_radius_top_right = 2
-corner_radius_bottom_right = 2
-corner_radius_bottom_left = 2
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_btn_hover"]
-bg_color = Color(0, 0.15, 0.2, 0.95)
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-border_color = Color(0, 0.9, 1, 0.7)
-corner_radius_top_left = 2
-corner_radius_top_right = 2
-corner_radius_bottom_right = 2
-corner_radius_bottom_left = 2
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_focus"]
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://dv2rs7tn4jujg"]
+[gd_scene format=3 uid="uid://dv2rs7tn4jujg"]
 
 [ext_resource type="Script" uid="uid://dyabx23k351gr" path="res://scripts/cat_game/characters/shadow.gd" id="1_veuvr"]
 [ext_resource type="Texture2D" uid="uid://v25mcfbqbpmb" path="res://assets/pet_world_assets/AllCatsWhite.png" id="2_veuvr"]

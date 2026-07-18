@@ -1,4 +1,4 @@
-[gd_scene load_steps=0 format=4 uid="uid://bb582tptwx5g7"]
+[gd_scene format=4 uid="uid://bb582tptwx5g7"]
 
 [ext_resource type="Script" uid="uid://dk1kmbo7tngwt" path="res://scripts/snake_tower/level/Level.gd" id="1_c8l0g"]
 [ext_resource type="Texture2D" uid="uid://bv703dobust4x" path="res://assets/World/Glacial-mountains-parallax-background_vnitti/Layers/sky_lightened.png" id="2_6wc1r"]
@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://d2gtqpeak4kyb" path="res://assets/World/Glacial-mountains-parallax-background_vnitti/Layers/clouds_mg_2.png" id="5_5t1d5"]
 [ext_resource type="TileSet" uid="uid://df72k07a11uqp" path="res://scenes/snake_tower/terrain/snaketower_tileset.tres" id="6_2yhlx"]
 [ext_resource type="Script" uid="uid://c2vd7fqy1cblk" path="res://scripts/snake_tower/level/TerrainTileMap.gd" id="7_yedqm"]
-[ext_resource type="PackedScene" path="res://scenes/snake_tower/goal/GoalFlag.tscn" id="8_xe4f0"]
+[ext_resource type="PackedScene" uid="uid://dn21xk1j5l7aq" path="res://scenes/snake_tower/goal/GoalFlag.tscn" id="8_xe4f0"]
 [ext_resource type="PackedScene" uid="uid://lqa036u53u25" path="res://scenes/snake_tower/snake/Snake.tscn" id="8_yirny"]
 [ext_resource type="PackedScene" uid="uid://bl26wsuj527bu" path="res://scenes/snake_tower/box/Box.tscn" id="9_5t1d5"]
 [ext_resource type="PackedScene" uid="uid://cb5k72y6k5n3q" path="res://scenes/snake_tower/snake/SnakeTail.tscn" id="9_bc4s6"]

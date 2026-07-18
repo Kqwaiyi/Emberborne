@@ -16,6 +16,7 @@ extends Control
 # Maps string keys → res:// paths to cutscene .gd data files.
 const CUTSCENE_PATHS: Dictionary = {
 	"test": "res://scenes/ui/cutscenes/test_cutscene.gd",
+	"voss_2": "res://scenes/ui/cutscenes/voss_continuation.gd",
 }
 
 # ─── Color Palette (gray-green, WhatsApp-inspired, sci-fi) ──────────
@@ -678,9 +679,9 @@ func _build_ui() -> void:
 	# Back button
 	_back_button = TextureButton.new()
 	_back_button.custom_minimum_size = Vector2(32, 32)
-	_back_button.stretch_mode = TextureButton.STRETCH_KEEP_ASPECT_CENTERED
+	_back_button.stretch_mode = TextureButton.STRETCH_KEEP_CENTERED
 	_back_button.modulate = COLOR_HEADER_TEXT
-	var back_icon_path = "res://assets/sprites/messenger/icon_back.png"
+	var back_icon_path = "res://assets/sprites/messenger/icon_back.svg"
 	if ResourceLoader.exists(back_icon_path):
 		_back_button.texture_normal = load(back_icon_path)
 	
@@ -728,11 +729,11 @@ func _build_ui() -> void:
 	# Voice call icon (decorative)
 	_voice_call_icon = TextureRect.new()
 	_voice_call_icon.custom_minimum_size = Vector2(24, 24)
-	_voice_call_icon.expand_mode = TextureRect.EXPAND_FIT_WIDTH_PROPORTIONAL
+	_voice_call_icon.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 	_voice_call_icon.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
 	_voice_call_icon.modulate = COLOR_HEADER_TEXT
 	_voice_call_icon.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	var voice_icon_path = "res://assets/sprites/messenger/icon_voice_call.png"
+	var voice_icon_path = "res://assets/sprites/messenger/icon_call.svg"
 	if ResourceLoader.exists(voice_icon_path):
 		_voice_call_icon.texture = load(voice_icon_path)
 	header_hbox.add_child(_voice_call_icon)
@@ -740,11 +741,11 @@ func _build_ui() -> void:
 	# Video call icon (decorative)
 	_video_call_icon = TextureRect.new()
 	_video_call_icon.custom_minimum_size = Vector2(24, 24)
-	_video_call_icon.expand_mode = TextureRect.EXPAND_FIT_WIDTH_PROPORTIONAL
+	_video_call_icon.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 	_video_call_icon.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
 	_video_call_icon.modulate = COLOR_HEADER_TEXT
 	_video_call_icon.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	var video_icon_path = "res://assets/sprites/messenger/icon_video_call.png"
+	var video_icon_path = "res://assets/sprites/messenger/icon_video.svg"
 	if ResourceLoader.exists(video_icon_path):
 		_video_call_icon.texture = load(video_icon_path)
 	header_hbox.add_child(_video_call_icon)
@@ -752,11 +753,11 @@ func _build_ui() -> void:
 	# Menu icon (decorative)
 	_menu_icon = TextureRect.new()
 	_menu_icon.custom_minimum_size = Vector2(24, 24)
-	_menu_icon.expand_mode = TextureRect.EXPAND_FIT_WIDTH_PROPORTIONAL
+	_menu_icon.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 	_menu_icon.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
 	_menu_icon.modulate = COLOR_HEADER_TEXT
 	_menu_icon.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	var menu_icon_path = "res://assets/sprites/messenger/icon_menu.png"
+	var menu_icon_path = "res://assets/sprites/messenger/icon_menu.svg"
 	if ResourceLoader.exists(menu_icon_path):
 		_menu_icon.texture = load(menu_icon_path)
 	header_hbox.add_child(_menu_icon)

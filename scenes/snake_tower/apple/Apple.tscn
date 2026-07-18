@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://v5jqj5ttuu2v" path="res://scripts/snake_tower/apple/Apple.gd" id="1_mywf2"]
 [ext_resource type="Texture2D" uid="uid://rk07hsts46cq" path="res://assets/snake_tower/apple_1.png" id="2_mywf2"]
 
+
 [node name="Apple" type="Node2D" unique_id=718229589]
 script = ExtResource("1_mywf2")
 

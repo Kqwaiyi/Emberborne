@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cn6g6axp4jjsy"]
+[gd_scene format=3 uid="uid://cn6g6axp4jjsy"]
 
 [ext_resource type="Texture2D" uid="uid://ded2c6w7mkhk8" path="res://assets/pet_world_assets/Room1.png" id="1_5yqg7"]
 [ext_resource type="Texture2D" uid="uid://gwkgvmxrd20" path="res://assets/pet_world_assets/background2.png" id="1_gedky"]

@@ -1,9 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://hud_scene"]
+[gd_scene format=3]
 
-[ext_resource type="Script" path="res://scripts/cat_game/ui/hud.gd" id="1_hud"]
-[ext_resource type="Texture2D" path="res://assets/ui/Loot/cat.png" id="2_cat"]
-[ext_resource type="Texture2D" path="res://assets/ui/Loot/Clock.png" id="3_clock"]
-[ext_resource type="Texture2D" path="res://assets/ui/Loot/rat.png" id="4_rat"]
+[ext_resource type="Script" uid="uid://bs3x2o8tsca4s" path="res://scripts/cat_game/ui/hud.gd" id="1_hud"]
+[ext_resource type="Texture2D" uid="uid://c31eweol7rhif" path="res://assets/ui/Loot/cat.png" id="2_cat"]
+[ext_resource type="Texture2D" uid="uid://c8hvvuh10rxey" path="res://assets/ui/Loot/Clock.png" id="3_clock"]
+[ext_resource type="Texture2D" uid="uid://dsrjc7nbxmj5e" path="res://assets/ui/Loot/rat.png" id="4_rat"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_panel"]
 bg_color = Color(0.898, 0.816, 0.663, 1)

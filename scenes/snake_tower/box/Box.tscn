@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://cd6718yp2nt5y" path="res://scripts/snake_tower/box/Box.gd" id="1_b"]
 [ext_resource type="Texture2D" uid="uid://c41gpbo555sn4" path="res://assets/snake_tower/snaketower_tileset.png" id="2_a0cxw"]
 
+
 [node name="Box" type="Node2D" unique_id=909326930]
 script = ExtResource("1_b")
 

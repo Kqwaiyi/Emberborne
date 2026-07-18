@@ -1,4 +1,4 @@
-[gd_scene load_steps=0 format=4 uid="uid://ditej4q76esvd"]
+[gd_scene format=4 uid="uid://ditej4q76esvd"]
 
 [ext_resource type="Script" uid="uid://dk1kmbo7tngwt" path="res://scripts/snake_tower/level/Level.gd" id="1_1u5mn"]
 [ext_resource type="Texture2D" uid="uid://bv703dobust4x" path="res://assets/World/Glacial-mountains-parallax-background_vnitti/Layers/sky_lightened.png" id="2_jrxrj"]
@@ -12,7 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://dqr4xl3boav1w" path="res://scenes/snake_tower/level/DeathFloor.tscn" id="10_fn4wm"]
 [ext_resource type="PackedScene" uid="uid://bl1jkw030abc" path="res://scenes/snake_tower/level/CameraLimit.tscn" id="11_0a0jx"]
 [ext_resource type="PackedScene" uid="uid://c03dy1hc7ccnh" path="res://scenes/snake_tower/apple/Apple.tscn" id="12_jrxrj"]
-[ext_resource type="PackedScene" path="res://scenes/snake_tower/goal/GoalFlag.tscn" id="13_rbabk"]
+[ext_resource type="PackedScene" uid="uid://dn21xk1j5l7aq" path="res://scenes/snake_tower/goal/GoalFlag.tscn" id="13_rbabk"]
 [ext_resource type="Texture2D" uid="uid://cyuob1afxadjh" path="res://icon.svg" id="99_home_icon"]
 
 [node name="Level" type="Node2D" unique_id=954905236]
