@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://cn6g6axp4jjsy"]
 
 [ext_resource type="Texture2D" uid="uid://ded2c6w7mkhk8" path="res://assets/pet_world_assets/Room1.png" id="1_5yqg7"]
+[ext_resource type="CompressedTexture2D" uid="uid://bho4rvclvjjcd" path="res://assets/sprites/messenger/icon_back.svg" id="9_iconback"]
 [ext_resource type="Texture2D" uid="uid://gwkgvmxrd20" path="res://assets/pet_world_assets/background2.png" id="1_gedky"]
 [ext_resource type="Texture2D" uid="uid://bqlf6t6sah5xf" path="res://assets/pet_world_assets/CatRoomDecorations.png" id="2_g78u4"]
 [ext_resource type="PackedScene" uid="uid://dv2rs7tn4jujg" path="res://scenes/pet_world/characters/cat.tscn" id="3_cat"]
@@ -194,9 +195,12 @@ offset_bottom = 104.0
 theme_override_colors/font_color = Color(0.18, 0.12, 0.07, 1)
 theme_override_colors/font_pressed_color = Color(0.18, 0.12, 0.07, 1)
 theme_override_colors/font_hover_color = Color(0.18, 0.12, 0.07, 1)
-theme_override_font_sizes/font_size = 25
+theme_override_font_sizes/font_size = 16
 theme_override_styles/normal = SubResource("StyleBoxFlat_back_n")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_back_p")
 theme_override_styles/hover = SubResource("StyleBoxFlat_back_h")
-text = "Back
-←"
+text = "Back"
+icon = ExtResource("9_iconback")
+icon_alignment = 1
+vertical_icon_alignment = 2
+expand_icon = false

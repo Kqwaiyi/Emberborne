@@ -39,13 +39,13 @@ func _process(delta: float) -> void:
 
 func _draw() -> void:
 	var a  := 0.35 + 0.15 * sin(_pulse)
-	var c  := Color(0.0, 0.85, 1.0, a)
-	var cd := Color(0.0, 0.85, 1.0, a * 0.4)
+	var c  := Color(1.0, 0.95, 0.0, a)
+	var cd := Color(1.0, 0.95, 0.0, a * 0.4)
 	draw_arc(Vector2.ZERO, 44.0, 0.0, TAU, 64, c,  2.5)
 	draw_arc(Vector2.ZERO, 33.0, 0.0, TAU, 48, cd, 1.5)
 	draw_arc(Vector2.ZERO, 20.0, 0.0, TAU, 32, cd, 1.0)
 	var ba := 0.07 + 0.04 * sin(_pulse + 1.0)
-	draw_rect(Rect2(-4.0, -60.0, 8.0, 60.0), Color(0.0, 0.85, 1.0, ba))
+	draw_rect(Rect2(-4.0, -60.0, 8.0, 60.0), Color(1.0, 0.95, 0.0, ba))
 
 func _on_body_entered(body: Node) -> void:
 	if body.name == "Player" or body.is_in_group("player"):
@@ -109,7 +109,7 @@ func _confirm_prompt() -> void:
 	_current_tween = create_tween()
 	
 	# Flash effect
-	_current_tween.tween_property(_prompt_container, "modulate", Color(0.2, 1.5, 2.0, 1.0), 0.05)
+	_current_tween.tween_property(_prompt_container, "modulate", Color(1.5, 1.4, 0.1, 1.0), 0.05)
 	if mat:
 		_current_tween.parallel().tween_method(func(v): mat.set_shader_parameter("intensity", v), 0.05, 0.7, 0.05)
 		

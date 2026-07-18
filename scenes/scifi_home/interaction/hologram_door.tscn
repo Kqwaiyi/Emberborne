@@ -13,7 +13,7 @@ shader_parameter/intensity = 0.05
 
 [sub_resource type="ShaderMaterial" id="SM_border"]
 shader = ExtResource("3_border")
-shader_parameter/border_color = Color(0.0, 0.85, 1.0, 1.0)
+shader_parameter/border_color = Color(1.0, 0.95, 0.0, 1.0)
 shader_parameter/border_width = 2.0
 shader_parameter/rect_size = Vector2(34.0, 34.0)
 shader_parameter/corner_radius = 4.0
@@ -22,12 +22,12 @@ shader_parameter/tail_length = 0.6
 shader_parameter/hover_intensity = 0.5
 
 [sub_resource type="StyleBoxFlat" id="SBF_prompt"]
-bg_color = Color(0.02, 0.04, 0.10, 0.88)
+bg_color = Color(0.08, 0.07, 0.01, 0.88)
 border_width_left = 1
 border_width_top = 1
 border_width_right = 1
 border_width_bottom = 1
-border_color = Color(0.0, 0.85, 1.0, 0.5)
+border_color = Color(1.0, 0.95, 0.0, 0.5)
 corner_radius_top_left = 8
 corner_radius_top_right = 8
 corner_radius_bottom_right = 8
@@ -39,7 +39,7 @@ border_width_left = 1
 border_width_top = 1
 border_width_right = 1
 border_width_bottom = 3
-border_color = Color(0.0, 0.85, 1.0, 0.0)
+border_color = Color(1.0, 0.95, 0.0, 0.0)
 corner_radius_top_left = 4
 corner_radius_top_right = 4
 corner_radius_bottom_right = 4
@@ -123,12 +123,12 @@ layout_mode = 2
 text = "E"
 horizontal_alignment = 1
 vertical_alignment = 1
-theme_override_colors/font_color = Color(0.0, 0.9, 1.0, 1.0)
+theme_override_colors/font_color = Color(1.0, 0.95, 0.0, 1.0)
 theme_override_font_sizes/font_size = 17
 
 [node name="PromptLabel" type="Label" parent="Prompt/PromptRoot/PromptContainer/HBox"]
 layout_mode = 2
 text = "  SYSTEM_LINK"
 vertical_alignment = 1
-theme_override_colors/font_color = Color(0.82, 0.95, 1.0, 1.0)
+theme_override_colors/font_color = Color(1.0, 0.98, 0.6, 1.0)
 theme_override_font_sizes/font_size = 15
