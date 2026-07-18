@@ -836,7 +836,7 @@ func _build_ui() -> void:
 
 	# ── Advance Indicator ────────────────────────────────────────────
 	_advance_indicator = Label.new()
-	_advance_indicator.text = "[ AWAITING INPUT_ ]"
+	_advance_indicator.text = "[ SPACE OR LEFT CLICK_ ]"
 	_advance_indicator.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	_advance_indicator.add_theme_color_override("font_color", COLOR_ADVANCE_IND)
 	_advance_indicator.add_theme_font_size_override("font_size", 16)

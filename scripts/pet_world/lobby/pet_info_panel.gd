@@ -73,6 +73,11 @@ func _update_display(data: Dictionary) -> void:
 	_happiness_bar.value = hp
 	_happiness_pct.text  = "%d%%" % hp
 	_portrait_sb.bg_color = data.get("icon_color", Color(0.95, 0.80, 0.55))
+	
+	if GameGlobal and GameGlobal.current_story_state < GameGlobal.StoryState.PHASE4_TASK_JOIN_TOURNAMENT:
+		_tourn_btn.disabled = true
+	else:
+		_tourn_btn.disabled = false
 
 func _slide_in() -> void:
 	if _tween:

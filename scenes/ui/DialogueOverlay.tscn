@@ -127,9 +127,9 @@ scroll_active = false
 
 [node name="AdvanceIndicator" type="Label" parent="DialogueBox/MarginContainer/HBoxContainer/VBoxContainer" unique_id=1837399051]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.3, 0.85, 1, 1)
-theme_override_font_sizes/font_size = 16
-text = "▼"
+theme_override_colors/font_color = Color(0.3, 0.85, 1, 0.7)
+theme_override_font_sizes/font_size = 14
+text = "space or left click to continue ▼"
 horizontal_alignment = 2
 
 [node name="SkipButton" type="Button" parent="DialogueBox/MarginContainer" unique_id=457291888]
