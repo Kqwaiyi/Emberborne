@@ -68,7 +68,7 @@ func _on_mouse_caught(points: int) -> void:
 		if _hud:
 			match _mice_caught:
 				total_mice:
-					_hud.show_message("ALL MICE CAUGHT!  →  HEAD TO THE EXIT!", Color(0.18, 0.88, 0.28, 1), 26, 4.0)
+					_hud.show_message("ALL MICE CAUGHT!  >>  HEAD TO THE EXIT!", Color(0.18, 0.88, 0.28, 1), 26, 4.0)
 				required_mice:
 					_hud.show_message("SATISFIED", Color(1.0, 0.88, 0.2, 1), 30, 3.0)
 

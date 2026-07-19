@@ -9,8 +9,7 @@
 [ext_resource type="PackedScene" path="res://scenes/pet_world/lobby/pet_info_panel.tscn" id="6_panel"]
 [ext_resource type="AudioStream" uid="uid://d4ccaq4w36wue" path="res://assets/music/pet_world/cat_pet.mp3" id="7_catpet"]
 [ext_resource type="AudioStream" uid="uid://dnk60du6ku8hk" path="res://assets/music/pet_world/snake hiss.mp3" id="8_snakehiss"]
-[ext_resource type="Texture2D" uid="uid://bho4rvclvjjcd" path="res://assets/sprites/messenger/icon_back.svg" id="9_iconback"]
-[ext_resource type="Script" path="res://scripts/cat_game/ui/hover_button.gd" id="script_hover_btn"]
+[ext_resource type="Script" uid="uid://iuome4ql4vdp" path="res://scripts/cat_game/ui/hover_button.gd" id="script_hover_btn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mq7y1"]
 size = Vector2(20, 305.48358)
@@ -196,16 +195,11 @@ offset_bottom = 126.0
 theme_override_colors/font_color = Color(0.18, 0.12, 0.07, 1)
 theme_override_colors/font_pressed_color = Color(0.18, 0.12, 0.07, 1)
 theme_override_colors/font_hover_color = Color(0.18, 0.12, 0.07, 1)
-theme_override_colors/icon_normal_color = Color(0, 0, 0, 1)
-theme_override_colors/icon_pressed_color = Color(0, 0, 0, 1)
-theme_override_colors/icon_hover_color = Color(0, 0, 0, 1)
-theme_override_colors/icon_focus_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 16
+theme_override_font_sizes/font_size = 25
 theme_override_styles/normal = SubResource("StyleBoxFlat_back_n")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_back_p")
 theme_override_styles/hover = SubResource("StyleBoxFlat_back_h")
-text = "Back"
-icon = ExtResource("9_iconback")
-icon_alignment = 1
-vertical_icon_alignment = 2
+text = "Back
+«"
 script = ExtResource("script_hover_btn")
+scale_on_hover = false

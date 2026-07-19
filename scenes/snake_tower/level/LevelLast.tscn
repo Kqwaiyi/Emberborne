@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://d1kul3apgbxua"]
 
 [ext_resource type="Script" uid="uid://dxms4gcjfm8pd" path="res://scripts/snake_tower/level/LevelLast.gd" id="1_levellast"]
+[ext_resource type="Script" uid="uid://iuome4ql4vdp" path="res://scripts/cat_game/ui/hover_button.gd" id="script_hover_btn"]
+[ext_resource type="FontFile" path="res://assets/fonts/Noto_Color_Emoji/NotoColorEmoji-Regular.ttf" id="font_emoji"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_back_normal"]
 bg_color = Color(0.898, 0.816, 0.663, 1)
@@ -49,6 +51,9 @@ content_margin_left = 8.0
 content_margin_top = 6.0
 content_margin_right = 8.0
 content_margin_bottom = 6.0
+
+[sub_resource type="SystemFont" id="SystemFont_emoji"]
+fallbacks = Array[Font]([ExtResource("font_emoji")])
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_panel"]
 content_margin_left = 24.0
@@ -108,8 +113,9 @@ theme_override_constants/separation = 14
 [node name="CongratLabel" type="Label" parent="Panel/VBox" unique_id=398794981]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.18, 0.12, 0.07, 1)
+theme_override_fonts/font = SubResource("SystemFont_emoji")
 theme_override_font_sizes/font_size = 40
-text = "✦  CONGRATULATIONS!  ✦"
+text = "✨  CONGRATULATIONS!  ✨"
 horizontal_alignment = 1
 
 [node name="TitleDiv" type="ColorRect" parent="Panel/VBox" unique_id=102028777]
@@ -162,6 +168,8 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_back_normal")
 theme_override_styles/hover = SubResource("StyleBoxFlat_back_hover")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_back_pressed")
 text = "Back
-⬅"
+«"
+script = ExtResource("script_hover_btn")
+scale_on_hover = false
 
 [connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]

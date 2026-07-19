@@ -1,12 +1,8 @@
 [gd_scene format=3 uid="uid://c3mcjtsok7eo0"]
 
 [ext_resource type="Script" uid="uid://d2m34013vlp1y" path="res://scripts/core/ending_sequence.gd" id="1_end"]
-[ext_resource type="AudioStream" uid="uid://cdmtcjxq7d2px" path="res://assets/music/Exposition_ending_1.mp3" id="2_audio1"]
-[ext_resource type="AudioStream" uid="uid://diwsjakfy8r04" path="res://assets/music/ending_2_3.mp3" id="3_audio23"]
 
 [node name="EndingSequence" type="Node" unique_id=180672046]
 script = ExtResource("1_end")
-music_ending_1 = ExtResource("2_audio1")
-music_ending_2 = ExtResource("3_audio23")
-music_ending_3 = ExtResource("3_audio23")
 return_scene_path = ""
+debug_force_ending = 1

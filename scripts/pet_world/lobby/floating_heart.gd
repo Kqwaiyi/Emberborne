@@ -1,6 +1,7 @@
 extends Node2D
 
 const DURATION := 1.6
+const _FONT := preload("res://assets/fonts/Noto_Color_Emoji/NotoColorEmoji-Regular.ttf")
 
 var _t := 0.0
 
@@ -13,5 +14,5 @@ func _process(delta: float) -> void:
 		queue_free()
 
 func _draw() -> void:
-	draw_string(ThemeDB.fallback_font, Vector2(-7, 10), "♥",
+	draw_string(_FONT, Vector2(-7, 10), "♥",
 		HORIZONTAL_ALIGNMENT_LEFT, -1, 24, Color(0.95, 0.28, 0.38))

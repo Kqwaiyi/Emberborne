@@ -4,6 +4,8 @@ extends Button
 const HOVER_SOUND = preload("res://assets/sounds/other_ui/other_ui_hover.mp3")
 const CLICK_SOUND = preload("res://assets/sounds/other_ui/other_ui_click.mp3")
 
+@export var scale_on_hover: bool = true
+
 var _tween: Tween
 
 func _ready() -> void:
@@ -13,16 +15,17 @@ func _ready() -> void:
 
 func _on_mouse_entered() -> void:
 	_play_transient_sound(HOVER_SOUND)
-	
-	# Set pivot dynamically in case size changed after _ready (e.g. containers)
+	if not scale_on_hover:
+		return
 	pivot_offset = size / 2.0
-	
 	if _tween and _tween.is_valid():
 		_tween.kill()
 	_tween = create_tween()
 	_tween.tween_property(self, "scale", Vector2(1.03, 1.03), 0.1).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
 
 func _on_mouse_exited() -> void:
+	if not scale_on_hover:
+		return
 	if _tween and _tween.is_valid():
 		_tween.kill()
 	_tween = create_tween()
