@@ -254,7 +254,7 @@ script = ExtResource("199_level")
 required_mice = 4
 starting_score = 0
 maximum_time_bonus = 2000
-optimal_time_seconds = 120.0
+optimal_time_seconds = 240.0
 time_penalty_per_second = 25.0
 total_mice = 7
 

@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://c3mcjtsok7eo0"]
+
+[ext_resource type="Script" uid="uid://d2m34013vlp1y" path="res://scripts/core/ending_sequence.gd" id="1_end"]
+
+[node name="EndingSequence" type="Node" unique_id=180672046]
+script = ExtResource("1_end")
+return_scene_path = ""
+debug_force_ending = 2

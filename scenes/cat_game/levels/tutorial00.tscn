@@ -2231,7 +2231,7 @@ scale = Vector2(0.25, 0.25)
 theme_override_constants/line_spacing = -12
 theme_override_font_sizes/font_size = 50
 text = "Hide under 
-transparent 
+outlined
 surfaces"
 horizontal_alignment = 1
 metadata/_edit_use_anchors_ = true
@@ -2253,9 +2253,9 @@ metadata/_edit_use_anchors_ = true
 [node name="Label5" type="Label" parent="Labels" unique_id=1361545692]
 z_index = -100
 offset_left = 775.0
-offset_top = 266.0
+offset_top = 263.0
 offset_right = 1474.0
-offset_bottom = 506.0
+offset_bottom = 503.0
 scale = Vector2(0.25, 0.25)
 theme_override_constants/line_spacing = -12
 theme_override_font_sizes/font_size = 50
@@ -2274,8 +2274,8 @@ offset_bottom = 586.0
 scale = Vector2(0.25, 0.25)
 theme_override_constants/line_spacing = -12
 theme_override_font_sizes/font_size = 50
-text = "Be careful 
-of cactuses"
+text = "BE CAREFUL OF 
+THE CACTUS !"
 horizontal_alignment = 1
 metadata/_edit_use_anchors_ = true
 

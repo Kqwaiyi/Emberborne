@@ -303,12 +303,11 @@ size = Vector2(16.00003, 16.065962)
 [node name="Level04" type="Node2D" unique_id=1111781440]
 position = Vector2(113, 15)
 script = ExtResource("1_kxtkb")
-required_mice = 1
+required_mice = 5
 starting_score = 0
 maximum_time_bonus = 1000
 optimal_time_seconds = 240.0
 total_mice = 7
-next_scene_path = "res://scenes/cat_game/ui/end_screen.tscn"
 
 [node name="section2" type="Node2D" parent="." unique_id=285948052]
 position = Vector2(2169, 345)

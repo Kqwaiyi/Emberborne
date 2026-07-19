@@ -117,12 +117,15 @@ func _animate() -> void:
 
 	await get_tree().create_timer(0.3).timeout
 	_apply_color()
-	
+
 	_bracket_label.text = "You have placed  # " + str(_place)
 	_bracket_label.show()
-	
+
 	_generate_leaderboard(_place, _total)
 	_leaderboard_list.show()
+
+	await get_tree().create_timer(0.9).timeout
+	_show_continue_button()
 
 
 func _apply_color() -> void:
@@ -175,6 +178,46 @@ func _process(delta: float) -> void:
 			"font_color",
 			rainbow_color
 		)
+
+func _show_continue_button() -> void:
+	var btn := Button.new()
+	btn.text = "Continue to Ending  ▶"
+	btn.add_theme_font_size_override("font_size", 18)
+	btn.add_theme_color_override("font_color",         Color(0.18, 0.12, 0.07, 1.0))
+	btn.add_theme_color_override("font_hover_color",   Color(0.18, 0.12, 0.07, 1.0))
+	btn.add_theme_color_override("font_pressed_color", Color(0.18, 0.12, 0.07, 1.0))
+
+	var style := StyleBoxFlat.new()
+	style.bg_color            = Color(0.898, 0.816, 0.663, 1.0)
+	style.border_color        = Color(0.216, 0.149, 0.086, 1.0)
+	style.border_width_left   = 3
+	style.border_width_top    = 3
+	style.border_width_right  = 3
+	style.border_width_bottom = 3
+	style.corner_radius_top_left     = 4
+	style.corner_radius_top_right    = 4
+	style.corner_radius_bottom_right = 4
+	style.corner_radius_bottom_left  = 4
+	style.content_margin_left   = 16.0
+	style.content_margin_top    = 10.0
+	style.content_margin_right  = 16.0
+	style.content_margin_bottom = 10.0
+	btn.add_theme_stylebox_override("normal", style)
+
+	btn.modulate.a = 0.0
+	$Panel/VBox.add_child(btn)
+	btn.pressed.connect(_on_continue_pressed)
+
+	var tw := create_tween()
+	tw.tween_property(btn, "modulate:a", 1.0, 0.5)
+
+func _on_continue_pressed() -> void:
+	# Transition to the cinematic ending sequence.
+	# Score is read directly from GameState inside ending_sequence.gd.
+	if SceneManager:
+		SceneManager.change_scene_to_file("res://scenes/core/ending_sequence.tscn", 1.0)
+	else:
+		get_tree().change_scene_to_file("res://scenes/core/ending_sequence.tscn")
 
 func _create_entry(rank: String, username: String, score_val: int, is_player: bool = false) -> void:
 	var hbox: HBoxContainer = HBoxContainer.new()

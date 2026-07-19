@@ -136,9 +136,8 @@ size = Vector2(157, 5.25)
 script = ExtResource("199_level")
 starting_score = 0
 maximum_time_bonus = 1000
-optimal_time_seconds = 20.0
+optimal_time_seconds = 40.0
 time_penalty_per_second = 100.0
-next_scene_path = "res://scenes/cat_game/levels/level_02.tscn"
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1863082518]
 visible = false

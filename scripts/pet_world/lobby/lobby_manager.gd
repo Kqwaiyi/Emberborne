@@ -4,7 +4,7 @@ signal scene_opened
 
 const FloatingHeart = preload("res://scripts/pet_world/lobby/floating_heart.gd")
 
-const PET_DATA := {
+var PET_DATA := {
 	"cat": {
 		"name":        "Mochi",
 		"species":     "Cat",
@@ -43,6 +43,8 @@ func _ready() -> void:
 	if GameGlobal and GameGlobal.has_method("_on_lobby_scene_opened"):
 		scene_opened.connect(GameGlobal._on_lobby_scene_opened)
 	scene_opened.emit()
+	PET_DATA["cat"]["happiness"]   = randi_range(50, 100)
+	PET_DATA["snake"]["happiness"] = randi_range(50, 100)
 	MusicManager.play_music("pet_world")
 	_panel.pet_action_requested.connect(_on_pet_action)
 	_back_button.pressed.connect(_on_back_pressed)
@@ -122,3 +124,7 @@ func _on_pet_action(pet_node: Node) -> void:
 	match _selected_key:
 		"cat":   _cat_pet_audio.play()
 		"snake": _snake_hiss_audio.play()
+	if _selected_key != "":
+		var data: Dictionary = PET_DATA[_selected_key]
+		data["happiness"] = mini(data["happiness"] + 5, 100)
+		_panel.show_pet(data, pet_node)
