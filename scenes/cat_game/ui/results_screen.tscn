@@ -3,6 +3,10 @@
 [ext_resource type="Script" uid="uid://bi1jkjod1gksn" path="res://scripts/cat_game/ui/results_screen.gd" id="1_results"]
 [ext_resource type="Texture2D" uid="uid://c31eweol7rhif" path="res://assets/ui/Loot/cat.png" id="2_cat"]
 [ext_resource type="Script" path="res://scripts/cat_game/ui/hover_button.gd" id="script_hover_btn"]
+[ext_resource type="FontFile" path="res://assets/fonts/Noto_Color_Emoji/NotoColorEmoji-Regular.ttf" id="font_emoji"]
+
+[sub_resource type="SystemFont" id="SystemFont_emoji"]
+fallbacks = Array[Font]([ExtResource("font_emoji")])
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_panel"]
 content_margin_left = 16.0
@@ -114,8 +118,9 @@ theme_override_constants/separation = 8
 [node name="TitleLabel" type="Label" parent="Panel/VBox"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.18, 0.12, 0.07, 1)
+theme_override_fonts/font = SubResource("SystemFont_emoji")
 theme_override_font_sizes/font_size = 22
-text = "✦  LEVEL CLEAR  ✦"
+text = "✨  LEVEL CLEAR  ✨"
 horizontal_alignment = 1
 
 [node name="TitleDivider" type="ColorRect" parent="Panel/VBox"]
