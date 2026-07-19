@@ -46,7 +46,7 @@ func _process(_delta: float) -> void:
 		
 	# Determine if cursor should be visible
 	var show_cursor = int(Time.get_ticks_msec() / (cursor_blink_speed * 1000.0)) % 2 == 0
-	var cursor = "█" if show_cursor else " "
+	var cursor = "|" if show_cursor else " "
 	
 	# Safely substring
 	var display_text = ""

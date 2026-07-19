@@ -3,12 +3,10 @@
 [ext_resource type="Script" uid="uid://72p8h488uib3" path="res://scripts/ui/DesktopScreen.gd" id="1_script"]
 [ext_resource type="PackedScene" uid="uid://d2k4j5l6m7n8o" path="res://scenes/ui/DesktopAppButton.tscn" id="2_button"]
 [ext_resource type="Texture2D" uid="uid://dkls4ovaw4m2n" path="res://assets/sprites/ui/Synthwave-lightgrid-landscape-2.jpg" id="2_jq22w"]
-[ext_resource type="Shader" uid="uid://chj6a6rxi66x1" path="res://shaders/ui_scanline.gdshader" id="2_c0v0s"]
-[ext_resource type="Texture2D" uid="uid://bxmv11ju1eqfu" path="res://assets/sprites/ui/placeholder_app_icon.jpg" id="3_icon"]
-[ext_resource type="Texture2D" uid="uid://smrbtfyk6pyh" path="res://assets/ui_icons/pet_home.png" id="pet_home_icon"]
-[ext_resource type="Texture2D" uid="uid://ba6smeirrtadh" path="res://assets/ui_icons/messenger.png" id="messenger_icon"]
-[ext_resource type="FontFile" uid="uid://dy72jq30eobqs" path="res://assets/fonts/Chakra_Petch/ChakraPetch-Regular.ttf" id="font_regular"]
 [ext_resource type="FontFile" uid="uid://bcu8orynokf4e" path="res://assets/fonts/Chakra_Petch/ChakraPetch-Bold.ttf" id="font_bold"]
+[ext_resource type="FontFile" uid="uid://dy72jq30eobqs" path="res://assets/fonts/Chakra_Petch/ChakraPetch-Regular.ttf" id="font_regular"]
+[ext_resource type="Texture2D" uid="uid://ba6smeirrtadh" path="res://assets/ui_icons/messenger.png" id="messenger_icon"]
+[ext_resource type="Texture2D" uid="uid://smrbtfyk6pyh" path="res://assets/ui_icons/pet_home.png" id="pet_home_icon"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_add"]
 blend_mode = 1
@@ -92,7 +90,7 @@ layout_mode = 2
 theme_override_colors/font_color = Color(0, 0.9, 1, 0.6)
 theme_override_fonts/font = ExtResource("font_bold")
 theme_override_font_sizes/font_size = 14
-text = "◇ SELECT MODULE"
+text = "> SELECT MODULE"
 
 [node name="AppGrid" type="GridContainer" parent="." unique_id=32017857]
 layout_mode = 1
@@ -154,4 +152,4 @@ layout_mode = 2
 theme_override_colors/font_color = Color(0, 0.9, 1, 0.4)
 theme_override_fonts/font = ExtResource("font_regular")
 theme_override_font_sizes/font_size = 12
-text = "▸ 2 MODULES AVAILABLE"
+text = ">  2 MODULES AVAILABLE"
