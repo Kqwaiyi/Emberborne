@@ -201,9 +201,9 @@ func _set_mouse_glow_color(color: Color):
 	mouse_glow.texture.gradient.set_color(0, color)
 
 func _on_app_hovered(app_name: String, color_preset: String = "default"):
-	_animate_tagline("◇ SELECTED: " + app_name, true)
+	_animate_tagline("> SELECTED: " + app_name, true)
 	apply_theme(color_preset, 0.3)
 
 func _on_app_unhovered():
-	_animate_tagline("◇ SELECT MODULE", false)
+	_animate_tagline("> SELECT MODULE", false)
 	apply_theme("default", 0.2)
