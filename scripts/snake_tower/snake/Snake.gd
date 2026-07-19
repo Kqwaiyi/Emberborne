@@ -158,9 +158,11 @@ func try_move(dir: Vector2i):
 		move_segments(target, true, dir)
 		LevelManager.consume_apple(target)
 	elif cell == LevelManager.CellType.SPIKE:
-		if has_node("SpikeAudio"): $SpikeAudio.play()
 		move_segments(target, false, dir) # visually move into it
 		set_process(false)
+		if has_node("SpikeAudio"):
+			$SpikeAudio.play()
+			await $SpikeAudio.finished
 		LevelManager.trigger_loss()
 		return
 	elif cell == LevelManager.CellType.GOAL:
@@ -244,14 +246,18 @@ func do_fall_step():
 	
 	for seg in segments:
 		if seg.y >= LevelManager.death_y:
-			if has_node("VoidAudio"): $VoidAudio.play()
 			set_process(false)
+			if has_node("VoidAudio"):
+				$VoidAudio.play()
+				await $VoidAudio.finished
 			LevelManager.trigger_loss()
 			return
 
 	if landing_on_spike:
-		if has_node("SpikeAudio"): $SpikeAudio.play()
 		set_process(false)
+		if has_node("SpikeAudio"):
+			$SpikeAudio.play()
+			await $SpikeAudio.finished
 		LevelManager.trigger_loss()
 		return
 		

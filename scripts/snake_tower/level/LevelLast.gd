@@ -22,6 +22,8 @@ var _rainbow_hue: float = 0.0
 @onready var _bot_div = $Panel/VBox/BotDiv
 @onready var _panel = $Panel
 
+var _leaderboard_scroll: ScrollContainer
+
 var _sfx_player: AudioStreamPlayer
 var _hover_sfx: AudioStreamPlayer
 var _click_sfx: AudioStreamPlayer
@@ -38,8 +40,22 @@ func _ready():
 	GameGlobal.set_minigame_finish_place("snake_tower", _place)
 	
 	_bracket_label.hide()
-	_leaderboard_list.hide()
 	_bot_div.hide()
+	
+	var list_parent = _leaderboard_list.get_parent()
+	var list_idx = _leaderboard_list.get_index()
+	_leaderboard_scroll = ScrollContainer.new()
+	_leaderboard_scroll.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	_leaderboard_scroll.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	list_parent.remove_child(_leaderboard_list)
+	_leaderboard_scroll.add_child(_leaderboard_list)
+	list_parent.add_child(_leaderboard_scroll)
+	list_parent.move_child(_leaderboard_scroll, list_idx)
+	_leaderboard_list.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	_leaderboard_list.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	
+	_leaderboard_list.show()
+	_leaderboard_scroll.hide()
 	
 	for character in _time_str:
 		_digit_chars.append(character)
@@ -157,7 +173,16 @@ func _animate() -> void:
 	_bracket_label.show()
 	
 	_generate_leaderboard(_place, _time)
-	_leaderboard_list.show()
+	
+	_leaderboard_scroll.show()
+	
+	var target_top = $BackButton.position.y
+	var screen_h = get_viewport_rect().size.y
+	var target_h = screen_h - 2.0 * target_top
+	
+	var tween = create_tween().set_parallel(true)
+	tween.tween_property($Panel, "position:y", target_top, 0.4).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
+	tween.tween_property($Panel, "size:y", target_h, 0.4).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
 
 func _apply_color() -> void:
 	if _place == 1:

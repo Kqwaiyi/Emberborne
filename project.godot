@@ -17,7 +17,7 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 config/name="Companix"
 run/main_scene="uid://crxp15mx3rx8l"
 config/features=PackedStringArray("4.7", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="uid://bh800wm3aa1jt"
 
 [autoload]
 

@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://lqa036u53u25"]
 
 [ext_resource type="Script" uid="uid://dukaqo1jung0a" path="res://scripts/snake_tower/snake/Snake.gd" id="1_sn"]
-[ext_resource type="Texture2D" uid="uid://dw70qj6uw2jf3" path="res://assets/snakecharacter/snake_head.png" id="2_sn"]
+[ext_resource type="Texture2D" uid="uid://bh03jk7qjsg5c" path="res://assets/snakecharacter/snake_head.png" id="2_sn"]
 [ext_resource type="PackedScene" uid="uid://cb5k72y6k5n3q" path="res://scenes/snake_tower/snake/SnakeTail.tscn" id="3_tail"]
 [ext_resource type="AudioStream" uid="uid://dnybin33e2h7b" path="res://assets/music/snake tower/move.mp3" id="4_move"]
 [ext_resource type="AudioStream" uid="uid://dwxj0apl25fpu" path="res://assets/music/snake tower/eat.mp3" id="5_eat"]
@@ -19,7 +19,7 @@ texture = ExtResource("2_sn")
 
 [node name="MoveAudio" type="AudioStreamPlayer" parent="." unique_id=98992891]
 stream = ExtResource("4_move")
-volume_db = -17.0
+volume_db = -18.0
 pitch_scale = 1.5
 mix_target = 1
 
@@ -28,11 +28,11 @@ stream = ExtResource("5_eat")
 
 [node name="SpikeAudio" type="AudioStreamPlayer" parent="." unique_id=2095484393]
 stream = ExtResource("6_spike")
-volume_db = 24.0
+volume_db = -5.5
 
 [node name="VoidAudio" type="AudioStreamPlayer" parent="." unique_id=210516722]
 stream = ExtResource("7_void")
-volume_db = 24.0
+volume_db = 1.0
 
 [node name="FlagAudio" type="AudioStreamPlayer" parent="." unique_id=1541108333]
 stream = ExtResource("8_flag")

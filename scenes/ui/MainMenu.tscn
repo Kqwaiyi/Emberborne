@@ -100,7 +100,7 @@ size_flags_horizontal = 3
 theme_override_constants/margin_left = 192
 theme_override_constants/margin_top = 128
 theme_override_constants/margin_right = 32
-theme_override_constants/margin_bottom = 32
+theme_override_constants/margin_bottom = 0
 
 [node name="CreditsTerminal" type="RichTextLabel" parent="MarginContainer/HBoxContainer/RightSection" unique_id=1225809953]
 layout_mode = 2

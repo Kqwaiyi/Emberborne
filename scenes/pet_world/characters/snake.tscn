@@ -75,7 +75,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_6qdwc")
 }],
-"loop": true,
+"loop": 1,
 "name": &"celebration",
 "speed": 5.0
 }, {
@@ -89,7 +89,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_lo4u1")
 }],
-"loop": true,
+"loop": 1,
 "name": &"idle",
 "speed": 5.0
 }, {
@@ -103,7 +103,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_gbvl6")
 }],
-"loop": true,
+"loop": 1,
 "name": &"run",
 "speed": 8.0
 }, {
@@ -120,7 +120,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_kut2b")
 }],
-"loop": true,
+"loop": 1,
 "name": &"sad",
 "speed": 5.0
 }, {
@@ -128,25 +128,25 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_utfjq")
 }],
-"loop": true,
+"loop": 1,
 "name": &"sleep",
 "speed": 5.0
 }]
 
-[node name="Snake" type="CharacterBody2D"]
+[node name="Snake" type="CharacterBody2D" unique_id=452597477]
 script = ExtResource("3_wander")
 
-[node name="BodyCollision" type="CollisionShape2D" parent="."]
+[node name="BodyCollision" type="CollisionShape2D" parent="." unique_id=1821363362]
 shape = SubResource("CircleShape2D_snake")
 
-[node name="Shadow" type="Node2D" parent="."]
+[node name="Shadow" type="Node2D" parent="." unique_id=13702555]
 z_index = -1
 position = Vector2(0, 14)
 script = ExtResource("1_k7ftf")
 radius_x = 14.0
 radius_y = 6.0
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=529095790]
 position = Vector2(-8.553125, -7.792762)
 scale = Vector2(2.7950656, 2.795066)
 sprite_frames = SubResource("SpriteFrames_3q2nj")
