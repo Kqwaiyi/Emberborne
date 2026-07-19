@@ -110,6 +110,7 @@ func _remove_glow() -> void:
 	_selected_sprite = null
 
 func _on_back_pressed() -> void:
+	MusicManager.play_music("scifi_home")
 	var laptops := get_tree().get_nodes_in_group("laptop_ui")
 	if laptops.size() > 0:
 		laptops[0].change_scene("res://scenes/ui/DesktopScreen.tscn", 0.5)

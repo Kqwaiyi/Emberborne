@@ -2,6 +2,54 @@
 
 [ext_resource type="Script" uid="uid://ve3iv3hgdh8x" path="res://scripts/cat_game/ui/end_screen.gd" id="1_end"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_back_normal"]
+bg_color = Color(0.898, 0.816, 0.663, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.216, 0.149, 0.086, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+content_margin_left = 8.0
+content_margin_top = 6.0
+content_margin_right = 8.0
+content_margin_bottom = 6.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_back_hover"]
+bg_color = Color(0.82, 0.73, 0.55, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.216, 0.149, 0.086, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+content_margin_left = 8.0
+content_margin_top = 6.0
+content_margin_right = 8.0
+content_margin_bottom = 6.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_back_pressed"]
+bg_color = Color(0.68, 0.58, 0.42, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.216, 0.149, 0.086, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+content_margin_left = 8.0
+content_margin_top = 6.0
+content_margin_right = 8.0
+content_margin_bottom = 6.0
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_panel"]
 content_margin_left = 24.0
 content_margin_top = 20.0
@@ -96,3 +144,21 @@ horizontal_alignment = 1
 [node name="LeaderboardList" type="VBoxContainer" parent="Panel/VBox" unique_id=316291947]
 layout_mode = 2
 theme_override_constants/separation = 5
+
+[node name="BackButton" type="Button" parent="." unique_id=532890123]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 32.0
+offset_right = 126.0
+offset_bottom = 126.0
+theme_override_colors/font_color = Color(0.18, 0.12, 0.07, 1)
+theme_override_colors/font_hover_color = Color(0.18, 0.12, 0.07, 1)
+theme_override_colors/font_pressed_color = Color(0.18, 0.12, 0.07, 1)
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxFlat_back_normal")
+theme_override_styles/hover = SubResource("StyleBoxFlat_back_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_back_pressed")
+text = "Back
+⬅"
+
+[connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]

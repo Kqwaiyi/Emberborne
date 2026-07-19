@@ -3103,6 +3103,7 @@ debug_color = Color(0.21586639, 0.6397563, 0, 0.41960785)
 [node name="HologramDoor" parent="." unique_id=1128653168 instance=ExtResource("12_holo")]
 position = Vector2(-205, 310)
 scale = Vector2(0.6, 0.6)
+modulate = Color(2.5, 2.5, 2.5, 1)
 next_scene_path = "res://scenes/core/TestScene.tscn"
 
 [node name="LaptopUI" parent="." unique_id=888269756 instance=ExtResource("13_laptop")]

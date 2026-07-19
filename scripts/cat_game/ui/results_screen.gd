@@ -19,6 +19,7 @@ const _DARK  := Color(0.18, 0.12, 0.07, 1)
 const _BROWN := Color(0.14, 0.09, 0.04, 1)
 
 var _next_path: String = ""
+var _pending_score: int = 0
 
 @onready var _time_val:      Label  = $Panel/VBox/ContentHBox/StatsBox/TimeRow/Val
 @onready var _mice_val:      Label  = $Panel/VBox/ContentHBox/StatsBox/MiceRow/Val
@@ -53,6 +54,7 @@ func show_results(
 	next_scene_path: String
 ) -> void:
 	_next_path = next_scene_path
+	_pending_score = level_total
 
 	var s := int(elapsed_time)
 	_time_val.text      = "%02d:%02d" % [s / 60, s % 60]
@@ -78,6 +80,7 @@ func show_results(
 	visible = true
 
 func _on_next_pressed() -> void:
+	GameState.add_score(_pending_score)
 	GameState.save_progress(_next_path)
 	var laptops := get_tree().get_nodes_in_group("laptop_ui")
 	if laptops.size() > 0:

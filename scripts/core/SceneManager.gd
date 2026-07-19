@@ -71,6 +71,8 @@ func _switch_scene():
 	if packed_scene:
 		get_tree().change_scene_to_packed(packed_scene)
 		get_tree().paused = false
+		if GameGlobal:
+			GameGlobal.is_laptop_open = false
 		scene_loaded.emit()
 	else:
 		push_error("Loaded scene is null: " + _next_scene_path)

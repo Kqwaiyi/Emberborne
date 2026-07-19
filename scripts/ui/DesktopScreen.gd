@@ -65,6 +65,11 @@ func _ready():
 			child.app_hovered.connect(_on_app_hovered)
 			child.app_unhovered.connect(_on_app_unhovered)
 			
+	var pet_home_btn = app_grid.get_node("AppButton1")
+	if GameGlobal and GameGlobal.current_story_state < GameGlobal.StoryState.PHASE1_TASK_GO_TO_PET_WORLD:
+		pet_home_btn.modulate = Color(0.5, 0.5, 0.5, 0.5)
+		pet_home_btn.click_button.disabled = true
+			
 	# Save base positions for parallax
 	_bg_base_pos = background.position
 	_grid_base_pos = app_grid.position

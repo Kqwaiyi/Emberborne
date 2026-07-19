@@ -95,4 +95,8 @@ theme_override_font_sizes/font_size = 16
 text = "[E] TO ACKNOWLEDGE"
 horizontal_alignment = 1
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=2077476750]
+[node name="TypewriterAudio" type="AudioStreamPlayer" parent="."]
+
+[node name="OpenAudio" type="AudioStreamPlayer" parent="."]
+
+[node name="CloseAudio" type="AudioStreamPlayer" parent="." unique_id=2077476750]

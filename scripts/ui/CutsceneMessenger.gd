@@ -86,6 +86,10 @@ var _audio_outgoing: AudioStreamPlayer
 var _audio_back_hover: AudioStreamPlayer
 var _audio_back_click: AudioStreamPlayer
 var _back_button_tween: Tween = null
+var _dot_tween: Tween = null
+var _audio_text: AudioStreamPlayer
+var _audio_action: AudioStreamPlayer
+var _text_audio_fade_tween: Tween = null
 
 # ─── Completion Tracking ─────────────────────────────────────────────
 # Static var persists across scene loads within a single game session.
@@ -250,6 +254,9 @@ func _input(event: InputEvent) -> void:
 		return
 
 	if event.is_action_pressed("dialogue_advance"):
+		if _audio_action and _audio_action.stream:
+			_audio_action.play()
+			
 		if _is_processing_bubble:
 			_complete_bubble_animation()
 		else:
@@ -408,7 +415,10 @@ func _create_bubble(line: Dictionary) -> Control:
 	time_label.text = line.get("timestamp", "00:00")
 	time_label.add_theme_color_override("font_color", COLOR_TIMESTAMP)
 	time_label.add_theme_font_size_override("font_size", 10)
-	time_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
+	if is_me:
+		time_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_LEFT
+	else:
+		time_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
 	time_label.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	inner_vbox.add_child(time_label)
 
@@ -463,21 +473,29 @@ func _on_bubble_animation_finished(bubble: Control, sender: String) -> void:
 		_start_decrypt_phase(bubble)
 
 func _start_typing_phase(bubble: Control) -> void:
-	if _audio_typing and _audio_typing.stream:
-		_audio_typing.play()
-		
 	var msg_label = bubble.find_child("MessageLabel", true, false)
+	var final_text = bubble.get_meta("final_text", "")
+	var duration = clamp(final_text.length() * 0.04, 0.8, 2.0)
 	
-	_typing_tween = create_tween().set_loops(3)
-	_typing_tween.tween_callback(func(): msg_label.text = "typing.")
-	_typing_tween.tween_interval(0.3)
-	_typing_tween.tween_callback(func(): msg_label.text = "typing..")
-	_typing_tween.tween_interval(0.3)
-	_typing_tween.tween_callback(func(): msg_label.text = "typing...")
-	_typing_tween.tween_interval(0.3)
+	if _dot_tween and _dot_tween.is_valid():
+		_dot_tween.kill()
+		
+	_dot_tween = create_tween().set_loops()
+	_dot_tween.tween_callback(func(): msg_label.text = "typing.")
+	_dot_tween.tween_interval(0.15)
+	_dot_tween.tween_callback(func(): msg_label.text = "typing..")
+	_dot_tween.tween_interval(0.15)
+	_dot_tween.tween_callback(func(): msg_label.text = "typing...")
+	_dot_tween.tween_interval(0.15)
+	_dot_tween.tween_callback(func(): msg_label.text = "typing..")
+	_dot_tween.tween_interval(0.15)
+	
+	_typing_tween = create_tween()
+	_typing_tween.tween_interval(duration)
 	
 	_typing_tween.finished.connect(func():
-		if _audio_typing: _audio_typing.stop()
+		if _dot_tween and _dot_tween.is_valid():
+			_dot_tween.kill()
 		_start_expand_phase(bubble)
 	)
 
@@ -501,12 +519,21 @@ func _start_decrypt_phase(bubble: Control) -> void:
 	
 	_update_decrypt(0.0, msg_label, final_text)
 	
+	if _text_audio_fade_tween and _text_audio_fade_tween.is_valid():
+		_text_audio_fade_tween.kill()
+	if _audio_text and _audio_text.stream:
+		_audio_text.volume_db = 0.0
+		_audio_text.play()
+	
 	_decrypt_tween = create_tween()
 	_decrypt_tween.tween_method(_update_decrypt.bind(msg_label, final_text), 0.0, 1.0, 0.5)
 	
 	_decrypt_tween.finished.connect(func():
 		msg_label.text = final_text
 		if time_label: time_label.show()
+		
+		if _audio_text and _audio_text.playing:
+			_audio_text.stop()
 		
 		if sender == "me" and _audio_outgoing and _audio_outgoing.stream:
 			_audio_outgoing.play()
@@ -549,12 +576,22 @@ func _complete_bubble_animation() -> void:
 		_bubble_tween.kill()
 	if _typing_tween and _typing_tween.is_valid():
 		_typing_tween.kill()
+	if _dot_tween and _dot_tween.is_valid():
+		_dot_tween.kill()
 	if _expand_tween and _expand_tween.is_valid():
 		_expand_tween.kill()
 	if _decrypt_tween and _decrypt_tween.is_valid():
 		_decrypt_tween.kill()
 		
-	if _audio_typing: _audio_typing.stop()
+	if _audio_text and _audio_text.playing:
+		if _text_audio_fade_tween and _text_audio_fade_tween.is_valid():
+			_text_audio_fade_tween.kill()
+		_text_audio_fade_tween = create_tween()
+		_text_audio_fade_tween.tween_property(_audio_text, "volume_db", -60.0, 0.05)
+		_text_audio_fade_tween.tween_callback(func():
+			_audio_text.stop()
+			_audio_text.volume_db = 0.0
+		)
 		
 	if _current_bubble_node and is_instance_valid(_current_bubble_node):
 		_current_bubble_node.scale = Vector2(1.0, 1.0)
@@ -637,6 +674,8 @@ func _abort_cutscene() -> void:
 		_bubble_tween.kill()
 	if _typing_tween and _typing_tween.is_valid():
 		_typing_tween.kill()
+	if _dot_tween and _dot_tween.is_valid():
+		_dot_tween.kill()
 	if _expand_tween and _expand_tween.is_valid():
 		_expand_tween.kill()
 	if _decrypt_tween and _decrypt_tween.is_valid():
@@ -644,7 +683,8 @@ func _abort_cutscene() -> void:
 	if _indicator_tween and _indicator_tween.is_valid():
 		_indicator_tween.kill()
 		
-	if _audio_typing: _audio_typing.stop()
+	if _audio_text and _audio_text.playing:
+		_audio_text.stop()
 		
 	_is_processing_bubble = false
 	_current_bubble_node = null
@@ -836,7 +876,7 @@ func _build_ui() -> void:
 
 	# ── Advance Indicator ────────────────────────────────────────────
 	_advance_indicator = Label.new()
-	_advance_indicator.text = "[ AWAITING INPUT_ ]"
+	_advance_indicator.text = "[ SPACE OR LEFT CLICK_ ]"
 	_advance_indicator.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	_advance_indicator.add_theme_color_override("font_color", COLOR_ADVANCE_IND)
 	_advance_indicator.add_theme_font_size_override("font_size", 16)
@@ -858,3 +898,15 @@ func _build_ui() -> void:
 	_audio_outgoing = AudioStreamPlayer.new()
 	_audio_outgoing.stream = sfx_outgoing
 	add_child(_audio_outgoing)
+
+	_audio_text = AudioStreamPlayer.new()
+	var text_stream = load("res://assets/music/text_sound.mp3")
+	if text_stream:
+		_audio_text.stream = text_stream
+	add_child(_audio_text)
+
+	_audio_action = AudioStreamPlayer.new()
+	var action_stream = load("res://assets/music/space_notification.mp3")
+	if action_stream:
+		_audio_action.stream = action_stream
+	add_child(_audio_action)

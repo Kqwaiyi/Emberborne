@@ -16,6 +16,7 @@ var _digit_labels: Array[Label] = []
 var _rainbow_active: bool = false
 var _rainbow_hue: float = 0.0
 var _place: int = 0
+var _is_transitioning: bool = false
 
 var dummy_names: Array[String] = ["CatLover99", "PawMaster", "PixelCat", "SpeedyPaws", "ScratchKing", "Meowz", "NyanNyan", "FelineGood", "KittyKat", "Purrfect", "NineLives", "MeowMaster", "WhiskerWizard", "TailChaser", "PurrMachine"]
 
@@ -342,3 +343,16 @@ func _generate_leaderboard(player_place: int, player_score: int) -> void:
 		
 	if player_place < 9997:
 		_create_separator()
+
+func _on_back_button_pressed() -> void:
+	if _is_transitioning: return
+	_is_transitioning = true
+	
+	MusicManager.play_music("pet_world", true)
+	
+	var laptops = get_tree().get_nodes_in_group("laptop_ui")
+	if laptops.size() > 0:
+		laptops[0].change_scene("res://scenes/pet_world/lobby/mainlobby.tscn", 0.5)
+	else:
+		get_tree().paused = false
+		SceneManager.change_scene_to_file("res://scenes/pet_world/lobby/mainlobby.tscn")
